@@ -1,0 +1,8 @@
+# Install PaddlePaddle GPU first (match your CUDA version):
+# CUDA 11.8: pip install paddlepaddle-gpu==2.6.0.post118 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/
+# CUDA 12.3: pip install paddlepaddle-gpu==2.6.0.post120 -i https://www.paddlepaddle.org.cn/packages/stable/cu120/
+paddleocr>=2.7.0
+simple-lama-inpainting>=0.1.2
+Pillow>=10.0
+numpy>=1.24
+pytest>=7.0
