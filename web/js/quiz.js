@@ -21,6 +21,11 @@ function loadQuiz(entry, imgBasePath) {
         renderOverlays(entry.labels, img, wrapper);
     };
     img.src = imgBasePath + entry.filename;
+    // If the browser already has this image cached (same URL), onload won't fire.
+    // Call renderOverlays directly when the image is already complete.
+    if (img.complete && img.naturalWidth > 0) {
+        renderOverlays(entry.labels, img, wrapper);
+    }
 }
 
 function renderOverlays(labels, img, wrapper) {
