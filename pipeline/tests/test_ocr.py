@@ -33,6 +33,12 @@ def test_empty_image_returns_empty():
     assert labels == []
 
 
+def test_ocr_returns_none_gives_empty():
+    with patch('ocr.PaddleOCR', return_value=_mock_ocr(None)):
+        labels = extract_labels("blank.jpg")
+    assert labels == []
+
+
 def test_blank_text_filtered_out():
     bbox = [[10, 20], [110, 20], [110, 50], [10, 50]]
     mock_result = [[[bbox, ("  ", 0.99)]]]

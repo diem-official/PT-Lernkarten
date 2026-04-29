@@ -28,6 +28,9 @@ def extract_labels(image_path: str) -> list:
         bbox, (text, confidence) = line
         if confidence < 0.5 or not text.strip():
             continue
+        # min/max over all 4 corners gives the axis-aligned bounding box.
+        # For rotated text, this box is slightly larger than the actual glyph region,
+        # which is acceptable for this use case (mostly upright printed anatomy labels).
         xs = [p[0] for p in bbox]
         ys = [p[1] for p in bbox]
         labels.append({
