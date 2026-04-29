@@ -151,11 +151,12 @@ body {
     position: relative;
     line-height: 0;         /* removes inline-block gap below img */
     display: inline-block;
+    max-width: 100%;
 }
 
 #quiz-img {
     display: block;
-    max-width: calc(78vw - 32px);
+    max-width: 100%;
     max-height: calc(100vh - 32px);
 }
 
@@ -263,6 +264,16 @@ body {
 
 #modal-close:hover {
     background: #1e7a00;
+}
+
+/* ── Focus styles (keyboard accessibility) ──────────────────── */
+.menu-kat > button:focus-visible,
+.menu-unter > button:focus-visible,
+.menu-ansicht-btn:focus-visible,
+.help-btn:focus-visible,
+#modal-close:focus-visible {
+    outline: 2px solid #3a82d4;
+    outline-offset: 2px;
 }
 
 /* ── Utility ────────────────────────────────── */
