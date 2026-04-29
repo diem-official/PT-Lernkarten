@@ -1,0 +1,271 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: #fff;
+}
+
+/* ── App shell ─────────────────────────────── */
+#app {
+    display: flex;
+    height: 100vh;
+}
+
+/* ── Sidebar ────────────────────────────────── */
+#sidebar {
+    width: 22%;
+    min-width: 170px;
+    max-width: 280px;
+    background: #f4f4f4;
+    border-right: 1px solid #d0d0d0;
+    overflow-y: auto;
+    padding: 12px 0;
+    flex-shrink: 0;
+}
+
+#menu-loading {
+    padding: 16px;
+    color: #888;
+    font-size: 14px;
+}
+
+#menu-root {
+    list-style: none;
+}
+
+/* Level 1: Kategorie */
+.menu-kat > button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 9px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.menu-kat > button::before {
+    content: '▶';
+    font-size: 9px;
+    transition: transform 0.15s;
+    display: inline-block;
+}
+
+.menu-kat > button.expanded::before {
+    transform: rotate(90deg);
+}
+
+.menu-kat > button:hover {
+    background: #e8e8e8;
+}
+
+/* Level 2: Unterkategorie */
+.menu-unter-list {
+    list-style: none;
+}
+
+.menu-unter > button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 7px 16px 7px 28px;
+    font-size: 14px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.menu-unter > button::before {
+    content: '▶';
+    font-size: 8px;
+    transition: transform 0.15s;
+    display: inline-block;
+}
+
+.menu-unter > button.expanded::before {
+    transform: rotate(90deg);
+}
+
+.menu-unter > button:hover {
+    background: #e4e4e4;
+}
+
+/* Level 3: Ansicht */
+.menu-ansicht-list {
+    list-style: none;
+}
+
+.menu-ansicht-btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 16px 6px 42px;
+    font-size: 13px;
+    color: #555;
+}
+
+.menu-ansicht-btn:hover {
+    background: #dde8f5;
+}
+
+.menu-ansicht-btn.active {
+    background: #c4d9f5;
+    font-weight: 600;
+    color: #1a3a6e;
+}
+
+/* ── Learn area ─────────────────────────────── */
+#learn-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #fff;
+    padding: 16px;
+}
+
+#placeholder {
+    color: #aaa;
+    font-size: 18px;
+    text-align: center;
+}
+
+#quiz-wrapper {
+    position: relative;
+    line-height: 0;         /* removes inline-block gap below img */
+    display: inline-block;
+}
+
+#quiz-img {
+    display: block;
+    max-width: calc(78vw - 32px);
+    max-height: calc(100vh - 32px);
+}
+
+/* ── Overlays ───────────────────────────────── */
+.overlay-group {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    pointer-events: auto;
+}
+
+.label-input {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1.5px solid #777;
+    border-radius: 3px;
+    font-size: 13px;
+    padding: 0 4px;
+    outline: none;
+    transition: background 0.12s, border-color 0.12s;
+    min-width: 40px;
+}
+
+.label-input:focus {
+    border-color: #3a82d4;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.label-input.correct {
+    background: rgba(80, 200, 100, 0.85);
+    border-color: #2a9d00;
+}
+
+.label-input.typo {
+    background: rgba(255, 165, 0, 0.75);
+    border-color: #c07000;
+}
+
+.help-btn {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid #555;
+    background: #fff;
+    color: #333;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+}
+
+.help-btn:hover {
+    background: #e8e8e8;
+    border-color: #222;
+}
+
+/* ── Help modal ─────────────────────────────── */
+#help-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#modal-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 36px 48px;
+    text-align: center;
+    min-width: 280px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+}
+
+#modal-box h3 {
+    font-size: 15px;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+#modal-solution {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 28px;
+}
+
+#modal-close {
+    background: #2a9d00;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 32px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#modal-close:hover {
+    background: #1e7a00;
+}
+
+/* ── Utility ────────────────────────────────── */
+.hidden {
+    display: none !important;
+}

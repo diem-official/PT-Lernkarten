@@ -1,0 +1,23 @@
+[
+  {
+    "filename": "Knochen-Arm-dorsal-clean.jpg",
+    "labels": [
+      { "x": 80,  "y": 40,  "w": 130, "h": 28, "text": "Humerus" },
+      { "x": 280, "y": 180, "w": 100, "h": 28, "text": "Radius" },
+      { "x": 140, "y": 320, "w": 110, "h": 28, "text": "Ulna" }
+    ]
+  },
+  {
+    "filename": "Knochen-Arm-ventral-clean.jpg",
+    "labels": [
+      { "x": 70, "y": 70, "w": 140, "h": 28, "text": "Capitulum humeri" }
+    ]
+  },
+  {
+    "filename": "Knochen-Bein-lateral-clean.jpg",
+    "labels": [
+      { "x": 50,  "y": 100, "w": 100, "h": 28, "text": "Femur" },
+      { "x": 60,  "y": 250, "w": 100, "h": 28, "text": "Tibia" }
+    ]
+  }
+]
