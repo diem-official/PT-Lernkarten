@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# ML model caches (PaddleOCR, LaMa) – can be hundreds of MB
+.paddleocr/
+*.pth
+*.pdparams
+*.pdopt
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated frontend data (committed intentionally when ready)
+# web/data/images/ and web/data/data.json are tracked via .gitkeep
