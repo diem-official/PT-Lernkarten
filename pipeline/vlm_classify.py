@@ -1,7 +1,6 @@
 import json
 import logging
 import re
-from pathlib import Path
 from typing import Any
 
 from PIL import Image
@@ -44,13 +43,15 @@ def _load_model() -> None:
 
     log.info("Loading Qwen2.5-VL-7B-Instruct …")
     model_id = "Qwen/Qwen2.5-VL-7B-Instruct"
-    _processor = AutoProcessor.from_pretrained(model_id)
-    _model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+    # Load into locals first so globals are only set when both succeed
+    proc = AutoProcessor.from_pretrained(model_id)
+    mdl = Qwen2_5_VLForConditionalGeneration.from_pretrained(
         model_id,
         torch_dtype=torch.bfloat16,
-        device_map="cuda",
+        device_map="auto",  # "auto" works on GPU and CPU; 3090 Ti will use cuda:0
     )
-    _model.eval()
+    mdl.eval()
+    _processor, _model = proc, mdl
     log.info("Model loaded.")
 
 
