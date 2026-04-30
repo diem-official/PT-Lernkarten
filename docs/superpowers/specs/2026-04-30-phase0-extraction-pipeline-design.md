@@ -30,7 +30,7 @@ PDF
 (page_no, image_index, PIL.Image at 300 DPI)
  │  Qwen2.5-VL-7B-Instruct         (pipeline/vlm_classify.py)
  ▼
-{"is_anatomical": bool, "category": str, "subcategory": str, "view": str}
+{"category": str, "subcategory": str, "view": str}  or  None
  │  orchestration + file save      (pipeline/phase0_runner.py)
  ▼
 Pics/Kategorie-Unterkategorie-Ansicht.jpg
@@ -64,7 +64,7 @@ PT Lernkarten/
 1. Open PDF with `fitz.open()`
 2. Iterate pages (optionally filtered by a page range)
 3. On each page call `page.get_image_info(xrefs=True)` to get image bounding boxes
-4. Filter: discard any image whose bounding box is smaller than `min_size × min_size` pixels (default 150)
+4. Filter: discard any image whose bounding box is smaller than `min_size × min_size` **PDF points** (default 150 pts ≈ 2.1 inches; PyMuPDF coordinates are always in points at 72 pt/inch, not output pixels). Log discarded images at DEBUG: `"p{page} img{idx} discarded: too small ({w:.0f}×{h:.0f} pts)"`
 5. For each qualifying image rect, call `page.get_pixmap(clip=rect, dpi=300)` to rasterize at 300 DPI
 6. Convert pixmap to `PIL.Image` and yield `(page_no, img_index, pil_image)`
 7. On any per-image exception: log at ERROR, skip — never raise
@@ -73,8 +73,8 @@ PT Lernkarten/
 ```python
 def iter_figures(
     pdf_path: str | Path,
-    min_size: int = 150,
-    page_range: tuple[int, int] | None = None,
+    min_size: int = 150,          # in PDF points (72 pt = 1 inch)
+    page_range: tuple[int, int] | None = None,  # 1-indexed, inclusive; converted to 0-indexed internally
 ) -> Iterator[tuple[int, int, Image.Image]]:
     ...
 ```
@@ -99,17 +99,26 @@ def iter_figures(
 >
 > If `is_anatomical` is false, set the other fields to null.
 
-**Output parsing:**
-- Extract first `{…}` from response
-- Parse JSON; on failure return `None`
-- If `is_anatomical` is false or missing → return `None`
-- If any of category/subcategory/view is null/empty → return `None`
-- Sanitise strings: strip whitespace, title-case category/subcategory, lowercase view, replace spaces with underscores, transliterate Umlauts (ä→ae, ö→oe, ü→ue, ß→ss)
+**Output parsing** (each step returns `(None, reason_str)` on failure):
+1. Extract first `{…}` from response text; if absent → `(None, "json parse failure")`
+2. Parse JSON; on failure → `(None, "json parse failure")`
+3. Evaluate `is_anatomical`: if the key is absent from the parsed dict → `(None, "missing field: is_anatomical")`; truthy only if the value equals boolean `True` or the string `"true"` / `"True"` (VLMs may serialise booleans as strings); any other value (including `False`, `"false"`, `null`) → `(None, "not anatomical")`
+4. Check that category, subcategory, and view are all present and non-empty; for each missing field → `(None, "missing field: {name}")`
+5. Strip whitespace from all three values; apply title-case to category and subcategory; apply lowercase to view
+6. Validate category against the allowed enum **after step 5 (strip + title-case) but before transliteration**, since the enum retains Umlauts: `{Knochen, Muskeln, Gelenke, Bänder, Gefäße, Nerven, Organe}`. Comparison is case-sensitive against the title-cased value. If not in the set → `(None, "unknown category: {value}")`
+7. Transliterate Umlauts in all three fields: `ä→ae, ö→oe, ü→ue, ß→ss, Ä→Ae, Ö→Oe, Ü→Ue`; replace remaining spaces with underscores
+8. On success → `({"category": str, "subcategory": str, "view": str}, "")`
 
 **Public interface:**
 ```python
-def classify(image: Image.Image) -> dict | None:
-    """Returns {"category": str, "subcategory": str, "view": str} or None."""
+def classify(image: Image.Image) -> tuple[dict | None, str]:
+    """
+    Returns (result, reason).
+    result is {"category": str, "subcategory": str, "view": str} on success, else None.
+    reason is a short human-readable string describing why result is None
+    (e.g. "not anatomical", "json parse failure", "missing field: view", "unknown category: Wirbelsäule").
+    reason is "" when result is not None.
+    """
 ```
 
 ---
@@ -121,12 +130,12 @@ def classify(image: Image.Image) -> dict | None:
 **Logic:**
 1. Create `output_dir` if it does not exist
 2. Call `iter_figures()` for each (page_no, img_idx, image)
-3. Pass image to `classify()`; if `None` log at DEBUG with reason, continue
+3. Pass image to `classify()`; if result is `None` log at DEBUG `"p{page} img{idx} discarded: {reason}"`, continue
 4. Build filename: `{category}-{subcategory}-{view}.jpg`
 5. Handle collisions: if filename already exists, append `_2`, `_3`, etc.
 6. If `dry_run=True`: log the would-be filename, do not save
 7. Otherwise: save as JPEG quality 95
-8. Track and return a `RunStats(total, saved, discarded, errors)` dataclass
+8. Track and return a `RunStats` dataclass: `total: int` (figures yielded by `iter_figures`), `saved: int`, `discarded: int` (VLM returned None), `errors: int` (exceptions caught; each image counts at most once regardless of how many steps fail)
 
 **Public interface:**
 ```python
@@ -153,7 +162,7 @@ python phase0_extract.py --input <pdf> --output <dir>
 
 - `--input` — path to PDF (default: `Buch/<first .pdf found>`)
 - `--output` — output directory (default: `Pics/`)
-- `--min-size` — minimum image dimension in pixels to consider (default: 150)
+- `--min-size` — minimum image dimension in PDF points to consider (default: 150 pts ≈ 2.1 inches)
 - `--pages` — page range `START-END` (1-indexed, inclusive); omit for full PDF
 - `--dry-run` — classify but do not write files
 
@@ -171,7 +180,8 @@ Log events:
 | Level | Event |
 |---|---|
 | INFO | Pipeline start, model loaded, each saved file |
-| DEBUG | Each discarded image with reason (too small / not anatomical / parse failure) |
+| DEBUG | `pdf_extract`: image discarded as too small (with dimensions) |
+| DEBUG | `phase0_runner`: image discarded by VLM (reason string from `classify()`) |
 | ERROR | Any per-image exception (page, index, exception message) |
 | INFO | Final summary: total / saved / discarded / errors |
 
@@ -184,16 +194,15 @@ PyMuPDF>=1.24
 transformers>=4.49
 qwen-vl-utils>=0.0.8
 accelerate>=0.27
-Pillow>=10.0
 ```
 
-Torch is already present in the venv (`2.11.0+cu126`).
+Already present in the venv (no change needed): `torch 2.11.0+cu126`, `Pillow>=10.0`, `safetensors`, `huggingface_hub`.
 
 ---
 
 ## Filename Collision Strategy
 
-If `Knochen-Arm-dorsal.jpg` already exists in `Pics/`, the next one becomes `Knochen-Arm-dorsal_2.jpg`, then `_3`, etc. This preserves all variants (e.g. two dorsal arm views from different pages).
+If `Knochen-Arm-dorsal.jpg` already exists in `Pics/`, the next one becomes `Knochen-Arm-dorsal_2.jpg`, then `_3`, etc. (suffix inserted before the `.jpg` extension). This preserves all variants (e.g. two dorsal arm views from different pages).
 
 ---
 
