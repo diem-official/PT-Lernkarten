@@ -1,8 +1,13 @@
 # Install PaddlePaddle GPU first (match your CUDA version):
-# CUDA 11.8: pip install paddlepaddle-gpu==2.6.0.post118 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/
-# CUDA 12.3: pip install paddlepaddle-gpu==2.6.0.post120 -i https://www.paddlepaddle.org.cn/packages/stable/cu120/
+# CUDA 11.8: pip install paddlepaddle-gpu==2.6.1.post118 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/
+# CUDA 12.3: pip install paddlepaddle-gpu==2.6.2.post120 -i https://www.paddlepaddle.org.cn/packages/stable/cu120/
 paddleocr>=2.7.0
-simple-lama-inpainting>=0.1.2
+# simple-lama-inpainting has a stale pillow<10 pin; install with --no-deps (see below)
+# pip install --no-deps simple-lama-inpainting>=0.1.2
 Pillow>=10.0
 numpy>=1.24
 pytest>=7.0
+PyMuPDF>=1.24
+transformers>=4.49
+qwen-vl-utils>=0.0.8
+accelerate>=0.27
