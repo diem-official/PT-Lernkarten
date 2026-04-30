@@ -1,3 +1,4 @@
+import io
 import logging
 from pathlib import Path
 from typing import Iterator
@@ -33,8 +34,15 @@ def iter_figures(
             try:
                 page = doc[page_idx]
                 infos = page.get_image_info(xrefs=True)
+                seen_xrefs: set[int] = set()
                 for img_idx, info in enumerate(infos):
                     try:
+                        xref = info.get("xref", 0)
+                        if xref and xref in seen_xrefs:
+                            log.debug("p%d img%d discarded: duplicate xref %d", page_no, img_idx, xref)
+                            continue
+                        if xref:
+                            seen_xrefs.add(xref)
                         x0, y0, x1, y1 = info["bbox"]
                         w_pts = x1 - x0
                         h_pts = y1 - y0
@@ -46,7 +54,7 @@ def iter_figures(
                             continue
                         rect = fitz.Rect(x0, y0, x1, y1)
                         pix = page.get_pixmap(clip=rect, dpi=300)
-                        img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+                        img = Image.open(io.BytesIO(pix.tobytes("png")))
                         yield page_no, img_idx, img
                     except Exception as exc:
                         log.error("p%d img%d error: %s", page_no, img_idx, exc)
