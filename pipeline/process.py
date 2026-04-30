@@ -18,6 +18,7 @@ from export import build_entry, save_data_json
 SUPPORTED = {'.jpg', '.jpeg', '.png', '.tif', '.tiff'}
 NAME_RE = re.compile(r'^[^-]+-[^-]+-[^-]+\.\w+$')
 DEFAULT_WEB = Path(__file__).parent.parent / 'web'
+DEFAULT_INPUT = Path(__file__).parent.parent / 'Input'
 
 
 def process_image(image_path: Path, images_dir: Path) -> dict | None:
@@ -45,7 +46,8 @@ def process_image(image_path: Path, images_dir: Path) -> dict | None:
 
 def main():
     parser = argparse.ArgumentParser(description="Anatomy flashcard pipeline")
-    parser.add_argument('input_dir', type=Path, help="Directory with source images")
+    parser.add_argument('input_dir', type=Path, nargs='?', default=DEFAULT_INPUT,
+                        help=f"Directory with source images (default: {DEFAULT_INPUT})")
     parser.add_argument('--output-web', type=Path, default=DEFAULT_WEB,
                         help="Path to web/ directory (default: ../web)")
     args = parser.parse_args()

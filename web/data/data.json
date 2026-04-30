@@ -1,23 +1,280 @@
 [
   {
-    "filename": "Knochen-Arm-dorsal-clean.jpg",
+    "filename": "Knochen-Becken-lateral-clean.jpg",
     "labels": [
-      { "x": 80,  "y": 40,  "w": 130, "h": 28, "text": "Humerus" },
-      { "x": 280, "y": 180, "w": 100, "h": 28, "text": "Radius" },
-      { "x": 140, "y": 320, "w": 110, "h": 28, "text": "Ulna" }
-    ]
-  },
-  {
-    "filename": "Knochen-Arm-ventral-clean.jpg",
-    "labels": [
-      { "x": 70, "y": 70, "w": 140, "h": 28, "text": "Capitulum humeri" }
-    ]
-  },
-  {
-    "filename": "Knochen-Bein-lateral-clean.jpg",
-    "labels": [
-      { "x": 50,  "y": 100, "w": 100, "h": 28, "text": "Femur" },
-      { "x": 60,  "y": 250, "w": 100, "h": 28, "text": "Tibia" }
+      {
+        "x": 413,
+        "y": 31,
+        "w": 61,
+        "h": 17,
+        "text": "Crista iliaca"
+      },
+      {
+        "x": 68,
+        "y": 48,
+        "w": 68,
+        "h": 22,
+        "text": "Linea glutea"
+      },
+      {
+        "x": 90,
+        "y": 65,
+        "w": 48,
+        "h": 18,
+        "text": "anterior"
+      },
+      {
+        "x": 466,
+        "y": 83,
+        "w": 63,
+        "h": 21,
+        "text": "Tuberculum"
+      },
+      {
+        "x": 613,
+        "y": 83,
+        "w": 173,
+        "h": 21,
+        "text": "AOs coxae der rechten Seite"
+      },
+      {
+        "x": 41,
+        "y": 98,
+        "w": 71,
+        "h": 22,
+        "text": "Facies glutea"
+      },
+      {
+        "x": 469,
+        "y": 99,
+        "w": 39,
+        "h": 18,
+        "text": "iliacum"
+      },
+      {
+        "x": 614,
+        "y": 101,
+        "w": 108,
+        "h": 21,
+        "text": "Ansicht von lateral."
+      },
+      {
+        "x": 15,
+        "y": 138,
+        "w": 69,
+        "h": 20,
+        "text": "Linea glutea"
+      },
+      {
+        "x": 35,
+        "y": 156,
+        "w": 49,
+        "h": 11,
+        "text": "posterior"
+      },
+      {
+        "x": 19,
+        "y": 190,
+        "w": 64,
+        "h": 18,
+        "text": "Spina iliaca"
+      },
+      {
+        "x": 516,
+        "y": 185,
+        "w": 61,
+        "h": 18,
+        "text": "Spina iliaca"
+      },
+      {
+        "x": 28,
+        "y": 206,
+        "w": 52,
+        "h": 14,
+        "text": "posterior"
+      },
+      {
+        "x": 519,
+        "y": 201,
+        "w": 84,
+        "h": 14,
+        "text": "anterior superior"
+      },
+      {
+        "x": 30,
+        "y": 221,
+        "w": 47,
+        "h": 11,
+        "text": "superior"
+      },
+      {
+        "x": 520,
+        "y": 226,
+        "w": 100,
+        "h": 15,
+        "text": "Linea glutea inferior"
+      },
+      {
+        "x": 520,
+        "y": 253,
+        "w": 59,
+        "h": 14,
+        "text": "Spina iliaca"
+      },
+      {
+        "x": 522,
+        "y": 267,
+        "w": 80,
+        "h": 15,
+        "text": "anterior inferior"
+      },
+      {
+        "x": 26,
+        "y": 283,
+        "w": 68,
+        "h": 18,
+        "text": "Spina iliaca"
+      },
+      {
+        "x": 519,
+        "y": 289,
+        "w": 125,
+        "h": 14,
+        "text": "Sulcus supraacetabularis"
+      },
+      {
+        "x": 33,
+        "y": 301,
+        "w": 58,
+        "h": 14,
+        "text": "posterior"
+      },
+      {
+        "x": 38,
+        "y": 313,
+        "w": 50,
+        "h": 15,
+        "text": "inferior"
+      },
+      {
+        "x": 518,
+        "y": 318,
+        "w": 89,
+        "h": 15,
+        "text": "Limbus acetabuli"
+      },
+      {
+        "x": 105,
+        "y": 335,
+        "w": 53,
+        "h": 17,
+        "text": "Incisura"
+      },
+      {
+        "x": 517,
+        "y": 340,
+        "w": 69,
+        "h": 14,
+        "text": "Facies lunata"
+      },
+      {
+        "x": 46,
+        "y": 350,
+        "w": 108,
+        "h": 16,
+        "text": "ischiadica major"
+      },
+      {
+        "x": 627,
+        "y": 350,
+        "w": 63,
+        "h": 15,
+        "text": "Acetabulum"
+      },
+      {
+        "x": 517,
+        "y": 361,
+        "w": 80,
+        "h": 15,
+        "text": "Fossa acetabuli"
+      },
+      {
+        "x": 516,
+        "y": 384,
+        "w": 94,
+        "h": 13,
+        "text": "Incisura acetabuli"
+      },
+      {
+        "x": 99,
+        "y": 395,
+        "w": 40,
+        "h": 18,
+        "text": "Spina"
+      },
+      {
+        "x": 69,
+        "y": 411,
+        "w": 66,
+        "h": 14,
+        "text": "ischiadica"
+      },
+      {
+        "x": 517,
+        "y": 416,
+        "w": 68,
+        "h": 17,
+        "text": "Tuberculum"
+      },
+      {
+        "x": 118,
+        "y": 441,
+        "w": 55,
+        "h": 18,
+        "text": "Incisura"
+      },
+      {
+        "x": 519,
+        "y": 432,
+        "w": 51,
+        "h": 16,
+        "text": "pubicum"
+      },
+      {
+        "x": 58,
+        "y": 455,
+        "w": 113,
+        "h": 16,
+        "text": "ischiadica minor"
+      },
+      {
+        "x": 495,
+        "y": 467,
+        "w": 51,
+        "h": 14,
+        "text": "Foramen"
+      },
+      {
+        "x": 499,
+        "y": 482,
+        "w": 58,
+        "h": 15,
+        "text": "obturatum"
+      },
+      {
+        "x": 114,
+        "y": 512,
+        "w": 43,
+        "h": 18,
+        "text": "Tuber"
+      },
+      {
+        "x": 70,
+        "y": 524,
+        "w": 81,
+        "h": 18,
+        "text": "ischiadicum"
+      }
     ]
   }
 ]
