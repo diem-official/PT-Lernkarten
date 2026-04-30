@@ -25,3 +25,4 @@ Thumbs.db
 
 # Generated frontend data (committed intentionally when ready)
 # web/data/images/ and web/data/data.json are tracked via .gitkeep
+pipeline.log

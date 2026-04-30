@@ -16,6 +16,8 @@ _LOG_FILE = _PROJECT_ROOT / "pipeline.log"
 
 def _setup_logging() -> None:
     root = logging.getLogger()
+    if root.handlers:
+        return  # already configured (e.g. called twice in tests)
     root.setLevel(logging.DEBUG)
 
     fmt = logging.Formatter("%(asctime)s %(levelname)-8s %(name)s: %(message)s")
@@ -37,6 +39,8 @@ def _parse_pages_arg(value: str) -> tuple[int, int]:
     if len(parts) != 2:
         raise ValueError(f"--pages must be START-END, got {value!r}")
     start, end = int(parts[0]), int(parts[1])
+    if start < 1:
+        raise ValueError(f"--pages start must be >= 1, got {start}")
     if end < start:
         raise ValueError(f"--pages end ({end}) must be >= start ({start})")
     return start, end
