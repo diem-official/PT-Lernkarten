@@ -5,7 +5,7 @@ import io
 import pytest
 import fitz
 from PIL import Image
-from pdf_extract import iter_figures
+from pdf_extract import iter_figures, _expand_rect_to_labels
 
 
 def _make_test_pdf(tmp_path, img_pts=(200, 200), n_images=1):
@@ -72,6 +72,52 @@ def test_page_range_1indexed(tmp_path):
 
     # page_range=(1,1) should yield one image
     results = list(iter_figures(pdf, min_size=50, page_range=(1, 1)))
+    assert len(results) == 1
+
+
+def _make_page_with_text_nearby():
+    """Return an open fitz.Page with an image rect and a text block 80 pts below it."""
+    doc = fitz.open()
+    page = doc.new_page(width=595, height=842)
+    pil = Image.new("RGB", (100, 100), color=(200, 100, 50))
+    buf = io.BytesIO(); pil.save(buf, "PNG")
+    page.insert_image(fitz.Rect(100, 100, 300, 300), stream=buf.getvalue())
+    page.insert_text((100, 350), "Humerus", fontsize=10)
+    return doc, page
+
+
+def test_expand_rect_includes_nearby_text():
+    doc, page = _make_page_with_text_nearby()
+    image_rect = fitz.Rect(100, 100, 300, 300)
+    expanded = _expand_rect_to_labels(page, image_rect, margin=200)
+    doc.close()
+    assert expanded.y1 > image_rect.y1, "expanded rect should reach the text below"
+
+
+def test_expand_rect_no_text_returns_original():
+    doc = fitz.open()
+    page = doc.new_page(width=595, height=842)
+    image_rect = fitz.Rect(100, 100, 300, 300)
+    expanded = _expand_rect_to_labels(page, image_rect, margin=200)
+    doc.close()
+    assert expanded == image_rect
+
+
+def test_expand_rect_clips_to_page_bounds():
+    doc = fitz.open()
+    page = doc.new_page(width=595, height=842)
+    page.insert_text((550, 820), "Test", fontsize=10)
+    image_rect = fitz.Rect(500, 750, 590, 830)
+    page_rect = fitz.Rect(page.rect)
+    expanded = _expand_rect_to_labels(page, image_rect, margin=200)
+    doc.close()
+    assert expanded.x1 <= page_rect.x1
+    assert expanded.y1 <= page_rect.y1
+
+
+def test_label_margin_zero_skips_expansion(tmp_path):
+    pdf = _make_test_pdf(tmp_path, img_pts=(200, 200))
+    results = list(iter_figures(pdf, min_size=50, label_margin=0))
     assert len(results) == 1
 
 

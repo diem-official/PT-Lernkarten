@@ -66,6 +66,8 @@ def main() -> None:
                         help="Page range START-END (1-indexed, inclusive)")
     parser.add_argument("--dry-run", action="store_true",
                         help="Classify but do not write files")
+    parser.add_argument("--label-margin", type=int, default=200,
+                        help="Search radius for pointer labels in PDF points (default: 200)")
     args = parser.parse_args()
 
     # Resolve PDF path
@@ -89,8 +91,8 @@ def main() -> None:
             log.error("Invalid --pages argument: %s", exc)
             sys.exit(1)
 
-    log.info("Phase 0 start | pdf=%s | output=%s | min_size=%d | pages=%s | dry_run=%s",
-             pdf_path, args.output, args.min_size, args.pages or "all", args.dry_run)
+    log.info("Phase 0 start | pdf=%s | output=%s | min_size=%d | pages=%s | dry_run=%s | label_margin=%d",
+             pdf_path, args.output, args.min_size, args.pages or "all", args.dry_run, args.label_margin)
 
     stats = run(
         pdf_path=pdf_path,
@@ -98,6 +100,7 @@ def main() -> None:
         min_size=args.min_size,
         page_range=page_range,
         dry_run=args.dry_run,
+        label_margin=args.label_margin,
     )
 
     log.info(

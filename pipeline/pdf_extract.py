@@ -9,15 +9,27 @@ from PIL import Image
 log = logging.getLogger("pdf_extract")
 
 
+def _expand_rect_to_labels(page: fitz.Page, rect: fitz.Rect, margin: int) -> fitz.Rect:
+    """Expand rect to include text blocks within margin (PDF points) of rect."""
+    search = rect + (-margin, -margin, margin, margin)
+    blocks = page.get_text("blocks", clip=search)
+    expanded = fitz.Rect(rect)
+    for block in blocks:
+        expanded = expanded | fitz.Rect(block[:4])
+    return expanded & page.rect
+
+
 def iter_figures(
     pdf_path: str | Path,
     min_size: int = 150,
     page_range: tuple[int, int] | None = None,
+    label_margin: int = 200,
 ) -> Iterator[tuple[int, int, Image.Image]]:
     """Yield (page_no, img_index, PIL.Image) for each qualifying figure in the PDF.
 
     page_no is 1-indexed. min_size is in PDF points (72 pt = 1 inch).
     page_range is (start, end) 1-indexed inclusive; None means all pages.
+    label_margin expands the crop to include nearby pointer labels (PDF points).
     """
     pdf_path = Path(pdf_path)
     doc = fitz.open(str(pdf_path))
@@ -53,6 +65,8 @@ def iter_figures(
                             )
                             continue
                         rect = fitz.Rect(x0, y0, x1, y1)
+                        if label_margin > 0:
+                            rect = _expand_rect_to_labels(page, rect, label_margin)
                         pix = page.get_pixmap(clip=rect, dpi=300)
                         img = Image.open(io.BytesIO(pix.tobytes("png")))
                         yield page_no, img_idx, img

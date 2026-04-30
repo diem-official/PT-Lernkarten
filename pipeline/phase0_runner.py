@@ -35,6 +35,7 @@ def run(
     min_size: int = 150,
     page_range: tuple[int, int] | None = None,
     dry_run: bool = False,
+    label_margin: int = 200,
 ) -> RunStats:
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -43,7 +44,7 @@ def run(
     # Track claimed names in dry_run so collision numbering reflects the real run
     dry_run_claimed: set[str] = set()
 
-    for page_no, img_idx, image in iter_figures(pdf_path, min_size=min_size, page_range=page_range):
+    for page_no, img_idx, image in iter_figures(pdf_path, min_size=min_size, page_range=page_range, label_margin=label_margin):
         stats.total += 1
         try:
             result, reason = classify(image)
