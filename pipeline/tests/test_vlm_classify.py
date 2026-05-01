@@ -175,3 +175,17 @@ def test_detect_labels_returns_empty_on_parse_failure():
         result = detect_labels(_dummy_image(), ocr_blocks)
 
     assert result == {"groupings": [], "invalid_ocr_ids": [], "missing_words_detected": False}
+
+
+def test_detect_labels_returns_empty_on_model_exception():
+    ocr_blocks = [{"id": 0, "text": "Humerus", "x": 10, "y": 10, "w": 50, "h": 20}]
+    mock_proc, mock_model, mock_qwen, mock_torch = _make_vlm_mock("{}")
+    mock_model.generate.side_effect = RuntimeError("CUDA out of memory")
+
+    with patch("vlm_classify._load_model"), \
+         patch("vlm_classify._processor", mock_proc), \
+         patch("vlm_classify._model", mock_model), \
+         patch.dict("sys.modules", {"qwen_vl_utils": mock_qwen, "torch": mock_torch}):
+        result = detect_labels(_dummy_image(), ocr_blocks)
+
+    assert result == {"groupings": [], "invalid_ocr_ids": [], "missing_words_detected": False}

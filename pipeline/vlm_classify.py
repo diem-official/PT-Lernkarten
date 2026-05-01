@@ -1,33 +1,31 @@
 import json
 import logging
 import re
-from typing import Any
 
 from PIL import Image
 
 log = logging.getLogger("vlm_classify")
 
-_UMLAUT_MAP = str.maketrans({
-    "ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss",
-    "Ä": "Ae", "Ö": "Oe", "Ü": "Ue",
-})
-
-_VALID_CATEGORIES = {
-    "Knochen", "Muskeln", "Gelenke", "Bänder", "Gefäße", "Nerven", "Organe"
-}
-
 _SYSTEM_PROMPT = (
-    "You are an anatomy atlas classifier. "
+    "You are an anatomical terminology expert and image quality inspector. "
     "Respond ONLY with a JSON object — no prose, no markdown fences."
 )
 
-_USER_PROMPT = (
-    "Look at this image. Return a JSON object with these keys:\n"
-    "- is_anatomical (bool): true if this is an anatomical diagram containing pointer lines or labels\n"
-    "- category (str or null): one of Knochen, Muskeln, Gelenke, Bänder, Gefäße, Nerven, Organe\n"
-    "- subcategory (str or null): e.g. Arm, Bein, Kopf, Rumpf, Becken, Hand, Fuß, Schulter, Hüfte\n"
-    "- view (str or null): e.g. dorsal, ventral, lateral, medial, frontal, superior, inferior\n"
-    "If is_anatomical is false, set the other fields to null."
+_DETECTION_PROMPT = (
+    "I will give you a JSON list of OCR text blocks extracted from an anatomical diagram. "
+    "The image you see has RED bounding boxes drawn around each detected OCR region. "
+    "Each block has an 'id' and a 'text' field.\n\n"
+    "Perform three tasks and return them in a single JSON object:\n"
+    "1. GROUPINGS: Reconstruct full anatomical terms by grouping block IDs. "
+    "Use every valid block. Fix split words (e.g. 'Promon-' + 'torium' → 'Promontorium') "
+    "and obvious OCR typos. Ignore artist signatures and non-anatomical watermarks.\n"
+    "2. INVALID IDs: List IDs of blocks that are NOT actual text labels — "
+    "dots, pointer-line artifacts, or stray marks mistaken for text by OCR.\n"
+    "3. MISSING WORDS: Set missing_words_detected to true if anatomical label text is "
+    "visible in the image WITHOUT a RED bounding box around it.\n\n"
+    "Return ONLY this JSON object — no prose, no markdown fences:\n"
+    '{"groupings": [{"term": "...", "ocr_ids": [1, 2]}], '
+    '"invalid_ocr_ids": [3], "missing_words_detected": false}'
 )
 
 _model = None
@@ -55,88 +53,109 @@ def _load_model() -> None:
     log.info("Model loaded.")
 
 
-def _generate_response(image: Image.Image) -> str:
-    """Run inference and return the raw text response."""
-    _load_model()
-    from qwen_vl_utils import process_vision_info
-
-    messages = [
-        {"role": "system", "content": _SYSTEM_PROMPT},
-        {
-            "role": "user",
-            "content": [
-                {"type": "image", "image": image},
-                {"type": "text", "text": _USER_PROMPT},
-            ],
-        },
-    ]
-    text = _processor.apply_chat_template(
-        messages, tokenize=False, add_generation_prompt=True
-    )
-    image_inputs, video_inputs = process_vision_info(messages)
-    inputs = _processor(
-        text=[text],
-        images=image_inputs,
-        videos=video_inputs,
-        padding=True,
-        return_tensors="pt",
-    ).to(_model.device)
-
-    import torch
-    with torch.no_grad():
-        output_ids = _model.generate(**inputs, max_new_tokens=256)
-    trimmed = output_ids[:, inputs["input_ids"].shape[1]:]
-    return _processor.batch_decode(trimmed, skip_special_tokens=True)[0]
-
-
-def _parse_response(text: str) -> tuple[dict | None, str]:
-    """Parse VLM text → (classification_dict, reason). reason is '' on success."""
-    # Step 1-2: extract and parse JSON
+def _parse_detection_response(text: str) -> dict:
+    """Parse VLM detection JSON → dict with groupings, invalid_ocr_ids, missing_words_detected."""
+    _empty: dict = {"groupings": [], "invalid_ocr_ids": [], "missing_words_detected": False}
     match = re.search(r"\{.*\}", text, re.DOTALL)
     if not match:
-        return None, "json parse failure"
+        log.warning("VLM detection: no JSON object found in response")
+        return _empty
     try:
-        data: dict[str, Any] = json.loads(match.group())
+        data = json.loads(match.group())
     except json.JSONDecodeError:
-        return None, "json parse failure"
+        log.warning("VLM detection: JSON parse failure")
+        return _empty
 
-    # Step 3: is_anatomical
-    if "is_anatomical" not in data:
-        return None, "missing field: is_anatomical"
-    val = data["is_anatomical"]
-    if val is not True and str(val) not in ("true", "True"):
-        return None, "not anatomical"
+    groupings = []
+    for item in data.get("groupings", []):
+        if not isinstance(item, dict) or "term" not in item or "ocr_ids" not in item:
+            continue
+        try:
+            groupings.append({
+                "term": str(item["term"]).strip(),
+                "ocr_ids": [int(i) for i in item["ocr_ids"]],
+            })
+        except (TypeError, ValueError):
+            continue
 
-    # Step 4: required fields present and non-empty
-    for field in ("category", "subcategory", "view"):
-        if not data.get(field):
-            return None, f"missing field: {field}"
+    invalid_ocr_ids = []
+    for i in data.get("invalid_ocr_ids", []):
+        try:
+            invalid_ocr_ids.append(int(i))
+        except (TypeError, ValueError):
+            continue
 
-    # Step 5: normalise — strip, title-case cat/sub, lowercase view
-    category = data["category"].strip().title()
-    subcategory = data["subcategory"].strip().title()
-    view = data["view"].strip().lower()
-
-    # Step 6: validate category (after title-case, before transliteration)
-    if category not in _VALID_CATEGORIES:
-        return None, f"unknown category: {category}"
-
-    # Step 7: transliterate Umlauts, replace spaces
-    category = category.translate(_UMLAUT_MAP).replace(" ", "_")
-    subcategory = subcategory.translate(_UMLAUT_MAP).replace(" ", "_")
-    view = view.translate(_UMLAUT_MAP).replace(" ", "_")
-
-    return {"category": category, "subcategory": subcategory, "view": view}, ""
+    missing = bool(data.get("missing_words_detected", False))
+    return {"groupings": groupings, "invalid_ocr_ids": invalid_ocr_ids, "missing_words_detected": missing}
 
 
-def classify(image: Image.Image) -> tuple[dict | None, str]:
+def detect_labels(image: Image.Image, ocr_blocks: list[dict]) -> dict:
     """
-    Returns (result, reason).
-    result is {"category": str, "subcategory": str, "view": str} on success, else None.
-    reason is "" when result is not None.
+    VLM-based OCR grouping with sanity checks.
+    image: a copy of the source image with RED bounding boxes already drawn on it.
+    Returns {"groupings": [...], "invalid_ocr_ids": [...], "missing_words_detected": bool}.
+    On any error, returns the empty/safe version of that dict.
     """
+    _empty: dict = {"groupings": [], "invalid_ocr_ids": [], "missing_words_detected": False}
+    if not ocr_blocks:
+        return _empty
     try:
-        raw = _generate_response(image)
-        return _parse_response(raw)
+        _load_model()
+        from qwen_vl_utils import process_vision_info
+        import torch
+
+        ocr_json = json.dumps(
+            [{"id": b["id"], "text": b["text"]} for b in ocr_blocks],
+            ensure_ascii=False,
+        )
+        user_text = _DETECTION_PROMPT + "\n\nOCR blocks:\n" + ocr_json
+
+        messages = [
+            {"role": "system", "content": _SYSTEM_PROMPT},
+            {
+                "role": "user",
+                "content": [
+                    {"type": "image", "image": image},
+                    {"type": "text", "text": user_text},
+                ],
+            },
+        ]
+
+        text_input = _processor.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
+        image_inputs, _ = process_vision_info(messages)
+        inputs = _processor(
+            text=[text_input], images=image_inputs, padding=True, return_tensors="pt"
+        ).to(_model.device)
+
+        with torch.no_grad():
+            output_ids = _model.generate(**inputs, max_new_tokens=4096)
+        trimmed = output_ids[:, inputs["input_ids"].shape[1]:]
+        response = _processor.batch_decode(trimmed, skip_special_tokens=True)[0]
+
+        return _parse_detection_response(response)
     except Exception as exc:
-        return None, f"model error: {exc}"
+        log.error("Detection failed: %s", exc)
+        return _empty
+    finally:
+        try:
+            import torch
+            torch.cuda.empty_cache()
+        except Exception:
+            pass
+
+
+def unload_model() -> None:
+    """Qwen-Modell und Prozessor aus dem VRAM entladen."""
+    global _model, _processor
+    import gc
+    _model = None
+    _processor = None
+    gc.collect()
+    try:
+        import torch
+        torch.cuda.empty_cache()
+    except Exception:
+        pass
+    log.info("VLM model unloaded from GPU.")
