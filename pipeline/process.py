@@ -36,6 +36,13 @@ def _parse_stem(stem: str) -> tuple[str, str, str]:
     return parts[0], parts[1], parts[2]
 
 
+def _filter_noise_blocks(blocks: list[dict]) -> list[dict]:
+    """Drop single-char and non-alphabetic OCR blocks before VLM processing."""
+    def is_noise(text: str) -> bool:
+        return len(text) <= 1 or not any(c.isalpha() for c in text)
+    return [b for b in blocks if not is_noise(b["text"])]
+
+
 def _write_report(entries: list, path: Path) -> None:
     path.write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding='utf-8')
 
@@ -104,7 +111,16 @@ def main():
             continue
         print(f"[VLM] {path.name} ...")
         img_w, img_h = marked_images[path].size
-        ocr_blocks = ocr_results[path]
+        raw_blocks = ocr_results[path]
+        ocr_blocks = _filter_noise_blocks(raw_blocks)
+        noise_filtered = len(raw_blocks) - len(ocr_blocks)
+        if noise_filtered:
+            log.info(
+                "Pre-filtered %d noise OCR block(s) in %s: %s",
+                noise_filtered,
+                path.name,
+                [b["text"] for b in raw_blocks if b not in ocr_blocks],
+            )
 
         # Parse metadata from filename (format: Category-Subcategory-View.ext)
         category, subcategory, view = _parse_stem(path.stem)
@@ -150,7 +166,8 @@ def main():
 
         qm_entries.append({
             "image": path.stem,
-            "ocr_block_count": len(ocr_blocks),
+            "ocr_block_count": len(raw_blocks),
+            "noise_filtered_count": noise_filtered,
             "missing_words_detected": vlm_result["missing_words_detected"],
             "invalid_ocr_ids": sorted(invalid_ids),
             "invalid_ocr_texts": [b["text"] for b in ocr_blocks if b["id"] in invalid_ids],
