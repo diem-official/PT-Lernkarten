@@ -121,7 +121,7 @@ def _match_vlm_term(
 
     freq = _build_word_freq(pool)
 
-    # Phase 2: select anchor as rarest word present in pool
+    # Phase 2: select anchor as rarest word present in pool; first occurrence wins on tie
     anchor_word: str | None = None
     anchor_block: dict | None = None
     rarest_count = float("inf")

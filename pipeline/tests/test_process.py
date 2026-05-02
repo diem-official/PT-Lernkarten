@@ -7,7 +7,16 @@ from unittest.mock import patch, MagicMock
 from PIL import Image
 
 import process
-from process import _parse_stem
+from process import (
+    _parse_stem,
+    _write_report,
+    _match_vlm_term,
+    _filter_noise_blocks,
+    _word_tokens,
+    _build_word_freq,
+    _find_block_containing_word,
+    _find_block_near_anchor,
+)
 
 
 def test_parse_stem_simple():
@@ -24,9 +33,6 @@ def test_parse_stem_view_with_spaces():
     assert _parse_stem("Muskeln-Arm-lateral links") == ("Muskeln", "Arm", "lateral links")
 
 
-from process import _write_report
-
-
 def test_write_report(tmp_path):
     _write_report([{"image": "test", "ocr_block_count": 5}], tmp_path / "report.json")
     data = json.loads((tmp_path / "report.json").read_text())
@@ -39,15 +45,6 @@ def test_write_report_overwrites(tmp_path):
     _write_report([{"image": "new"}], p)
     assert json.loads(p.read_text())[0]["image"] == "new"
 
-
-from process import (
-    _match_vlm_term,
-    _filter_noise_blocks,
-    _word_tokens,
-    _build_word_freq,
-    _find_block_containing_word,
-    _find_block_near_anchor,
-)
 
 def _blk(id_, text, x=0, y=0, w=60, h=20):
     return {"id": id_, "text": text, "x": x, "y": y, "w": w, "h": h}

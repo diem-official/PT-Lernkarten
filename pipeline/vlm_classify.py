@@ -107,7 +107,7 @@ def detect_labels(image: Image.Image, ocr_blocks: list[dict]) -> dict:
     Returns {"terms": ["Term 1", ...]} or {"terms": [], "error": True} on failure.
     """
     _empty: dict = {"terms": []}
-    if not ocr_blocks:
+    if not ocr_blocks:  # presence guard only — block text is not sent to the model
         return _empty
     try:
         _load_model()
