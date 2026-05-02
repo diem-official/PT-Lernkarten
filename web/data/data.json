@@ -1,279 +1,270 @@
 [
   {
-    "filename": "Knochen-Becken-lateral-clean.jpg",
+    "filename": "Knochen-Os sacrum & Os Coccygis-dorsal-clean.jpg",
+    "category": "Knochen",
+    "subcategory": "Os sacrum & Os Coccygis",
+    "view": "dorsal",
     "labels": [
       {
-        "x": 413,
-        "y": 31,
-        "w": 61,
-        "h": 17,
-        "text": "Crista iliaca"
+        "text": "Facies articularis superior",
+        "anchor_x": 1291,
+        "anchor_y": 67.0,
+        "mask_box": {
+          "x": 1283,
+          "y": 36,
+          "w": 539,
+          "h": 114
+        }
       },
       {
-        "x": 68,
-        "y": 48,
-        "w": 68,
-        "h": 22,
-        "text": "Linea glutea"
+        "text": "Tuberositas ossis sacri",
+        "anchor_x": 1600,
+        "anchor_y": 66.5,
+        "mask_box": {
+          "x": 1050,
+          "y": 36,
+          "w": 772,
+          "h": 185
+        }
       },
       {
-        "x": 90,
-        "y": 65,
-        "w": 48,
-        "h": 18,
-        "text": "anterior"
+        "text": "Canalis sacralis",
+        "anchor_x": 1058,
+        "anchor_y": 189.0,
+        "mask_box": {
+          "x": 1048,
+          "y": 157,
+          "w": 160,
+          "h": 115
+        }
       },
       {
-        "x": 466,
-        "y": 83,
-        "w": 63,
-        "h": 21,
-        "text": "Tuberculum"
+        "text": "Pars lateralis",
+        "anchor_x": 196,
+        "anchor_y": 558.5,
+        "mask_box": {
+          "x": 129,
+          "y": 526,
+          "w": 1943,
+          "h": 187
+        }
       },
       {
-        "x": 613,
-        "y": 83,
-        "w": 173,
-        "h": 21,
-        "text": "AOs coxae der rechten Seite"
+        "text": "Facies auricularis",
+        "anchor_x": 1944,
+        "anchor_y": 681.5,
+        "mask_box": {
+          "x": 1882,
+          "y": 650,
+          "w": 264,
+          "h": 269
+        }
       },
       {
-        "x": 41,
-        "y": 98,
-        "w": 71,
-        "h": 22,
-        "text": "Facies glutea"
+        "text": "Crista sacralis lateralis",
+        "anchor_x": 1890,
+        "anchor_y": 892.0,
+        "mask_box": {
+          "x": 1879,
+          "y": 865,
+          "w": 267,
+          "h": 213
+        }
       },
       {
-        "x": 469,
-        "y": 99,
-        "w": 39,
-        "h": 18,
-        "text": "iliacum"
+        "text": "Crista sacralis mediana",
+        "anchor_x": 1889,
+        "anchor_y": 1049.0,
+        "mask_box": {
+          "x": 289,
+          "y": 1020,
+          "w": 1857,
+          "h": 109
+        }
       },
       {
-        "x": 614,
-        "y": 101,
-        "w": 108,
-        "h": 21,
-        "text": "Ansicht von lateral."
+        "text": "Foramina sacralia posteriora",
+        "anchor_x": 1889,
+        "anchor_y": 1099.5,
+        "mask_box": {
+          "x": 273,
+          "y": 1070,
+          "w": 1785,
+          "h": 137
+        }
       },
       {
-        "x": 15,
-        "y": 138,
-        "w": 69,
-        "h": 20,
-        "text": "Linea glutea"
+        "text": "Crista sacralis medialis",
+        "anchor_x": 1740,
+        "anchor_y": 1306.0,
+        "mask_box": {
+          "x": 1613,
+          "y": 1277,
+          "w": 383,
+          "h": 218
+        }
       },
       {
-        "x": 35,
-        "y": 156,
-        "w": 49,
-        "h": 11,
-        "text": "posterior"
+        "text": "Hiatus sacralis",
+        "anchor_x": 1621,
+        "anchor_y": 1465.0,
+        "mask_box": {
+          "x": 1613,
+          "y": 1435,
+          "w": 278,
+          "h": 60
+        }
       },
       {
-        "x": 19,
-        "y": 190,
-        "w": 64,
-        "h": 18,
-        "text": "Spina iliaca"
+        "text": "Cornua sacralia",
+        "anchor_x": 1455,
+        "anchor_y": 1587.0,
+        "mask_box": {
+          "x": 693,
+          "y": 1559,
+          "w": 1049,
+          "h": 104
+        }
       },
       {
-        "x": 516,
-        "y": 185,
-        "w": 61,
-        "h": 18,
-        "text": "Spina iliaca"
+        "text": "Cornu coccygeum",
+        "anchor_x": 701,
+        "anchor_y": 1631.5,
+        "mask_box": {
+          "x": 599,
+          "y": 1600,
+          "w": 231,
+          "h": 114
+        }
       },
       {
-        "x": 28,
-        "y": 206,
-        "w": 52,
-        "h": 14,
-        "text": "posterior"
+        "text": "Art. sacro-coccygea",
+        "anchor_x": 1454,
+        "anchor_y": 1726.5,
+        "mask_box": {
+          "x": 655,
+          "y": 1697,
+          "w": 997,
+          "h": 125
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Knochen-Os sacrum & Os Coccygis-ventral-clean.jpg",
+    "category": "Knochen",
+    "subcategory": "Os sacrum & Os Coccygis",
+    "view": "ventral",
+    "labels": [
+      {
+        "text": "Promontorium",
+        "anchor_x": 684,
+        "anchor_y": 155.5,
+        "mask_box": {
+          "x": 676,
+          "y": 126,
+          "w": 180,
+          "h": 110
+        }
       },
       {
-        "x": 519,
-        "y": 201,
-        "w": 84,
-        "h": 14,
-        "text": "anterior superior"
+        "text": "Basis ossis sacri",
+        "anchor_x": 966,
+        "anchor_y": 154.5,
+        "mask_box": {
+          "x": 915,
+          "y": 124,
+          "w": 203,
+          "h": 112
+        }
       },
       {
-        "x": 30,
-        "y": 221,
-        "w": 47,
-        "h": 11,
-        "text": "superior"
+        "text": "Proc. articularis superior",
+        "anchor_x": 1185,
+        "anchor_y": 154.0,
+        "mask_box": {
+          "x": 1168,
+          "y": 126,
+          "w": 257,
+          "h": 111
+        }
       },
       {
-        "x": 520,
-        "y": 226,
-        "w": 100,
-        "h": 15,
-        "text": "Linea glutea inferior"
+        "text": "Pars lateralis",
+        "anchor_x": 1866,
+        "anchor_y": 634.5,
+        "mask_box": {
+          "x": 1858,
+          "y": 602,
+          "w": 168,
+          "h": 113
+        }
       },
       {
-        "x": 520,
-        "y": 253,
-        "w": 59,
-        "h": 14,
-        "text": "Spina iliaca"
+        "text": "Schnittebene von E",
+        "anchor_x": 137,
+        "anchor_y": 1027.5,
+        "mask_box": {
+          "x": 129,
+          "y": 999,
+          "w": 267,
+          "h": 110
+        }
       },
       {
-        "x": 522,
-        "y": 267,
-        "w": 80,
-        "h": 15,
-        "text": "anterior inferior"
+        "text": "Foramina sacralia anteriora",
+        "anchor_x": 245,
+        "anchor_y": 1184.0,
+        "mask_box": {
+          "x": 237,
+          "y": 1153,
+          "w": 1633,
+          "h": 112
+        }
       },
       {
-        "x": 26,
-        "y": 283,
-        "w": 68,
-        "h": 18,
-        "text": "Spina iliaca"
+        "text": "Lineae transversae",
+        "anchor_x": 249,
+        "anchor_y": 1285.5,
+        "mask_box": {
+          "x": 241,
+          "y": 1257,
+          "w": 373,
+          "h": 413
+        }
       },
       {
-        "x": 519,
-        "y": 289,
-        "w": 125,
-        "h": 14,
-        "text": "Sulcus supraacetabularis"
+        "text": "Apex ossis sacri",
+        "anchor_x": 498,
+        "anchor_y": 1591.5,
+        "mask_box": {
+          "x": 407,
+          "y": 1557,
+          "w": 207,
+          "h": 113
+        }
       },
       {
-        "x": 33,
-        "y": 301,
-        "w": 58,
-        "h": 14,
-        "text": "posterior"
+        "text": "Art. sacro-coccygea",
+        "anchor_x": 1346,
+        "anchor_y": 1670.0,
+        "mask_box": {
+          "x": 1338,
+          "y": 1639,
+          "w": 209,
+          "h": 115
+        }
       },
       {
-        "x": 38,
-        "y": 313,
-        "w": 50,
-        "h": 15,
-        "text": "inferior"
-      },
-      {
-        "x": 518,
-        "y": 318,
-        "w": 89,
-        "h": 15,
-        "text": "Limbus acetabuli"
-      },
-      {
-        "x": 105,
-        "y": 335,
-        "w": 53,
-        "h": 17,
-        "text": "Incisura"
-      },
-      {
-        "x": 517,
-        "y": 340,
-        "w": 69,
-        "h": 14,
-        "text": "Facies lunata"
-      },
-      {
-        "x": 46,
-        "y": 350,
-        "w": 108,
-        "h": 16,
-        "text": "ischiadica major"
-      },
-      {
-        "x": 627,
-        "y": 350,
-        "w": 63,
-        "h": 15,
-        "text": "Acetabulum"
-      },
-      {
-        "x": 517,
-        "y": 361,
-        "w": 80,
-        "h": 15,
-        "text": "Fossa acetabuli"
-      },
-      {
-        "x": 516,
-        "y": 384,
-        "w": 94,
-        "h": 13,
-        "text": "Incisura acetabuli"
-      },
-      {
-        "x": 99,
-        "y": 395,
-        "w": 40,
-        "h": 18,
-        "text": "Spina"
-      },
-      {
-        "x": 69,
-        "y": 411,
-        "w": 66,
-        "h": 14,
-        "text": "ischiadica"
-      },
-      {
-        "x": 517,
-        "y": 416,
-        "w": 68,
-        "h": 17,
-        "text": "Tuberculum"
-      },
-      {
-        "x": 118,
-        "y": 441,
-        "w": 55,
-        "h": 18,
-        "text": "Incisura"
-      },
-      {
-        "x": 519,
-        "y": 432,
-        "w": 51,
-        "h": 16,
-        "text": "pubicum"
-      },
-      {
-        "x": 58,
-        "y": 455,
-        "w": 113,
-        "h": 16,
-        "text": "ischiadica minor"
-      },
-      {
-        "x": 495,
-        "y": 467,
-        "w": 51,
-        "h": 14,
-        "text": "Foramen"
-      },
-      {
-        "x": 499,
-        "y": 482,
-        "w": 58,
-        "h": 15,
-        "text": "obturatum"
-      },
-      {
-        "x": 114,
-        "y": 512,
-        "w": 43,
-        "h": 18,
-        "text": "Tuber"
-      },
-      {
-        "x": 70,
-        "y": 524,
-        "w": 81,
-        "h": 18,
-        "text": "ischiadicum"
+        "text": "Os coccygis",
+        "anchor_x": 585,
+        "anchor_y": 1837.5,
+        "mask_box": {
+          "x": 577,
+          "y": 1802,
+          "w": 240,
+          "h": 71
+        }
       }
     ]
   }
