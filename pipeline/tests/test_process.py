@@ -2,6 +2,11 @@
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
+import json
+from unittest.mock import patch, MagicMock
+from PIL import Image
+
+import process
 from process import _parse_stem
 
 
@@ -19,7 +24,6 @@ def test_parse_stem_view_with_spaces():
     assert _parse_stem("Muskeln-Arm-lateral links") == ("Muskeln", "Arm", "lateral links")
 
 
-import json
 from process import _write_report
 
 
@@ -57,9 +61,6 @@ def test_partial_match_not_in_labels():
 
 def test_partial_match_produces_orphan_not_label(tmp_path):
     """Integration: partial VLM match → orphaned_vlm_terms, NOT in labels/data.json."""
-    from unittest.mock import patch, MagicMock
-    from PIL import Image
-
     img = Image.new("RGB", (800, 600))
     ocr_blocks = [
         _blk(0, "Ala",   x=10, y=10),
@@ -73,18 +74,16 @@ def test_partial_match_produces_orphan_not_label(tmp_path):
          patch("process.unload_model"), \
          patch("process.mask_text", return_value=img), \
          patch("process.draw_boxes", return_value=img), \
-         patch("process.build_entry", return_value={}), \
+         patch("process.build_entry", return_value={}) as mock_build_entry, \
          patch("process.save_data_json"), \
          patch("process.Image.open", return_value=MagicMock(__enter__=lambda s: img, __exit__=lambda *a: None)), \
          patch("process._write_report") as mock_report:
 
-        import sys
         sys.argv = ["process.py", str(tmp_path)]
 
         dummy = tmp_path / "Knochen-Becken-dorsal.jpg"
         img.save(str(dummy))
 
-        import process
         process.main()
 
     call_args = mock_report.call_args[0]
@@ -93,3 +92,4 @@ def test_partial_match_produces_orphan_not_label(tmp_path):
     qm = entries[0]
     assert "Ala ossis sacri" in qm["orphaned_vlm_terms"]
     assert qm["matched_labels_count"] == 0
+    mock_build_entry.assert_not_called()
