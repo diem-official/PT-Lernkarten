@@ -17,3 +17,20 @@ def test_parse_stem_complex_subcategory():
 
 def test_parse_stem_view_with_spaces():
     assert _parse_stem("Muskeln-Arm-lateral links") == ("Muskeln", "Arm", "lateral links")
+
+
+import json
+from process import _write_report
+
+
+def test_write_report(tmp_path):
+    _write_report([{"image": "test", "ocr_block_count": 5}], tmp_path / "report.json")
+    data = json.loads((tmp_path / "report.json").read_text())
+    assert data[0]["image"] == "test"
+
+
+def test_write_report_overwrites(tmp_path):
+    p = tmp_path / "report.json"
+    _write_report([{"image": "old"}], p)
+    _write_report([{"image": "new"}], p)
+    assert json.loads(p.read_text())[0]["image"] == "new"

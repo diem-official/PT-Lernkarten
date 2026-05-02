@@ -130,14 +130,14 @@ def detect_labels(image: Image.Image, ocr_blocks: list[dict]) -> dict:
         ).to(_model.device)
 
         with torch.no_grad():
-            output_ids = _model.generate(**inputs, max_new_tokens=4096)
+            output_ids = _model.generate(**inputs, max_new_tokens=8192)
         trimmed = output_ids[:, inputs["input_ids"].shape[1]:]
         response = _processor.batch_decode(trimmed, skip_special_tokens=True)[0]
 
         return _parse_detection_response(response)
     except Exception as exc:
         log.error("Detection failed: %s", exc)
-        return _empty
+        return {**_empty, "error": True}
     finally:
         try:
             import torch

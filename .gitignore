@@ -23,6 +23,8 @@ env/
 .DS_Store
 Thumbs.db
 
-# Generated frontend data (committed intentionally when ready)
-# web/data/images/ and web/data/data.json are tracked via .gitkeep
+# Source images and generated outputs – not tracked in git
+Input/*
+web/data/*
 pipeline.log
+Output/*
