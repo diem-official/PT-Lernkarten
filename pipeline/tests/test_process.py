@@ -34,3 +34,62 @@ def test_write_report_overwrites(tmp_path):
     _write_report([{"image": "old"}], p)
     _write_report([{"image": "new"}], p)
     assert json.loads(p.read_text())[0]["image"] == "new"
+
+
+from process import _match_vlm_term
+
+def _blk(id_, text, x=0, y=0, w=60, h=20):
+    return {"id": id_, "text": text, "x": x, "y": y, "w": w, "h": h}
+
+
+def test_partial_match_not_in_labels():
+    """_match_vlm_term partial result: box exists, sacri is unmatched."""
+    pool = [
+        _blk(0, "Ala",   x=10, y=10),
+        _blk(1, "ossis", x=10, y=35),
+        # "sacri" intentionally absent
+    ]
+    box, matched, unmatched = _match_vlm_term("Ala ossis sacri", pool, 800, 600)
+    assert box is not None
+    assert "sacri" in unmatched
+    assert len(matched) == 2
+
+
+def test_partial_match_produces_orphan_not_label(tmp_path):
+    """Integration: partial VLM match → orphaned_vlm_terms, NOT in labels/data.json."""
+    from unittest.mock import patch, MagicMock
+    from PIL import Image
+
+    img = Image.new("RGB", (800, 600))
+    ocr_blocks = [
+        _blk(0, "Ala",   x=10, y=10),
+        _blk(1, "ossis", x=10, y=35),
+    ]
+    vlm_result = {"terms": ["Ala ossis sacri"]}  # "sacri" not in OCR
+
+    with patch("process.extract_labels", return_value=ocr_blocks), \
+         patch("process.unload_engine"), \
+         patch("process.detect_labels", return_value=vlm_result), \
+         patch("process.unload_model"), \
+         patch("process.mask_text", return_value=img), \
+         patch("process.draw_boxes", return_value=img), \
+         patch("process.build_entry", return_value={}), \
+         patch("process.save_data_json"), \
+         patch("process.Image.open", return_value=MagicMock(__enter__=lambda s: img, __exit__=lambda *a: None)), \
+         patch("process._write_report") as mock_report:
+
+        import sys
+        sys.argv = ["process.py", str(tmp_path)]
+
+        dummy = tmp_path / "Knochen-Becken-dorsal.jpg"
+        img.save(str(dummy))
+
+        import process
+        process.main()
+
+    call_args = mock_report.call_args[0]
+    entries = call_args[0]
+    assert len(entries) == 1
+    qm = entries[0]
+    assert "Ala ossis sacri" in qm["orphaned_vlm_terms"]
+    assert qm["matched_labels_count"] == 0
