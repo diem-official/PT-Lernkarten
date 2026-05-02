@@ -40,7 +40,14 @@ def test_write_report_overwrites(tmp_path):
     assert json.loads(p.read_text())[0]["image"] == "new"
 
 
-from process import _match_vlm_term
+from process import (
+    _match_vlm_term,
+    _filter_noise_blocks,
+    _word_tokens,
+    _build_word_freq,
+    _find_block_containing_word,
+    _find_block_near_anchor,
+)
 
 def _blk(id_, text, x=0, y=0, w=60, h=20):
     return {"id": id_, "text": text, "x": x, "y": y, "w": w, "h": h}
@@ -93,3 +100,180 @@ def test_partial_match_produces_orphan_not_label(tmp_path):
     assert "Ala ossis sacri" in qm["orphaned_vlm_terms"]
     assert qm["matched_labels_count"] == 0
     mock_build_entry.assert_not_called()
+
+
+# ── _filter_noise_blocks ──────────────────────────────────────────────────────
+
+def test_filter_noise_removes_single_char():
+    blocks = [_blk(0, "A"), _blk(1, "Humerus")]
+    assert _filter_noise_blocks(blocks) == [blocks[1]]
+
+
+def test_filter_noise_removes_non_alpha():
+    blocks = [_blk(0, "123"), _blk(1, "..."), _blk(2, "Femur")]
+    assert _filter_noise_blocks(blocks) == [blocks[2]]
+
+
+def test_filter_noise_keeps_valid_blocks():
+    blocks = [_blk(0, "Os sacrum"), _blk(1, "Femur")]
+    assert _filter_noise_blocks(blocks) == blocks
+
+
+# ── _word_tokens ──────────────────────────────────────────────────────────────
+
+def test_word_tokens_basic():
+    assert _word_tokens("Os sacrum") == ["os", "sacrum"]
+
+
+def test_word_tokens_strips_punctuation():
+    assert _word_tokens("Ala,") == ["ala"]
+
+
+def test_word_tokens_handles_umlauts():
+    tokens = _word_tokens("Größe")
+    assert "größe" in tokens
+
+
+def test_word_tokens_empty_string():
+    assert _word_tokens("") == []
+
+
+# ── _build_word_freq ─────────────────────────────────────────────────────────
+
+def test_build_word_freq_counts_blocks():
+    pool = [_blk(0, "Ala ossis"), _blk(1, "Ala sacri")]
+    freq = _build_word_freq(pool)
+    assert freq["ala"] == 2
+    assert freq["ossis"] == 1
+    assert freq["sacri"] == 1
+
+
+def test_build_word_freq_empty_pool():
+    assert _build_word_freq([]) == {}
+
+
+# ── _find_block_containing_word ───────────────────────────────────────────────
+
+def test_find_block_finds_whole_word():
+    pool = [_blk(0, "Ala ossis"), _blk(1, "sacri")]
+    result = _find_block_containing_word("ossis", pool)
+    assert result is pool[0]
+
+
+def test_find_block_case_insensitive():
+    pool = [_blk(0, "Humerus")]
+    assert _find_block_containing_word("HUMERUS", pool) is pool[0]
+
+
+def test_find_block_does_not_match_partial_word():
+    # "os" should not match a block containing "ossis"
+    pool = [_blk(0, "ossis")]
+    assert _find_block_containing_word("os", pool) is None
+
+
+def test_find_block_returns_none_when_not_found():
+    pool = [_blk(0, "Femur")]
+    assert _find_block_containing_word("Humerus", pool) is None
+
+
+# ── _find_block_near_anchor ───────────────────────────────────────────────────
+
+def test_find_near_anchor_finds_close_block():
+    # anchor h=20, tolerance = 20*1.5 = 30px
+    # block at y=35 → center y=45, anchor center y=20 → distance 25 < 30 ✓
+    anchor = _blk(0, "Ala", x=10, y=10, w=60, h=20)
+    pool = [
+        _blk(1, "ossis", x=10, y=35, w=60, h=20),
+        _blk(2, "sacri", x=10, y=200, w=60, h=20),  # too far
+    ]
+    result = _find_block_near_anchor("ossis", anchor, pool)
+    assert result is pool[0]
+
+
+def test_find_near_anchor_returns_none_when_too_far():
+    anchor = _blk(0, "Ala", x=10, y=10, w=60, h=20)
+    pool = [_blk(1, "ossis", x=10, y=200, w=60, h=20)]
+    result = _find_block_near_anchor("ossis", anchor, pool)
+    assert result is None
+
+
+def test_find_near_anchor_returns_closest_when_multiple():
+    anchor = _blk(0, "Ala", x=10, y=10, w=60, h=20)
+    close = _blk(1, "ossis", x=10, y=32, w=60, h=20)
+    far   = _blk(2, "ossis", x=10, y=38, w=60, h=20)
+    pool  = [far, close]   # reversed — closest must win
+    result = _find_block_near_anchor("ossis", anchor, pool)
+    assert result is close
+
+
+# ── _match_vlm_term ───────────────────────────────────────────────────────────
+
+def test_match_phase1_exact_match():
+    pool = [_blk(0, "Promontorium", x=10, y=10)]
+    box, matched, unmatched = _match_vlm_term("Promontorium", pool, 800, 600)
+    assert box is not None
+    assert len(matched) == 1
+    assert unmatched == []
+    assert pool == []   # block removed from pool
+
+
+def test_match_phase1_case_insensitive():
+    pool = [_blk(0, "promontorium")]
+    box, matched, unmatched = _match_vlm_term("Promontorium", pool, 800, 600)
+    assert box is not None
+    assert unmatched == []
+
+
+def test_match_phase2_3_multi_word_all_found():
+    # anchor "Ala" at y=10 h=20 → center_y=20, tolerance=30
+    # "ossis" center_y=25 (y=15), distance=5 < 30 ✓
+    # "sacri" center_y=35 (y=25), distance=15 < 30 ✓
+    pool = [
+        _blk(0, "Ala",   x=10, y=10, h=20),
+        _blk(1, "ossis", x=10, y=15, h=20),
+        _blk(2, "sacri", x=10, y=25, h=20),
+    ]
+    box, matched, unmatched = _match_vlm_term("Ala ossis sacri", pool, 800, 600)
+    assert box is not None
+    assert unmatched == []
+    assert len(matched) == 3
+    assert pool == []   # all blocks consumed
+
+
+def test_match_partial_missing_word():
+    pool = [
+        _blk(0, "Ala",   x=10, y=10, h=20),
+        _blk(1, "ossis", x=10, y=35, h=20),
+        # "sacri" intentionally absent
+    ]
+    box, matched, unmatched = _match_vlm_term("Ala ossis sacri", pool, 800, 600)
+    assert box is not None
+    assert "sacri" in unmatched
+    assert len(matched) == 2
+
+
+def test_match_no_blocks_found():
+    pool = [_blk(0, "Femur")]
+    box, matched, unmatched = _match_vlm_term("Os sacrum", pool, 800, 600)
+    assert box is None
+    assert matched == []
+    assert len(unmatched) > 0
+
+
+def test_match_single_word_no_match_returns_none():
+    pool = [_blk(0, "Femur")]
+    box, matched, unmatched = _match_vlm_term("Humerus", pool, 800, 600)
+    assert box is None
+    assert matched == []
+    assert "Humerus" in unmatched
+
+
+def test_match_does_not_mutate_other_pool_blocks():
+    """Blocks not matched for this term must remain in the pool."""
+    pool = [
+        _blk(0, "Promontorium", x=10, y=10),
+        _blk(1, "Femur",        x=200, y=200),
+    ]
+    _match_vlm_term("Promontorium", pool, 800, 600)
+    assert len(pool) == 1
+    assert pool[0]["text"] == "Femur"
