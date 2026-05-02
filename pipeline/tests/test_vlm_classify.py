@@ -97,6 +97,7 @@ def test_detect_labels_returns_terms_list():
         result = detect_labels(_dummy_image(), ocr_blocks)
 
     assert result == {"terms": ["Humerus", "Caput humeri"]}
+    mock_model.generate.assert_called_once()
 
 
 def test_detect_labels_returns_empty_on_empty_ocr_blocks():

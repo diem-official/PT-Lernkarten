@@ -103,6 +103,7 @@ def _parse_terms_response(text: str) -> list[str]:
 def detect_labels(image: Image.Image, ocr_blocks: list[dict]) -> dict:
     """
     Single-pass VLM term extraction.
+    ocr_blocks is used only as a presence guard; the VLM reads labels directly from the image.
     Returns {"terms": ["Term 1", ...]} or {"terms": [], "error": True} on failure.
     """
     _empty: dict = {"terms": []}
