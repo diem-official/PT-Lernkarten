@@ -178,3 +178,88 @@ def test_parse_bundle_strips_prose_wrapper():
     raw = f"Sure! Here is the answer: {inner} Hope that helps."
     result = _parse_bundle_response(raw)
     assert result == [{"name": "Humerus", "ids": [7]}]
+
+
+# ── detect_labels() — LLM mocked ─────────────────────────────────────────────
+
+def _make_llm_mock(raw_json: str):
+    mock_tok = MagicMock()
+    mock_tok.apply_chat_template.return_value = "tmpl"
+    mock_inputs = MagicMock()
+    mock_inputs.to.return_value = mock_inputs
+    mock_inputs.__getitem__ = MagicMock(return_value=MagicMock(shape=[1, 10]))
+    mock_tok.return_value = mock_inputs
+    mock_tok.batch_decode.return_value = [raw_json]
+
+    mock_model = MagicMock()
+    mock_model.device = "cpu"
+
+    mock_torch = MagicMock()
+    mock_torch.no_grad.return_value.__enter__ = MagicMock(return_value=None)
+    mock_torch.no_grad.return_value.__exit__ = MagicMock(return_value=False)
+
+    return mock_tok, mock_model, mock_torch
+
+
+def test_detect_labels_empty_ocr_returns_empty():
+    assert detect_labels([]) == {"terms": []}
+
+
+def test_detect_labels_returns_error_on_model_exception():
+    ocr_blocks = [_blk(0, 10, 10, 50, 20, text="Humerus")]
+    mock_tok, mock_model, mock_torch = _make_llm_mock("{}")
+    mock_model.generate.side_effect = RuntimeError("CUDA out of memory")
+
+    with patch("llm_classify._load_model"), \
+         patch("llm_classify._tokenizer", mock_tok), \
+         patch("llm_classify._model", mock_model), \
+         patch.dict("sys.modules", {"torch": mock_torch}):
+        result = detect_labels(ocr_blocks)
+
+    assert result.get("error") is True
+    assert result["terms"] == []
+
+
+def test_detect_labels_consensus_filters_low_vote_terms():
+    """Single block → 1 bundle → 1 vote → below min_votes=3 → empty result."""
+    ocr_blocks = [_blk(0, 10, 10, 50, 20, text="Humerus")]
+    raw = json.dumps({"terms": [{"name": "Humerus", "ids": [0]}]})
+    mock_tok, mock_model, mock_torch = _make_llm_mock(raw)
+
+    with patch("llm_classify._load_model"), \
+         patch("llm_classify._tokenizer", mock_tok), \
+         patch("llm_classify._model", mock_model), \
+         patch.dict("sys.modules", {"torch": mock_torch}):
+        result = detect_labels(ocr_blocks)
+
+    assert result["terms"] == []
+
+
+def test_detect_labels_returns_structured_terms_when_votes_sufficient():
+    """Three vertically overlapping blocks → 3 bundles each seeing ids [0,1] → 3 votes → accepted."""
+    # Block 0 (y=10, h=20): corridor [10..210]
+    # Block 1 (y=30, h=20): corridor [30..230], sees block 0 (y=10 < 30, excluded!) — wait
+    # Actually y=10 < y_start=30, so block 0 is above block 1's anchor → NOT included.
+    # To get 3 votes for ids=[0,1], we need 3 anchors whose corridors include BOTH block 0 AND block 1.
+    # Use 3 anchor blocks above block 0 that have x-overlap and corridors spanning both 0 and 1.
+    # Anchors at y=0 with h=5 → corridor [0..50], includes block 0 (y=10) and block 1 (y=30).
+    a0 = _blk(10, x=10, y=0,  w=60, h=5)   # anchor, corridor [0..50]
+    a1 = _blk(11, x=10, y=1,  w=60, h=5)   # anchor, corridor [1..51]
+    a2 = _blk(12, x=10, y=2,  w=60, h=5)   # anchor, corridor [2..52]
+    b0 = _blk(0,  x=10, y=10, w=60, h=20)  # term block 1
+    b1 = _blk(1,  x=10, y=30, w=60, h=20)  # term block 2
+
+    ocr_blocks = [a0, a1, a2, b0, b1]
+    # LLM always returns ids [0, 1] regardless of bundle
+    raw = json.dumps({"terms": [{"name": "M. biceps brachii", "ids": [0, 1]}]})
+    mock_tok, mock_model, mock_torch = _make_llm_mock(raw)
+
+    with patch("llm_classify._load_model"), \
+         patch("llm_classify._tokenizer", mock_tok), \
+         patch("llm_classify._model", mock_model), \
+         patch.dict("sys.modules", {"torch": mock_torch}):
+        result = detect_labels(ocr_blocks)
+
+    assert len(result["terms"]) == 1
+    assert result["terms"][0]["name"] == "M. biceps brachii"
+    assert sorted(result["terms"][0]["ids"]) == [0, 1]
