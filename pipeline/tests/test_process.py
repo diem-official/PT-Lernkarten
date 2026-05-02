@@ -119,6 +119,10 @@ def test_filter_noise_keeps_valid_blocks():
     assert _filter_noise_blocks(blocks) == blocks
 
 
+def test_filter_noise_empty_list():
+    assert _filter_noise_blocks([]) == []
+
+
 # ── _word_tokens ──────────────────────────────────────────────────────────────
 
 def test_word_tokens_basic():
@@ -180,7 +184,7 @@ def test_find_block_returns_none_when_not_found():
 
 def test_find_near_anchor_finds_close_block():
     # anchor h=20, tolerance = 20*1.5 = 30px
-    # block at y=35 → center y=45, anchor center y=20 → distance 25 < 30 ✓
+    # |cx diff| = 0, |cy diff| = |45-20| = 25 < 30 → within tolerance ✓
     anchor = _blk(0, "Ala", x=10, y=10, w=60, h=20)
     pool = [
         _blk(1, "ossis", x=10, y=35, w=60, h=20),
@@ -222,6 +226,7 @@ def test_match_phase1_case_insensitive():
     box, matched, unmatched = _match_vlm_term("Promontorium", pool, 800, 600)
     assert box is not None
     assert unmatched == []
+    assert pool == []   # matched block removed
 
 
 def test_match_phase2_3_multi_word_all_found():
@@ -240,15 +245,16 @@ def test_match_phase2_3_multi_word_all_found():
     assert pool == []   # all blocks consumed
 
 
-def test_match_partial_missing_word():
+def test_match_partial_first_word_missing():
+    """When the first word is absent from the pool, the remaining words become anchor+proximity."""
     pool = [
-        _blk(0, "Ala",   x=10, y=10, h=20),
-        _blk(1, "ossis", x=10, y=35, h=20),
-        # "sacri" intentionally absent
+        # "Ala" intentionally absent
+        _blk(1, "ossis", x=10, y=10, h=20),
+        _blk(2, "sacri", x=10, y=25, h=20),
     ]
     box, matched, unmatched = _match_vlm_term("Ala ossis sacri", pool, 800, 600)
     assert box is not None
-    assert "sacri" in unmatched
+    assert "Ala" in unmatched
     assert len(matched) == 2
 
 
@@ -257,7 +263,7 @@ def test_match_no_blocks_found():
     box, matched, unmatched = _match_vlm_term("Os sacrum", pool, 800, 600)
     assert box is None
     assert matched == []
-    assert len(unmatched) > 0
+    assert set(unmatched) == {"Os", "sacrum"}
 
 
 def test_match_single_word_no_match_returns_none():
@@ -266,6 +272,24 @@ def test_match_single_word_no_match_returns_none():
     assert box is None
     assert matched == []
     assert "Humerus" in unmatched
+
+
+def test_match_selects_rarest_word_as_anchor():
+    """Phase 2 should select the rarest word in the pool as anchor, not the first word."""
+    # "Ala" appears in 2 blocks; "sacri" appears in 1 → "sacri" must be anchor
+    pool = [
+        _blk(0, "Ala",   x=10, y=10, h=20),
+        _blk(1, "Ala",   x=10, y=50, h=20),  # duplicate "Ala" → freq 2
+        _blk(2, "sacri", x=10, y=25, h=20),  # freq 1 → should be anchor
+    ]
+    box, matched, unmatched = _match_vlm_term("Ala sacri", pool, 800, 600)
+    assert box is not None
+    assert unmatched == []
+    # Both "Ala" blocks should NOT both be matched — only the one near "sacri"
+    # "sacri" is at y=25 (center=35), anchor-based search finds "Ala" at y=10 (center=20)
+    # distance = 15 < 30 ✓ — the closer "Ala" block (id=0) should match
+    assert len(matched) == 2
+    assert pool == [_blk(1, "Ala", x=10, y=50, h=20)]   # unreachable "Ala" remains
 
 
 def test_match_does_not_mutate_other_pool_blocks():
