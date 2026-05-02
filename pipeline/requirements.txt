@@ -9,5 +9,4 @@ numpy>=1.24
 pytest>=7.0
 PyMuPDF>=1.24
 transformers>=4.49
-qwen-vl-utils>=0.0.8
 accelerate>=0.27
