@@ -16,6 +16,7 @@ from process import (
     _build_word_freq,
     _find_block_containing_word,
     _find_block_near_anchor,
+    _build_labels_from_llm_result,
 )
 
 
@@ -298,3 +299,41 @@ def test_match_does_not_mutate_other_pool_blocks():
     _match_vlm_term("Promontorium", pool, 800, 600)
     assert len(pool) == 1
     assert pool[0]["text"] == "Femur"
+
+
+# ── _build_labels_from_llm_result ─────────────────────────────────────────────
+
+def test_build_labels_creates_label_from_ids():
+    ocr = [
+        _blk(0, x=10, y=10, w=60, h=20, text="M."),
+        _blk(1, x=10, y=35, w=60, h=20, text="biceps"),
+    ]
+    terms = [{"name": "M. biceps brachii", "ids": [0, 1]}]
+    labels, used_ids, orphaned = _build_labels_from_llm_result(terms, ocr, 800, 600)
+    assert len(labels) == 1
+    assert labels[0]["text"] == "M. biceps brachii"
+    assert labels[0]["anchor_x"] == 10
+    assert labels[0]["anchor_y"] == 20.0   # y=10 + h=20 / 2 (topmost block)
+    assert "mask_box" in labels[0]
+    assert used_ids == {0, 1}
+    assert orphaned == []
+
+
+def test_build_labels_orphans_ids_not_in_pool():
+    ocr = [_blk(0, x=10, y=10, w=60, h=20, text="Femur")]
+    terms = [{"name": "Ghost", "ids": [99]}]   # id 99 doesn't exist
+    labels, used_ids, orphaned = _build_labels_from_llm_result(terms, ocr, 800, 600)
+    assert labels == []
+    assert "Ghost" in orphaned
+    assert used_ids == set()
+
+
+def test_build_labels_anchor_is_topmost_block():
+    # Block 1 has lower y (higher on page) → must be anchor despite appearing second in ids
+    b_low_y  = _blk(1, x=10, y=10, w=60, h=20, text="top")
+    b_high_y = _blk(0, x=10, y=50, w=60, h=20, text="bottom")
+    terms = [{"name": "Term", "ids": [0, 1]}]
+    labels, _, _ = _build_labels_from_llm_result(terms, [b_low_y, b_high_y], 800, 600)
+    # anchor_y must come from the block with y=10 (b_low_y)
+    assert labels[0]["anchor_x"] == b_low_y["x"]
+    assert labels[0]["anchor_y"] == b_low_y["y"] + b_low_y["h"] / 2
