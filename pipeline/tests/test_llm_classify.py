@@ -76,3 +76,105 @@ def test_group_bundles_each_anchor_produces_one_bundle():
 
 def test_group_bundles_empty_input():
     assert _group_bundles([]) == []
+
+
+# ── _vote_terms ───────────────────────────────────────────────────────────────
+
+def test_vote_terms_accepts_sig_with_enough_votes():
+    responses = [
+        [{"name": "M. biceps brachii", "ids": [1, 2]}],
+        [{"name": "M. biceps brachii", "ids": [1, 2]}],
+        [{"name": "M. biceps brachii", "ids": [1, 2]}],
+    ]
+    result = _vote_terms(responses, min_votes=3)
+    assert len(result) == 1
+    assert result[0]["name"] == "M. biceps brachii"
+    assert sorted(result[0]["ids"]) == [1, 2]
+
+
+def test_vote_terms_rejects_sig_below_threshold():
+    responses = [
+        [{"name": "M. biceps brachii", "ids": [1, 2]}],
+        [{"name": "M. biceps brachii", "ids": [1, 2]}],
+    ]
+    result = _vote_terms(responses, min_votes=3)
+    assert result == []
+
+
+def test_vote_terms_sig_is_order_independent():
+    responses = [
+        [{"name": "M. biceps brachii", "ids": [2, 1]}],
+        [{"name": "M. biceps brachii", "ids": [1, 2]}],
+        [{"name": "M. biceps brachii", "ids": [1, 2]}],
+    ]
+    result = _vote_terms(responses, min_votes=3)
+    assert len(result) == 1
+
+
+def test_vote_terms_picks_most_voted_name():
+    responses = [
+        [{"name": "Promontorium",  "ids": [5]}],
+        [{"name": "Promontorium",  "ids": [5]}],
+        [{"name": "Promontoriom",  "ids": [5]}],   # OCR artefact — minority
+    ]
+    result = _vote_terms(responses, min_votes=3)
+    assert len(result) == 1
+    assert result[0]["name"] == "Promontorium"
+
+
+def test_vote_terms_two_independent_sigs_both_accepted():
+    responses = [
+        [{"name": "Femur", "ids": [0]}, {"name": "Humerus", "ids": [1]}],
+        [{"name": "Femur", "ids": [0]}, {"name": "Humerus", "ids": [1]}],
+        [{"name": "Femur", "ids": [0]}, {"name": "Humerus", "ids": [1]}],
+    ]
+    result = _vote_terms(responses, min_votes=3)
+    names = {t["name"] for t in result}
+    assert names == {"Femur", "Humerus"}
+
+
+def test_vote_terms_empty_responses():
+    assert _vote_terms([], min_votes=3) == []
+
+
+def test_vote_terms_all_empty_bundles():
+    assert _vote_terms([[], [], []], min_votes=3) == []
+
+
+# ── _parse_bundle_response ────────────────────────────────────────────────────
+
+def test_parse_bundle_valid():
+    raw = json.dumps({"terms": [{"name": "M. biceps brachii", "ids": [1, 2, 3]}]})
+    result = _parse_bundle_response(raw)
+    assert result == [{"name": "M. biceps brachii", "ids": [1, 2, 3]}]
+
+
+def test_parse_bundle_strips_whitespace_from_name():
+    raw = json.dumps({"terms": [{"name": "  Femur  ", "ids": [0]}]})
+    assert _parse_bundle_response(raw)[0]["name"] == "Femur"
+
+
+def test_parse_bundle_skips_missing_name():
+    raw = json.dumps({"terms": [{"ids": [0]}]})
+    assert _parse_bundle_response(raw) == []
+
+
+def test_parse_bundle_skips_missing_ids():
+    raw = json.dumps({"terms": [{"name": "Femur"}]})
+    assert _parse_bundle_response(raw) == []
+
+
+def test_parse_bundle_skips_non_int_ids():
+    raw = json.dumps({"terms": [{"name": "Femur", "ids": ["a", "b"]}]})
+    assert _parse_bundle_response(raw) == []
+
+
+def test_parse_bundle_invalid_json_returns_empty():
+    assert _parse_bundle_response("not json") == []
+
+
+def test_parse_bundle_strips_prose_wrapper():
+    inner = json.dumps({"terms": [{"name": "Humerus", "ids": [7]}]})
+    raw = f"Sure! Here is the answer: {inner} Hope that helps."
+    result = _parse_bundle_response(raw)
+    assert result == [{"name": "Humerus", "ids": [7]}]
