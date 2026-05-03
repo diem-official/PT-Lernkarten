@@ -70,3 +70,56 @@ def test_ingest_empty():
     nodes, avg_h = _ingest([])
     assert nodes == []
     assert avg_h == 0.0
+
+
+from semantic_classify import _geometric_edges
+
+
+# ── Module 2: _geometric_edges ───────────────────────────────────────────────
+
+def _gnode(id_, x, y, w, h, text="X"):
+    return OcrNode(id=id_, text=text, coords=(x, y, x + w, y + h))
+
+def test_geo_left_aligned_creates_edge():
+    a = _gnode(0, 10, 0,  100, 20)   # bottom=20
+    b = _gnode(1, 10, 25, 80,  18)   # top=25; gap=5; max_gap=0.6*avg_h
+    edges = _geometric_edges([a, b], avg_height=20.0)
+    assert len(edges) == 1
+    assert edges[0].source_node is a
+    assert edges[0].target_node is b
+    assert edges[0].geo_score > 0.0
+
+def test_geo_large_gap_no_edge():
+    a = _gnode(0, 10, 0,  100, 20)
+    b = _gnode(1, 10, 60, 80,  18)   # gap=40 >> 0.6*20=12
+    assert _geometric_edges([a, b], 20.0) == []
+
+def test_geo_right_aligned_creates_edge():
+    a = _gnode(0, 10, 0,  100, 20)   # right=110
+    b = _gnode(1, 30, 25, 80,  18)   # right=110; left mismatched but right matches
+    edges = _geometric_edges([a, b], 20.0)
+    assert len(edges) == 1
+
+def test_geo_misaligned_no_edge():
+    a = _gnode(0, 10, 0,  100, 20)
+    b = _gnode(1, 50, 25, 40,  18)   # left diff=40, right diff=20; tol=max(3,5)=5
+    assert _geometric_edges([a, b], 20.0) == []
+
+def test_geo_center_aligned_creates_edge():
+    # a: x=10, w=100 → center=60; b: x=30, w=60 → center=60
+    a = _gnode(0, 10, 0,  100, 20)
+    b = _gnode(1, 30, 25, 60,  18)
+    edges = _geometric_edges([a, b], 20.0)
+    assert len(edges) == 1
+
+def test_geo_negative_gap_is_valid():
+    # Slight overlap (b starts before a ends)
+    a = _gnode(0, 10, 0,  80, 20)    # bottom=20
+    b = _gnode(1, 10, 15, 80, 18)   # top=15; gap=-5 (overlap)
+    assert len(_geometric_edges([a, b], 20.0)) == 1
+
+def test_geo_score_is_positive_float():
+    a = _gnode(0, 10, 0, 100, 20)
+    b = _gnode(1, 10, 22, 80, 18)
+    edges = _geometric_edges([a, b], 20.0)
+    assert 0.0 < edges[0].geo_score <= 1.5
