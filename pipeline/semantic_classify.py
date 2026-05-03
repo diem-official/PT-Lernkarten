@@ -19,6 +19,9 @@ class OcrNode:
     leader_line_id: Optional[str] = None
     nlp_features: dict = field(default_factory=dict)
 
+    def __hash__(self) -> int:
+        return hash(self.id)
+
     @property
     def xmin(self) -> int:   return self.coords[0]
     @property
@@ -214,3 +217,33 @@ def _cv_score_for_edge(
     if lid_a == lid_b:
         return 2.0
     return float('-inf')
+
+
+# ── Module 5: Graph Fusion Resolver ─────────────────────────────────────────
+
+_FUSION_THRESHOLD = 0.5   # edges below this total_weight are pruned
+
+
+def _super_bbox(nodes: list[OcrNode]) -> tuple[int, int, int, int]:
+    return (
+        min(n.xmin for n in nodes),
+        min(n.ymin for n in nodes),
+        max(n.xmax for n in nodes),
+        max(n.ymax for n in nodes),
+    )
+
+
+def _fuse_graph(
+    nodes: list[OcrNode],
+    edges: list[AssociationEdge],
+) -> list[list[OcrNode]]:
+    node_map = {n.id: n for n in nodes}
+    G = nx.Graph()
+    G.add_nodes_from(n.id for n in nodes)
+    for e in edges:
+        if e.total_weight >= _FUSION_THRESHOLD:
+            G.add_edge(e.source_node.id, e.target_node.id, weight=e.total_weight)
+    return [
+        sorted([node_map[nid] for nid in comp], key=lambda n: n.ymin)
+        for comp in nx.connected_components(G)
+    ]

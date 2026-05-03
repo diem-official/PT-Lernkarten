@@ -184,3 +184,44 @@ def test_cv_assign_returns_dict():
     leader_map = _assign_leader_lines(img, nodes)
     assert isinstance(leader_map, dict)
     assert set(leader_map.keys()) <= {n.id for n in nodes}
+
+
+from semantic_classify import _fuse_graph, _super_bbox
+
+
+# ── Module 5: _fuse_graph + _super_bbox ─────────────────────────────────────
+
+def test_single_node_one_term():
+    node = OcrNode(id=0, text="Femur", coords=(10, 10, 110, 30))
+    assert _fuse_graph([node], []) == [[node]]
+
+def test_two_nodes_merge_on_high_weight():
+    a = OcrNode(id=0, text="M.",      coords=(10,  0, 60, 20))
+    b = OcrNode(id=1, text="biceps",  coords=(10, 25, 90, 45))
+    edge = AssociationEdge(a, b, geo_score=0.9, nlp_score=1.5)
+    groups = _fuse_graph([a, b], [edge])
+    assert len(groups) == 1
+    assert set(groups[0]) == {a, b}
+
+def test_veto_keeps_separate():
+    a = OcrNode(id=0, text="Femur", coords=(10,  0, 110, 20))
+    b = OcrNode(id=1, text="Tibia", coords=(10, 25, 110, 45))
+    edge = AssociationEdge(a, b, geo_score=0.9, cv_score=float('-inf'))
+    assert len(_fuse_graph([a, b], [edge])) == 2
+
+def test_groups_sorted_by_y():
+    a = OcrNode(id=0, text="brachii", coords=(10, 40, 100, 60))
+    b = OcrNode(id=1, text="M.",      coords=(10,  0,  50, 20))
+    c = OcrNode(id=2, text="biceps",  coords=(10, 22,  90, 42))
+    edges = [
+        AssociationEdge(b, c, geo_score=0.9, nlp_score=1.5),
+        AssociationEdge(c, a, geo_score=0.8),
+    ]
+    groups = _fuse_graph([a, b, c], edges)
+    assert len(groups) == 1
+    assert [n.text for n in groups[0]] == ["M.", "biceps", "brachii"]
+
+def test_super_bbox():
+    a = OcrNode(id=0, text="M.",    coords=(10,  0, 50, 20))
+    b = OcrNode(id=1, text="biceps", coords=( 5, 25, 90, 45))
+    assert _super_bbox([a, b]) == (5, 0, 90, 45)
