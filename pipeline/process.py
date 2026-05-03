@@ -145,7 +145,8 @@ def main():
         print(f"[LLM] {path.name} ...")
         img_w, img_h = marked_images[path].size
         raw_blocks = ocr_results[path]
-        ocr_blocks = _filter_noise_blocks(raw_blocks)
+        # ocr_blocks = _filter_noise_blocks(raw_blocks)
+        ocr_blocks = raw_blocks
         noise_filtered = len(raw_blocks) - len(ocr_blocks)
         if noise_filtered:
             log.info(
@@ -157,7 +158,7 @@ def main():
 
         category, subcategory, view = _parse_stem(path.stem)
 
-        llm_result = detect_labels(ocr_blocks)
+        llm_result = detect_labels(ocr_blocks, category=category, subcategory=subcategory)
         llm_failed = bool(llm_result.get("error", False))
         llm_terms: list[dict] = llm_result.get("terms", [])
 
