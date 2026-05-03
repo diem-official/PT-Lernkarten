@@ -137,3 +137,80 @@ def _nlp_score(a: OcrNode, b: OcrNode) -> float:
     if a_noun and b_noun:
         return -1.0
     return 0.0
+
+
+# ── Module 3: CV Leader Lines ─────────────────────────────────────────────────
+
+_CV_MAX_LINE_DIST_PX  = 60   # px from node centre to line to count as associated
+_CV_CLUSTER_RADIUS_PX = 30   # lines within this radius share a cluster id
+
+
+def _assign_leader_lines(
+    image: np.ndarray,
+    nodes: list[OcrNode],
+) -> dict[int, str]:
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    if float(np.mean(gray)) > 127:
+        gray = cv2.bitwise_not(gray)
+    # Suppress text regions so OCR boxes don't confuse line detection
+    mask = gray.copy()
+    for n in nodes:
+        cv2.rectangle(mask, (n.xmin, n.ymin), (n.xmax, n.ymax), 0, -1)
+    # Edge detect + dilate to close dashed-line gaps
+    edges_img = cv2.Canny(mask, 50, 150)
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    edges_img = cv2.dilate(edges_img, kernel, iterations=2)
+    lines = cv2.HoughLinesP(
+        edges_img, rho=1, theta=np.pi / 180,
+        threshold=30, minLineLength=20, maxLineGap=10,
+    )
+    if lines is None:
+        return {}
+    # Centroid of each detected segment
+    centres = [
+        ((x1 + x2) / 2.0, (y1 + y2) / 2.0)
+        for seg in lines for x1, y1, x2, y2 in seg
+    ]
+    # Greedy proximity clustering
+    clusters: list[list[int]] = []
+    for li, (cx, cy) in enumerate(centres):
+        placed = False
+        for cluster in clusters:
+            rx, ry = centres[cluster[0]]
+            if abs(cx - rx) < _CV_CLUSTER_RADIUS_PX and abs(cy - ry) < _CV_CLUSTER_RADIUS_PX:
+                cluster.append(li)
+                placed = True
+                break
+        if not placed:
+            clusters.append([li])
+    cluster_ids = [f"L{i}" for i in range(len(clusters))]
+    # Assign each node to its nearest cluster (if within threshold)
+    leader_map: dict[int, str] = {}
+    for n in nodes:
+        ncx = (n.xmin + n.xmax) / 2.0
+        ncy = (n.ymin + n.ymax) / 2.0
+        best_dist = float(_CV_MAX_LINE_DIST_PX)
+        best_cid: Optional[str] = None
+        for ci, cluster in enumerate(clusters):
+            for li in cluster:
+                lx, ly = centres[li]
+                dist = math.hypot(ncx - lx, ncy - ly)
+                if dist < best_dist:
+                    best_dist = dist
+                    best_cid = cluster_ids[ci]
+        if best_cid is not None:
+            leader_map[n.id] = best_cid
+    return leader_map
+
+
+def _cv_score_for_edge(
+    edge: AssociationEdge,
+    leader_map: dict[int, str],
+) -> float:
+    lid_a = leader_map.get(edge.source_node.id)
+    lid_b = leader_map.get(edge.target_node.id)
+    if lid_a is None or lid_b is None:
+        return 0.0
+    if lid_a == lid_b:
+        return 2.0
+    return float('-inf')

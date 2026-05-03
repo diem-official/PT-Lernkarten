@@ -147,3 +147,40 @@ def test_nlp_noun_adjective_positive():
 def test_nlp_unknown_pair_neutral():
     score = _nlp_score(_nnode("xyz"), _nnode("abc"))
     assert -0.1 <= score <= 0.1
+
+
+from semantic_classify import _assign_leader_lines, _cv_score_for_edge
+
+
+# ── Module 3: CV leader lines ─────────────────────────────────────────────────
+
+def test_cv_no_leader_map_neutral():
+    n1 = OcrNode(id=0, text="A", coords=(10, 10, 60, 30))
+    n2 = OcrNode(id=1, text="B", coords=(10, 35, 60, 55))
+    edge = AssociationEdge(source_node=n1, target_node=n2)
+    assert _cv_score_for_edge(edge, {}) == 0.0
+
+def test_cv_same_leader_positive():
+    n1 = OcrNode(id=0, text="A", coords=(10, 10, 60, 30))
+    n2 = OcrNode(id=1, text="B", coords=(10, 35, 60, 55))
+    edge = AssociationEdge(source_node=n1, target_node=n2)
+    assert _cv_score_for_edge(edge, {0: "L0", 1: "L0"}) == 2.0
+
+def test_cv_different_leaders_veto():
+    n1 = OcrNode(id=0, text="A", coords=(10, 10, 60, 30))
+    n2 = OcrNode(id=1, text="B", coords=(10, 35, 60, 55))
+    edge = AssociationEdge(source_node=n1, target_node=n2)
+    result = _cv_score_for_edge(edge, {0: "L0", 1: "L1"})
+    assert math.isinf(result) and result < 0
+
+def test_cv_assign_returns_dict():
+    img = np.zeros((100, 100, 3), dtype=np.uint8)
+    img[20:80, 50] = 255   # vertical white line at x=50
+    nodes = [
+        OcrNode(id=0, text="A", coords=(45, 5,  55, 15)),
+        OcrNode(id=1, text="B", coords=(45, 20, 55, 30)),
+        OcrNode(id=2, text="C", coords=(80, 5,  90, 15)),  # far from line
+    ]
+    leader_map = _assign_leader_lines(img, nodes)
+    assert isinstance(leader_map, dict)
+    assert set(leader_map.keys()) <= {n.id for n in nodes}
