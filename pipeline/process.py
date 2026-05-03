@@ -145,8 +145,7 @@ def main():
         print(f"[LLM] {path.name} ...")
         img_w, img_h = marked_images[path].size
         raw_blocks = ocr_results[path]
-        # ocr_blocks = _filter_noise_blocks(raw_blocks)
-        ocr_blocks = raw_blocks
+        ocr_blocks = _filter_noise_blocks(raw_blocks)
         noise_filtered = len(raw_blocks) - len(ocr_blocks)
         if noise_filtered:
             log.info(
