@@ -247,3 +247,33 @@ def _fuse_graph(
         sorted([node_map[nid] for nid in comp], key=lambda n: n.ymin)
         for comp in nx.connected_components(G)
     ]
+
+
+# ── Public API ───────────────────────────────────────────────────────────────
+
+def detect_labels(
+    ocr_blocks: list[dict],
+    image: Optional[np.ndarray] = None,
+    **_kwargs,
+) -> dict:
+    if not ocr_blocks:
+        return {"terms": []}
+    nodes, avg_height = _ingest(ocr_blocks)
+    edges = _geometric_edges(nodes, avg_height)
+    leader_map: dict[int, str] = {}
+    if image is not None:
+        leader_map = _assign_leader_lines(image, nodes)
+    for edge in edges:
+        edge.cv_score  = _cv_score_for_edge(edge, leader_map)
+        edge.nlp_score = _nlp_score(edge.source_node, edge.target_node)
+    groups = _fuse_graph(nodes, edges)
+    terms = [
+        {"name": " ".join(n.text for n in group), "ids": [n.id for n in group]}
+        for group in groups
+    ]
+    log.info("semantic_classify: %d block(s) → %d term(s)", len(nodes), len(terms))
+    return {"terms": terms}
+
+
+def unload_model() -> None:
+    pass

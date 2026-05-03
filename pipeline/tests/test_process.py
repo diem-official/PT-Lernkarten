@@ -11,7 +11,7 @@ from process import (
     _parse_stem,
     _write_report,
     _filter_noise_blocks,
-    _build_labels_from_llm_result,
+    _build_labels_from_terms,
 )
 
 
@@ -70,7 +70,7 @@ def test_filter_noise_empty_list():
 
 
 
-# ── _build_labels_from_llm_result ─────────────────────────────────────────────
+# ── _build_labels_from_terms ─────────────────────────────────────────────────
 
 def test_build_labels_creates_label_from_ids():
     ocr = [
@@ -78,7 +78,7 @@ def test_build_labels_creates_label_from_ids():
         _blk(1, x=10, y=35, w=60, h=20, text="biceps"),
     ]
     terms = [{"name": "M. biceps brachii", "ids": [0, 1]}]
-    labels, used_ids, orphaned = _build_labels_from_llm_result(terms, ocr, 800, 600)
+    labels, used_ids, orphaned = _build_labels_from_terms(terms, ocr, 800, 600)
     assert len(labels) == 1
     assert labels[0]["text"] == "M. biceps brachii"
     assert labels[0]["anchor_x"] == 10
@@ -91,7 +91,7 @@ def test_build_labels_creates_label_from_ids():
 def test_build_labels_orphans_ids_not_in_pool():
     ocr = [_blk(0, x=10, y=10, w=60, h=20, text="Femur")]
     terms = [{"name": "Ghost", "ids": [99]}]   # id 99 doesn't exist
-    labels, used_ids, orphaned = _build_labels_from_llm_result(terms, ocr, 800, 600)
+    labels, used_ids, orphaned = _build_labels_from_terms(terms, ocr, 800, 600)
     assert labels == []
     assert "Ghost" in orphaned
     assert used_ids == set()
@@ -102,7 +102,7 @@ def test_build_labels_anchor_is_topmost_block():
     b_low_y  = _blk(1, x=10, y=10, w=60, h=20, text="top")
     b_high_y = _blk(0, x=10, y=50, w=60, h=20, text="bottom")
     terms = [{"name": "Term", "ids": [0, 1]}]
-    labels, _, _ = _build_labels_from_llm_result(terms, [b_low_y, b_high_y], 800, 600)
+    labels, _, _ = _build_labels_from_terms(terms, [b_low_y, b_high_y], 800, 600)
     # anchor_y must come from the block with y=10 (b_low_y)
     assert labels[0]["anchor_x"] == b_low_y["x"]
     assert labels[0]["anchor_y"] == b_low_y["y"] + b_low_y["h"] / 2

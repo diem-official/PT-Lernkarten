@@ -225,3 +225,38 @@ def test_super_bbox():
     a = OcrNode(id=0, text="M.",    coords=(10,  0, 50, 20))
     b = OcrNode(id=1, text="biceps", coords=( 5, 25, 90, 45))
     assert _super_bbox([a, b]) == (5, 0, 90, 45)
+
+
+from semantic_classify import detect_labels
+
+
+# ── Public API ───────────────────────────────────────────────────────────────
+
+def test_detect_labels_empty():
+    assert detect_labels([]) == {"terms": []}
+
+def test_detect_labels_abbreviation_merges():
+    blocks = [
+        {"id": 0, "text": "M.",     "x": 10, "y":  0, "w": 30, "h": 20},
+        {"id": 1, "text": "biceps", "x": 10, "y": 24, "w": 80, "h": 18},
+        {"id": 2, "text": "Femur",  "x": 300, "y": 0, "w": 100, "h": 20},
+    ]
+    result = detect_labels(blocks)
+    names = [t["name"] for t in result["terms"]]
+    assert "M. biceps" in names
+    assert "Femur" in names
+    assert len(result["terms"]) == 2
+
+def test_detect_labels_preserves_ids():
+    blocks = [
+        {"id": 5, "text": "M.",     "x": 10, "y":  0, "w": 30, "h": 20},
+        {"id": 7, "text": "biceps", "x": 10, "y": 24, "w": 80, "h": 18},
+    ]
+    result = detect_labels(blocks)
+    assert result["terms"][0]["ids"] == [5, 7]
+
+def test_detect_labels_accepts_image_kwarg():
+    blocks = [{"id": 0, "text": "Femur", "x": 10, "y": 0, "w": 80, "h": 20}]
+    img = np.zeros((100, 200, 3), dtype=np.uint8)
+    result = detect_labels(blocks, image=img)
+    assert len(result["terms"]) == 1

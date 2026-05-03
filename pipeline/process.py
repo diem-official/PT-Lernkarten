@@ -15,7 +15,8 @@ import sys
 from pathlib import Path
 from PIL import Image
 
-from logic_classify import detect_labels, unload_model
+import cv2
+from semantic_classify import detect_labels, unload_model
 from ocr import extract_labels, unload_engine, _union_box
 from inpaint import draw_boxes, mask_text
 from export import build_entry, save_data_json
@@ -157,7 +158,8 @@ def main():
 
         category, subcategory, view = _parse_stem(path.stem)
 
-        classify_result = detect_labels(ocr_blocks)
+        img_bgr = cv2.imread(str(path))
+        classify_result = detect_labels(ocr_blocks, image=img_bgr)
         terms: list[dict] = classify_result.get("terms", [])
 
         labels, used_ids, orphaned_terms = _build_labels_from_terms(
