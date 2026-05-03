@@ -98,3 +98,42 @@ def _geometric_edges(nodes: list[OcrNode], avg_height: float) -> list[Associatio
                 geo_score=gap_score + align_bonus,
             ))
     return edges
+
+
+# ── Module 4: NLP Latin Validation ──────────────────────────────────────────
+
+_LATIN_ABBREV = {
+    "M.", "Mm.", "A.", "Aa.", "V.", "Vv.",
+    "N.", "Nn.", "Lig.", "Ligg.", "R.", "Rr.",
+    "Proc.", "For.", "Art.", "Fac.", "Os",
+}
+
+_LATIN_ADJ_ENDINGS = (
+    "is", "alis", "aris", "icus", "inus", "atus", "ilis",
+    "or", "us", "um", "a", "ia", "ae",
+)
+
+_LATIN_NOUNS = {
+    "Femur", "Tibia", "Fibula", "Humerus", "Radius", "Ulna",
+    "Patella", "Clavicula", "Scapula", "Sternum", "Vertebra",
+    "Pelvis", "Sacrum", "Cranium", "Mandibula", "Os",
+    "Caput", "Corpus", "Processus", "Facies", "Fossa",
+    "Tuber", "Tuberculum", "Tuberositas", "Spina", "Crista",
+    "Margo", "Foramen", "Condylus", "Epicondylus", "Sulcus",
+    "Canalis", "Fovea", "Incisura", "Linea", "Collum",
+    "Costae", "Costa", "Ligamentum", "Articulatio",
+}
+
+
+def _nlp_score(a: OcrNode, b: OcrNode) -> float:
+    ta, tb = a.text.strip(), b.text.strip()
+    if ta in _LATIN_ABBREV:
+        return 1.5
+    a_noun = ta in _LATIN_NOUNS
+    b_adj  = tb.islower() and any(tb.endswith(e) for e in _LATIN_ADJ_ENDINGS)
+    if a_noun and b_adj:
+        return 1.0
+    b_noun = tb in _LATIN_NOUNS
+    if a_noun and b_noun:
+        return -1.0
+    return 0.0

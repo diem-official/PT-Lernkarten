@@ -123,3 +123,27 @@ def test_geo_score_is_positive_float():
     b = _gnode(1, 10, 22, 80, 18)
     edges = _geometric_edges([a, b], 20.0)
     assert 0.0 < edges[0].geo_score <= 1.5
+
+
+from semantic_classify import _nlp_score
+
+
+# ── Module 4: _nlp_score ─────────────────────────────────────────────────────
+
+def _nnode(text):
+    return OcrNode(id=0, text=text, coords=(0, 0, 60, 20))
+
+def test_nlp_abbreviation_forces_merge():
+    for abbrev in ["M.", "Mm.", "A.", "V.", "N.", "Lig.", "R."]:
+        assert _nlp_score(_nnode(abbrev), _nnode("test")) >= 1.5, abbrev
+
+def test_nlp_two_known_nouns_veto():
+    assert _nlp_score(_nnode("Femur"), _nnode("Tibia")) <= -0.5
+
+def test_nlp_noun_adjective_positive():
+    # "Facies" (noun) + "articularis" (lowercase adj ending in -is)
+    assert _nlp_score(_nnode("Facies"), _nnode("articularis")) > 0.0
+
+def test_nlp_unknown_pair_neutral():
+    score = _nlp_score(_nnode("xyz"), _nnode("abc"))
+    assert -0.1 <= score <= 0.1
