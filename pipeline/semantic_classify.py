@@ -46,3 +46,20 @@ class AssociationEdge:
         if math.isinf(self.cv_score) and self.cv_score < 0:
             return float('-inf')
         return self.geo_score + self.cv_score + self.nlp_score
+
+
+# ── Module 1: Data Ingestion ─────────────────────────────────────────────────
+
+def _ingest(ocr_blocks: list[dict]) -> tuple[list[OcrNode], float]:
+    if not ocr_blocks:
+        return [], 0.0
+    nodes = [
+        OcrNode(
+            id=b["id"],
+            text=b["text"],
+            coords=(b["x"], b["y"], b["x"] + b["w"], b["y"] + b["h"]),
+        )
+        for b in ocr_blocks
+    ]
+    avg_height = float(np.mean([n.line_height for n in nodes]))
+    return nodes, avg_height

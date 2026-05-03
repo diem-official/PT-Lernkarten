@@ -40,3 +40,33 @@ def test_association_edge_cv_veto():
     edge = AssociationEdge(source_node=n1, target_node=n2,
                            geo_score=0.9, cv_score=float('-inf'), nlp_score=1.0)
     assert edge.total_weight == float('-inf')
+
+
+from semantic_classify import _ingest
+
+
+# ── Module 1: _ingest ─────────────────────────────────────────────────────────
+
+def test_ingest_converts_blocks_to_nodes():
+    blocks = [
+        {"id": 0, "text": "Femur", "x": 10, "y": 20, "w": 100, "h": 20},
+        {"id": 1, "text": "links",  "x": 10, "y": 45, "w": 80,  "h": 18},
+    ]
+    nodes, avg_h = _ingest(blocks)
+    assert len(nodes) == 2
+    assert nodes[0].coords == (10, 20, 110, 40)   # x, y, x+w, y+h
+    assert nodes[0].text == "Femur"
+    assert nodes[1].coords == (10, 45, 90, 63)
+
+def test_ingest_computes_average_height():
+    blocks = [
+        {"id": 0, "text": "A", "x": 0, "y": 0,  "w": 50, "h": 20},
+        {"id": 1, "text": "B", "x": 0, "y": 30, "w": 50, "h": 30},
+    ]
+    _, avg_h = _ingest(blocks)
+    assert avg_h == 25.0
+
+def test_ingest_empty():
+    nodes, avg_h = _ingest([])
+    assert nodes == []
+    assert avg_h == 0.0
