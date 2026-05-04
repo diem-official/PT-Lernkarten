@@ -1,6 +1,7 @@
 (function () {
     var DATA_URL = 'data/data.json';
     var IMG_BASE = 'data/images/';
+    var OG_IMG_BASE = 'data/og-images/';
 
     function showError(msg) {
         var loading = document.getElementById('menu-loading');
@@ -19,8 +20,12 @@
                     showError('data.json ist leer.');
                     return;
                 }
-                buildMenu(data, function (entry) {
-                    loadQuiz(entry, IMG_BASE);
+                buildMenu(data, function (entry, mode) {
+                    if (mode === 'lernen') {
+                        loadLernen(entry, OG_IMG_BASE);
+                    } else {
+                        loadQuiz(entry, IMG_BASE);
+                    }
                 });
             })
             .catch(function (err) {

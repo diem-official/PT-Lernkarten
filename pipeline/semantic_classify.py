@@ -268,7 +268,7 @@ def detect_labels(
         edge.nlp_score = _nlp_score(edge.source_node, edge.target_node)
     groups = _fuse_graph(nodes, edges)
     terms = [
-        {"name": " ".join(n.text for n in group), "ids": [n.id for n in group]}
+        {"name": " ".join(n.text for n in group).replace("- ", ""), "ids": [n.id for n in group]}
         for group in groups
     ]
     log.info("semantic_classify: %d block(s) → %d term(s)", len(nodes), len(terms))

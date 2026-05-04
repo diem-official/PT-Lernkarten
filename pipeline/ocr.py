@@ -18,7 +18,7 @@ def _get_engine():
             use_textline_orientation=False, 
             use_doc_unwarping=False, 
             lang='german',
-            det_limit_side_len=3000, 
+            det_limit_side_len=4000, 
             det_db_box_thresh=0.5)
     return _ocr_engine
 
@@ -72,6 +72,14 @@ def extract_labels(image_path: str) -> list:
             "h": y_max - y_min,
             "text": text.strip(),
         })
+
+    # Manually clear GPU cache to prevent memory fragmentation
+    gc.collect()
+    try:
+        import paddle
+        paddle.device.cuda.empty_cache()
+    except Exception:
+        pass
     return labels
 
 

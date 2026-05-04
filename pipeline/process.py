@@ -11,6 +11,7 @@ import argparse
 import json
 import logging
 import re
+import shutil
 import sys
 from pathlib import Path
 from PIL import Image
@@ -96,6 +97,8 @@ def main():
 
     images_dir = args.output_web / 'data' / 'images'
     images_dir.mkdir(parents=True, exist_ok=True)
+    og_images_dir = args.output_web / 'data' / 'og-images'
+    og_images_dir.mkdir(parents=True, exist_ok=True)
 
     all_files = sorted(p for p in args.input_dir.iterdir()
                        if p.suffix.lower() in SUPPORTED)
@@ -199,9 +202,12 @@ def main():
         clean = mask_text(image, ocr_blocks)
         clean_name = f"{path.stem}-clean.jpg"
         clean.save(images_dir / clean_name, 'JPEG', quality=95)
+        og_name = path.name
+        shutil.copy2(path, og_images_dir / og_name)
         print(f"  Saved → {clean_name}")
         entries.append(build_entry(
             clean_name,
+            og_name,
             labels,
             category=category,
             subcategory=subcategory,

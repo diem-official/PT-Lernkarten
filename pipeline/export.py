@@ -4,6 +4,7 @@ from pathlib import Path
 
 def build_entry(
     clean_filename: str,
+    og_filename: str,
     labels: list,
     *,
     category: str,
@@ -12,6 +13,7 @@ def build_entry(
 ) -> dict:
     return {
         "filename": clean_filename,
+        "og_filename": og_filename,
         "category": category,
         "subcategory": subcategory,
         "view": view,

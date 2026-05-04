@@ -109,13 +109,18 @@ body {
     list-style: none;
 }
 
+.menu-ansicht-li {
+    display: flex;
+    align-items: stretch;
+}
+
 .menu-ansicht-btn {
-    width: 100%;
+    flex: 1;
     text-align: left;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 6px 16px 6px 42px;
+    padding: 6px 8px 6px 42px;
     font-size: 13px;
     color: #555;
 }
@@ -124,7 +129,24 @@ body {
     background: #dde8f5;
 }
 
-.menu-ansicht-btn.active {
+.menu-lernen-btn {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    border-left: 1px solid #d0d0d0;
+    cursor: pointer;
+    padding: 6px 10px;
+    font-size: 12px;
+    color: #555;
+    white-space: nowrap;
+}
+
+.menu-lernen-btn:hover {
+    background: #dde8f5;
+}
+
+.menu-ansicht-li.active .menu-ansicht-btn,
+.menu-ansicht-li.active .menu-lernen-btn {
     background: #c4d9f5;
     font-weight: 600;
     color: #1a3a6e;
@@ -174,7 +196,7 @@ body {
     border: 1.5px solid #777;
     border-radius: 3px;
     font-size: 13px;
-    padding: 0 4px;
+    padding: 2px 4px;
     outline: none;
     transition: background 0.12s, border-color 0.12s;
     min-width: 40px;

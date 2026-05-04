@@ -75,7 +75,7 @@ def detect_labels(ocr_blocks: list[dict], **_kwargs) -> dict:
             cur = successor[cur]
 
         terms.append({
-            "name": " ".join(b["text"] for b in chain),
+            "name": " ".join(b["text"] for b in chain).replace("- ", ""),
             "ids": [b["id"] for b in chain],
         })
 

@@ -72,17 +72,30 @@ function buildMenu(data, onSelect) {
 
             tree[kat][unter].forEach(function (item) {
                 var ansichtLi = document.createElement('li');
-                var ansichtBtn = makeBtn('menu-ansicht-btn', item.ansicht);
+                ansichtLi.className = 'menu-ansicht-li';
 
-                ansichtBtn.addEventListener('click', function () {
-                    document.querySelectorAll('.menu-ansicht-btn.active').forEach(function (b) {
-                        b.classList.remove('active');
+                var testenBtn = makeBtn('menu-ansicht-btn', item.ansicht);
+                var lernenBtn = makeBtn('menu-lernen-btn', 'Lernen');
+
+                function setActive() {
+                    document.querySelectorAll('.menu-ansicht-li.active').forEach(function (li) {
+                        li.classList.remove('active');
                     });
-                    ansichtBtn.classList.add('active');
-                    onSelect(item.entry);
+                    ansichtLi.classList.add('active');
+                }
+
+                testenBtn.addEventListener('click', function () {
+                    setActive();
+                    onSelect(item.entry, 'testen');
                 });
 
-                ansichtLi.appendChild(ansichtBtn);
+                lernenBtn.addEventListener('click', function () {
+                    setActive();
+                    onSelect(item.entry, 'lernen');
+                });
+
+                ansichtLi.appendChild(testenBtn);
+                ansichtLi.appendChild(lernenBtn);
                 ansichtList.appendChild(ansichtLi);
             });
 

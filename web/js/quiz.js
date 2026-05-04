@@ -2,6 +2,22 @@ var _currentEntry = null;
 var _imgBasePath = '';
 var _resizeTimer = null;
 
+function loadLernen(entry, ogImgBasePath) {
+    _currentEntry = null;
+
+    var img = document.getElementById('quiz-img');
+    var wrapper = document.getElementById('quiz-wrapper');
+    var placeholder = document.getElementById('placeholder');
+
+    img.onload = null;
+    wrapper.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
+
+    placeholder.classList.add('hidden');
+    wrapper.classList.remove('hidden');
+
+    img.src = ogImgBasePath + entry.og_filename;
+}
+
 function loadQuiz(entry, imgBasePath) {
     _currentEntry = entry;
     _imgBasePath = imgBasePath;
@@ -38,18 +54,17 @@ function renderOverlays(labels, img, wrapper) {
     labels.forEach(function (label) {
         var group = document.createElement('div');
         group.className = 'overlay-group';
-        group.style.left = (label.x * scaleX) + 'px';
-        group.style.top = (label.y * scaleY) + 'px';
+        group.style.left = (label.mask_box.x * scaleX) + 'px';
+        group.style.top = (label.mask_box.y * scaleY) + 'px';
 
         var input = document.createElement('input');
         input.type = 'text';
         input.className = 'label-input';
-        input.style.width = (label.w * scaleX) + 'px';
-        input.style.height = (label.h * scaleY) + 'px';
+        input.style.width = (label.mask_box.w * scaleX) + 'px';
         input.dataset.solution = label.text;
         // Store original coords so we can restore state after resize
-        input.dataset.ox = label.x;
-        input.dataset.oy = label.y;
+        input.dataset.ox = label.anchor_x;
+        input.dataset.oy = label.anchor_y;
 
         var helpBtn = document.createElement('button');
         helpBtn.type = 'button';
@@ -71,14 +86,27 @@ function renderOverlays(labels, img, wrapper) {
 function onInputChange(input) {
     if (input.readOnly) return;
 
-    var status = getMatchStatus(input.value, input.dataset.solution);
+    var value = input.value;
+    var solution = input.dataset.solution;
 
-    if (status === 'correct') {
+    if (value.length === 0) {
+        input.className = 'label-input';
+        input.style.background = '';
+        return;
+    }
+
+    var isPrefix = solution.toLowerCase().startsWith(value.toLowerCase());
+
+    if (!isPrefix) {
+        input.className = 'label-input typo';
+        input.style.background = '';
+    } else if (value.length === solution.length) {
+        input.style.background = '';
         input.className = 'label-input correct';
         input.readOnly = true;
-    } else if (status === 'typo') {
-        input.className = 'label-input typo';
     } else {
+        var alpha = (value.length / solution.length).toFixed(2);
+        input.style.background = 'rgba(80, 200, 100, ' + alpha + ')';
         input.className = 'label-input';
     }
 }
@@ -116,6 +144,7 @@ window.addEventListener('resize', function () {
             state[inp.dataset.ox + ',' + inp.dataset.oy] = {
                 value: inp.value,
                 className: inp.className,
+                bgStyle: inp.style.background,
                 readOnly: inp.readOnly
             };
         });
@@ -128,6 +157,7 @@ window.addEventListener('resize', function () {
             if (state[key]) {
                 inp.value = state[key].value;
                 inp.className = state[key].className;
+                inp.style.background = state[key].bgStyle;
                 inp.readOnly = state[key].readOnly;
             }
         });
