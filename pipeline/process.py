@@ -14,7 +14,7 @@ import re
 import shutil
 import sys
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageOps
 
 import cv2
 from semantic_classify import detect_labels, unload_model
@@ -28,6 +28,8 @@ SUPPORTED = {'.jpg', '.jpeg', '.png', '.tif', '.tiff'}
 NAME_RE = re.compile(r'^[^-]+-[^-]+-[^-]+\.\w+$')
 DEFAULT_WEB = Path(__file__).parent.parent / 'web'
 DEFAULT_INPUT = Path(__file__).parent.parent / 'Input'
+RAW_IMAGES_DIR = Path('/home/diem/PT Lernkarten/Bilder')
+MAX_OCR_DIM = 2500
 
 BOX_PADDING = 8
 
@@ -36,6 +38,35 @@ def _parse_stem(stem: str) -> tuple[str, str, str]:
     """Split 'Category-Subcategory-View' filename stem into three metadata parts."""
     parts = stem.split('-', 2)
     return parts[0], parts[1], parts[2]
+
+
+def _preprocess_images(src_dir: Path, dst_dir: Path) -> None:
+    """Resize images exceeding MAX_OCR_DIM while maintaining aspect ratio."""
+    if not src_dir.is_dir():
+        return
+
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    print(f"\n=== Preprocessing: {src_dir} -> {dst_dir} ===")
+    for path in src_dir.iterdir():
+        if path.suffix.lower() not in SUPPORTED:
+            continue
+
+        target = dst_dir / path.name
+        with Image.open(path) as img:
+            # Apply EXIF orientation (rotation) correctly before checking dimensions
+            img = ImageOps.exif_transpose(img)
+            w, h = img.size
+            if max(w, h) > MAX_OCR_DIM:
+                scale = MAX_OCR_DIM / max(w, h)
+                new_size = (int(w * scale), int(h * scale))
+                # Use high-quality resampling (LANCZOS)
+                resampling = getattr(Image, 'Resampling', Image).LANCZOS
+                img.resize(new_size, resampling).save(target, quality=95)
+                print(f"  Resized {path.name} to {new_size}")
+            else:
+                # If no scaling needed, save the EXIF-corrected image to the target
+                img.save(target, quality=95)
+                print(f"  Copied {path.name} (no scaling needed, EXIF applied)")
 
 
 def _filter_noise_blocks(blocks: list[dict]) -> list[dict]:
@@ -90,6 +121,8 @@ def main():
     parser.add_argument('--output-web', type=Path, default=DEFAULT_WEB,
                         help="Path to web/ directory (default: ../web)")
     args = parser.parse_args()
+
+    _preprocess_images(RAW_IMAGES_DIR, args.input_dir)
 
     if not args.input_dir.is_dir():
         print(f"Error: {args.input_dir} is not a directory", file=sys.stderr)

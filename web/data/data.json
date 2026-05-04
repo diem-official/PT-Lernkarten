@@ -8,46 +8,46 @@
     "labels": [
       {
         "text": "Linea glutea posterior",
-        "anchor_x": 692,
+        "anchor_x": 693,
         "anchor_y": 138.0,
         "mask_box": {
-          "x": 684,
+          "x": 685,
           "y": 105,
           "w": 243,
-          "h": 116
+          "h": 117
         }
       },
       {
         "text": "Tuberositas iliaca",
-        "anchor_x": 1178,
-        "anchor_y": 136.5,
+        "anchor_x": 1177,
+        "anchor_y": 136.0,
         "mask_box": {
-          "x": 1170,
-          "y": 107,
-          "w": 228,
-          "h": 110
+          "x": 1169,
+          "y": 105,
+          "w": 230,
+          "h": 114
         }
       },
       {
         "text": "Crista iliaca",
-        "anchor_x": 410,
-        "anchor_y": 186.5,
+        "anchor_x": 411,
+        "anchor_y": 187.0,
         "mask_box": {
-          "x": 402,
-          "y": 154,
-          "w": 231,
-          "h": 65
+          "x": 403,
+          "y": 156,
+          "w": 229,
+          "h": 62
         }
       },
       {
         "text": "Facies glutea",
         "anchor_x": 1462,
-        "anchor_y": 188.0,
+        "anchor_y": 188.5,
         "mask_box": {
           "x": 1454,
-          "y": 154,
-          "w": 258,
-          "h": 68
+          "y": 156,
+          "w": 257,
+          "h": 65
         }
       },
       {
@@ -56,20 +56,20 @@
         "anchor_y": 263.5,
         "mask_box": {
           "x": 1001,
-          "y": 233,
-          "w": 158,
+          "y": 232,
+          "w": 157,
           "h": 114
         }
       },
       {
         "text": "Linea glutea anterior",
-        "anchor_x": 50,
-        "anchor_y": 488.5,
+        "anchor_x": 52,
+        "anchor_y": 488.0,
         "mask_box": {
-          "x": 42,
-          "y": 455,
-          "w": 245,
-          "h": 111
+          "x": 44,
+          "y": 457,
+          "w": 244,
+          "h": 110
         }
       },
       {
@@ -89,141 +89,141 @@
         "anchor_y": 632.0,
         "mask_box": {
           "x": 52,
-          "y": 597,
-          "w": 346,
-          "h": 117
-        }
-      },
-      {
-        "text": "Crista sacralis mediana",
-        "anchor_x": 1716,
-        "anchor_y": 688.5,
-        "mask_box": {
-          "x": 1708,
-          "y": 660,
-          "w": 264,
-          "h": 108
-        }
-      },
-      {
-        "text": "Spina iliaca posterior inferior",
-        "anchor_x": 234,
-        "anchor_y": 771.0,
-        "mask_box": {
-          "x": 126,
-          "y": 736,
-          "w": 327,
-          "h": 117
-        }
-      },
-      {
-        "text": "Incisura ischiadica major",
-        "anchor_x": 1716,
-        "anchor_y": 834.5,
-        "mask_box": {
-          "x": 1705,
-          "y": 807,
-          "w": 314,
-          "h": 111
-        }
-      },
-      {
-        "text": "R.superior ossis pubis",
-        "anchor_x": 239,
-        "anchor_y": 915.0,
-        "mask_box": {
-          "x": 226,
-          "y": 884,
-          "w": 221,
-          "h": 113
-        }
-      },
-      {
-        "text": "Foramen obturatum",
-        "anchor_x": 1658,
-        "anchor_y": 979.0,
-        "mask_box": {
-          "x": 1650,
-          "y": 950,
-          "w": 219,
-          "h": 108
-        }
-      },
-      {
-        "text": "Spina ischiadica",
-        "anchor_x": 206,
-        "anchor_y": 1063.5,
-        "mask_box": {
-          "x": 198,
-          "y": 1030,
-          "w": 308,
-          "h": 67
-        }
-      },
-      {
-        "text": "Incisura ischiadica minor",
-        "anchor_x": 1658,
-        "anchor_y": 1123.0,
-        "mask_box": {
-          "x": 1650,
-          "y": 1093,
-          "w": 319,
-          "h": 109
-        }
-      },
-      {
-        "text": "Os pubis",
-        "anchor_x": 335,
-        "anchor_y": 1173.5,
-        "mask_box": {
-          "x": 327,
-          "y": 1142,
-          "w": 180,
-          "h": 63
-        }
-      },
-      {
-        "text": "Os coccygis",
-        "anchor_x": 1023,
-        "anchor_y": 1268.5,
-        "mask_box": {
-          "x": 965,
-          "y": 1237,
-          "w": 177,
+          "y": 599,
+          "w": 345,
           "h": 116
         }
       },
       {
-        "text": "Tuber ischiadicum",
-        "anchor_x": 1546,
-        "anchor_y": 1267.0,
+        "text": "Crista sacralis mediana",
+        "anchor_x": 1715,
+        "anchor_y": 688.0,
         "mask_box": {
-          "x": 1538,
-          "y": 1235,
-          "w": 236,
+          "x": 1707,
+          "y": 659,
+          "w": 266,
           "h": 110
         }
       },
       {
-        "text": "R.inferior ossis pubis",
-        "anchor_x": 797,
-        "anchor_y": 1403.5,
+        "text": "Spina iliaca posterior inferior",
+        "anchor_x": 235,
+        "anchor_y": 771.5,
         "mask_box": {
-          "x": 776,
-          "y": 1373,
-          "w": 222,
-          "h": 118
+          "x": 127,
+          "y": 739,
+          "w": 325,
+          "h": 114
+        }
+      },
+      {
+        "text": "Incisura ischiadica major",
+        "anchor_x": 1715,
+        "anchor_y": 834.0,
+        "mask_box": {
+          "x": 1706,
+          "y": 804,
+          "w": 314,
+          "h": 113
+        }
+      },
+      {
+        "text": "R. superior ossis pubis",
+        "anchor_x": 237,
+        "anchor_y": 914.0,
+        "mask_box": {
+          "x": 227,
+          "y": 883,
+          "w": 220,
+          "h": 115
+        }
+      },
+      {
+        "text": "Foramen obturatum",
+        "anchor_x": 1660,
+        "anchor_y": 979.0,
+        "mask_box": {
+          "x": 1652,
+          "y": 950,
+          "w": 217,
+          "h": 107
+        }
+      },
+      {
+        "text": "Spina ischiadica",
+        "anchor_x": 208,
+        "anchor_y": 1062.5,
+        "mask_box": {
+          "x": 200,
+          "y": 1030,
+          "w": 305,
+          "h": 65
+        }
+      },
+      {
+        "text": "Incisura ischiadica minor",
+        "anchor_x": 1659,
+        "anchor_y": 1123.0,
+        "mask_box": {
+          "x": 1651,
+          "y": 1094,
+          "w": 317,
+          "h": 108
+        }
+      },
+      {
+        "text": "Os pubis",
+        "anchor_x": 334,
+        "anchor_y": 1174.0,
+        "mask_box": {
+          "x": 326,
+          "y": 1141,
+          "w": 182,
+          "h": 66
+        }
+      },
+      {
+        "text": "Os coccygis",
+        "anchor_x": 1020,
+        "anchor_y": 1268.0,
+        "mask_box": {
+          "x": 964,
+          "y": 1234,
+          "w": 179,
+          "h": 119
+        }
+      },
+      {
+        "text": "Tuber ischiadicum",
+        "anchor_x": 1545,
+        "anchor_y": 1267.0,
+        "mask_box": {
+          "x": 1537,
+          "y": 1234,
+          "w": 237,
+          "h": 113
+        }
+      },
+      {
+        "text": "R. inferior ossis pubis",
+        "anchor_x": 797,
+        "anchor_y": 1404.0,
+        "mask_box": {
+          "x": 777,
+          "y": 1374,
+          "w": 221,
+          "h": 116
         }
       },
       {
         "text": "Hiatus sacralis",
-        "anchor_x": 1197,
-        "anchor_y": 1405.0,
+        "anchor_x": 1196,
+        "anchor_y": 1404.5,
         "mask_box": {
-          "x": 1181,
-          "y": 1375,
-          "w": 156,
-          "h": 111
+          "x": 1180,
+          "y": 1374,
+          "w": 157,
+          "h": 112
         }
       }
     ]
@@ -412,73 +412,73 @@
       {
         "text": "Art. sacroiliaca",
         "anchor_x": 546,
-        "anchor_y": 108.0,
+        "anchor_y": 108.5,
         "mask_box": {
           "x": 538,
-          "y": 79,
+          "y": 80,
           "w": 206,
-          "h": 111
+          "h": 110
         }
       },
       {
         "text": "Tuberositas iliaca",
-        "anchor_x": 812,
+        "anchor_x": 810,
         "anchor_y": 107.0,
         "mask_box": {
-          "x": 804,
+          "x": 802,
           "y": 77,
-          "w": 228,
-          "h": 111
+          "w": 231,
+          "h": 113
         }
       },
       {
         "text": "Proc. articularis superior",
         "anchor_x": 1095,
-        "anchor_y": 105.5,
+        "anchor_y": 106.0,
         "mask_box": {
           "x": 1087,
           "y": 76,
-          "w": 296,
-          "h": 116
+          "w": 297,
+          "h": 114
         }
       },
       {
         "text": "Canalis sacralis",
-        "anchor_x": 1445,
+        "anchor_x": 1444,
         "anchor_y": 105.5,
         "mask_box": {
-          "x": 1436,
-          "y": 75,
-          "w": 155,
-          "h": 113
+          "x": 1434,
+          "y": 74,
+          "w": 158,
+          "h": 115
         }
       },
       {
         "text": "Pars lateralis",
-        "anchor_x": 1735,
+        "anchor_x": 1736,
         "anchor_y": 304.0,
         "mask_box": {
-          "x": 1727,
+          "x": 1728,
           "y": 273,
-          "w": 247,
+          "w": 246,
           "h": 62
         }
       },
       {
         "text": "Crista iliaca",
-        "anchor_x": 181,
-        "anchor_y": 322.0,
+        "anchor_x": 180,
+        "anchor_y": 321.0,
         "mask_box": {
-          "x": 173,
-          "y": 291,
-          "w": 229,
+          "x": 172,
+          "y": 290,
+          "w": 231,
           "h": 62
         }
       },
       {
         "text": "Labium internum",
-        "anchor_x": 253,
-        "anchor_y": 423.0,
+        "anchor_x": 252,
+        "anchor_y": 423.5,
         "mask_box": {
           "x": 211,
           "y": 393,
@@ -488,35 +488,35 @@
       },
       {
         "text": "Promontorium",
-        "anchor_x": 1893,
-        "anchor_y": 537.0,
+        "anchor_x": 1892,
+        "anchor_y": 537.5,
         "mask_box": {
-          "x": 1883,
+          "x": 1884,
           "y": 508,
-          "w": 180,
+          "w": 179,
           "h": 109
         }
       },
       {
         "text": "Linea intermedia",
-        "anchor_x": 292,
-        "anchor_y": 553.5,
+        "anchor_x": 291,
+        "anchor_y": 552.5,
         "mask_box": {
-          "x": 182,
-          "y": 524,
-          "w": 220,
-          "h": 107
+          "x": 183,
+          "y": 521,
+          "w": 221,
+          "h": 111
         }
       },
       {
         "text": "Labium externum",
         "anchor_x": 252,
-        "anchor_y": 682.0,
+        "anchor_y": 681.5,
         "mask_box": {
-          "x": 204,
-          "y": 652,
-          "w": 197,
-          "h": 108
+          "x": 203,
+          "y": 651,
+          "w": 199,
+          "h": 111
         }
       },
       {
@@ -525,20 +525,20 @@
         "anchor_y": 720.0,
         "mask_box": {
           "x": 1884,
-          "y": 689,
-          "w": 221,
-          "h": 62
+          "y": 690,
+          "w": 222,
+          "h": 60
         }
       },
       {
         "text": "Spina iliaca anterior superior",
         "anchor_x": 1890,
-        "anchor_y": 867.0,
+        "anchor_y": 866.5,
         "mask_box": {
           "x": 1882,
           "y": 832,
           "w": 227,
-          "h": 168
+          "h": 167
         }
       },
       {
@@ -546,76 +546,76 @@
         "anchor_x": 1130,
         "anchor_y": 892.0,
         "mask_box": {
-          "x": 1073,
-          "y": 859,
+          "x": 1074,
+          "y": 860,
           "w": 178,
-          "h": 119
+          "h": 118
         }
       },
       {
         "text": "Spina ischiadica",
         "anchor_x": 403,
-        "anchor_y": 983.0,
+        "anchor_y": 982.5,
         "mask_box": {
           "x": 321,
           "y": 949,
           "w": 200,
-          "h": 112
+          "h": 113
         }
       },
       {
         "text": "Spina iliaca anterior inferior",
-        "anchor_x": 1732,
-        "anchor_y": 1062.5,
+        "anchor_x": 1731,
+        "anchor_y": 1062.0,
         "mask_box": {
-          "x": 1724,
+          "x": 1723,
           "y": 1028,
           "w": 309,
-          "h": 113
+          "h": 112
         }
       },
       {
         "text": "Linea arcuata",
         "anchor_x": 672,
-        "anchor_y": 1206.0,
+        "anchor_y": 1205.5,
         "mask_box": {
           "x": 647,
           "y": 1174,
           "w": 157,
-          "h": 112
+          "h": 111
         }
       },
       {
         "text": "Pecten ossis pubis",
         "anchor_x": 1622,
-        "anchor_y": 1205.0,
+        "anchor_y": 1205.5,
         "mask_box": {
           "x": 1614,
-          "y": 1174,
+          "y": 1175,
           "w": 220,
-          "h": 117
+          "h": 115
         }
       },
       {
         "text": "Symphysis pubica",
-        "anchor_x": 1046,
-        "anchor_y": 1286.5,
+        "anchor_x": 1047,
+        "anchor_y": 1287.0,
         "mask_box": {
-          "x": 1038,
+          "x": 1039,
           "y": 1252,
-          "w": 215,
+          "w": 213,
           "h": 119
         }
       },
       {
         "text": "Tuberculum pubicum",
-        "anchor_x": 1335,
+        "anchor_x": 1334,
         "anchor_y": 1284.0,
         "mask_box": {
-          "x": 1327,
-          "y": 1256,
-          "w": 235,
-          "h": 112
+          "x": 1326,
+          "y": 1255,
+          "w": 237,
+          "h": 111
         }
       }
     ]
@@ -841,51 +841,51 @@
         "mask_box": {
           "x": 684,
           "y": 133,
-          "w": 212,
-          "h": 113
+          "w": 213,
+          "h": 112
         }
       },
       {
         "text": "Tuberculum pubicum",
-        "anchor_x": 1164,
-        "anchor_y": 163.0,
+        "anchor_x": 1163,
+        "anchor_y": 162.0,
         "mask_box": {
-          "x": 1156,
-          "y": 135,
-          "w": 235,
-          "h": 113
+          "x": 1155,
+          "y": 133,
+          "w": 236,
+          "h": 115
         }
       },
       {
         "text": "Crista iliaca",
         "anchor_x": 335,
-        "anchor_y": 213.0,
+        "anchor_y": 213.5,
         "mask_box": {
           "x": 327,
-          "y": 180,
-          "w": 233,
-          "h": 66
+          "y": 181,
+          "w": 232,
+          "h": 65
         }
       },
       {
         "text": "Fossa iliaca",
         "anchor_x": 1476,
-        "anchor_y": 213.0,
+        "anchor_y": 214.5,
         "mask_box": {
           "x": 1468,
-          "y": 180,
-          "w": 225,
-          "h": 66
+          "y": 182,
+          "w": 226,
+          "h": 65
         }
       },
       {
         "text": "Os sacrum",
-        "anchor_x": 957,
+        "anchor_x": 958,
         "anchor_y": 309.5,
         "mask_box": {
-          "x": 949,
+          "x": 950,
           "y": 279,
-          "w": 217,
+          "w": 215,
           "h": 61
         }
       },
@@ -895,31 +895,31 @@
         "anchor_y": 434.0,
         "mask_box": {
           "x": 1824,
-          "y": 399,
-          "w": 229,
-          "h": 167
+          "y": 400,
+          "w": 228,
+          "h": 168
         }
       },
       {
         "text": "Spina iliaca anterior inferior",
         "anchor_x": 191,
-        "anchor_y": 680.5,
+        "anchor_y": 679.5,
         "mask_box": {
-          "x": 101,
-          "y": 645,
-          "w": 308,
-          "h": 114
+          "x": 102,
+          "y": 644,
+          "w": 307,
+          "h": 115
         }
       },
       {
         "text": "R. superior ossis pubis",
-        "anchor_x": 259,
-        "anchor_y": 825.0,
+        "anchor_x": 257,
+        "anchor_y": 824.0,
         "mask_box": {
           "x": 244,
-          "y": 796,
+          "y": 795,
           "w": 220,
-          "h": 111
+          "h": 112
         }
       },
       {
@@ -936,12 +936,12 @@
       {
         "text": "Spina ischiadica",
         "anchor_x": 208,
-        "anchor_y": 968.5,
+        "anchor_y": 968.0,
         "mask_box": {
           "x": 200,
-          "y": 935,
+          "y": 934,
           "w": 307,
-          "h": 67
+          "h": 68
         }
       },
       {
@@ -950,75 +950,75 @@
         "anchor_y": 962.0,
         "mask_box": {
           "x": 1662,
-          "y": 932,
-          "w": 243,
-          "h": 60
+          "y": 933,
+          "w": 242,
+          "h": 58
         }
       },
       {
         "text": "Foramen obturatum",
         "anchor_x": 336,
-        "anchor_y": 1062.5,
+        "anchor_y": 1063.0,
         "mask_box": {
           "x": 293,
           "y": 1034,
           "w": 217,
-          "h": 106
+          "h": 107
         }
       },
       {
         "text": "Symphysis pubica",
-        "anchor_x": 1616,
-        "anchor_y": 1065.0,
+        "anchor_x": 1615,
+        "anchor_y": 1064.5,
         "mask_box": {
           "x": 1607,
-          "y": 1032,
+          "y": 1031,
           "w": 212,
-          "h": 117
-        }
-      },
-      {
-        "text": "R. inferior ossis pubis",
-        "anchor_x": 386,
-        "anchor_y": 1206.5,
-        "mask_box": {
-          "x": 352,
-          "y": 1177,
-          "w": 223,
           "h": 118
         }
       },
       {
-        "text": "R. ossis ischii",
-        "anchor_x": 1561,
+        "text": "R. inferior ossis pubis",
+        "anchor_x": 385,
         "anchor_y": 1207.0,
         "mask_box": {
-          "x": 1553,
-          "y": 1177,
-          "w": 248,
-          "h": 60
+          "x": 354,
+          "y": 1176,
+          "w": 221,
+          "h": 117
+        }
+      },
+      {
+        "text": "R. ossis ischii",
+        "anchor_x": 1562,
+        "anchor_y": 1207.0,
+        "mask_box": {
+          "x": 1554,
+          "y": 1178,
+          "w": 246,
+          "h": 58
         }
       },
       {
         "text": "Os coccygis",
-        "anchor_x": 958,
+        "anchor_x": 957,
         "anchor_y": 1270.0,
         "mask_box": {
           "x": 900,
-          "y": 1239,
+          "y": 1238,
           "w": 178,
-          "h": 116
+          "h": 118
         }
       },
       {
         "text": "Arcus pubicus",
         "anchor_x": 1144,
-        "anchor_y": 1270.5,
+        "anchor_y": 1270.0,
         "mask_box": {
-          "x": 1120,
+          "x": 1119,
           "y": 1240,
-          "w": 163,
-          "h": 113
+          "w": 164,
+          "h": 112
         }
       }
     ]
@@ -1261,244 +1261,255 @@
     "labels": [
       {
         "text": "Crista iliaca",
-        "anchor_x": 1664,
-        "anchor_y": 266.0,
+        "anchor_x": 1345,
+        "anchor_y": 214.5,
         "mask_box": {
-          "x": 1656,
-          "y": 235,
-          "w": 230,
-          "h": 62
+          "x": 1337,
+          "y": 188,
+          "w": 190,
+          "h": 53
         }
       },
       {
         "text": "Linea glutea anterior",
-        "anchor_x": 439,
-        "anchor_y": 332.5,
+        "anchor_x": 355,
+        "anchor_y": 268.0,
         "mask_box": {
-          "x": 431,
-          "y": 300,
-          "w": 246,
-          "h": 110
+          "x": 347,
+          "y": 239,
+          "w": 202,
+          "h": 94
         }
       },
       {
         "text": "Tuberculum iliacum",
-        "anchor_x": 1863,
-        "anchor_y": 427.0,
+        "anchor_x": 1508,
+        "anchor_y": 345.5,
         "mask_box": {
-          "x": 1855,
-          "y": 395,
-          "w": 240,
-          "h": 116
+          "x": 1499,
+          "y": 320,
+          "w": 196,
+          "h": 95
         }
       },
       {
         "text": "Facies glutea",
-        "anchor_x": 328,
-        "anchor_y": 510.0,
+        "anchor_x": 265,
+        "anchor_y": 412.0,
         "mask_box": {
-          "x": 320,
-          "y": 478,
-          "w": 255,
-          "h": 64
-        }
-      },
-      {
-        "text": "Linea glutea posterior",
-        "anchor_x": 238,
-        "anchor_y": 655.0,
-        "mask_box": {
-          "x": 230,
-          "y": 624,
-          "w": 244,
-          "h": 113
-        }
-      },
-      {
-        "text": "Spina iliaca anterior superior",
-        "anchor_x": 2031,
-        "anchor_y": 791.5,
-        "mask_box": {
-          "x": 2023,
-          "y": 758,
-          "w": 327,
-          "h": 116
-        }
-      },
-      {
-        "text": "Spina iliaca posterior superior",
-        "anchor_x": 257,
-        "anchor_y": 848.5,
-        "mask_box": {
-          "x": 249,
-          "y": 818,
-          "w": 224,
-          "h": 164
-        }
-      },
-      {
-        "text": "Linea glutea inferior",
-        "anchor_x": 2035,
-        "anchor_y": 939.0,
-        "mask_box": {
-          "x": 2027,
-          "y": 907,
-          "w": 380,
-          "h": 64
-        }
-      },
-      {
-        "text": "Spina iliaca anterior inferior",
-        "anchor_x": 2033,
-        "anchor_y": 1032.0,
-        "mask_box": {
-          "x": 2025,
-          "y": 999,
-          "w": 307,
-          "h": 111
-        }
-      },
-      {
-        "text": "Sulcus supraacetabularis",
-        "anchor_x": 2035,
-        "anchor_y": 1163.5,
-        "mask_box": {
-          "x": 2027,
-          "y": 1132,
-          "w": 464,
-          "h": 63
-        }
-      },
-      {
-        "text": "Spina iliaca posterior inferior",
-        "anchor_x": 365,
-        "anchor_y": 1188.0,
-        "mask_box": {
-          "x": 357,
-          "y": 1156,
-          "w": 227,
-          "h": 160
-        }
-      },
-      {
-        "text": "Limbus acetabuli",
-        "anchor_x": 2035,
-        "anchor_y": 1269.5,
-        "mask_box": {
-          "x": 2027,
-          "y": 1239,
-          "w": 325,
-          "h": 61
-        }
-      },
-      {
-        "text": "Facies lunata",
-        "anchor_x": 2035,
-        "anchor_y": 1349.5,
-        "mask_box": {
-          "x": 2027,
-          "y": 1320,
-          "w": 251,
-          "h": 59
-        }
-      },
-      {
-        "text": "Incisura ischiadica major",
-        "anchor_x": 664,
-        "anchor_y": 1367.5,
-        "mask_box": {
-          "x": 507,
-          "y": 1338,
-          "w": 315,
-          "h": 113
-        }
-      },
-      {
-        "text": "Acetabulum",
-        "anchor_x": 2429,
-        "anchor_y": 1386.0,
-        "mask_box": {
-          "x": 2421,
-          "y": 1356,
-          "w": 241,
-          "h": 60
-        }
-      },
-      {
-        "text": "Fossa acetabuli",
-        "anchor_x": 2035,
-        "anchor_y": 1427.0,
-        "mask_box": {
-          "x": 2027,
-          "y": 1398,
-          "w": 293,
+          "x": 257,
+          "y": 383,
+          "w": 211,
           "h": 58
         }
       },
       {
-        "text": "Incisura acetabuli",
-        "anchor_x": 2035,
-        "anchor_y": 1506.5,
+        "text": "Linea glutea posterior",
+        "anchor_x": 190,
+        "anchor_y": 528.5,
         "mask_box": {
-          "x": 2027,
-          "y": 1476,
-          "w": 336,
-          "h": 61
+          "x": 182,
+          "y": 500,
+          "w": 203,
+          "h": 98
+        }
+      },
+      {
+        "text": "Spina iliaca anterior superior",
+        "anchor_x": 1644,
+        "anchor_y": 639.5,
+        "mask_box": {
+          "x": 1636,
+          "y": 612,
+          "w": 266,
+          "h": 94
+        }
+      },
+      {
+        "text": "Spina iliaca posterior superior",
+        "anchor_x": 205,
+        "anchor_y": 685.0,
+        "mask_box": {
+          "x": 197,
+          "y": 656,
+          "w": 188,
+          "h": 141
+        }
+      },
+      {
+        "text": "Linea glutea inferior",
+        "anchor_x": 1644,
+        "anchor_y": 758.5,
+        "mask_box": {
+          "x": 1636,
+          "y": 732,
+          "w": 312,
+          "h": 53
+        }
+      },
+      {
+        "text": "Spina iliaca anterior inferior",
+        "anchor_x": 1644,
+        "anchor_y": 833.5,
+        "mask_box": {
+          "x": 1636,
+          "y": 805,
+          "w": 251,
+          "h": 93
+        }
+      },
+      {
+        "text": "Sulcus supraacetabularis",
+        "anchor_x": 1646,
+        "anchor_y": 940.0,
+        "mask_box": {
+          "x": 1638,
+          "y": 914,
+          "w": 377,
+          "h": 52
+        }
+      },
+      {
+        "text": "Spina iliaca posterior inferior",
+        "anchor_x": 294,
+        "anchor_y": 959.0,
+        "mask_box": {
+          "x": 286,
+          "y": 930,
+          "w": 188,
+          "h": 136
+        }
+      },
+      {
+        "text": "Limbus acetabuli",
+        "anchor_x": 1645,
+        "anchor_y": 1027.0,
+        "mask_box": {
+          "x": 1637,
+          "y": 1000,
+          "w": 267,
+          "h": 54
+        }
+      },
+      {
+        "text": "Facies lunata",
+        "anchor_x": 1646,
+        "anchor_y": 1091.0,
+        "mask_box": {
+          "x": 1638,
+          "y": 1066,
+          "w": 207,
+          "h": 50
+        }
+      },
+      {
+        "text": "Incisura ischiadica major",
+        "anchor_x": 536,
+        "anchor_y": 1105.0,
+        "mask_box": {
+          "x": 407,
+          "y": 1078,
+          "w": 259,
+          "h": 96
+        }
+      },
+      {
+        "text": "Acetabulum",
+        "anchor_x": 1964,
+        "anchor_y": 1120.0,
+        "mask_box": {
+          "x": 1956,
+          "y": 1095,
+          "w": 198,
+          "h": 50
+        }
+      },
+      {
+        "text": "Fossa acetabuli",
+        "anchor_x": 1645,
+        "anchor_y": 1154.0,
+        "mask_box": {
+          "x": 1637,
+          "y": 1128,
+          "w": 243,
+          "h": 52
+        }
+      },
+      {
+        "text": "Incisura acetabuli",
+        "anchor_x": 1645,
+        "anchor_y": 1219.0,
+        "mask_box": {
+          "x": 1637,
+          "y": 1192,
+          "w": 276,
+          "h": 54
         }
       },
       {
         "text": "Spina ischiadica",
-        "anchor_x": 703,
-        "anchor_y": 1580.5,
+        "anchor_x": 569,
+        "anchor_y": 1277.5,
         "mask_box": {
-          "x": 623,
-          "y": 1547,
-          "w": 199,
-          "h": 111
+          "x": 501,
+          "y": 1249,
+          "w": 166,
+          "h": 94
         }
       },
       {
         "text": "Tuberculum pubicum",
-        "anchor_x": 2034,
-        "anchor_y": 1624.0,
+        "anchor_x": 1644,
+        "anchor_y": 1313.0,
         "mask_box": {
-          "x": 2026,
-          "y": 1594,
-          "w": 237,
-          "h": 115
+          "x": 1635,
+          "y": 1287,
+          "w": 197,
+          "h": 98
         }
       },
       {
         "text": "Incisura ischiadica minor",
-        "anchor_x": 781,
-        "anchor_y": 1739.5,
+        "anchor_x": 630,
+        "anchor_y": 1406.5,
         "mask_box": {
-          "x": 622,
-          "y": 1709,
-          "w": 316,
-          "h": 110
+          "x": 501,
+          "y": 1380,
+          "w": 260,
+          "h": 92
         }
       },
       {
         "text": "Foramen obturatum",
-        "anchor_x": 1946,
-        "anchor_y": 1794.5,
+        "anchor_x": 1574,
+        "anchor_y": 1450.5,
         "mask_box": {
-          "x": 1938,
-          "y": 1764,
-          "w": 219,
-          "h": 108
+          "x": 1566,
+          "y": 1424,
+          "w": 181,
+          "h": 92
         }
       },
       {
-        "text": "Tuber ischiadicum",
-        "anchor_x": 817,
-        "anchor_y": 1996.5,
+        "text": "Tuber",
+        "anchor_x": 659,
+        "anchor_y": 1614.0,
         "mask_box": {
-          "x": 702,
-          "y": 1965,
-          "w": 237,
-          "h": 113
+          "x": 651,
+          "y": 1586,
+          "w": 112,
+          "h": 56
+        }
+      },
+      {
+        "text": "ischiadicum",
+        "anchor_x": 573,
+        "anchor_y": 1655.5,
+        "mask_box": {
+          "x": 565,
+          "y": 1629,
+          "w": 193,
+          "h": 53
         }
       }
     ]
@@ -1512,186 +1523,186 @@
     "labels": [
       {
         "text": "Crista iliaca",
-        "anchor_x": 287,
-        "anchor_y": 414.5,
+        "anchor_x": 286,
+        "anchor_y": 414.0,
         "mask_box": {
-          "x": 279,
-          "y": 384,
-          "w": 229,
-          "h": 61
+          "x": 278,
+          "y": 383,
+          "w": 232,
+          "h": 62
         }
       },
       {
         "text": "Tuberositas iliaca",
-        "anchor_x": 1815,
-        "anchor_y": 414.5,
+        "anchor_x": 1813,
+        "anchor_y": 413.5,
         "mask_box": {
-          "x": 1806,
-          "y": 384,
-          "w": 231,
-          "h": 112
+          "x": 1804,
+          "y": 382,
+          "w": 234,
+          "h": 115
         }
       },
       {
         "text": "Fossa iliaca",
-        "anchor_x": 182,
+        "anchor_x": 183,
         "anchor_y": 618.5,
         "mask_box": {
-          "x": 174,
-          "y": 587,
-          "w": 223,
-          "h": 63
+          "x": 175,
+          "y": 589,
+          "w": 222,
+          "h": 59
         }
       },
       {
         "text": "Spina iliaca posterior superior",
-        "anchor_x": 1813,
+        "anchor_x": 1812,
         "anchor_y": 622.0,
         "mask_box": {
-          "x": 1805,
-          "y": 588,
-          "w": 227,
-          "h": 168
+          "x": 1803,
+          "y": 589,
+          "w": 228,
+          "h": 169
         }
       },
       {
         "text": "Spina iliaca anterior superior",
-        "anchor_x": 179,
+        "anchor_x": 181,
         "anchor_y": 785.0,
         "mask_box": {
-          "x": 171,
-          "y": 748,
-          "w": 230,
-          "h": 168
+          "x": 173,
+          "y": 753,
+          "w": 227,
+          "h": 166
         }
       },
       {
         "text": "Facies auricularis ossis ilii",
-        "anchor_x": 1814,
-        "anchor_y": 824.0,
+        "anchor_x": 1812,
+        "anchor_y": 823.0,
         "mask_box": {
           "x": 1804,
-          "y": 793,
-          "w": 211,
+          "y": 791,
+          "w": 212,
           "h": 164
         }
       },
       {
         "text": "Spina iliaca anterior inferior",
-        "anchor_x": 179,
-        "anchor_y": 1034.5,
+        "anchor_x": 182,
+        "anchor_y": 1034.0,
         "mask_box": {
-          "x": 171,
-          "y": 999,
-          "w": 229,
-          "h": 163
+          "x": 174,
+          "y": 1002,
+          "w": 226,
+          "h": 161
         }
       },
       {
         "text": "Corpus ossis ilii",
-        "anchor_x": 1639,
-        "anchor_y": 1161.0,
+        "anchor_x": 1637,
+        "anchor_y": 1159.0,
         "mask_box": {
-          "x": 1630,
-          "y": 1128,
-          "w": 164,
-          "h": 114
+          "x": 1629,
+          "y": 1124,
+          "w": 165,
+          "h": 117
         }
       },
       {
         "text": "Linea arcuata",
-        "anchor_x": 139,
-        "anchor_y": 1220.5,
+        "anchor_x": 140,
+        "anchor_y": 1219.5,
         "mask_box": {
-          "x": 131,
-          "y": 1190,
-          "w": 261,
-          "h": 61
+          "x": 132,
+          "y": 1192,
+          "w": 258,
+          "h": 55
         }
       },
       {
         "text": "R. superior ossis pubis",
-        "anchor_x": 192,
-        "anchor_y": 1309.0,
+        "anchor_x": 191,
+        "anchor_y": 1308.5,
         "mask_box": {
-          "x": 180,
+          "x": 178,
           "y": 1279,
-          "w": 219,
-          "h": 112
+          "w": 222,
+          "h": 114
         }
       },
       {
         "text": "Spina ischiadica",
         "anchor_x": 1638,
-        "anchor_y": 1338.0,
+        "anchor_y": 1336.5,
         "mask_box": {
           "x": 1630,
-          "y": 1306,
+          "y": 1304,
           "w": 200,
-          "h": 110
+          "h": 111
         }
       },
       {
         "text": "Pecten ossis pubis",
-        "anchor_x": 257,
-        "anchor_y": 1444.0,
+        "anchor_x": 256,
+        "anchor_y": 1443.5,
         "mask_box": {
-          "x": 180,
+          "x": 181,
           "y": 1414,
-          "w": 220,
-          "h": 116
+          "w": 217,
+          "h": 112
         }
       },
       {
         "text": "Corpus ossis ischii",
-        "anchor_x": 1641,
-        "anchor_y": 1486.0,
+        "anchor_x": 1639,
+        "anchor_y": 1485.5,
         "mask_box": {
-          "x": 1632,
-          "y": 1455,
-          "w": 211,
-          "h": 111
+          "x": 1631,
+          "y": 1452,
+          "w": 210,
+          "h": 112
         }
       },
       {
         "text": "Tuberculum pubicum",
         "anchor_x": 167,
-        "anchor_y": 1580.5,
+        "anchor_y": 1580.0,
         "mask_box": {
           "x": 159,
-          "y": 1551,
-          "w": 239,
+          "y": 1552,
+          "w": 240,
           "h": 115
         }
       },
       {
         "text": "Foramen obturatum",
         "anchor_x": 1641,
-        "anchor_y": 1633.5,
+        "anchor_y": 1632.5,
         "mask_box": {
           "x": 1633,
-          "y": 1604,
+          "y": 1602,
           "w": 218,
-          "h": 109
+          "h": 110
         }
       },
       {
         "text": "Corpus ossis pubis",
-        "anchor_x": 255,
-        "anchor_y": 1736.0,
+        "anchor_x": 251,
+        "anchor_y": 1734.0,
         "mask_box": {
-          "x": 178,
-          "y": 1704,
-          "w": 222,
-          "h": 116
+          "x": 179,
+          "y": 1701,
+          "w": 221,
+          "h": 118
         }
       },
       {
         "text": "Tuber ischiadicum",
-        "anchor_x": 1582,
-        "anchor_y": 1794.5,
+        "anchor_x": 1583,
+        "anchor_y": 1793.5,
         "mask_box": {
-          "x": 1574,
+          "x": 1575,
           "y": 1763,
           "w": 237,
           "h": 111
@@ -1699,24 +1710,24 @@
       },
       {
         "text": "Facies symphysialis",
-        "anchor_x": 392,
-        "anchor_y": 1934.0,
+        "anchor_x": 390,
+        "anchor_y": 1932.5,
         "mask_box": {
-          "x": 269,
-          "y": 1903,
-          "w": 250,
-          "h": 116
+          "x": 267,
+          "y": 1901,
+          "w": 252,
+          "h": 119
         }
       },
       {
         "text": "R. inferior ossis pubis",
-        "anchor_x": 671,
-        "anchor_y": 2072.5,
+        "anchor_x": 670,
+        "anchor_y": 2073.0,
         "mask_box": {
           "x": 652,
-          "y": 2040,
+          "y": 2042,
           "w": 220,
-          "h": 120
+          "h": 118
         }
       }
     ]
@@ -1729,201 +1740,355 @@
     "view": "vorne & hinten",
     "labels": [
       {
-        "text": "Corpus femoris",
-        "anchor_x": 1177,
-        "anchor_y": 1835.5,
+        "text": "Caput femoris",
+        "anchor_x": 1304,
+        "anchor_y": 94.5,
         "mask_box": {
-          "x": 1169,
-          "y": 1800,
-          "w": 168,
-          "h": 118
+          "x": 1277,
+          "y": 67,
+          "w": 121,
+          "h": 85
+        }
+      },
+      {
+        "text": "Caput femoris",
+        "anchor_x": 879,
+        "anchor_y": 181.0,
+        "mask_box": {
+          "x": 870,
+          "y": 153,
+          "w": 120,
+          "h": 86
+        }
+      },
+      {
+        "text": "Fovea capitis femoris",
+        "anchor_x": 1225,
+        "anchor_y": 180.5,
+        "mask_box": {
+          "x": 1217,
+          "y": 154,
+          "w": 178,
+          "h": 85
+        }
+      },
+      {
+        "text": "Fossa trochanterica",
+        "anchor_x": 2006,
+        "anchor_y": 236.5,
+        "mask_box": {
+          "x": 1998,
+          "y": 212,
+          "w": 184,
+          "h": 82
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 138,
+        "anchor_y": 332.5,
+        "mask_box": {
+          "x": 130,
+          "y": 307,
+          "w": 161,
+          "h": 91
+        }
+      },
+      {
+        "text": "Collum femoris",
+        "anchor_x": 845,
+        "anchor_y": 328.5,
+        "mask_box": {
+          "x": 835,
+          "y": 304,
+          "w": 117,
+          "h": 83
+        }
+      },
+      {
+        "text": "Collum femoris",
+        "anchor_x": 1351,
+        "anchor_y": 328.0,
+        "mask_box": {
+          "x": 1336,
+          "y": 302,
+          "w": 119,
+          "h": 85
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 2005,
+        "anchor_y": 333.5,
+        "mask_box": {
+          "x": 1997,
+          "y": 308,
+          "w": 157,
+          "h": 88
+        }
+      },
+      {
+        "text": "Crista intertrochanterica",
+        "anchor_x": 2006,
+        "anchor_y": 430.0,
+        "mask_box": {
+          "x": 1998,
+          "y": 405,
+          "w": 184,
+          "h": 82
+        }
+      },
+      {
+        "text": "Linea intertrochanterica",
+        "anchor_x": 171,
+        "anchor_y": 490.0,
+        "mask_box": {
+          "x": 132,
+          "y": 467,
+          "w": 184,
+          "h": 80
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 733,
+        "anchor_y": 489.5,
+        "mask_box": {
+          "x": 725,
+          "y": 465,
+          "w": 154,
+          "h": 83
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 1418,
+        "anchor_y": 489.0,
+        "mask_box": {
+          "x": 1410,
+          "y": 464,
+          "w": 155,
+          "h": 83
+        }
+      },
+      {
+        "text": "Linea pectinea",
+        "anchor_x": 1484,
+        "anchor_y": 575.0,
+        "mask_box": {
+          "x": 1436,
+          "y": 549,
+          "w": 131,
+          "h": 88
+        }
+      },
+      {
+        "text": "Tuberositas glutea",
+        "anchor_x": 1903,
+        "anchor_y": 704.0,
+        "mask_box": {
+          "x": 1895,
+          "y": 680,
+          "w": 161,
+          "h": 86
+        }
+      },
+      {
+        "text": "Corpus femoris",
+        "anchor_x": 784,
+        "anchor_y": 1222.5,
+        "mask_box": {
+          "x": 774,
+          "y": 1194,
+          "w": 121,
+          "h": 87
         }
       },
       {
         "text": "Labium laterale",
-        "anchor_x": 2745,
-        "anchor_y": 1832.5,
+        "anchor_x": 1828,
+        "anchor_y": 1220.0,
         "mask_box": {
-          "x": 2737,
-          "y": 1800,
-          "w": 162,
-          "h": 114
+          "x": 1820,
+          "y": 1194,
+          "w": 116,
+          "h": 85
         }
       },
       {
         "text": "Linea aspera",
-        "anchor_x": 2963,
-        "anchor_y": 1911.0,
+        "anchor_x": 1975,
+        "anchor_y": 1273.0,
         "mask_box": {
-          "x": 2955,
-          "y": 1877,
-          "w": 146,
-          "h": 119
+          "x": 1967,
+          "y": 1248,
+          "w": 102,
+          "h": 87
         }
       },
       {
         "text": "Labium mediale",
-        "anchor_x": 2746,
-        "anchor_y": 1984.5,
+        "anchor_x": 1829,
+        "anchor_y": 1322.0,
         "mask_box": {
-          "x": 2738,
-          "y": 1953,
-          "w": 173,
-          "h": 114
+          "x": 1821,
+          "y": 1296,
+          "w": 122,
+          "h": 86
         }
       },
       {
         "text": "Linea supracondylaris medialis",
-        "anchor_x": 1736,
-        "anchor_y": 2728.5,
+        "anchor_x": 1155,
+        "anchor_y": 1817.5,
         "mask_box": {
-          "x": 1728,
-          "y": 2696,
-          "w": 240,
-          "h": 161
-        }
-      },
-      {
-        "text": "Linea supracondylaris lateralis",
-        "anchor_x": 2610,
-        "anchor_y": 2728.0,
-        "mask_box": {
-          "x": 2600,
-          "y": 2696,
-          "w": 241,
-          "h": 160
-        }
-      },
-      {
-        "text": "Tuberculum adductorium",
-        "anchor_x": 1612,
-        "anchor_y": 2928.0,
-        "mask_box": {
-          "x": 1596,
-          "y": 2897,
-          "w": 256,
-          "h": 111
-        }
-      },
-      {
-        "text": "Facies poplitea",
-        "anchor_x": 2611,
-        "anchor_y": 2971.0,
-        "mask_box": {
-          "x": 2603,
-          "y": 2942,
-          "w": 285,
-          "h": 58
-        }
-      },
-      {
-        "text": "Epicondylus medialis",
-        "anchor_x": 1613,
-        "anchor_y": 3077.0,
-        "mask_box": {
-          "x": 1605,
-          "y": 3043,
-          "w": 241,
-          "h": 114
-        }
-      },
-      {
-        "text": "Linea intercondylaris",
-        "anchor_x": 2611,
-        "anchor_y": 3109.5,
-        "mask_box": {
-          "x": 2603,
-          "y": 3080,
-          "w": 221,
-          "h": 113
-        }
-      },
-      {
-        "text": "Epicondylus lateralis",
-        "anchor_x": 618,
-        "anchor_y": 3247.5,
-        "mask_box": {
-          "x": 610,
-          "y": 3212,
-          "w": 246,
-          "h": 117
-        }
-      },
-      {
-        "text": "Epicondylus lateralis",
-        "anchor_x": 2611,
-        "anchor_y": 3256.5,
-        "mask_box": {
-          "x": 2602,
-          "y": 3224,
-          "w": 240,
-          "h": 112
-        }
-      },
-      {
-        "text": "Condylus lateralis",
-        "anchor_x": 667,
-        "anchor_y": 3424.0,
-        "mask_box": {
-          "x": 659,
-          "y": 3391,
-          "w": 193,
-          "h": 113
-        }
-      },
-      {
-        "text": "Condylus lateralis",
-        "anchor_x": 2608,
-        "anchor_y": 3424.0,
-        "mask_box": {
-          "x": 2600,
-          "y": 3389,
-          "w": 196,
+          "x": 1147,
+          "y": 1792,
+          "w": 169,
           "h": 115
         }
       },
       {
+        "text": "Linea supracondylaris lateralis",
+        "anchor_x": 1738,
+        "anchor_y": 1817.5,
+        "mask_box": {
+          "x": 1730,
+          "y": 1791,
+          "w": 167,
+          "h": 116
+        }
+      },
+      {
+        "text": "Tuberculum adductorium",
+        "anchor_x": 1072,
+        "anchor_y": 1951.0,
+        "mask_box": {
+          "x": 1061,
+          "y": 1926,
+          "w": 177,
+          "h": 83
+        }
+      },
+      {
+        "text": "Facies poplitea",
+        "anchor_x": 1736,
+        "anchor_y": 1980.0,
+        "mask_box": {
+          "x": 1728,
+          "y": 1956,
+          "w": 201,
+          "h": 48
+        }
+      },
+      {
+        "text": "Epicondylus medialis",
+        "anchor_x": 1074,
+        "anchor_y": 2050.0,
+        "mask_box": {
+          "x": 1066,
+          "y": 2023,
+          "w": 167,
+          "h": 83
+        }
+      },
+      {
+        "text": "Linea intercondylaris",
+        "anchor_x": 1739,
+        "anchor_y": 2072.5,
+        "mask_box": {
+          "x": 1731,
+          "y": 2050,
+          "w": 154,
+          "h": 82
+        }
+      },
+      {
+        "text": "Epicondylus lateralis",
+        "anchor_x": 412,
+        "anchor_y": 2165.0,
+        "mask_box": {
+          "x": 404,
+          "y": 2139,
+          "w": 171,
+          "h": 82
+        }
+      },
+      {
+        "text": "Epicondylus lateralis",
+        "anchor_x": 1737,
+        "anchor_y": 2170.0,
+        "mask_box": {
+          "x": 1729,
+          "y": 2144,
+          "w": 168,
+          "h": 83
+        }
+      },
+      {
+        "text": "Condylus lateralis",
+        "anchor_x": 442,
+        "anchor_y": 2281.5,
+        "mask_box": {
+          "x": 434,
+          "y": 2253,
+          "w": 140,
+          "h": 86
+        }
+      },
+      {
+        "text": "Condylus lateralis",
+        "anchor_x": 1736,
+        "anchor_y": 2282.0,
+        "mask_box": {
+          "x": 1728,
+          "y": 2255,
+          "w": 138,
+          "h": 83
+        }
+      },
+      {
         "text": "Facies patellaris",
-        "anchor_x": 1122,
-        "anchor_y": 3639.5,
+        "anchor_x": 745,
+        "anchor_y": 2425.0,
         "mask_box": {
-          "x": 1085,
-          "y": 3611,
-          "w": 188,
-          "h": 114
+          "x": 717,
+          "y": 2402,
+          "w": 135,
+          "h": 85
         }
       },
       {
         "text": "Condylus medialis",
-        "anchor_x": 1375,
-        "anchor_y": 3641.0,
+        "anchor_x": 918,
+        "anchor_y": 2426.5,
         "mask_box": {
-          "x": 1367,
-          "y": 3607,
-          "w": 192,
-          "h": 114
+          "x": 910,
+          "y": 2404,
+          "w": 130,
+          "h": 78
         }
       },
       {
         "text": "Condylus medialis",
-        "anchor_x": 1908,
-        "anchor_y": 3641.0,
+        "anchor_x": 1272,
+        "anchor_y": 2425.0,
         "mask_box": {
-          "x": 1900,
-          "y": 3608,
-          "w": 192,
-          "h": 112
+          "x": 1264,
+          "y": 2401,
+          "w": 130,
+          "h": 80
         }
       },
       {
         "text": "Fossa intercondylaris",
-        "anchor_x": 2231,
-        "anchor_y": 3639.5,
+        "anchor_x": 1485,
+        "anchor_y": 2425.0,
         "mask_box": {
-          "x": 2142,
-          "y": 3608,
-          "w": 288,
-          "h": 114
+          "x": 1424,
+          "y": 2400,
+          "w": 198,
+          "h": 84
         }
       }
     ]
@@ -1937,55 +2102,55 @@
     "labels": [
       {
         "text": "Facies articularis superior",
-        "anchor_x": 1290,
-        "anchor_y": 67.0,
+        "anchor_x": 1291,
+        "anchor_y": 67.5,
         "mask_box": {
-          "x": 1282,
-          "y": 37,
-          "w": 259,
-          "h": 115
+          "x": 1283,
+          "y": 38,
+          "w": 257,
+          "h": 113
         }
       },
       {
         "text": "Tuberositas ossis sacri",
-        "anchor_x": 1601,
-        "anchor_y": 67.0,
+        "anchor_x": 1598,
+        "anchor_y": 66.5,
         "mask_box": {
-          "x": 1593,
-          "y": 37,
-          "w": 228,
-          "h": 112
+          "x": 1590,
+          "y": 34,
+          "w": 233,
+          "h": 114
         }
       },
       {
         "text": "Canalis sacralis",
-        "anchor_x": 1059,
+        "anchor_x": 1058,
         "anchor_y": 188.5,
         "mask_box": {
-          "x": 1048,
-          "y": 158,
-          "w": 160,
-          "h": 114
+          "x": 1049,
+          "y": 157,
+          "w": 157,
+          "h": 115
         }
       },
       {
         "text": "Pars lateralis",
         "anchor_x": 196,
-        "anchor_y": 559.0,
+        "anchor_y": 558.0,
         "mask_box": {
-          "x": 128,
-          "y": 527,
-          "w": 166,
-          "h": 113
+          "x": 126,
+          "y": 525,
+          "w": 170,
+          "h": 115
         }
       },
       {
         "text": "Facies auricularis",
         "anchor_x": 1945,
-        "anchor_y": 682.0,
+        "anchor_y": 681.0,
         "mask_box": {
           "x": 1937,
-          "y": 651,
+          "y": 650,
           "w": 209,
           "h": 112
         }
@@ -1997,96 +2162,96 @@
         "mask_box": {
           "x": 1880,
           "y": 865,
-          "w": 265,
+          "w": 266,
           "h": 109
         }
       },
       {
         "text": "Crista sacralis mediana",
-        "anchor_x": 1888,
+        "anchor_x": 1889,
         "anchor_y": 1049.0,
         "mask_box": {
           "x": 1880,
-          "y": 1019,
+          "y": 1021,
           "w": 266,
-          "h": 111
+          "h": 108
         }
       },
       {
         "text": "Foramina sacralia posteriora",
         "anchor_x": 296,
-        "anchor_y": 1072.0,
+        "anchor_y": 1071.5,
         "mask_box": {
-          "x": 272,
-          "y": 1043,
-          "w": 210,
-          "h": 164
+          "x": 274,
+          "y": 1041,
+          "w": 207,
+          "h": 166
         }
       },
       {
         "text": "Crista sacralis medialis",
-        "anchor_x": 1739,
-        "anchor_y": 1306.5,
+        "anchor_x": 1740,
+        "anchor_y": 1306.0,
         "mask_box": {
           "x": 1731,
-          "y": 1277,
+          "y": 1278,
           "w": 265,
-          "h": 110
+          "h": 109
         }
       },
       {
         "text": "Hiatus sacralis",
-        "anchor_x": 1622,
+        "anchor_x": 1621,
         "anchor_y": 1465.5,
         "mask_box": {
-          "x": 1614,
-          "y": 1437,
+          "x": 1613,
+          "y": 1436,
           "w": 276,
-          "h": 57
+          "h": 59
         }
       },
       {
         "text": "Cornua sacralia",
-        "anchor_x": 1456,
-        "anchor_y": 1587.5,
+        "anchor_x": 1455,
+        "anchor_y": 1586.5,
         "mask_box": {
-          "x": 1448,
-          "y": 1559,
-          "w": 294,
-          "h": 57
+          "x": 1447,
+          "y": 1557,
+          "w": 296,
+          "h": 59
         }
       },
       {
         "text": "Cornu coccygeum",
-        "anchor_x": 703,
-        "anchor_y": 1632.5,
+        "anchor_x": 700,
+        "anchor_y": 1630.5,
         "mask_box": {
           "x": 599,
-          "y": 1603,
+          "y": 1598,
           "w": 231,
-          "h": 112
+          "h": 117
         }
       },
       {
         "text": "Art. sacrococcygea",
-        "anchor_x": 1454,
-        "anchor_y": 1727.0,
+        "anchor_x": 1453,
+        "anchor_y": 1727.5,
         "mask_box": {
-          "x": 1446,
-          "y": 1698,
-          "w": 206,
-          "h": 112
+          "x": 1444,
+          "y": 1697,
+          "w": 209,
+          "h": 115
         }
       },
       {
         "text": "Os coccygis",
-        "anchor_x": 663,
+        "anchor_x": 661,
         "anchor_y": 1789.0,
         "mask_box": {
-          "x": 655,
-          "y": 1756,
-          "w": 235,
-          "h": 66
+          "x": 653,
+          "y": 1753,
+          "w": 238,
+          "h": 72
         }
       }
     ]
@@ -2099,22 +2264,66 @@
     "view": "ventral",
     "labels": [
       {
-        "text": "lateralis",
-        "anchor_x": 1867,
-        "anchor_y": 684.0,
+        "text": "Promontorium",
+        "anchor_x": 683,
+        "anchor_y": 155.0,
         "mask_box": {
-          "x": 1859,
-          "y": 651,
-          "w": 167,
-          "h": 66
+          "x": 675,
+          "y": 124,
+          "w": 182,
+          "h": 111
+        }
+      },
+      {
+        "text": "Basis ossis sacri",
+        "anchor_x": 966,
+        "anchor_y": 154.5,
+        "mask_box": {
+          "x": 915,
+          "y": 124,
+          "w": 203,
+          "h": 112
+        }
+      },
+      {
+        "text": "Proc. articularis superior",
+        "anchor_x": 1185,
+        "anchor_y": 153.0,
+        "mask_box": {
+          "x": 1167,
+          "y": 125,
+          "w": 258,
+          "h": 113
+        }
+      },
+      {
+        "text": "Ala ossis sacri",
+        "anchor_x": 1481,
+        "anchor_y": 152.5,
+        "mask_box": {
+          "x": 1473,
+          "y": 120,
+          "w": 179,
+          "h": 117
+        }
+      },
+      {
+        "text": "Pars lateralis",
+        "anchor_x": 1866,
+        "anchor_y": 634.5,
+        "mask_box": {
+          "x": 1858,
+          "y": 602,
+          "w": 168,
+          "h": 115
         }
       },
       {
         "text": "Schnittebene von E",
-        "anchor_x": 137,
+        "anchor_x": 135,
         "anchor_y": 1028.0,
         "mask_box": {
-          "x": 129,
+          "x": 127,
           "y": 999,
           "w": 267,
           "h": 111
@@ -2122,57 +2331,57 @@
       },
       {
         "text": "Foramina sacralia anteriora",
-        "anchor_x": 244,
-        "anchor_y": 1183.5,
+        "anchor_x": 242,
+        "anchor_y": 1183.0,
         "mask_box": {
-          "x": 236,
-          "y": 1155,
-          "w": 192,
-          "h": 162
+          "x": 234,
+          "y": 1152,
+          "w": 193,
+          "h": 161
         }
       },
       {
         "text": "Lineae transversae",
-        "anchor_x": 1649,
-        "anchor_y": 1184.5,
+        "anchor_x": 1645,
+        "anchor_y": 1183.5,
         "mask_box": {
-          "x": 1641,
-          "y": 1155,
-          "w": 229,
-          "h": 108
+          "x": 1637,
+          "y": 1150,
+          "w": 234,
+          "h": 117
         }
       },
       {
         "text": "Apex ossis sacri",
-        "anchor_x": 499,
-        "anchor_y": 1591.0,
+        "anchor_x": 500,
+        "anchor_y": 1591.5,
         "mask_box": {
-          "x": 407,
-          "y": 1557,
-          "w": 207,
-          "h": 113
+          "x": 408,
+          "y": 1559,
+          "w": 206,
+          "h": 110
         }
       },
       {
         "text": "Art. sacrococcygea",
-        "anchor_x": 1346,
-        "anchor_y": 1669.0,
+        "anchor_x": 1345,
+        "anchor_y": 1669.5,
         "mask_box": {
-          "x": 1338,
-          "y": 1640,
-          "w": 208,
-          "h": 113
+          "x": 1337,
+          "y": 1638,
+          "w": 210,
+          "h": 116
         }
       },
       {
         "text": "Os coccygis",
-        "anchor_x": 587,
-        "anchor_y": 1837.5,
+        "anchor_x": 585,
+        "anchor_y": 1837.0,
         "mask_box": {
-          "x": 579,
-          "y": 1804,
-          "w": 237,
-          "h": 67
+          "x": 577,
+          "y": 1802,
+          "w": 239,
+          "h": 70
         }
       }
     ]
