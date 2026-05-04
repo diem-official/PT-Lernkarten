@@ -25,5 +25,6 @@ Thumbs.db
 
 # Source images and generated outputs – not tracked in git
 Input/*
+Bilder/*
 pipeline.log
 Output/*
