@@ -1,5 +1,58 @@
 [
   {
+    "filename": "Achsen & Ebenen-Körper-Frontal-clean.jpg",
+    "og_filename": "Achsen & Ebenen-Körper-Frontal.png",
+    "category": "Achsen & Ebenen",
+    "subcategory": "Körper",
+    "view": "Frontal",
+    "labels": [
+      {
+        "text": "Transversalebene",
+        "anchor_x": 209,
+        "anchor_y": 1205.0,
+        "mask_box": {
+          "x": 201,
+          "y": 1173,
+          "w": 240,
+          "h": 114
+        }
+      },
+      {
+        "text": "Longitudinalachse",
+        "anchor_x": 1271,
+        "anchor_y": 1304.0,
+        "mask_box": {
+          "x": 1263,
+          "y": 1270,
+          "w": 261,
+          "h": 114
+        }
+      },
+      {
+        "text": "Transversalachse",
+        "anchor_x": 161,
+        "anchor_y": 2067.0,
+        "mask_box": {
+          "x": 153,
+          "y": 2036,
+          "w": 238,
+          "h": 116
+        }
+      },
+      {
+        "text": "Sagittalachse",
+        "anchor_x": 1196,
+        "anchor_y": 2120.0,
+        "mask_box": {
+          "x": 1188,
+          "y": 2084,
+          "w": 272,
+          "h": 72
+        }
+      }
+    ]
+  },
+  {
     "filename": "Knochen-Becken-Dorsal (Frau)-clean.jpg",
     "og_filename": "Knochen-Becken-Dorsal (Frau).png",
     "category": "Knochen",
@@ -2382,6 +2435,213 @@
           "y": 1802,
           "w": 239,
           "h": 70
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Lagebezeichnung-Körper-Frontal-clean.jpg",
+    "og_filename": "Lagebezeichnung-Körper-Frontal.png",
+    "category": "Lagebezeichnung",
+    "subcategory": "Körper",
+    "view": "Frontal",
+    "labels": [
+      {
+        "text": "lateralis medialis",
+        "anchor_x": 862,
+        "anchor_y": 105.0,
+        "mask_box": {
+          "x": 853,
+          "y": 78,
+          "w": 154,
+          "h": 110
+        }
+      },
+      {
+        "text": "cranialis",
+        "anchor_x": 125,
+        "anchor_y": 471.5,
+        "mask_box": {
+          "x": 117,
+          "y": 441,
+          "w": 154,
+          "h": 61
+        }
+      },
+      {
+        "text": "caudalis",
+        "anchor_x": 240,
+        "anchor_y": 547.5,
+        "mask_box": {
+          "x": 232,
+          "y": 517,
+          "w": 152,
+          "h": 61
+        }
+      },
+      {
+        "text": "dorsalis",
+        "anchor_x": 1064,
+        "anchor_y": 639.0,
+        "mask_box": {
+          "x": 1056,
+          "y": 609,
+          "w": 148,
+          "h": 60
+        }
+      },
+      {
+        "text": "ventralis",
+        "anchor_x": 1072,
+        "anchor_y": 1019.0,
+        "mask_box": {
+          "x": 1064,
+          "y": 991,
+          "w": 158,
+          "h": 56
+        }
+      },
+      {
+        "text": "ulnaris",
+        "anchor_x": 102,
+        "anchor_y": 1114.5,
+        "mask_box": {
+          "x": 94,
+          "y": 1086,
+          "w": 128,
+          "h": 57
+        }
+      },
+      {
+        "text": "radialis",
+        "anchor_x": 94,
+        "anchor_y": 1187.0,
+        "mask_box": {
+          "x": 86,
+          "y": 1158,
+          "w": 139,
+          "h": 58
+        }
+      },
+      {
+        "text": "dorsalis",
+        "anchor_x": 1204,
+        "anchor_y": 1337.0,
+        "mask_box": {
+          "x": 1196,
+          "y": 1305,
+          "w": 148,
+          "h": 64
+        }
+      },
+      {
+        "text": "palmaris",
+        "anchor_x": 979,
+        "anchor_y": 1595.0,
+        "mask_box": {
+          "x": 971,
+          "y": 1562,
+          "w": 161,
+          "h": 66
+        }
+      },
+      {
+        "text": "proximalis",
+        "anchor_x": 126,
+        "anchor_y": 1656.0,
+        "mask_box": {
+          "x": 118,
+          "y": 1624,
+          "w": 185,
+          "h": 64
+        }
+      },
+      {
+        "text": "distalis",
+        "anchor_x": 299,
+        "anchor_y": 1732.5,
+        "mask_box": {
+          "x": 291,
+          "y": 1703,
+          "w": 133,
+          "h": 59
+        }
+      },
+      {
+        "text": "dexter",
+        "anchor_x": 224,
+        "anchor_y": 1935.0,
+        "mask_box": {
+          "x": 216,
+          "y": 1907,
+          "w": 127,
+          "h": 56
+        }
+      },
+      {
+        "text": "sinister",
+        "anchor_x": 961,
+        "anchor_y": 1935.5,
+        "mask_box": {
+          "x": 953,
+          "y": 1907,
+          "w": 140,
+          "h": 57
+        }
+      },
+      {
+        "text": "tibialis",
+        "anchor_x": 298,
+        "anchor_y": 2044.0,
+        "mask_box": {
+          "x": 290,
+          "y": 2015,
+          "w": 128,
+          "h": 58
+        }
+      },
+      {
+        "text": "fibularis",
+        "anchor_x": 277,
+        "anchor_y": 2117.0,
+        "mask_box": {
+          "x": 269,
+          "y": 2088,
+          "w": 149,
+          "h": 58
+        }
+      },
+      {
+        "text": "TI%N",
+        "anchor_x": 745,
+        "anchor_y": 2211.5,
+        "mask_box": {
+          "x": 737,
+          "y": 2182,
+          "w": 48,
+          "h": 59
+        }
+      },
+      {
+        "text": "dorsalis",
+        "anchor_x": 955,
+        "anchor_y": 2321.0,
+        "mask_box": {
+          "x": 947,
+          "y": 2293,
+          "w": 142,
+          "h": 56
+        }
+      },
+      {
+        "text": "plantaris",
+        "anchor_x": 951,
+        "anchor_y": 2396.0,
+        "mask_box": {
+          "x": 943,
+          "y": 2365,
+          "w": 163,
+          "h": 62
         }
       }
     ]
