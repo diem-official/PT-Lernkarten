@@ -53,6 +53,354 @@
     ]
   },
   {
+    "filename": "Bänder-Becken-Dorsal-clean.jpg",
+    "og_filename": "Bänder-Becken-Dorsal.png",
+    "category": "Bänder",
+    "subcategory": "Becken",
+    "view": "Dorsal",
+    "labels": [
+      {
+        "text": "Proc. spinosus (L IV)",
+        "anchor_x": 1062,
+        "anchor_y": 100.0,
+        "mask_box": {
+          "x": 1054,
+          "y": 71,
+          "w": 313,
+          "h": 58
+        }
+      },
+      {
+        "text": "Crista iliaca",
+        "anchor_x": 506,
+        "anchor_y": 156.0,
+        "mask_box": {
+          "x": 498,
+          "y": 128,
+          "w": 191,
+          "h": 56
+        }
+      },
+      {
+        "text": "Lig. iliolumbale",
+        "anchor_x": 1497,
+        "anchor_y": 155.5,
+        "mask_box": {
+          "x": 1489,
+          "y": 126,
+          "w": 244,
+          "h": 59
+        }
+      },
+      {
+        "text": "Os ilium, Facies glutea",
+        "anchor_x": 2107,
+        "anchor_y": 480.5,
+        "mask_box": {
+          "x": 2099,
+          "y": 451,
+          "w": 214,
+          "h": 101
+        }
+      },
+      {
+        "text": "Ligg. sacroiliaca interossea",
+        "anchor_x": 205,
+        "anchor_y": 759.0,
+        "mask_box": {
+          "x": 197,
+          "y": 728,
+          "w": 254,
+          "h": 98
+        }
+      },
+      {
+        "text": "Ligg. sacroiliaca posteriora",
+        "anchor_x": 1929,
+        "anchor_y": 956.0,
+        "mask_box": {
+          "x": 1920,
+          "y": 928,
+          "w": 252,
+          "h": 98
+        }
+      },
+      {
+        "text": "Foramen ischiadicum majus",
+        "anchor_x": 349,
+        "anchor_y": 1017.5,
+        "mask_box": {
+          "x": 202,
+          "y": 991,
+          "w": 293,
+          "h": 96
+        }
+      },
+      {
+        "text": "Lig. sacrospinale",
+        "anchor_x": 1883,
+        "anchor_y": 1081.0,
+        "mask_box": {
+          "x": 1875,
+          "y": 1052,
+          "w": 263,
+          "h": 58
+        }
+      },
+      {
+        "text": "Spina ischiadica",
+        "anchor_x": 1883,
+        "anchor_y": 1157.0,
+        "mask_box": {
+          "x": 1875,
+          "y": 1128,
+          "w": 256,
+          "h": 58
+        }
+      },
+      {
+        "text": "Foramen ischiadicum minus",
+        "anchor_x": 478,
+        "anchor_y": 1231.0,
+        "mask_box": {
+          "x": 330,
+          "y": 1206,
+          "w": 293,
+          "h": 90
+        }
+      },
+      {
+        "text": "Os coccygis",
+        "anchor_x": 1747,
+        "anchor_y": 1243.0,
+        "mask_box": {
+          "x": 1739,
+          "y": 1213,
+          "w": 196,
+          "h": 60
+        }
+      },
+      {
+        "text": "Lig. sacrotuberale",
+        "anchor_x": 1747,
+        "anchor_y": 1332.5,
+        "mask_box": {
+          "x": 1739,
+          "y": 1303,
+          "w": 281,
+          "h": 59
+        }
+      },
+      {
+        "text": "Membrana obturatoria",
+        "anchor_x": 501,
+        "anchor_y": 1351.0,
+        "mask_box": {
+          "x": 487,
+          "y": 1325,
+          "w": 189,
+          "h": 93
+        }
+      },
+      {
+        "text": "Tuber ischiadicum",
+        "anchor_x": 1745,
+        "anchor_y": 1421.0,
+        "mask_box": {
+          "x": 1737,
+          "y": 1394,
+          "w": 199,
+          "h": 94
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Bänder-Becken-Ventral Kranial-clean.jpg",
+    "og_filename": "Bänder-Becken-Ventral Kranial.png",
+    "category": "Bänder",
+    "subcategory": "Becken",
+    "view": "Ventral Kranial",
+    "labels": [
+      {
+        "text": "Lig. longitudinale anterius",
+        "anchor_x": 1100,
+        "anchor_y": 132.5,
+        "mask_box": {
+          "x": 1092,
+          "y": 104,
+          "w": 258,
+          "h": 91
+        }
+      },
+      {
+        "text": "Promontorium",
+        "anchor_x": 833,
+        "anchor_y": 171.0,
+        "mask_box": {
+          "x": 825,
+          "y": 147,
+          "w": 225,
+          "h": 48
+        }
+      },
+      {
+        "text": "Lig. iliolumbale",
+        "anchor_x": 1398,
+        "anchor_y": 171.0,
+        "mask_box": {
+          "x": 1390,
+          "y": 144,
+          "w": 229,
+          "h": 54
+        }
+      },
+      {
+        "text": "Ligg. sacroiliaca anteriora",
+        "anchor_x": 2091,
+        "anchor_y": 623.5,
+        "mask_box": {
+          "x": 2083,
+          "y": 595,
+          "w": 235,
+          "h": 91
+        }
+      },
+      {
+        "text": "Os sacrum",
+        "anchor_x": 245,
+        "anchor_y": 765.5,
+        "mask_box": {
+          "x": 237,
+          "y": 740,
+          "w": 170,
+          "h": 51
+        }
+      },
+      {
+        "text": "Spina iliaca anterior superior",
+        "anchor_x": 2090,
+        "anchor_y": 765.0,
+        "mask_box": {
+          "x": 2082,
+          "y": 737,
+          "w": 253,
+          "h": 92
+        }
+      },
+      {
+        "text": "Lig. inguinale",
+        "anchor_x": 2005,
+        "anchor_y": 888.5,
+        "mask_box": {
+          "x": 1997,
+          "y": 860,
+          "w": 203,
+          "h": 57
+        }
+      },
+      {
+        "text": "FA",
+        "anchor_x": 1369,
+        "anchor_y": 923.5,
+        "mask_box": {
+          "x": 1361,
+          "y": 906,
+          "w": 52,
+          "h": 35
+        }
+      },
+      {
+        "text": "Lig. sacrotuberale",
+        "anchor_x": 276,
+        "anchor_y": 958.5,
+        "mask_box": {
+          "x": 268,
+          "y": 931,
+          "w": 264,
+          "h": 55
+        }
+      },
+      {
+        "text": "Spina iliaca anterior inferior",
+        "anchor_x": 408,
+        "anchor_y": 1038.0,
+        "mask_box": {
+          "x": 338,
+          "y": 1012,
+          "w": 238,
+          "h": 87
+        }
+      },
+      {
+        "text": "Lig. sacrospinale",
+        "anchor_x": 1879,
+        "anchor_y": 1077.0,
+        "mask_box": {
+          "x": 1871,
+          "y": 1050,
+          "w": 244,
+          "h": 54
+        }
+      },
+      {
+        "text": "Lig. sacrococcygeum anterius",
+        "anchor_x": 431,
+        "anchor_y": 1156.0,
+        "mask_box": {
+          "x": 423,
+          "y": 1129,
+          "w": 236,
+          "h": 92
+        }
+      },
+      {
+        "text": "Spina ischiadica",
+        "anchor_x": 1839,
+        "anchor_y": 1154.0,
+        "mask_box": {
+          "x": 1831,
+          "y": 1127,
+          "w": 238,
+          "h": 54
+        }
+      },
+      {
+        "text": "Symphysis pubica",
+        "anchor_x": 489,
+        "anchor_y": 1307.0,
+        "mask_box": {
+          "x": 481,
+          "y": 1280,
+          "w": 266,
+          "h": 54
+        }
+      },
+      {
+        "text": "Tuberculum pubicum",
+        "anchor_x": 1750,
+        "anchor_y": 1323.0,
+        "mask_box": {
+          "x": 1742,
+          "y": 1298,
+          "w": 188,
+          "h": 94
+        }
+      },
+      {
+        "text": "Membrana obturatoria",
+        "anchor_x": 580,
+        "anchor_y": 1414.0,
+        "mask_box": {
+          "x": 566,
+          "y": 1389,
+          "w": 180,
+          "h": 89
+        }
+      }
+    ]
+  },
+  {
     "filename": "Knochen-Becken-Dorsal (Frau)-clean.jpg",
     "og_filename": "Knochen-Becken-Dorsal (Frau).png",
     "category": "Knochen",
@@ -1205,6 +1553,17 @@
         }
       },
       {
+        "text": "Onnn",
+        "anchor_x": 1133,
+        "anchor_y": 624.5,
+        "mask_box": {
+          "x": 1125,
+          "y": 598,
+          "w": 35,
+          "h": 53
+        }
+      },
+      {
         "text": "Foramina sacralia anteriora",
         "anchor_x": 355,
         "anchor_y": 734.5,
@@ -1786,10 +2145,10 @@
     ]
   },
   {
-    "filename": "Knochen-Os femoris rechts-vorne & hinten-clean.jpg",
-    "og_filename": "Knochen-Os femoris rechts-vorne & hinten.png",
+    "filename": "Knochen-Os femoris (rechts)-vorne & hinten-clean.jpg",
+    "og_filename": "Knochen-Os femoris (rechts)-vorne & hinten.png",
     "category": "Knochen",
-    "subcategory": "Os femoris rechts",
+    "subcategory": "Os femoris (rechts)",
     "view": "vorne & hinten",
     "labels": [
       {

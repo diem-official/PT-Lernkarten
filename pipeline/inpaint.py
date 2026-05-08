@@ -10,10 +10,10 @@ def draw_boxes(image: Image.Image, blocks: list) -> Image.Image:
         y0 = max(0, block['y'] - 5)
         x1 = min(w_max, block['x'] + block['w'] + 0)
         y1 = min(h_max, block['y'] + block['h'] + 0)
-        draw.rectangle([x0, y0, x1, y1], outline=(255, 0, 0), width=3)
+        draw.rectangle([x0, y0, x1, y1], outline=(255, 20, 147), width=3)
         # Draw the box ID next to the box
         box_id_text = str(block['id'])
-        draw.text((x1 + 5, y0), box_id_text, fill=(255, 0, 0))
+        draw.text((x1 + 5, y0), box_id_text, fill=(255, 20, 147))
 
     return result
 

@@ -19,7 +19,7 @@ def _get_engine():
             use_doc_unwarping=False, 
             lang='german',
             det_limit_side_len=2500, 
-            det_db_box_thresh=0.5)
+            det_db_box_thresh=0.3)
     return _ocr_engine
 
 
@@ -52,6 +52,7 @@ def extract_labels(image_path: str) -> list:
 
     for text, score, box in zip(texts, scores, boxes):
         if score < 0.3 or not text.strip():
+            log.info("score-filtered (below 0.3): %r (score=%.3f)", text.strip(), score)
             continue
 
         if len(box) > 0 and hasattr(box[0], "__iter__"):
