@@ -300,17 +300,6 @@
         }
       },
       {
-        "text": "FA",
-        "anchor_x": 1369,
-        "anchor_y": 923.5,
-        "mask_box": {
-          "x": 1361,
-          "y": 906,
-          "w": 52,
-          "h": 35
-        }
-      },
-      {
         "text": "Lig. sacrotuberale",
         "anchor_x": 276,
         "anchor_y": 958.5,
@@ -1550,17 +1539,6 @@
           "y": 605,
           "w": 306,
           "h": 111
-        }
-      },
-      {
-        "text": "Onnn",
-        "anchor_x": 1133,
-        "anchor_y": 624.5,
-        "mask_box": {
-          "x": 1125,
-          "y": 598,
-          "w": 35,
-          "h": 53
         }
       },
       {
