@@ -19,7 +19,7 @@ def _get_engine():
             use_doc_unwarping=False, 
             lang='german',
             det_limit_side_len=2500, 
-            det_db_box_thresh=0.3)
+            det_db_box_thresh=0.5)
     return _ocr_engine
 
 
