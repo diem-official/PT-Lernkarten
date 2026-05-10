@@ -2939,35 +2939,24 @@
       },
       {
         "text": "fibularis",
-        "anchor_x": 277,
-        "anchor_y": 2117.0,
+        "anchor_x": 276,
+        "anchor_y": 2116.5,
         "mask_box": {
-          "x": 269,
-          "y": 2088,
-          "w": 149,
-          "h": 58
-        }
-      },
-      {
-        "text": "TI%N",
-        "anchor_x": 745,
-        "anchor_y": 2211.5,
-        "mask_box": {
-          "x": 737,
-          "y": 2182,
-          "w": 48,
+          "x": 268,
+          "y": 2087,
+          "w": 150,
           "h": 59
         }
       },
       {
         "text": "dorsalis",
-        "anchor_x": 955,
-        "anchor_y": 2321.0,
+        "anchor_x": 954,
+        "anchor_y": 2320.0,
         "mask_box": {
-          "x": 947,
-          "y": 2293,
-          "w": 142,
-          "h": 56
+          "x": 946,
+          "y": 2291,
+          "w": 144,
+          "h": 58
         }
       },
       {
