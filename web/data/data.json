@@ -390,6 +390,865 @@
     ]
   },
   {
+    "filename": "Bänder-Hüftgelenk (rechts)-Dorsal-clean.jpg",
+    "og_filename": "Bänder-Hüftgelenk (rechts)-Dorsal.png",
+    "category": "Bänder",
+    "subcategory": "Hüftgelenk (rechts)",
+    "view": "Dorsal",
+    "labels": [
+      {
+        "text": "Lig. iliolumbale",
+        "anchor_x": 754,
+        "anchor_y": 110.5,
+        "mask_box": {
+          "x": 746,
+          "y": 76,
+          "w": 292,
+          "h": 69
+        }
+      },
+      {
+        "text": "LWK IV",
+        "anchor_x": 280,
+        "anchor_y": 211.5,
+        "mask_box": {
+          "x": 272,
+          "y": 180,
+          "w": 155,
+          "h": 63
+        }
+      },
+      {
+        "text": "Crista iliaca",
+        "anchor_x": 1397,
+        "anchor_y": 308.5,
+        "mask_box": {
+          "x": 1389,
+          "y": 276,
+          "w": 232,
+          "h": 65
+        }
+      },
+      {
+        "text": "LWK V",
+        "anchor_x": 294,
+        "anchor_y": 454.5,
+        "mask_box": {
+          "x": 286,
+          "y": 425,
+          "w": 141,
+          "h": 59
+        }
+      },
+      {
+        "text": "Spina iliaca posterior superior",
+        "anchor_x": 1397,
+        "anchor_y": 612.0,
+        "mask_box": {
+          "x": 1388,
+          "y": 579,
+          "w": 228,
+          "h": 169
+        }
+      },
+      {
+        "text": "Ligg. sacroiliaca posteriora",
+        "anchor_x": 319,
+        "anchor_y": 702.0,
+        "mask_box": {
+          "x": 216,
+          "y": 664,
+          "w": 214,
+          "h": 168
+        }
+      },
+      {
+        "text": "Lig. iliofemorale",
+        "anchor_x": 1397,
+        "anchor_y": 908.0,
+        "mask_box": {
+          "x": 1389,
+          "y": 875,
+          "w": 187,
+          "h": 112
+        }
+      },
+      {
+        "text": "Spina ischiadica",
+        "anchor_x": 307,
+        "anchor_y": 964.0,
+        "mask_box": {
+          "x": 225,
+          "y": 931,
+          "w": 201,
+          "h": 113
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 1465,
+        "anchor_y": 1051.0,
+        "mask_box": {
+          "x": 1457,
+          "y": 1021,
+          "w": 223,
+          "h": 117
+        }
+      },
+      {
+        "text": "Lig. sacrospinale",
+        "anchor_x": 233,
+        "anchor_y": 1109.5,
+        "mask_box": {
+          "x": 225,
+          "y": 1078,
+          "w": 203,
+          "h": 114
+        }
+      },
+      {
+        "text": "Crista intertrochanterica",
+        "anchor_x": 1466,
+        "anchor_y": 1201.0,
+        "mask_box": {
+          "x": 1458,
+          "y": 1170,
+          "w": 212,
+          "h": 160
+        }
+      },
+      {
+        "text": "Lig. sacrotuberale",
+        "anchor_x": 234,
+        "anchor_y": 1326.0,
+        "mask_box": {
+          "x": 226,
+          "y": 1296,
+          "w": 201,
+          "h": 107
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 1465,
+        "anchor_y": 1391.5,
+        "mask_box": {
+          "x": 1457,
+          "y": 1362,
+          "w": 223,
+          "h": 109
+        }
+      },
+      {
+        "text": "Lig. ischiofemorale",
+        "anchor_x": 915,
+        "anchor_y": 1490.5,
+        "mask_box": {
+          "x": 907,
+          "y": 1458,
+          "w": 208,
+          "h": 110
+        }
+      },
+      {
+        "text": "Tuber ischiadicum",
+        "anchor_x": 757,
+        "anchor_y": 1609.0,
+        "mask_box": {
+          "x": 695,
+          "y": 1578,
+          "w": 234,
+          "h": 111
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Bänder-Hüftgelenk (rechts)-Lateral-clean.jpg",
+    "og_filename": "Bänder-Hüftgelenk (rechts)-Lateral.png",
+    "category": "Bänder",
+    "subcategory": "Hüftgelenk (rechts)",
+    "view": "Lateral",
+    "labels": [
+      {
+        "text": "LWK IV",
+        "anchor_x": 1289,
+        "anchor_y": 276.0,
+        "mask_box": {
+          "x": 1281,
+          "y": 245,
+          "w": 157,
+          "h": 62
+        }
+      },
+      {
+        "text": "LWK V",
+        "anchor_x": 1290,
+        "anchor_y": 431.5,
+        "mask_box": {
+          "x": 1282,
+          "y": 401,
+          "w": 145,
+          "h": 61
+        }
+      },
+      {
+        "text": "Spina iliaca posterior superior",
+        "anchor_x": 134,
+        "anchor_y": 513.5,
+        "mask_box": {
+          "x": 126,
+          "y": 480,
+          "w": 228,
+          "h": 168
+        }
+      },
+      {
+        "text": "Crista iliaca",
+        "anchor_x": 1292,
+        "anchor_y": 563.5,
+        "mask_box": {
+          "x": 1284,
+          "y": 534,
+          "w": 229,
+          "h": 59
+        }
+      },
+      {
+        "text": "Spina iliaca anterior superior",
+        "anchor_x": 1368,
+        "anchor_y": 735.0,
+        "mask_box": {
+          "x": 1360,
+          "y": 702,
+          "w": 227,
+          "h": 165
+        }
+      },
+      {
+        "text": "Ligg. sacroiliaca posteriora",
+        "anchor_x": 245,
+        "anchor_y": 759.5,
+        "mask_box": {
+          "x": 141,
+          "y": 724,
+          "w": 213,
+          "h": 162
+        }
+      },
+      {
+        "text": "Lig.",
+        "anchor_x": 1364,
+        "anchor_y": 923.5,
+        "mask_box": {
+          "x": 1356,
+          "y": 885,
+          "w": 99,
+          "h": 77
+        }
+      },
+      {
+        "text": "Os sacrum",
+        "anchor_x": 146,
+        "anchor_y": 959.0,
+        "mask_box": {
+          "x": 138,
+          "y": 930,
+          "w": 212,
+          "h": 58
+        }
+      },
+      {
+        "text": "inguinale",
+        "anchor_x": 1369,
+        "anchor_y": 974.0,
+        "mask_box": {
+          "x": 1361,
+          "y": 941,
+          "w": 192,
+          "h": 66
+        }
+      },
+      {
+        "text": "Lig. pubofemorale",
+        "anchor_x": 1369,
+        "anchor_y": 1058.5,
+        "mask_box": {
+          "x": 1361,
+          "y": 1024,
+          "w": 201,
+          "h": 113
+        }
+      },
+      {
+        "text": "Lig. sacrospinale",
+        "anchor_x": 159,
+        "anchor_y": 1093.5,
+        "mask_box": {
+          "x": 151,
+          "y": 1063,
+          "w": 201,
+          "h": 114
+        }
+      },
+      {
+        "text": "Tuberculum pubicum",
+        "anchor_x": 1369,
+        "anchor_y": 1192.0,
+        "mask_box": {
+          "x": 1361,
+          "y": 1162,
+          "w": 239,
+          "h": 116
+        }
+      },
+      {
+        "text": "Spina ischiadica",
+        "anchor_x": 314,
+        "anchor_y": 1245.5,
+        "mask_box": {
+          "x": 231,
+          "y": 1213,
+          "w": 200,
+          "h": 110
+        }
+      },
+      {
+        "text": "Lig. iliofemorale",
+        "anchor_x": 1289,
+        "anchor_y": 1339.5,
+        "mask_box": {
+          "x": 1281,
+          "y": 1305,
+          "w": 186,
+          "h": 112
+        }
+      },
+      {
+        "text": "Lig.sacrotuberale",
+        "anchor_x": 238,
+        "anchor_y": 1391.0,
+        "mask_box": {
+          "x": 230,
+          "y": 1359,
+          "w": 201,
+          "h": 111
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 1289,
+        "anchor_y": 1481.5,
+        "mask_box": {
+          "x": 1281,
+          "y": 1451,
+          "w": 223,
+          "h": 116
+        }
+      },
+      {
+        "text": "Lig. ischiofemorale",
+        "anchor_x": 581,
+        "anchor_y": 1583.0,
+        "mask_box": {
+          "x": 573,
+          "y": 1550,
+          "w": 211,
+          "h": 111
+        }
+      },
+      {
+        "text": "Os femoris",
+        "anchor_x": 1291,
+        "anchor_y": 1629.5,
+        "mask_box": {
+          "x": 1283,
+          "y": 1598,
+          "w": 219,
+          "h": 63
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Bänder-Hüftgelenk (rechts)-Ventral-clean.jpg",
+    "og_filename": "Bänder-Hüftgelenk (rechts)-Ventral.png",
+    "category": "Bänder",
+    "subcategory": "Hüftgelenk (rechts)",
+    "view": "Ventral",
+    "labels": [
+      {
+        "text": "Lig. iliolumbale",
+        "anchor_x": 706,
+        "anchor_y": 223.0,
+        "mask_box": {
+          "x": 698,
+          "y": 190,
+          "w": 292,
+          "h": 66
+        }
+      },
+      {
+        "text": "LWK IV",
+        "anchor_x": 1358,
+        "anchor_y": 221.5,
+        "mask_box": {
+          "x": 1350,
+          "y": 192,
+          "w": 152,
+          "h": 59
+        }
+      },
+      {
+        "text": "Lig. longitudinale anterius",
+        "anchor_x": 1357,
+        "anchor_y": 319.0,
+        "mask_box": {
+          "x": 1348,
+          "y": 286,
+          "w": 198,
+          "h": 159
+        }
+      },
+      {
+        "text": "Crista iliaca",
+        "anchor_x": 113,
+        "anchor_y": 510.5,
+        "mask_box": {
+          "x": 105,
+          "y": 480,
+          "w": 228,
+          "h": 61
+        }
+      },
+      {
+        "text": "LWK V",
+        "anchor_x": 1358,
+        "anchor_y": 509.5,
+        "mask_box": {
+          "x": 1350,
+          "y": 480,
+          "w": 142,
+          "h": 59
+        }
+      },
+      {
+        "text": "Promontorium",
+        "anchor_x": 1358,
+        "anchor_y": 605.0,
+        "mask_box": {
+          "x": 1348,
+          "y": 575,
+          "w": 182,
+          "h": 109
+        }
+      },
+      {
+        "text": "Spina iliaca anterior superior",
+        "anchor_x": 117,
+        "anchor_y": 700.0,
+        "mask_box": {
+          "x": 109,
+          "y": 667,
+          "w": 228,
+          "h": 168
+        }
+      },
+      {
+        "text": "Ligg. sacroiliaca anteriora",
+        "anchor_x": 1355,
+        "anchor_y": 752.0,
+        "mask_box": {
+          "x": 1347,
+          "y": 715,
+          "w": 213,
+          "h": 163
+        }
+      },
+      {
+        "text": "Lig. inguinale",
+        "anchor_x": 251,
+        "anchor_y": 905.0,
+        "mask_box": {
+          "x": 145,
+          "y": 868,
+          "w": 193,
+          "h": 119
+        }
+      },
+      {
+        "text": "Lig. sacrotuberale",
+        "anchor_x": 1359,
+        "anchor_y": 960.5,
+        "mask_box": {
+          "x": 1350,
+          "y": 930,
+          "w": 202,
+          "h": 108
+        }
+      },
+      {
+        "text": "Spina iliaca anterior inferior",
+        "anchor_x": 194,
+        "anchor_y": 1054.0,
+        "mask_box": {
+          "x": 107,
+          "y": 1021,
+          "w": 305,
+          "h": 112
+        }
+      },
+      {
+        "text": "Lig. sacrospinale",
+        "anchor_x": 1359,
+        "anchor_y": 1104.5,
+        "mask_box": {
+          "x": 1348,
+          "y": 1074,
+          "w": 204,
+          "h": 115
+        }
+      },
+      {
+        "text": "Lig. iliofemorale",
+        "anchor_x": 183,
+        "anchor_y": 1206.5,
+        "mask_box": {
+          "x": 148,
+          "y": 1173,
+          "w": 186,
+          "h": 112
+        }
+      },
+      {
+        "text": "Spina ischiadica",
+        "anchor_x": 1357,
+        "anchor_y": 1250.5,
+        "mask_box": {
+          "x": 1349,
+          "y": 1218,
+          "w": 198,
+          "h": 110
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 121,
+        "anchor_y": 1358.0,
+        "mask_box": {
+          "x": 113,
+          "y": 1328,
+          "w": 225,
+          "h": 118
+        }
+      },
+      {
+        "text": "Symphysis pubica",
+        "anchor_x": 1357,
+        "anchor_y": 1394.5,
+        "mask_box": {
+          "x": 1347,
+          "y": 1361,
+          "w": 215,
+          "h": 120
+        }
+      },
+      {
+        "text": "Linea intertrochanterica",
+        "anchor_x": 159,
+        "anchor_y": 1510.0,
+        "mask_box": {
+          "x": 107,
+          "y": 1481,
+          "w": 263,
+          "h": 107
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 797,
+        "anchor_y": 1660.0,
+        "mask_box": {
+          "x": 789,
+          "y": 1631,
+          "w": 222,
+          "h": 107
+        }
+      },
+      {
+        "text": "Lig. pubofemorale",
+        "anchor_x": 1094,
+        "anchor_y": 1661.5,
+        "mask_box": {
+          "x": 1086,
+          "y": 1626,
+          "w": 200,
+          "h": 114
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Bänder-Hüftgelenk-Dorsal & Ventral-clean.jpg",
+    "og_filename": "Bänder-Hüftgelenk-Dorsal & Ventral.png",
+    "category": "Bänder",
+    "subcategory": "Hüftgelenk",
+    "view": "Dorsal & Ventral",
+    "labels": [
+      {
+        "text": "Membrana synovialis",
+        "anchor_x": 326,
+        "anchor_y": 266.5,
+        "mask_box": {
+          "x": 318,
+          "y": 241,
+          "w": 163,
+          "h": 91
+        }
+      },
+      {
+        "text": "Membrana fibrosa",
+        "anchor_x": 2172,
+        "anchor_y": 306.0,
+        "mask_box": {
+          "x": 2163,
+          "y": 281,
+          "w": 165,
+          "h": 87
+        }
+      },
+      {
+        "text": "Umschlagfalte der Membrana synovialis",
+        "anchor_x": 202,
+        "anchor_y": 377.0,
+        "mask_box": {
+          "x": 190,
+          "y": 351,
+          "w": 212,
+          "h": 126
+        }
+      },
+      {
+        "text": "Collum femoris",
+        "anchor_x": 214,
+        "anchor_y": 521.0,
+        "mask_box": {
+          "x": 201,
+          "y": 495,
+          "w": 122,
+          "h": 88
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 167,
+        "anchor_y": 631.0,
+        "mask_box": {
+          "x": 159,
+          "y": 607,
+          "w": 167,
+          "h": 89
+        }
+      },
+      {
+        "text": "Linea intertrochanterica",
+        "anchor_x": 200,
+        "anchor_y": 808.0,
+        "mask_box": {
+          "x": 159,
+          "y": 785,
+          "w": 196,
+          "h": 83
+        }
+      },
+      {
+        "text": "Membrana fibrosa",
+        "anchor_x": 872,
+        "anchor_y": 861.0,
+        "mask_box": {
+          "x": 864,
+          "y": 837,
+          "w": 163,
+          "h": 86
+        }
+      },
+      {
+        "text": "Membrana synovialis",
+        "anchor_x": 1780,
+        "anchor_y": 862.5,
+        "mask_box": {
+          "x": 1772,
+          "y": 837,
+          "w": 164,
+          "h": 91
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 858,
+        "anchor_y": 970.5,
+        "mask_box": {
+          "x": 850,
+          "y": 945,
+          "w": 163,
+          "h": 87
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Bänder-Hüftgelenk-Lateral-clean.jpg",
+    "og_filename": "Bänder-Hüftgelenk-Lateral.png",
+    "category": "Bänder",
+    "subcategory": "Hüftgelenk",
+    "view": "Lateral",
+    "labels": [
+      {
+        "text": "Lig. inguinale",
+        "anchor_x": 1729,
+        "anchor_y": 1064.0,
+        "mask_box": {
+          "x": 1721,
+          "y": 1029,
+          "w": 260,
+          "h": 70
+        }
+      },
+      {
+        "text": "Gelenkkapsel",
+        "anchor_x": 140,
+        "anchor_y": 1188.5,
+        "mask_box": {
+          "x": 132,
+          "y": 1156,
+          "w": 264,
+          "h": 65
+        }
+      },
+      {
+        "text": "Facies lunata",
+        "anchor_x": 1727,
+        "anchor_y": 1187.5,
+        "mask_box": {
+          "x": 1719,
+          "y": 1156,
+          "w": 255,
+          "h": 63
+        }
+      },
+      {
+        "text": "Lig. sacrospinale",
+        "anchor_x": 199,
+        "anchor_y": 1332.0,
+        "mask_box": {
+          "x": 191,
+          "y": 1301,
+          "w": 205,
+          "h": 116
+        }
+      },
+      {
+        "text": "Labrum acetabuli",
+        "anchor_x": 1728,
+        "anchor_y": 1366.0,
+        "mask_box": {
+          "x": 1720,
+          "y": 1335,
+          "w": 190,
+          "h": 114
+        }
+      },
+      {
+        "text": "Lig. sacrotuberale",
+        "anchor_x": 365,
+        "anchor_y": 1529.0,
+        "mask_box": {
+          "x": 357,
+          "y": 1497,
+          "w": 204,
+          "h": 110
+        }
+      },
+      {
+        "text": "Fovea capitis femoris",
+        "anchor_x": 1728,
+        "anchor_y": 1579.0,
+        "mask_box": {
+          "x": 1718,
+          "y": 1547,
+          "w": 256,
+          "h": 113
+        }
+      },
+      {
+        "text": "Fossa acetabuli",
+        "anchor_x": 380,
+        "anchor_y": 1725.0,
+        "mask_box": {
+          "x": 372,
+          "y": 1695,
+          "w": 295,
+          "h": 60
+        }
+      },
+      {
+        "text": "Caput femoris",
+        "anchor_x": 1728,
+        "anchor_y": 1727.5,
+        "mask_box": {
+          "x": 1720,
+          "y": 1694,
+          "w": 280,
+          "h": 67
+        }
+      },
+      {
+        "text": "Membrana obturatoria",
+        "anchor_x": 456,
+        "anchor_y": 1827.5,
+        "mask_box": {
+          "x": 441,
+          "y": 1797,
+          "w": 227,
+          "h": 112
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 1725,
+        "anchor_y": 1827.0,
+        "mask_box": {
+          "x": 1717,
+          "y": 1795,
+          "w": 226,
+          "h": 121
+        }
+      },
+      {
+        "text": "Lig. capitis femoris",
+        "anchor_x": 839,
+        "anchor_y": 1951.5,
+        "mask_box": {
+          "x": 831,
+          "y": 1919,
+          "w": 212,
+          "h": 113
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 1617,
+        "anchor_y": 2152.5,
+        "mask_box": {
+          "x": 1609,
+          "y": 2122,
+          "w": 223,
+          "h": 113
+        }
+      }
+    ]
+  },
+  {
     "filename": "Knochen-Becken-Dorsal (Frau)-clean.jpg",
     "og_filename": "Knochen-Becken-Dorsal (Frau).png",
     "category": "Knochen",
