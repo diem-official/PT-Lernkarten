@@ -47,11 +47,25 @@ function loadQuiz(entry, imgBasePath) {
 }
 
 function renderOverlays(labels, img, wrapper) {
-    // Remove stale overlays
-    wrapper.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
-
     var scaleX = img.clientWidth / img.naturalWidth;
     var scaleY = img.clientHeight / img.naturalHeight;
+
+    var existing = wrapper.querySelectorAll('.overlay-group');
+    if (existing.length === labels.length) {
+        // Resize-Fall: nur Positionen anpassen, keine Elemente neu erstellen.
+        // So bleibt das fokussierte Eingabefeld im DOM und die Tastatur bleibt offen.
+        existing.forEach(function (group, i) {
+            var lb = labels[i];
+            group.style.left = (lb.mask_box.x * scaleX) + 'px';
+            group.style.top  = (lb.mask_box.y * scaleY) + 'px';
+            var inp = group.querySelector('.label-input');
+            if (inp) inp.style.width = (lb.mask_box.w * scaleX) + 'px';
+        });
+        return;
+    }
+
+    // Erstes Laden (oder Anzahl Labels hat sich geändert): neu aufbauen
+    wrapper.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
 
     labels.forEach(function (label) {
         var group = document.createElement('div');
@@ -64,7 +78,6 @@ function renderOverlays(labels, img, wrapper) {
         input.className = 'label-input';
         input.style.width = (label.mask_box.w * scaleX) + 'px';
         input.dataset.solution = label.text;
-        // Store original coords so we can restore state after resize
         input.dataset.ox = label.anchor_x;
         input.dataset.oy = label.anchor_y;
 
