@@ -28,6 +28,19 @@
     drawerCloseBtn.addEventListener('click', closeDrawer);
     drawerOverlay.addEventListener('click', closeDrawer);
 
+    // ── Visual-viewport: Bild beim Öffnen der Tastatur nach oben schieben ──
+    var imgEl = document.getElementById('quiz-img');
+    function onViewportResize() {
+        if (window.innerWidth > 600) return;
+        var available = Math.round(window.visualViewport.height) - 48;
+        app.style.height     = available + 'px';
+        imgEl.style.maxHeight = available + 'px';
+        window.dispatchEvent(new Event('resize')); // Overlays neu positionieren
+    }
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', onViewportResize);
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         fetch(DATA_URL)
             .then(function (resp) {
