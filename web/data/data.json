@@ -2729,7 +2729,7 @@
         }
       },
       {
-        "text": "Tuber",
+        "text": "Tuber ischiadicum",
         "anchor_x": 659,
         "anchor_y": 1614.0,
         "mask_box": {
@@ -2738,18 +2738,7 @@
           "w": 112,
           "h": 56
         }
-      },
-      {
-        "text": "ischiadicum",
-        "anchor_x": 573,
-        "anchor_y": 1655.5,
-        "mask_box": {
-          "x": 565,
-          "y": 1629,
-          "w": 193,
-          "h": 53
-        }
-      }
+      } 
     ]
   },
   {
