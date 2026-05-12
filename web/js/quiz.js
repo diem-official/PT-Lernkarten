@@ -1,6 +1,7 @@
 var _currentEntry = null;
 var _imgBasePath = '';
 var _resizeTimer = null;
+var _lastLayoutWidth = window.innerWidth;
 
 function loadLernen(entry, ogImgBasePath) {
     _currentEntry = null;
@@ -150,6 +151,13 @@ window.showHelp = showHelp;
 // ── Resize handler (debounced) ───────────────────────────────────────────────
 
 window.addEventListener('resize', function () {
+    var newWidth = window.innerWidth;
+    var onlyHeightChanged = (newWidth === _lastLayoutWidth);
+    _lastLayoutWidth = newWidth;
+
+    // Nur Höhe geändert → Bildschirmtastatur auf/zu, kein Re-Render nötig
+    if (onlyHeightChanged) return;
+
     clearTimeout(_resizeTimer);
     _resizeTimer = setTimeout(function () {
         if (!_currentEntry) return;

@@ -465,5 +465,6 @@ body {
 
     #quiz-img {
         max-height: calc(100vh - 48px);
+        max-height: calc(100lvh - 48px); /* lvh bleibt beim Öffnen der Tastatur stabil */
     }
 }
