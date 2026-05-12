@@ -154,13 +154,13 @@ body {
 
 /* ── Learn area ─────────────────────────────── */
 #learn-area {
+    position: relative;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     background: #fff;
-    padding: 16px;
 }
 
 #placeholder {
@@ -170,12 +170,11 @@ body {
 }
 
 #quiz-wrapper {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 100%;
-    max-height: 100%;
-    overflow: hidden;
 }
 
 /* ── Zoom container ─────────────────────────── */
@@ -196,7 +195,7 @@ body {
 #quiz-img {
     display: block;
     max-width: 100%;
-    max-height: calc(100vh - 32px);
+    max-height: 100%;
 }
 
 /* ── Overlays ───────────────────────────────── */
@@ -465,6 +464,6 @@ body {
     }
 
     #quiz-img {
-        max-height: calc(100vh - 48px - 16px);
+        max-height: 100%;
     }
 }
