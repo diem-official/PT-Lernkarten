@@ -7,13 +7,15 @@ function loadLernen(entry, ogImgBasePath) {
 
     var img = document.getElementById('quiz-img');
     var wrapper = document.getElementById('quiz-wrapper');
+    var zoomContainer = document.getElementById('zoom-container');
     var placeholder = document.getElementById('placeholder');
 
     img.onload = null;
-    wrapper.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
+    zoomContainer.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
 
     placeholder.classList.add('hidden');
     wrapper.classList.remove('hidden');
+    resetZoom();
 
     img.src = ogImgBasePath + entry.og_filename;
 }
@@ -24,23 +26,23 @@ function loadQuiz(entry, imgBasePath) {
 
     var img = document.getElementById('quiz-img');
     var wrapper = document.getElementById('quiz-wrapper');
+    var zoomContainer = document.getElementById('zoom-container');
     var placeholder = document.getElementById('placeholder');
 
-    // Reset: remove all existing overlays
-    var existing = wrapper.querySelectorAll('.overlay-group');
-    existing.forEach(function (el) { el.remove(); });
+    zoomContainer.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
 
     placeholder.classList.add('hidden');
     wrapper.classList.remove('hidden');
+    resetZoom();
 
     img.onload = function () {
-        renderOverlays(entry.labels, img, wrapper);
+        renderOverlays(entry.labels, img, zoomContainer);
     };
     img.src = imgBasePath + entry.filename;
     // If the browser already has this image cached (same URL), onload won't fire.
     // Call renderOverlays directly when the image is already complete.
     if (img.complete && img.naturalWidth > 0) {
-        renderOverlays(entry.labels, img, wrapper);
+        renderOverlays(entry.labels, img, zoomContainer);
     }
 }
 
@@ -129,6 +131,9 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
+// showHelp global verfügbar machen (für mobile-help-btn in app.js)
+window.showHelp = showHelp;
+
 // ── Resize handler (debounced) ───────────────────────────────────────────────
 
 window.addEventListener('resize', function () {
@@ -136,12 +141,12 @@ window.addEventListener('resize', function () {
     _resizeTimer = setTimeout(function () {
         if (!_currentEntry) return;
         var img = document.getElementById('quiz-img');
-        var wrapper = document.getElementById('quiz-wrapper');
+        var zoomContainer = document.getElementById('zoom-container');
 
         // Capture current input state keyed by original coords
-        var state = {};
-        wrapper.querySelectorAll('.label-input').forEach(function (inp) {
-            state[inp.dataset.ox + ',' + inp.dataset.oy] = {
+        var savedState = {};
+        zoomContainer.querySelectorAll('.label-input').forEach(function (inp) {
+            savedState[inp.dataset.ox + ',' + inp.dataset.oy] = {
                 value: inp.value,
                 className: inp.className,
                 bgStyle: inp.style.background,
@@ -149,17 +154,22 @@ window.addEventListener('resize', function () {
             };
         });
 
-        renderOverlays(_currentEntry.labels, img, wrapper);
+        renderOverlays(_currentEntry.labels, img, zoomContainer);
 
         // Restore state
-        wrapper.querySelectorAll('.label-input').forEach(function (inp) {
+        zoomContainer.querySelectorAll('.label-input').forEach(function (inp) {
             var key = inp.dataset.ox + ',' + inp.dataset.oy;
-            if (state[key]) {
-                inp.value = state[key].value;
-                inp.className = state[key].className;
-                inp.style.background = state[key].bgStyle;
-                inp.readOnly = state[key].readOnly;
+            if (savedState[key]) {
+                inp.value = savedState[key].value;
+                inp.className = savedState[key].className;
+                inp.style.background = savedState[key].bgStyle;
+                inp.readOnly = savedState[key].readOnly;
             }
         });
     }, 120);
+});
+
+// ── Zoom initialisieren ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+    initZoom(document.getElementById('zoom-container'));
 });

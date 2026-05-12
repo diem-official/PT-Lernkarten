@@ -7,9 +7,18 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header id="mobile-header">
+        <button id="hamburger-btn" aria-label="Menü öffnen">&#9776;</button>
+        <span id="mobile-title">Anatomie Lernkarten</span>
+        <button id="mobile-help-btn" aria-label="Lösung anzeigen" class="hidden">&#10067;</button>
+    </header>
+
+    <div id="drawer-overlay"></div>
+
     <div id="app">
 
         <nav id="sidebar">
+            <button id="drawer-close" aria-label="Menü schließen">&#10005;</button>
             <div id="menu-loading">Lade Menü…</div>
             <ul id="menu-root"></ul>
         </nav>
@@ -19,7 +28,9 @@
                 <p>Wähle ein Thema aus dem Menü.</p>
             </div>
             <div id="quiz-wrapper" class="hidden">
-                <img id="quiz-img" alt="Anatomie-Bild">
+                <div id="zoom-container">
+                    <img id="quiz-img" alt="Anatomie-Bild">
+                </div>
             </div>
         </main>
 
@@ -36,6 +47,7 @@
 
     <script src="js/levenshtein.js"></script>
     <script src="js/menu.js"></script>
+    <script src="js/zoom.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/app.js"></script>
 </body>
