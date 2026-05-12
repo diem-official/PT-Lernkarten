@@ -637,7 +637,7 @@
         }
       },
       {
-        "text": "Lig.",
+        "text": "Lig. inguinale",
         "anchor_x": 1364,
         "anchor_y": 923.5,
         "mask_box": {
@@ -656,17 +656,6 @@
           "y": 930,
           "w": 212,
           "h": 58
-        }
-      },
-      {
-        "text": "inguinale",
-        "anchor_x": 1369,
-        "anchor_y": 974.0,
-        "mask_box": {
-          "x": 1361,
-          "y": 941,
-          "w": 192,
-          "h": 66
         }
       },
       {
