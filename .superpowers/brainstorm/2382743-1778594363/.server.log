@@ -1,0 +1,7 @@
+{"type":"server-started","port":62177,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:62177","screen_dir":"/home/diem/PT Lernkarten/.superpowers/brainstorm/2382743-1778594363"}
+{"type":"screen-added","file":"/home/diem/PT Lernkarten/.superpowers/brainstorm/2382743-1778594363/sidebar-approach.html"}
+{"type":"screen-added","file":"/home/diem/PT Lernkarten/.superpowers/brainstorm/2382743-1778594363/menu-open-style.html"}
+{"source":"user-event","type":"click","text":"A\n      Slide-in Drawer","choice":"a","id":null,"timestamp":1778594532265}
+{"type":"screen-added","file":"/home/diem/PT Lernkarten/.superpowers/brainstorm/2382743-1778594363/quiz-inputs-mobile.html"}
+{"type":"screen-added","file":"/home/diem/PT Lernkarten/.superpowers/brainstorm/2382743-1778594363/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

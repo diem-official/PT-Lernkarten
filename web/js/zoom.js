@@ -24,6 +24,18 @@
         return Math.max(min, Math.min(max, val));
     }
 
+    // #zoom-container is flexbox-centered inside #quiz-wrapper.
+    // state.tx/ty are *additional* translation on top of that centering offset.
+    // This returns how far the container's natural (untransformed) left/top edge
+    // sits from the wrapper's left/top edge.
+    function getNaturalOffset() {
+        var rect = container.parentElement.getBoundingClientRect();
+        return {
+            x: (rect.width  - container.offsetWidth)  / 2,
+            y: (rect.height - container.offsetHeight) / 2
+        };
+    }
+
     function clampState() {
         if (state.s <= 1) {
             state.tx = 0;
@@ -34,16 +46,27 @@
         var rect = container.parentElement.getBoundingClientRect();
         var cw = container.offsetWidth;
         var ch = container.offsetHeight;
-        state.tx = clamp(state.tx, rect.width  - state.s * cw, 0);
-        state.ty = clamp(state.ty, rect.height - state.s * ch, 0);
+        var ox = (rect.width  - cw) / 2;
+        var oy = (rect.height - ch) / 2;
+
+        // Clamp so no empty gap appears at any wrapper edge.
+        // The two bounds swap roles depending on whether the zoomed image is
+        // smaller or larger than the wrapper — Math.min/max handles both cases.
+        var txA = -ox,                           txB = rect.width  - state.s * cw - ox;
+        var tyA = -oy,                           tyB = rect.height - state.s * ch - oy;
+        state.tx = clamp(state.tx, Math.min(txA, txB), Math.max(txA, txB));
+        state.ty = clamp(state.ty, Math.min(tyA, tyB), Math.max(tyA, tyB));
     }
 
     function zoomAt(cx, cy, newS) {
         newS = clamp(newS, ZOOM_MIN, ZOOM_MAX);
-        var px = (cx - state.tx) / state.s;
-        var py = (cy - state.ty) / state.s;
-        state.tx = cx - px * newS;
-        state.ty = cy - py * newS;
+        var off = getNaturalOffset();
+        // cx/cy are in wrapper coords; subtract the natural offset to get
+        // coordinates in the container's own space before the transform.
+        var px = (cx - off.x - state.tx) / state.s;
+        var py = (cy - off.y - state.ty) / state.s;
+        state.tx = cx - off.x - px * newS;
+        state.ty = cy - off.y - py * newS;
         state.s  = newS;
         clampState();
         applyTransform();
@@ -116,11 +139,12 @@
             var dist = getTouchDist(touch1, touch2);
             var mid  = getTouchMid(touch1, touch2);
             var newS = clamp(pinchStartState.s * (dist / pinchStartDist), ZOOM_MIN, ZOOM_MAX);
-            var px = (mid.x - pinchStartState.tx) / pinchStartState.s;
-            var py = (mid.y - pinchStartState.ty) / pinchStartState.s;
+            var off  = getNaturalOffset();
+            var px = (mid.x - off.x - pinchStartState.tx) / pinchStartState.s;
+            var py = (mid.y - off.y - pinchStartState.ty) / pinchStartState.s;
             state.s  = newS;
-            state.tx = mid.x - px * newS;
-            state.ty = mid.y - py * newS;
+            state.tx = mid.x - off.x - px * newS;
+            state.ty = mid.y - off.y - py * newS;
             clampState();
             applyTransform();
         } else if (e.touches.length === 1 && panStart !== null && state.s > 1) {

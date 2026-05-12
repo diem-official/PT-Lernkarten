@@ -1,0 +1,97 @@
+<h2>Wie öffnet sich das Menü?</h2>
+<p class="subtitle">Wenn man auf ☰ tippt — zwei gängige Varianten:</p>
+
+<div class="split">
+
+  <div class="mockup">
+    <div class="mockup-header">A — Slide-in Drawer (von links)</div>
+    <div class="mockup-body" style="padding:0; overflow:hidden;">
+      <div style="font-family:system-ui; font-size:11px; display:flex; height:320px; position:relative;">
+        <!-- Drawer -->
+        <div style="width:72%; background:#f4f4f4; border-right:2px solid #c4d9f5; display:flex; flex-direction:column; z-index:2;">
+          <div style="background:#1a3a6e; color:white; padding:10px 12px; display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-weight:600; font-size:12px;">Menü</span>
+            <span style="font-size:16px; cursor:pointer;">✕</span>
+          </div>
+          <div style="overflow-y:auto; flex:1; padding:8px 0;">
+            <div style="padding:8px 12px; font-weight:bold; color:#1a3a6e; font-size:12px; display:flex; align-items:center; gap:6px;">
+              <span style="font-size:10px;">▼</span> Knochen
+            </div>
+            <div style="padding:6px 12px 6px 26px; color:#333; font-size:11px;">▷ Wirbelsäule</div>
+            <div style="padding:6px 12px 6px 26px; color:#333; font-size:11px;">▼ Schulter</div>
+            <div style="padding:5px 12px 5px 40px; background:#c4d9f5; color:#1a3a6e; font-size:10px; display:flex; gap:6px; align-items:center;">
+              <span>Anterior</span>
+              <span style="background:#1a3a6e; color:white; padding:1px 6px; border-radius:8px; font-size:9px;">Lernen</span>
+            </div>
+            <div style="padding:5px 12px 5px 40px; color:#555; font-size:10px;">Posterior</div>
+            <div style="padding:5px 12px 5px 40px; color:#555; font-size:10px;">Lateral</div>
+            <div style="padding:6px 12px 6px 26px; color:#333; font-size:11px;">▷ Becken</div>
+            <div style="padding:8px 12px; font-weight:bold; color:#1a3a6e; font-size:12px; display:flex; align-items:center; gap:6px; border-top:1px solid #ddd; margin-top:4px;">
+              <span style="font-size:10px;">▷</span> Bänder
+            </div>
+            <div style="padding:8px 12px; font-weight:bold; color:#1a3a6e; font-size:12px; display:flex; align-items:center; gap:6px;">
+              <span style="font-size:10px;">▷</span> Lagebezeichnung
+            </div>
+          </div>
+        </div>
+        <!-- Dimmed content behind -->
+        <div style="flex:1; background:rgba(0,0,0,0.35); display:flex; align-items:center; justify-content:center;">
+          <div style="color:rgba(255,255,255,0.6); font-size:10px; text-align:center;">📷<br>Bild<br>(gedimmt)</div>
+        </div>
+      </div>
+      <div style="background:#f0f0f0; padding:6px 10px; font-size:10px; color:#666; border-top:1px solid #ddd;">
+        → Schließt beim Tippen auf das Bild (Bereich rechts)
+      </div>
+    </div>
+    <div style="padding:10px; font-size:12px; color:#444;">
+      Menü gleitet von links herein und überlagert ~70% des Bildschirms. Bild im Hintergrund bleibt sichtbar (abgedunkelt). Tippen daneben schließt es.
+    </div>
+    <div class="option" data-choice="a" onclick="toggleSelect(this)" style="margin:8px; border-radius:6px;">
+      <div class="letter">A</div>
+      <div class="content"><strong>Slide-in Drawer</strong></div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">B — Vollbild-Overlay</div>
+    <div class="mockup-body" style="padding:0; overflow:hidden;">
+      <div style="font-family:system-ui; font-size:11px; display:flex; flex-direction:column; height:320px;">
+        <div style="background:#1a3a6e; color:white; padding:10px 12px; display:flex; align-items:center; justify-content:space-between;">
+          <span style="font-weight:600; font-size:12px;">Menü</span>
+          <span style="font-size:16px; cursor:pointer;">✕</span>
+        </div>
+        <div style="overflow-y:auto; flex:1; padding:8px 0; background:#f4f4f4;">
+          <div style="padding:10px 16px; font-weight:bold; color:#1a3a6e; font-size:13px; display:flex; align-items:center; gap:8px; border-bottom:1px solid #e0e0e0;">
+            <span>▼</span> Knochen
+          </div>
+          <div style="padding:9px 16px 9px 32px; color:#333; font-size:12px; border-bottom:1px solid #eee;">▷ Wirbelsäule</div>
+          <div style="padding:9px 16px 9px 32px; color:#333; font-size:12px; border-bottom:1px solid #eee;">▼ Schulter</div>
+          <div style="padding:8px 16px 8px 48px; background:#c4d9f5; color:#1a3a6e; font-size:11px; display:flex; gap:8px; align-items:center; border-bottom:1px solid #ddd;">
+            <span style="flex:1;">Anterior</span>
+            <span style="background:#1a3a6e; color:white; padding:3px 10px; border-radius:10px; font-size:10px;">Lernen</span>
+          </div>
+          <div style="padding:8px 16px 8px 48px; color:#555; font-size:11px; border-bottom:1px solid #eee;">Posterior</div>
+          <div style="padding:8px 16px 8px 48px; color:#555; font-size:11px; border-bottom:1px solid #eee;">Lateral</div>
+          <div style="padding:9px 16px 9px 32px; color:#333; font-size:12px; border-bottom:1px solid #eee;">▷ Becken</div>
+          <div style="padding:10px 16px; font-weight:bold; color:#1a3a6e; font-size:13px; display:flex; align-items:center; gap:8px; border-bottom:1px solid #e0e0e0;">
+            <span>▷</span> Bänder
+          </div>
+          <div style="padding:10px 16px; font-weight:bold; color:#1a3a6e; font-size:13px; display:flex; align-items:center; gap:8px; border-bottom:1px solid #e0e0e0;">
+            <span>▷</span> Lagebezeichnung
+          </div>
+        </div>
+      </div>
+      <div style="background:#f0f0f0; padding:6px 10px; font-size:10px; color:#666; border-top:1px solid #ddd;">
+        → Alle Menü-Elemente haben mehr Platz, besser tippbar
+      </div>
+    </div>
+    <div style="padding:10px; font-size:12px; color:#444;">
+      Menü öffnet sich über den ganzen Bildschirm. Mehr Platz für Kategorien, größere Tipp-Flächen. Klarer Fokus: entweder Menü oder Bild.
+    </div>
+    <div class="option" data-choice="b" onclick="toggleSelect(this)" style="margin:8px; border-radius:6px;">
+      <div class="letter">B</div>
+      <div class="content"><strong>Vollbild-Overlay</strong></div>
+    </div>
+  </div>
+
+</div>
