@@ -2738,7 +2738,7 @@
           "w": 112,
           "h": 56
         }
-      } 
+      }
     ]
   },
   {
@@ -3805,6 +3805,662 @@
           "y": 2365,
           "w": 163,
           "h": 62
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Muskeln-Gesäss-Dorsal-clean.jpg",
+    "og_filename": "Muskeln-Gesäss-Dorsal.png",
+    "category": "Muskeln",
+    "subcategory": "Gesäss",
+    "view": "Dorsal",
+    "labels": [
+      {
+        "text": "Crista iliaca",
+        "anchor_x": 708,
+        "anchor_y": 134.0,
+        "mask_box": {
+          "x": 700,
+          "y": 109,
+          "w": 165,
+          "h": 50
+        }
+      },
+      {
+        "text": "Crista iliaca",
+        "anchor_x": 1823,
+        "anchor_y": 134.0,
+        "mask_box": {
+          "x": 1815,
+          "y": 109,
+          "w": 167,
+          "h": 50
+        }
+      },
+      {
+        "text": "M. gluteus medius",
+        "anchor_x": 1025,
+        "anchor_y": 327.5,
+        "mask_box": {
+          "x": 1017,
+          "y": 301,
+          "w": 155,
+          "h": 87
+        }
+      },
+      {
+        "text": "Spina iliaca anterior superior",
+        "anchor_x": 2112,
+        "anchor_y": 356.0,
+        "mask_box": {
+          "x": 2104,
+          "y": 329,
+          "w": 164,
+          "h": 126
+        }
+      },
+      {
+        "text": "Fascia thoracolumbalis",
+        "anchor_x": 217,
+        "anchor_y": 413.0,
+        "mask_box": {
+          "x": 176,
+          "y": 386,
+          "w": 135,
+          "h": 124
+        }
+      },
+      {
+        "text": "M. gluteus medius",
+        "anchor_x": 2112,
+        "anchor_y": 484.5,
+        "mask_box": {
+          "x": 2104,
+          "y": 456,
+          "w": 156,
+          "h": 88
+        }
+      },
+      {
+        "text": "M. tensor fasciae latae",
+        "anchor_x": 1027,
+        "anchor_y": 545.5,
+        "mask_box": {
+          "x": 1017,
+          "y": 520,
+          "w": 179,
+          "h": 85
+        }
+      },
+      {
+        "text": "M. piriformis",
+        "anchor_x": 2114,
+        "anchor_y": 576.0,
+        "mask_box": {
+          "x": 2106,
+          "y": 551,
+          "w": 180,
+          "h": 50
+        }
+      },
+      {
+        "text": "M. gluteus maximus",
+        "anchor_x": 163,
+        "anchor_y": 600.0,
+        "mask_box": {
+          "x": 155,
+          "y": 573,
+          "w": 156,
+          "h": 86
+        }
+      },
+      {
+        "text": "M.gemellus superior",
+        "anchor_x": 2112,
+        "anchor_y": 641.0,
+        "mask_box": {
+          "x": 2104,
+          "y": 614,
+          "w": 175,
+          "h": 89
+        }
+      },
+      {
+        "text": "Os sacrum",
+        "anchor_x": 162,
+        "anchor_y": 706.0,
+        "mask_box": {
+          "x": 154,
+          "y": 680,
+          "w": 157,
+          "h": 52
+        }
+      },
+      {
+        "text": "M. obturatorius internus",
+        "anchor_x": 1231,
+        "anchor_y": 698.5,
+        "mask_box": {
+          "x": 1223,
+          "y": 674,
+          "w": 214,
+          "h": 85
+        }
+      },
+      {
+        "text": "M. quadratus femoris",
+        "anchor_x": 2114,
+        "anchor_y": 737.0,
+        "mask_box": {
+          "x": 2103,
+          "y": 712,
+          "w": 188,
+          "h": 84
+        }
+      },
+      {
+        "text": "M.gemellus inferior",
+        "anchor_x": 1273,
+        "anchor_y": 789.5,
+        "mask_box": {
+          "x": 1265,
+          "y": 764,
+          "w": 174,
+          "h": 86
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 2111,
+        "anchor_y": 825.0,
+        "mask_box": {
+          "x": 2103,
+          "y": 799,
+          "w": 164,
+          "h": 92
+        }
+      },
+      {
+        "text": "Lig. sacrotuberale",
+        "anchor_x": 1297,
+        "anchor_y": 880.0,
+        "mask_box": {
+          "x": 1289,
+          "y": 853,
+          "w": 150,
+          "h": 86
+        }
+      },
+      {
+        "text": "Crista intertrochanterica",
+        "anchor_x": 2113,
+        "anchor_y": 915.0,
+        "mask_box": {
+          "x": 2105,
+          "y": 890,
+          "w": 191,
+          "h": 84
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 1727,
+        "anchor_y": 1005.5,
+        "mask_box": {
+          "x": 1719,
+          "y": 982,
+          "w": 161,
+          "h": 82
+        }
+      },
+      {
+        "text": "Tuberositas glutea",
+        "anchor_x": 2112,
+        "anchor_y": 1005.0,
+        "mask_box": {
+          "x": 2104,
+          "y": 978,
+          "w": 169,
+          "h": 92
+        }
+      },
+      {
+        "text": "Tuber ischiadicum",
+        "anchor_x": 1626,
+        "anchor_y": 1092.0,
+        "mask_box": {
+          "x": 1582,
+          "y": 1065,
+          "w": 170,
+          "h": 87
+        }
+      },
+      {
+        "text": "Abduktions-/ Adduktionsachse",
+        "anchor_x": 466,
+        "anchor_y": 1137.0,
+        "mask_box": {
+          "x": 434,
+          "y": 1110,
+          "w": 237,
+          "h": 86
+        }
+      },
+      {
+        "text": "Tractus iliotibialis",
+        "anchor_x": 1026,
+        "anchor_y": 1298.5,
+        "mask_box": {
+          "x": 1018,
+          "y": 1273,
+          "w": 142,
+          "h": 87
+        }
+      },
+      {
+        "text": "Crista iliaca",
+        "anchor_x": 1824,
+        "anchor_y": 1366.5,
+        "mask_box": {
+          "x": 1816,
+          "y": 1341,
+          "w": 167,
+          "h": 51
+        }
+      },
+      {
+        "text": "Os ilium, Facies glutea",
+        "anchor_x": 2113,
+        "anchor_y": 1546.5,
+        "mask_box": {
+          "x": 2105,
+          "y": 1519,
+          "w": 182,
+          "h": 89
+        }
+      },
+      {
+        "text": "Linea glutea posterior",
+        "anchor_x": 1271,
+        "anchor_y": 1712.0,
+        "mask_box": {
+          "x": 1263,
+          "y": 1684,
+          "w": 180,
+          "h": 90
+        }
+      },
+      {
+        "text": "M. gluteus minimus",
+        "anchor_x": 2114,
+        "anchor_y": 1712.5,
+        "mask_box": {
+          "x": 2106,
+          "y": 1685,
+          "w": 153,
+          "h": 88
+        }
+      },
+      {
+        "text": "Os sacrum",
+        "anchor_x": 1289,
+        "anchor_y": 1814.0,
+        "mask_box": {
+          "x": 1281,
+          "y": 1788,
+          "w": 158,
+          "h": 52
+        }
+      },
+      {
+        "text": "M. piriformis",
+        "anchor_x": 2113,
+        "anchor_y": 1806.0,
+        "mask_box": {
+          "x": 2105,
+          "y": 1778,
+          "w": 183,
+          "h": 56
+        }
+      },
+      {
+        "text": "M.gemellus superior",
+        "anchor_x": 2115,
+        "anchor_y": 1872.5,
+        "mask_box": {
+          "x": 2105,
+          "y": 1847,
+          "w": 175,
+          "h": 88
+        }
+      },
+      {
+        "text": "M. obturatorius internus",
+        "anchor_x": 1232,
+        "anchor_y": 1884.0,
+        "mask_box": {
+          "x": 1224,
+          "y": 1859,
+          "w": 216,
+          "h": 87
+        }
+      },
+      {
+        "text": "M. quadratus femoris",
+        "anchor_x": 2114,
+        "anchor_y": 1966.5,
+        "mask_box": {
+          "x": 2104,
+          "y": 1940,
+          "w": 190,
+          "h": 86
+        }
+      },
+      {
+        "text": "Spina ischiadica",
+        "anchor_x": 1226,
+        "anchor_y": 1985.0,
+        "mask_box": {
+          "x": 1218,
+          "y": 1957,
+          "w": 222,
+          "h": 56
+        }
+      },
+      {
+        "text": "M.gemellus inferior",
+        "anchor_x": 1273,
+        "anchor_y": 2056.5,
+        "mask_box": {
+          "x": 1265,
+          "y": 2031,
+          "w": 175,
+          "h": 86
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 2113,
+        "anchor_y": 2056.0,
+        "mask_box": {
+          "x": 2105,
+          "y": 2029,
+          "w": 163,
+          "h": 92
+        }
+      },
+      {
+        "text": "Crista intertrochanterica",
+        "anchor_x": 2114,
+        "anchor_y": 2146.0,
+        "mask_box": {
+          "x": 2106,
+          "y": 2121,
+          "w": 191,
+          "h": 85
+        }
+      },
+      {
+        "text": "Tibia",
+        "anchor_x": 481,
+        "anchor_y": 2194.0,
+        "mask_box": {
+          "x": 473,
+          "y": 2165,
+          "w": 93,
+          "h": 58
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 1026,
+        "anchor_y": 2221.5,
+        "mask_box": {
+          "x": 1018,
+          "y": 2194,
+          "w": 102,
+          "h": 55
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 1729,
+        "anchor_y": 2248.5,
+        "mask_box": {
+          "x": 1721,
+          "y": 2225,
+          "w": 160,
+          "h": 84
+        }
+      },
+      {
+        "text": "Membrana interossea cruris",
+        "anchor_x": 1028,
+        "anchor_y": 2310.0,
+        "mask_box": {
+          "x": 1018,
+          "y": 2285,
+          "w": 161,
+          "h": 122
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Muskeln-Innere Hüftmuskeln-Ventral-clean.jpg",
+    "og_filename": "Muskeln-Innere Hüftmuskeln-Ventral.png",
+    "category": "Muskeln",
+    "subcategory": "Innere Hüftmuskeln",
+    "view": "Ventral",
+    "labels": [
+      {
+        "text": "Costa XII",
+        "anchor_x": 739,
+        "anchor_y": 167.5,
+        "mask_box": {
+          "x": 731,
+          "y": 139,
+          "w": 143,
+          "h": 57
+        }
+      },
+      {
+        "text": "M. psoas minor",
+        "anchor_x": 1684,
+        "anchor_y": 629.5,
+        "mask_box": {
+          "x": 1676,
+          "y": 604,
+          "w": 217,
+          "h": 51
+        }
+      },
+      {
+        "text": "M. psoas major",
+        "anchor_x": 399,
+        "anchor_y": 876.5,
+        "mask_box": {
+          "x": 391,
+          "y": 848,
+          "w": 218,
+          "h": 57
+        }
+      },
+      {
+        "text": "LWKV",
+        "anchor_x": 1878,
+        "anchor_y": 875.0,
+        "mask_box": {
+          "x": 1870,
+          "y": 851,
+          "w": 104,
+          "h": 48
+        }
+      },
+      {
+        "text": "Promontorium",
+        "anchor_x": 1938,
+        "anchor_y": 970.0,
+        "mask_box": {
+          "x": 1930,
+          "y": 945,
+          "w": 211,
+          "h": 50
+        }
+      },
+      {
+        "text": "Crista iliaca",
+        "anchor_x": 2093,
+        "anchor_y": 1087.5,
+        "mask_box": {
+          "x": 2085,
+          "y": 1061,
+          "w": 170,
+          "h": 53
+        }
+      },
+      {
+        "text": "M. iliacus",
+        "anchor_x": 161,
+        "anchor_y": 1190.0,
+        "mask_box": {
+          "x": 153,
+          "y": 1165,
+          "w": 137,
+          "h": 50
+        }
+      },
+      {
+        "text": "Spina iliaca anterior superior",
+        "anchor_x": 2094,
+        "anchor_y": 1393.5,
+        "mask_box": {
+          "x": 2086,
+          "y": 1367,
+          "w": 235,
+          "h": 86
+        }
+      },
+      {
+        "text": "Lig. inguinale (Leistenband)",
+        "anchor_x": 1939,
+        "anchor_y": 1637.0,
+        "mask_box": {
+          "x": 1931,
+          "y": 1612,
+          "w": 196,
+          "h": 87
+        }
+      },
+      {
+        "text": "Lig. sacrotuberale",
+        "anchor_x": 192,
+        "anchor_y": 1667.5,
+        "mask_box": {
+          "x": 184,
+          "y": 1639,
+          "w": 245,
+          "h": 57
+        }
+      },
+      {
+        "text": "M. iliopsoas",
+        "anchor_x": 267,
+        "anchor_y": 1769.0,
+        "mask_box": {
+          "x": 259,
+          "y": 1742,
+          "w": 172,
+          "h": 54
+        }
+      },
+      {
+        "text": "Lig. sacrospinale",
+        "anchor_x": 1939,
+        "anchor_y": 1767.5,
+        "mask_box": {
+          "x": 1931,
+          "y": 1742,
+          "w": 227,
+          "h": 51
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 2134,
+        "anchor_y": 1924.0,
+        "mask_box": {
+          "x": 2126,
+          "y": 1898,
+          "w": 165,
+          "h": 94
+        }
+      },
+      {
+        "text": "Linea intertrochanterica",
+        "anchor_x": 2136,
+        "anchor_y": 2103.0,
+        "mask_box": {
+          "x": 2128,
+          "y": 2078,
+          "w": 191,
+          "h": 85
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 1532,
+        "anchor_y": 2247.5,
+        "mask_box": {
+          "x": 1524,
+          "y": 2222,
+          "w": 164,
+          "h": 86
+        }
+      },
+      {
+        "text": "Arcus iliopectineus",
+        "anchor_x": 692,
+        "anchor_y": 2318.5,
+        "mask_box": {
+          "x": 641,
+          "y": 2293,
+          "w": 182,
+          "h": 88
+        }
+      },
+      {
+        "text": "Spina ischiadica",
+        "anchor_x": 912,
+        "anchor_y": 2320.0,
+        "mask_box": {
+          "x": 879,
+          "y": 2293,
+          "w": 145,
+          "h": 84
+        }
+      },
+      {
+        "text": "Symphysis pubica",
+        "anchor_x": 1109,
+        "anchor_y": 2319.5,
+        "mask_box": {
+          "x": 1101,
+          "y": 2292,
+          "w": 156,
+          "h": 93
+        }
+      },
+      {
+        "text": "Tuberculum pubicum",
+        "anchor_x": 1302,
+        "anchor_y": 2318.0,
+        "mask_box": {
+          "x": 1294,
+          "y": 2293,
+          "w": 175,
+          "h": 91
         }
       }
     ]
