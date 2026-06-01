@@ -122,6 +122,14 @@ def main():
                         help="Path to web/ directory (default: ../web)")
     args = parser.parse_args()
 
+    json_out = args.output_web / 'data' / 'data.json'
+    existing_entries: list[dict] = []
+    processed_stems: set[str] = set()
+    if json_out.exists():
+        existing_entries = json.loads(json_out.read_text(encoding='utf-8'))
+        processed_stems = {Path(e['og_filename']).stem for e in existing_entries}
+        print(f"Bestehende data.json geladen: {len(existing_entries)} Einträge.")
+
     _preprocess_images(RAW_IMAGES_DIR, args.input_dir)
 
     if not args.input_dir.is_dir():
@@ -149,6 +157,15 @@ def main():
             valid_files.append(path)
         else:
             print(f"  SKIP {path.name} – does not match Kategorie-Unterkategorie-Ansicht.ext")
+
+    already_done = [p for p in valid_files if p.stem in processed_stems]
+    for p in already_done:
+        print(f"  SKIP {p.name} – bereits in data.json")
+    valid_files = [p for p in valid_files if p.stem not in processed_stems]
+
+    if not valid_files:
+        print("Keine neuen Bilder zu verarbeiten.")
+        return
 
     # ── Pass 1: OCR block extraction ─────────────────────────────────────────
     print(f"\n=== Pass 1: OCR block extraction ({len(valid_files)} images) ===")
@@ -250,8 +267,7 @@ def main():
     _write_report(qm_entries, output_dir / 'report.json')
     unload_model()
 
-    json_out = args.output_web / 'data' / 'data.json'
-    save_data_json(entries, json_out)
+    save_data_json(existing_entries + entries, json_out)
 
     print(f"\nDone. {len(entries)}/{len(all_files)} images processed.")
     print(f"data.json → {json_out}")
