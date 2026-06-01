@@ -4464,5 +4464,333 @@
         }
       }
     ]
+  },
+  {
+    "filename": "Muskeln-M. quadriceps femoris & M. sartorius-Ventral-clean.jpg",
+    "og_filename": "Muskeln-M. quadriceps femoris & M. sartorius-Ventral.png",
+    "category": "Muskeln",
+    "subcategory": "M. quadriceps femoris & M. sartorius",
+    "view": "Ventral",
+    "labels": [
+      {
+        "text": "Spina iliaca anterior superior",
+        "anchor_x": 283,
+        "anchor_y": 193.0,
+        "mask_box": {
+          "x": 205,
+          "y": 166,
+          "w": 239,
+          "h": 88
+        }
+      },
+      {
+        "text": "M. sartorius",
+        "anchor_x": 1339,
+        "anchor_y": 227.5,
+        "mask_box": {
+          "x": 1331,
+          "y": 202,
+          "w": 173,
+          "h": 51
+        }
+      },
+      {
+        "text": "Spina iliaca anterior inferior",
+        "anchor_x": 282,
+        "anchor_y": 316.5,
+        "mask_box": {
+          "x": 217,
+          "y": 288,
+          "w": 227,
+          "h": 90
+        }
+      },
+      {
+        "text": "Pfannendach",
+        "anchor_x": 262,
+        "anchor_y": 418.5,
+        "mask_box": {
+          "x": 254,
+          "y": 395,
+          "w": 187,
+          "h": 47
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 286,
+        "anchor_y": 541.0,
+        "mask_box": {
+          "x": 278,
+          "y": 515,
+          "w": 169,
+          "h": 94
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 1348,
+        "anchor_y": 540.0,
+        "mask_box": {
+          "x": 1340,
+          "y": 514,
+          "w": 168,
+          "h": 94
+        }
+      },
+      {
+        "text": "Linea intertrochanterica",
+        "anchor_x": 1349,
+        "anchor_y": 650.0,
+        "mask_box": {
+          "x": 1310,
+          "y": 626,
+          "w": 195,
+          "h": 83
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 1348,
+        "anchor_y": 758.0,
+        "mask_box": {
+          "x": 1340,
+          "y": 733,
+          "w": 167,
+          "h": 87
+        }
+      },
+      {
+        "text": "M. rectus femoris (Caput reflexum)",
+        "anchor_x": 1910,
+        "anchor_y": 757.5,
+        "mask_box": {
+          "x": 1902,
+          "y": 734,
+          "w": 244,
+          "h": 88
+        }
+      },
+      {
+        "text": "M. rectus femoris (Caput rectum)",
+        "anchor_x": 1910,
+        "anchor_y": 855.5,
+        "mask_box": {
+          "x": 1902,
+          "y": 832,
+          "w": 244,
+          "h": 87
+        }
+      },
+      {
+        "text": "M.sartorius",
+        "anchor_x": 940,
+        "anchor_y": 876.5,
+        "mask_box": {
+          "x": 932,
+          "y": 853,
+          "w": 172,
+          "h": 47
+        }
+      },
+      {
+        "text": "M.quadriceps femoris",
+        "anchor_x": 2204,
+        "anchor_y": 935.0,
+        "mask_box": {
+          "x": 2194,
+          "y": 908,
+          "w": 150,
+          "h": 126
+        }
+      },
+      {
+        "text": "M. vastus intermedius",
+        "anchor_x": 1949,
+        "anchor_y": 953.0,
+        "mask_box": {
+          "x": 1941,
+          "y": 928,
+          "w": 179,
+          "h": 85
+        }
+      },
+      {
+        "text": "M. rectus femoris",
+        "anchor_x": 938,
+        "anchor_y": 989.0,
+        "mask_box": {
+          "x": 929,
+          "y": 963,
+          "w": 145,
+          "h": 88
+        }
+      },
+      {
+        "text": "M. vastus lateralis",
+        "anchor_x": 1949,
+        "anchor_y": 1050.0,
+        "mask_box": {
+          "x": 1941,
+          "y": 1025,
+          "w": 143,
+          "h": 85
+        }
+      },
+      {
+        "text": "M. vastus medialis",
+        "anchor_x": 1949,
+        "anchor_y": 1148.0,
+        "mask_box": {
+          "x": 1941,
+          "y": 1123,
+          "w": 142,
+          "h": 83
+        }
+      },
+      {
+        "text": "M. vastus lateralis",
+        "anchor_x": 309,
+        "anchor_y": 1534.0,
+        "mask_box": {
+          "x": 301,
+          "y": 1509,
+          "w": 141,
+          "h": 86
+        }
+      },
+      {
+        "text": "M. vastus medialis",
+        "anchor_x": 939,
+        "anchor_y": 1534.0,
+        "mask_box": {
+          "x": 931,
+          "y": 1508,
+          "w": 143,
+          "h": 89
+        }
+      },
+      {
+        "text": "M. rectus femoris",
+        "anchor_x": 2037,
+        "anchor_y": 1602.0,
+        "mask_box": {
+          "x": 2028,
+          "y": 1576,
+          "w": 143,
+          "h": 87
+        }
+      },
+      {
+        "text": "Ansatzsehne des M. quadriceps femoris",
+        "anchor_x": 216,
+        "anchor_y": 1704.0,
+        "mask_box": {
+          "x": 208,
+          "y": 1682,
+          "w": 236,
+          "h": 118
+        }
+      },
+      {
+        "text": "Patella",
+        "anchor_x": 939,
+        "anchor_y": 1806.5,
+        "mask_box": {
+          "x": 931,
+          "y": 1781,
+          "w": 111,
+          "h": 51
+        }
+      },
+      {
+        "text": "M.sartorius",
+        "anchor_x": 2037,
+        "anchor_y": 1811.0,
+        "mask_box": {
+          "x": 2029,
+          "y": 1786,
+          "w": 173,
+          "h": 50
+        }
+      },
+      {
+        "text": "Retinaculum patellae laterale",
+        "anchor_x": 1340,
+        "anchor_y": 1883.0,
+        "mask_box": {
+          "x": 1289,
+          "y": 1859,
+          "w": 226,
+          "h": 87
+        }
+      },
+      {
+        "text": "Retinaculum patellae mediale",
+        "anchor_x": 2039,
+        "anchor_y": 1883.5,
+        "mask_box": {
+          "x": 2030,
+          "y": 1860,
+          "w": 233,
+          "h": 87
+        }
+      },
+      {
+        "text": "Lig. patellae",
+        "anchor_x": 939,
+        "anchor_y": 1920.5,
+        "mask_box": {
+          "x": 931,
+          "y": 1893,
+          "w": 176,
+          "h": 55
+        }
+      },
+      {
+        "text": "Pes anserinus superficialis",
+        "anchor_x": 939,
+        "anchor_y": 1993.0,
+        "mask_box": {
+          "x": 931,
+          "y": 1968,
+          "w": 196,
+          "h": 89
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 349,
+        "anchor_y": 2058.0,
+        "mask_box": {
+          "x": 341,
+          "y": 2031,
+          "w": 102,
+          "h": 54
+        }
+      },
+      {
+        "text": "Tuberositas tibiae",
+        "anchor_x": 939,
+        "anchor_y": 2101.5,
+        "mask_box": {
+          "x": 929,
+          "y": 2076,
+          "w": 174,
+          "h": 89
+        }
+      },
+      {
+        "text": "Tibia",
+        "anchor_x": 361,
+        "anchor_y": 2131.0,
+        "mask_box": {
+          "x": 353,
+          "y": 2103,
+          "w": 92,
+          "h": 56
+        }
+      }
+    ]
   }
 ]
