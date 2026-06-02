@@ -236,7 +236,24 @@ function loadTextQuiz(entry) {
             var answers = (row.answers[colName] || []).filter(function (a) { return a; });
             if (!answers.length) return;
 
-            var categoryState = { answers: answers, claimed: new Map() };
+            var prefixGroups = {};
+            answers.forEach(function(answerFull) {
+                var parsed = _parseAnswer(answerFull);
+                if (parsed.prefix) {
+                    if (!prefixGroups[parsed.prefix]) prefixGroups[parsed.prefix] = [];
+                    prefixGroups[parsed.prefix].push(parsed.solution);
+                }
+            });
+
+            var categoryState = { answers: answers, claimed: new Map(), prefixPools: {} };
+            Object.keys(prefixGroups).forEach(function(prefix) {
+                if (prefixGroups[prefix].length > 1) {
+                    categoryState.prefixPools[prefix] = {
+                        answers: prefixGroups[prefix],
+                        claimed: new Map()
+                    };
+                }
+            });
 
             var catEl = document.createElement('div');
             catEl.className = 'tq-category';
@@ -278,8 +295,12 @@ function loadTextQuiz(entry) {
                 input.setAttribute('spellcheck', 'false');
 
                 if (parsed.prefix) {
-                    input.dataset.fixedAnswer = parsed.solution;
-                    input.dataset.fullAnswer  = answerFull;
+                    if (categoryState.prefixPools[parsed.prefix]) {
+                        input.dataset.poolPrefix = parsed.prefix;
+                    } else {
+                        input.dataset.fixedAnswer = parsed.solution;
+                        input.dataset.fullAnswer  = answerFull;
+                    }
                 }
 
                 (function (inp, idx, state) {
@@ -323,6 +344,16 @@ function _textPool(categoryState, currentFieldIdx) {
     });
 }
 
+function _prefixPool(prefixState, currentFieldIdx) {
+    var otherClaims = [];
+    prefixState.claimed.forEach(function(answer, fieldIdx) {
+        if (fieldIdx !== currentFieldIdx) otherClaims.push(answer);
+    });
+    return prefixState.answers.filter(function(a) {
+        return otherClaims.indexOf(a) === -1;
+    });
+}
+
 function onTextInputChange(input, fieldIdx, categoryState) {
     if (input.readOnly) return;
 
@@ -330,6 +361,44 @@ function onTextInputChange(input, fieldIdx, categoryState) {
 
     if (value.length === 0) {
         input.className        = 'label-input tq-input';
+        input.style.background = '';
+        return;
+    }
+
+    // Pool-Validierung für Präfix-Felder mit mehreren Antworten
+    if (input.dataset.poolPrefix) {
+        var prefixState  = categoryState.prefixPools[input.dataset.poolPrefix];
+        var valueLower   = value.toLowerCase();
+        var pool         = _prefixPool(prefixState, fieldIdx);
+
+        var bestMatch    = null;
+        var bestProgress = 0;
+
+        pool.forEach(function(answer) {
+            if (answer.toLowerCase().startsWith(valueLower)) {
+                var progress = value.length / answer.length;
+                if (progress > bestProgress) {
+                    bestProgress = progress;
+                    bestMatch    = answer;
+                }
+            }
+        });
+
+        if (bestMatch) {
+            if (value.length === bestMatch.length) {
+                input.style.background = '';
+                input.className        = 'label-input tq-input correct';
+                input.readOnly         = true;
+                prefixState.claimed.set(fieldIdx, bestMatch);
+                categoryState.claimed.set(fieldIdx, input.dataset.poolPrefix + ': ' + bestMatch);
+            } else {
+                input.style.background = 'rgba(80, 200, 100, ' + bestProgress.toFixed(2) + ')';
+                input.className        = 'label-input tq-input';
+            }
+            return;
+        }
+
+        input.className        = 'label-input tq-input typo';
         input.style.background = '';
         return;
     }
