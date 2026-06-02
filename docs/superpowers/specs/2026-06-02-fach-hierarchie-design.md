@@ -82,12 +82,13 @@ def build_entry(clean_filename, og_filename, labels, *, subject, category, subca
 
 ### pipeline/process.py
 
-Drei Änderungen:
+Vier Änderungen:
 
 1. `NAME_RE` erwartet 4-teiligen Namen:
    ```python
    NAME_RE = re.compile(r'^[^-]+-[^-]+-[^-]+-[^-]+\.\w+$')
    ```
+   Außerdem den SKIP-Log-String auf Zeile 159 aktualisieren: `"does not match Fach-Kategorie-Unterkategorie-Ansicht.ext"`
 
 2. `_parse_stem` gibt 4-Tupel zurück:
    ```python
@@ -173,16 +174,27 @@ data.forEach(function (entry) {
 
 ### web/js/app.js
 
-`mobileTitle` zeigt Fach mit an:
+Beide Pfade (Text-Entry und Image-Entry) nutzen die stored Felder statt Filename-Parsing:
+
 ```js
+// Text-Entry (war: entry.view + ' – ' + entry.subcategory)
+mobileTitle.textContent = entry.subject + ' – ' + entry.subcategory + ' – ' + entry.view;
+
+// Image-Entry (war: rawName aus Filename-Parsing)
 mobileTitle.textContent = entry.subject + ' – ' + entry.subcategory + ' – ' + entry.view;
 ```
+
+Der bisherige Filename-Parsing-Block (`rawName`) in app.js wird entfernt; stattdessen einheitlich `entry.subject/subcategory/view`.
+
+### web/js/quiz.js
+
+Keine Änderungen erforderlich — `quiz.js` rendert den Quiz-Inhalt und greift nur auf `entry.columns`, `entry.rows`, `entry.labels` zu, nicht auf die Hierarchiefelder.
 
 ---
 
 ## 5. Migration (einmalig)
 
-Ein Python-Skript `pipeline/migrate_to_fach.py` führt drei Schritte aus:
+Ein Python-Skript `pipeline/migrate_to_fach.py` führt drei Schritte aus. Default-Fach für alle bestehenden Einträge: **„Anatomie 1"**.
 
 **Schritt 1 – Input/-Dateien umbenennen** (23 Dateien):
 ```
@@ -196,9 +208,11 @@ Muskeln Detail-Gesäß-Gluteus.xlsx  →  Anatomie 1-Muskeln Detail-Gesäß-Glut
 
 **Schritt 3 – JSON-Dateien aktualisieren:**
 - `subject: "Anatomie 1"` zu allen Einträgen in `data.json` und `text-data.json` hinzufügen
-- `filename` und `og_filename` in `data.json` mit neuem Präfix versehen
+- `filename` und `og_filename` in `data.json` mit dem neuen Präfix „Anatomie 1-" versehen (z.B. `og_filename: "Anatomie 1-Bänder-Becken-Dorsal.png"`)
 
-Die Bilder in `web/data/images/` und `web/data/og-images/` bleiben unverändert — ihre Dateinamen werden nicht geändert.
+**Reihenfolge der Ausführung:** Migration läuft vor allen Code-Änderungen an den Pipeline-Scripts. Nach der Migration sind `data.json`-Einträge mit korrekten `og_filename`-Werten versehen, sodass `process.py` sie beim nächsten Lauf via `processed_stems` korrekt als bereits verarbeitet erkennt.
+
+**Die Bilder in `web/data/images/` und `web/data/og-images/`** behalten ihre bisherigen 3-teiligen Dateinamen (z.B. `Bänder-Becken-Dorsal-clean.jpg`). Das ist möglich, weil `menu.js` nach der Überarbeitung nur noch die stored Felder `entry.filename` aus `data.json` nutzt — und dieser Wert wird in Schritt 3 mit dem neuen Präfix versehen. Die physischen Bilddateien müssen nicht umbenannt werden.
 
 ---
 
@@ -211,7 +225,8 @@ Die Bilder in `web/data/images/` und `web/data/og-images/` bleiben unverändert 
 | `pipeline/convert_text.py` | `_parse_stem`, `_build_entry`, Deduplizierungs-Key |
 | `pipeline/migrate_to_fach.py` | Neues Migrations-Script |
 | `web/js/menu.js` | 4. Menü-Ebene, Filename-Parsing entfernen |
-| `web/js/app.js` | `mobileTitle` |
+| `web/js/app.js` | `mobileTitle` (beide Pfade auf stored Felder umstellen, Filename-Parsing entfernen) |
+| `web/js/quiz.js` | Keine Änderung (greift nur auf `labels`/`rows`/`columns` zu) |
 | `web/data/data.json` | `subject`-Feld + Dateinamen (Migration) |
 | `web/data/text-data.json` | `subject`-Feld (Migration) |
 | `web/css/style.css` | CSS für `menu-fach`-Klassen |
