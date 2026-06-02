@@ -113,9 +113,41 @@
     "columns": [
       "Indikation",
       "Kontraindikation",
-      "Funktion",
-      "Innervation"
+      "",
+      ""
     ],
-    "rows": []
+    "rows": [
+      {
+        "question": "Nenne jeweils 5 Indikationen und Kontraindikationen für eine Hydrotherapie Behandlung",
+        "answers": {
+          "Indikation": [
+            "Erkrankungen des Bewegungsapparates",
+            "neurologische Erkrankungen",
+            "internistische Erkrankungen im Früh- / Anfangsstadium",
+            "nicht ansteckbare Hauterkrankungen",
+            "Atemwegsprobleme",
+            "leichte Kreislaufbeschwerden",
+            "Erschöpfungssyndrom",
+            "Abwehrschwäche",
+            "Arthritis",
+            "Schmerzen im Bewegungsapparat",
+            "Kopfschmerzen"
+          ],
+          "Kontraindikation": [
+            "Spätstadium Herz-Lungenerkrankung",
+            "Blasen-/Nierenentzündungen",
+            "Frische Bein- & Beckenvenen Thrombosen (< 4 Wochen)",
+            "Aneurysmen",
+            "frische Operationen",
+            "Leberzirrhose",
+            "Haut- /Nagelpilz",
+            "stark blutende Hämorrhoiden",
+            "Infektionskrankheiten",
+            "Offene Wunden"
+          ],
+          "": []
+        }
+      }
+    ]
   }
 ]
