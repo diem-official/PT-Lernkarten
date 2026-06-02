@@ -1,7 +1,8 @@
 (function () {
-    var DATA_URL = 'data/data.json';
-    var IMG_BASE = 'data/images/';
-    var OG_IMG_BASE = 'data/og-images/';
+    var DATA_URL      = 'data/data.json';
+    var TEXT_DATA_URL = 'data/text-data.json';
+    var IMG_BASE      = 'data/images/';
+    var OG_IMG_BASE   = 'data/og-images/';
 
     function showError(msg) {
         var loading = document.getElementById('menu-loading');
@@ -33,7 +34,7 @@
     function onViewportResize() {
         if (window.innerWidth > 600) return;
         var available = Math.round(window.visualViewport.height) - 48;
-        app.style.height     = available + 'px';
+        app.style.height      = available + 'px';
         imgEl.style.maxHeight = available + 'px';
         window.dispatchEvent(new Event('resize')); // Overlays neu positionieren
     }
@@ -42,33 +43,42 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        fetch(DATA_URL)
-            .then(function (resp) {
+        Promise.all([
+            fetch(DATA_URL).then(function (resp) {
                 if (!resp.ok) throw new Error('HTTP ' + resp.status);
                 return resp.json();
-            })
-            .then(function (data) {
-                if (!data.length) {
-                    showError('data.json ist leer.');
-                    return;
-                }
-                buildMenu(data, function (entry, mode) {
-                    closeDrawer();
-                    var rawName = (entry.filename || '')
-                        .replace(/-clean\.(jpg|jpeg|png|tiff?)$/i, '')
-                        .replace(/\.[^.]+$/, '')
-                        .replace(/[-_]/g, ' ');
-                    mobileTitle.textContent = rawName || 'Anatomie Lernkarten';
+            }),
+            fetch(TEXT_DATA_URL).then(function (resp) {
+                return resp.ok ? resp.json() : [];
+            }).catch(function () { return []; })
+        ])
+        .then(function (results) {
+            var imageData = results[0];
+            var textData  = results[1];
+            var allData   = imageData.concat(textData);
 
+            if (!allData.length) {
+                showError('Keine Daten gefunden (data.json und text-data.json sind leer oder fehlen).');
+                return;
+            }
+
+            buildMenu(allData, function (entry, mode) {
+                closeDrawer();
+                mobileTitle.textContent = entry.subject + ' – ' + entry.subcategory + ' – ' + entry.view;
+
+                if (entry.type === 'text') {
+                    loadTextQuiz(entry);
+                } else {
                     if (mode === 'lernen') {
                         loadLernen(entry, OG_IMG_BASE);
                     } else {
                         loadQuiz(entry, IMG_BASE);
                     }
-                });
-            })
-            .catch(function (err) {
-                showError(err.message + ' – Starte einen lokalen Webserver (z. B. python3 -m http.server 8080)');
+                }
             });
+        })
+        .catch(function (err) {
+            showError(err.message + ' – Starte einen lokalen Webserver (z. B. python3 -m http.server 8080)');
+        });
     });
 }());
