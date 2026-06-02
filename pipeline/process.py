@@ -25,7 +25,7 @@ from export import build_entry, save_data_json
 log = logging.getLogger("process")
 
 SUPPORTED = {'.jpg', '.jpeg', '.png', '.tif', '.tiff'}
-NAME_RE = re.compile(r'^[^-]+-[^-]+-[^-]+\.\w+$')
+NAME_RE = re.compile(r'^[^-]+-[^-]+-[^-]+-[^-]+\.\w+$')
 DEFAULT_WEB = Path(__file__).parent.parent / 'web'
 DEFAULT_INPUT = Path(__file__).parent.parent / 'Input'
 RAW_IMAGES_DIR = Path('/home/diem/PT Lernkarten/Bilder')
@@ -34,10 +34,10 @@ MAX_OCR_DIM = 2500
 BOX_PADDING = 8
 
 
-def _parse_stem(stem: str) -> tuple[str, str, str]:
-    """Split 'Category-Subcategory-View' filename stem into three metadata parts."""
-    parts = stem.split('-', 2)
-    return parts[0], parts[1], parts[2]
+def _parse_stem(stem: str) -> tuple[str, str, str, str]:
+    """Split 'Fach-Category-Subcategory-View' filename stem into four metadata parts."""
+    parts = stem.split('-', 3)
+    return parts[0], parts[1], parts[2], parts[3]
 
 
 def _preprocess_images(src_dir: Path, dst_dir: Path) -> None:
@@ -156,7 +156,7 @@ def main():
         if NAME_RE.match(path.name):
             valid_files.append(path)
         else:
-            print(f"  SKIP {path.name} – does not match Kategorie-Unterkategorie-Ansicht.ext")
+            print(f"  SKIP {path.name} – does not match Fach-Kategorie-Unterkategorie-Ansicht.ext")
 
     already_done = [p for p in valid_files if p.stem in processed_stems]
     for p in already_done:
@@ -209,7 +209,7 @@ def main():
                 [b["text"] for b in raw_blocks if b not in ocr_blocks],
             )
 
-        category, subcategory, view = _parse_stem(path.stem)
+        fach, category, subcategory, view = _parse_stem(path.stem)
 
         img_bgr = cv2.imread(str(path))
         classify_result = detect_labels(ocr_blocks, image=img_bgr)
@@ -259,6 +259,7 @@ def main():
             clean_name,
             og_name,
             labels,
+            subject=fach,
             category=category,
             subcategory=subcategory,
             view=view,

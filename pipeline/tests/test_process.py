@@ -16,17 +16,17 @@ from process import (
 
 
 def test_parse_stem_simple():
-    assert _parse_stem("Knochen-Becken-dorsal") == ("Knochen", "Becken", "dorsal")
+    assert _parse_stem("Anatomie 1-Knochen-Becken-dorsal") == ("Anatomie 1", "Knochen", "Becken", "dorsal")
 
 
 def test_parse_stem_complex_subcategory():
     # Subcategory may contain spaces and special characters
-    result = _parse_stem("Knochen-Os sacrum & Os Coccygis-dorsal")
-    assert result == ("Knochen", "Os sacrum & Os Coccygis", "dorsal")
+    result = _parse_stem("Anatomie 1-Knochen-Os sacrum & Os Coccygis-dorsal")
+    assert result == ("Anatomie 1", "Knochen", "Os sacrum & Os Coccygis", "dorsal")
 
 
 def test_parse_stem_view_with_spaces():
-    assert _parse_stem("Muskeln-Arm-lateral links") == ("Muskeln", "Arm", "lateral links")
+    assert _parse_stem("Anatomie 1-Muskeln-Arm-lateral links") == ("Anatomie 1", "Muskeln", "Arm", "lateral links")
 
 
 def test_write_report(tmp_path):
