@@ -3,36 +3,44 @@ var _imgBasePath = '';
 var _resizeTimer = null;
 var _lastLayoutWidth = window.innerWidth;
 
+// ── Image quiz: "Lernen" mode ────────────────────────────────────────────────
+
 function loadLernen(entry, ogImgBasePath) {
     _currentEntry = null;
 
-    var img = document.getElementById('quiz-img');
-    var wrapper = document.getElementById('quiz-wrapper');
+    var img          = document.getElementById('quiz-img');
+    var wrapper      = document.getElementById('quiz-wrapper');
     var zoomContainer = document.getElementById('zoom-container');
-    var placeholder = document.getElementById('placeholder');
+    var placeholder  = document.getElementById('placeholder');
+    var textWrapper  = document.getElementById('text-quiz-wrapper');
 
     img.onload = null;
     zoomContainer.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
 
     placeholder.classList.add('hidden');
+    textWrapper.classList.add('hidden');
     wrapper.classList.remove('hidden');
     resetZoom();
 
     img.src = ogImgBasePath + entry.og_filename;
 }
 
+// ── Image quiz: "Testen" mode ────────────────────────────────────────────────
+
 function loadQuiz(entry, imgBasePath) {
     _currentEntry = entry;
-    _imgBasePath = imgBasePath;
+    _imgBasePath  = imgBasePath;
 
-    var img = document.getElementById('quiz-img');
-    var wrapper = document.getElementById('quiz-wrapper');
+    var img           = document.getElementById('quiz-img');
+    var wrapper       = document.getElementById('quiz-wrapper');
     var zoomContainer = document.getElementById('zoom-container');
-    var placeholder = document.getElementById('placeholder');
+    var placeholder   = document.getElementById('placeholder');
+    var textWrapper   = document.getElementById('text-quiz-wrapper');
 
     zoomContainer.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
 
     placeholder.classList.add('hidden');
+    textWrapper.classList.add('hidden');
     wrapper.classList.remove('hidden');
     resetZoom();
 
@@ -41,20 +49,18 @@ function loadQuiz(entry, imgBasePath) {
     };
     img.src = imgBasePath + entry.filename;
     // If the browser already has this image cached (same URL), onload won't fire.
-    // Call renderOverlays directly when the image is already complete.
     if (img.complete && img.naturalWidth > 0) {
         renderOverlays(entry.labels, img, zoomContainer);
     }
 }
 
 function renderOverlays(labels, img, wrapper) {
-    var scaleX = img.clientWidth / img.naturalWidth;
+    var scaleX = img.clientWidth  / img.naturalWidth;
     var scaleY = img.clientHeight / img.naturalHeight;
 
     var existing = wrapper.querySelectorAll('.overlay-group');
     if (existing.length === labels.length) {
-        // Resize-Fall: nur Positionen anpassen, keine Elemente neu erstellen.
-        // So bleibt das fokussierte Eingabefeld im DOM und die Tastatur bleibt offen.
+        // Resize-Fall: nur Positionen anpassen
         existing.forEach(function (group, i) {
             var lb = labels[i];
             group.style.left = (lb.mask_box.x * scaleX) + 'px';
@@ -65,25 +71,24 @@ function renderOverlays(labels, img, wrapper) {
         return;
     }
 
-    // Erstes Laden (oder Anzahl Labels hat sich geändert): neu aufbauen
     wrapper.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
 
     labels.forEach(function (label) {
         var group = document.createElement('div');
         group.className = 'overlay-group';
         group.style.left = (label.mask_box.x * scaleX) + 'px';
-        group.style.top = (label.mask_box.y * scaleY) + 'px';
+        group.style.top  = (label.mask_box.y * scaleY) + 'px';
 
         var input = document.createElement('input');
-        input.type = 'text';
+        input.type      = 'text';
         input.className = 'label-input';
-        input.style.width = (label.mask_box.w * scaleX) + 'px';
+        input.style.width    = (label.mask_box.w * scaleX) + 'px';
         input.dataset.solution = label.text;
-        input.dataset.ox = label.anchor_x;
-        input.dataset.oy = label.anchor_y;
+        input.dataset.ox       = label.anchor_x;
+        input.dataset.oy       = label.anchor_y;
 
         var helpBtn = document.createElement('button');
-        helpBtn.type = 'button';
+        helpBtn.type      = 'button';
         helpBtn.className = 'help-btn';
         helpBtn.textContent = '?';
         helpBtn.setAttribute('aria-label', 'Lösung anzeigen');
@@ -102,11 +107,11 @@ function renderOverlays(labels, img, wrapper) {
 function onInputChange(input) {
     if (input.readOnly) return;
 
-    var value = input.value;
+    var value    = input.value;
     var solution = input.dataset.solution;
 
     if (value.length === 0) {
-        input.className = 'label-input';
+        input.className    = 'label-input';
         input.style.background = '';
         return;
     }
@@ -114,16 +119,173 @@ function onInputChange(input) {
     var isPrefix = solution.toLowerCase().startsWith(value.toLowerCase());
 
     if (!isPrefix) {
-        input.className = 'label-input typo';
+        input.className    = 'label-input typo';
         input.style.background = '';
     } else if (value.length === solution.length) {
         input.style.background = '';
-        input.className = 'label-input correct';
-        input.readOnly = true;
+        input.className    = 'label-input correct';
+        input.readOnly     = true;
     } else {
         var alpha = (value.length / solution.length).toFixed(2);
         input.style.background = 'rgba(80, 200, 100, ' + alpha + ')';
-        input.className = 'label-input';
+        input.className    = 'label-input';
+    }
+}
+
+// ── Text quiz ────────────────────────────────────────────────────────────────
+
+function loadTextQuiz(entry) {
+    _currentEntry = null; // prevents image resize handler from triggering
+
+    var placeholder = document.getElementById('placeholder');
+    var quizWrapper = document.getElementById('quiz-wrapper');
+    var textWrapper = document.getElementById('text-quiz-wrapper');
+
+    placeholder.classList.add('hidden');
+    quizWrapper.classList.add('hidden');
+    textWrapper.classList.remove('hidden');
+    textWrapper.innerHTML = '';
+
+    entry.rows.forEach(function (row) {
+        var section = document.createElement('div');
+        section.className = 'tq-section';
+
+        var questionEl = document.createElement('div');
+        questionEl.className   = 'tq-question';
+        questionEl.textContent = row.question;
+        section.appendChild(questionEl);
+
+        var categoriesEl = document.createElement('div');
+        categoriesEl.className = 'tq-categories';
+
+        entry.columns.forEach(function (colName) {
+            var answers = (row.answers[colName] || []).filter(function (a) { return a; });
+            if (!answers.length) return;
+
+            var categoryState = { answers: answers, claimed: new Map() };
+
+            var catEl = document.createElement('div');
+            catEl.className = 'tq-category';
+
+            var headerEl = document.createElement('div');
+            headerEl.className = 'tq-category-header';
+
+            var labelEl = document.createElement('span');
+            labelEl.className   = 'tq-category-label';
+            labelEl.textContent = colName;
+
+            var helpBtn = document.createElement('button');
+            helpBtn.type      = 'button';
+            helpBtn.className = 'help-btn';
+            helpBtn.textContent = '?';
+            helpBtn.setAttribute('aria-label', 'Hinweis anzeigen');
+
+            (function (state) {
+                helpBtn.addEventListener('click', function () {
+                    onTextHelpClick(state);
+                });
+            }(categoryState));
+
+            headerEl.appendChild(labelEl);
+            headerEl.appendChild(helpBtn);
+
+            var fieldsEl = document.createElement('div');
+            fieldsEl.className = 'tq-fields';
+
+            answers.forEach(function (_, fieldIdx) {
+                var input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'label-input tq-input';
+                input.setAttribute('autocomplete', 'off');
+                input.setAttribute('autocorrect', 'off');
+                input.setAttribute('autocapitalize', 'off');
+                input.setAttribute('spellcheck', 'false');
+
+                (function (inp, idx, state) {
+                    inp.addEventListener('input', function () {
+                        onTextInputChange(inp, idx, state);
+                    });
+                }(input, fieldIdx, categoryState));
+
+                fieldsEl.appendChild(input);
+            });
+
+            catEl.appendChild(headerEl);
+            catEl.appendChild(fieldsEl);
+            categoriesEl.appendChild(catEl);
+        });
+
+        section.appendChild(categoriesEl);
+        textWrapper.appendChild(section);
+    });
+}
+
+// Returns the answers not yet claimed by other fields (not the current field).
+function _textPool(categoryState, currentFieldIdx) {
+    var otherClaims = [];
+    categoryState.claimed.forEach(function (answer, fieldIdx) {
+        if (fieldIdx !== currentFieldIdx) otherClaims.push(answer);
+    });
+    return categoryState.answers.filter(function (a) {
+        return otherClaims.indexOf(a) === -1;
+    });
+}
+
+function onTextInputChange(input, fieldIdx, categoryState) {
+    if (input.readOnly) return;
+
+    var value = input.value;
+
+    if (value.length === 0) {
+        input.className        = 'label-input tq-input';
+        input.style.background = '';
+        return;
+    }
+
+    var valueLower = value.toLowerCase();
+    var pool       = _textPool(categoryState, fieldIdx);
+
+    var bestMatch    = null;
+    var bestProgress = 0;
+
+    pool.forEach(function (answer) {
+        if (answer.toLowerCase().startsWith(valueLower)) {
+            var progress = value.length / answer.length;
+            if (progress > bestProgress) {
+                bestProgress = progress;
+                bestMatch    = answer;
+            }
+        }
+    });
+
+    if (bestMatch) {
+        if (value.length === bestMatch.length) {
+            input.style.background = '';
+            input.className        = 'label-input tq-input correct';
+            input.readOnly         = true;
+            categoryState.claimed.set(fieldIdx, bestMatch);
+        } else {
+            input.style.background = 'rgba(80, 200, 100, ' + bestProgress.toFixed(2) + ')';
+            input.className        = 'label-input tq-input';
+        }
+        return;
+    }
+
+    input.className        = 'label-input tq-input typo';
+    input.style.background = '';
+}
+
+function onTextHelpClick(categoryState) {
+    var allClaimed = [];
+    categoryState.claimed.forEach(function (answer) { allClaimed.push(answer); });
+    var remaining = categoryState.answers.filter(function (a) {
+        return allClaimed.indexOf(a) === -1;
+    });
+    if (remaining.length === 0) {
+        showHelp('Alle Antworten korrekt ✓');
+    } else {
+        var hint = remaining[Math.floor(Math.random() * remaining.length)];
+        showHelp(hint);
     }
 }
 
@@ -145,46 +307,43 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
-// showHelp global verfügbar machen (für mobile-help-btn in app.js)
 window.showHelp = showHelp;
 
-// ── Resize handler (debounced) ───────────────────────────────────────────────
+// ── Resize handler (debounced) — image quiz only ─────────────────────────────
 
 window.addEventListener('resize', function () {
     var newWidth = window.innerWidth;
     var onlyHeightChanged = (newWidth === _lastLayoutWidth);
     _lastLayoutWidth = newWidth;
 
-    // Nur Höhe geändert → Bildschirmtastatur auf/zu, kein Re-Render nötig
     if (onlyHeightChanged) return;
 
     clearTimeout(_resizeTimer);
     _resizeTimer = setTimeout(function () {
-        if (!_currentEntry) return;
-        var img = document.getElementById('quiz-img');
+        if (!_currentEntry) return; // null for text quiz and lernen mode
+
+        var img           = document.getElementById('quiz-img');
         var zoomContainer = document.getElementById('zoom-container');
 
-        // Capture current input state keyed by original coords
         var savedState = {};
         zoomContainer.querySelectorAll('.label-input').forEach(function (inp) {
             savedState[inp.dataset.ox + ',' + inp.dataset.oy] = {
-                value: inp.value,
+                value:     inp.value,
                 className: inp.className,
-                bgStyle: inp.style.background,
-                readOnly: inp.readOnly
+                bgStyle:   inp.style.background,
+                readOnly:  inp.readOnly
             };
         });
 
         renderOverlays(_currentEntry.labels, img, zoomContainer);
 
-        // Restore state
         zoomContainer.querySelectorAll('.label-input').forEach(function (inp) {
             var key = inp.dataset.ox + ',' + inp.dataset.oy;
             if (savedState[key]) {
-                inp.value = savedState[key].value;
-                inp.className = savedState[key].className;
+                inp.value          = savedState[key].value;
+                inp.className      = savedState[key].className;
                 inp.style.background = savedState[key].bgStyle;
-                inp.readOnly = savedState[key].readOnly;
+                inp.readOnly       = savedState[key].readOnly;
             }
         });
     }, 120);
