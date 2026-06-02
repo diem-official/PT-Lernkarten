@@ -103,5 +103,19 @@
         }
       }
     ]
+  },
+  {
+    "type": "text",
+    "subject": "Hydrotherapie",
+    "category": "Kneipp",
+    "subcategory": "Guss",
+    "view": "Indikation & Kontraindikation",
+    "columns": [
+      "Indikation",
+      "Kontraindikation",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": []
   }
 ]
