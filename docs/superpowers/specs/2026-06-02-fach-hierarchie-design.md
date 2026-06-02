@@ -82,25 +82,29 @@ def build_entry(clean_filename, og_filename, labels, *, subject, category, subca
 
 ### pipeline/process.py
 
-Vier Änderungen:
+Fünf Änderungen:
 
 1. `NAME_RE` erwartet 4-teiligen Namen:
    ```python
    NAME_RE = re.compile(r'^[^-]+-[^-]+-[^-]+-[^-]+\.\w+$')
    ```
-   Außerdem den SKIP-Log-String auf Zeile 159 aktualisieren: `"does not match Fach-Kategorie-Unterkategorie-Ansicht.ext"`
 
-2. `_parse_stem` gibt 4-Tupel zurück:
+2. SKIP-Log-String (Zeile 159) aktualisieren: `"does not match Fach-Kategorie-Unterkategorie-Ansicht.ext"`
+
+3. `_parse_stem` gibt 4-Tupel zurück:
    ```python
    def _parse_stem(stem: str) -> tuple[str, str, str, str]:
        parts = stem.split('-', 3)
        return parts[0], parts[1], parts[2], parts[3]
    ```
 
-3. `build_entry`-Aufruf übergibt `subject`:
+4. Unpacking-Zeile (aktuell Zeile 212) auf 4-Tupel umstellen:
    ```python
    fach, category, subcategory, view = _parse_stem(path.stem)
-   # ...
+   ```
+
+5. `build_entry`-Aufruf übergibt `subject`:
+   ```python
    entries.append(build_entry(
        clean_name, og_name, labels,
        subject=fach, category=category,
@@ -210,7 +214,7 @@ Bänder-Becken-Dorsal.png  →  Anatomie 1-Bänder-Becken-Dorsal.png
 Muskeln Detail-Gesäß-Gluteus.xlsx  →  Anatomie 1-Muskeln Detail-Gesäß-Gluteus.xlsx
 ```
 
-**Schritt 3 – `web/data/og-images/`-Dateien umbenennen** (23 Dateien):
+**Schritt 3 – `web/data/og-images/`-Dateien umbenennen** (24 Dateien):
 ```
 Bänder-Becken-Dorsal.png  →  Anatomie 1-Bänder-Becken-Dorsal.png
 ```
@@ -220,7 +224,9 @@ Notwendig, weil der Lernen-Modus in `app.js` Bilder über `OG_IMG_BASE + entry.o
 - `subject: "Anatomie 1"` zu allen Einträgen in `data.json` und `text-data.json` hinzufügen
 - `og_filename` in `data.json` mit dem neuen Präfix versehen: `Anatomie 1-Bänder-Becken-Dorsal.png`
   (damit `processed_stems` in `process.py` korrekt erkennt, dass diese Bilder bereits verarbeitet sind)
-- `filename` in `data.json` **nicht** ändern — die physischen Clean-Images in `web/data/images/` behalten ihre 3-teiligen Namen und müssen nicht umbenannt werden, da `quiz.js` sie über den unveränderten `entry.filename`-Wert lädt.
+- `filename` in `data.json` **nicht** ändern — die physischen Clean-Images in `web/data/images/` behalten ihre 3-teiligen Namen und müssen **nicht** umbenannt werden, da `quiz.js` sie über den unveränderten `entry.filename`-Wert lädt.
+
+> **Wichtig:** `web/data/images/` wird in keinem Migrationsschritt angefasst. Wer diese Dateien umbenennt, bricht alle Bild-Quizze im Browser.
 
 **Dateiübersicht nach Migration:**
 
@@ -235,11 +241,30 @@ Notwendig, weil der Lernen-Modus in `app.js` Bilder über `OG_IMG_BASE + entry.o
 
 ---
 
-## 6. Betroffene Dateien
+## 6. Test-Updates
+
+Zwei Test-Dateien müssen angepasst werden:
+
+**`pipeline/tests/test_process.py`** — 3 Tests für `_parse_stem` erwarten bisher ein 3-Tupel:
+```python
+# Alt:
+assert _parse_stem("Knochen-Becken-dorsal") == ("Knochen", "Becken", "dorsal")
+# Neu:
+assert _parse_stem("Anatomie 1-Knochen-Becken-dorsal") == ("Anatomie 1", "Knochen", "Becken", "dorsal")
+```
+Alle drei Tests werden auf 4-Tupel umgestellt; Eingabe-Strings bekommen ebenfalls das Fach-Präfix.
+
+**`pipeline/tests/test_export.py`** — 3 Tests für `build_entry` übergeben aktuell keinen `subject`-Parameter. Alle drei Aufrufe bekommen `subject="TestFach"` (o.ä.); Assertions werden um `"subject": "TestFach"` ergänzt.
+
+---
+
+## 7. Betroffene Dateien
 
 | Datei | Art der Änderung |
 |---|---|
 | `pipeline/export.py` | Parameter `subject` hinzufügen |
+| `pipeline/tests/test_process.py` | `_parse_stem`-Tests auf 4-Tupel umstellen (3 Tests) |
+| `pipeline/tests/test_export.py` | `build_entry`-Aufrufe mit `subject`-Parameter ergänzen (3 Tests) |
 | `pipeline/process.py` | `NAME_RE`, `_parse_stem`, `build_entry`-Aufruf |
 | `pipeline/convert_text.py` | `_parse_stem`, `_build_entry`, Deduplizierungs-Key |
 | `pipeline/migrate_to_fach.py` | Neues Migrations-Script (Input/, og-images/, Tabellen/ umbenennen; JSON aktualisieren) |
