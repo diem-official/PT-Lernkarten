@@ -1,7 +1,7 @@
 [
   {
     "filename": "Achsen & Ebenen-Körper-Frontal-clean.jpg",
-    "og_filename": "Achsen & Ebenen-Körper-Frontal.png",
+    "og_filename": "Anatomie 1-Achsen & Ebenen-Körper-Frontal.png",
     "category": "Achsen & Ebenen",
     "subcategory": "Körper",
     "view": "Frontal",
@@ -50,11 +50,12 @@
           "h": 72
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Bänder-Becken-Dorsal-clean.jpg",
-    "og_filename": "Bänder-Becken-Dorsal.png",
+    "og_filename": "Anatomie 1-Bänder-Becken-Dorsal.png",
     "category": "Bänder",
     "subcategory": "Becken",
     "view": "Dorsal",
@@ -213,11 +214,12 @@
           "h": 94
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Bänder-Becken-Ventral Kranial-clean.jpg",
-    "og_filename": "Bänder-Becken-Ventral Kranial.png",
+    "og_filename": "Anatomie 1-Bänder-Becken-Ventral Kranial.png",
     "category": "Bänder",
     "subcategory": "Becken",
     "view": "Ventral Kranial",
@@ -387,11 +389,12 @@
           "h": 89
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Bänder-Hüftgelenk (rechts)-Dorsal-clean.jpg",
-    "og_filename": "Bänder-Hüftgelenk (rechts)-Dorsal.png",
+    "og_filename": "Anatomie 1-Bänder-Hüftgelenk (rechts)-Dorsal.png",
     "category": "Bänder",
     "subcategory": "Hüftgelenk (rechts)",
     "view": "Dorsal",
@@ -561,11 +564,12 @@
           "h": 111
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Bänder-Hüftgelenk (rechts)-Lateral-clean.jpg",
-    "og_filename": "Bänder-Hüftgelenk (rechts)-Lateral.png",
+    "og_filename": "Anatomie 1-Bänder-Hüftgelenk (rechts)-Lateral.png",
     "category": "Bänder",
     "subcategory": "Hüftgelenk (rechts)",
     "view": "Lateral",
@@ -757,11 +761,12 @@
           "h": 63
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Bänder-Hüftgelenk (rechts)-Ventral-clean.jpg",
-    "og_filename": "Bänder-Hüftgelenk (rechts)-Ventral.png",
+    "og_filename": "Anatomie 1-Bänder-Hüftgelenk (rechts)-Ventral.png",
     "category": "Bänder",
     "subcategory": "Hüftgelenk (rechts)",
     "view": "Ventral",
@@ -975,11 +980,12 @@
           "h": 114
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Bänder-Hüftgelenk-Dorsal & Ventral-clean.jpg",
-    "og_filename": "Bänder-Hüftgelenk-Dorsal & Ventral.png",
+    "og_filename": "Anatomie 1-Bänder-Hüftgelenk-Dorsal & Ventral.png",
     "category": "Bänder",
     "subcategory": "Hüftgelenk",
     "view": "Dorsal & Ventral",
@@ -1083,11 +1089,12 @@
           "h": 87
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Bänder-Hüftgelenk-Lateral-clean.jpg",
-    "og_filename": "Bänder-Hüftgelenk-Lateral.png",
+    "og_filename": "Anatomie 1-Bänder-Hüftgelenk-Lateral.png",
     "category": "Bänder",
     "subcategory": "Hüftgelenk",
     "view": "Lateral",
@@ -1235,11 +1242,12 @@
           "h": 113
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Becken-Dorsal (Frau)-clean.jpg",
-    "og_filename": "Knochen-Becken-Dorsal (Frau).png",
+    "og_filename": "Anatomie 1-Knochen-Becken-Dorsal (Frau).png",
     "category": "Knochen",
     "subcategory": "Becken",
     "view": "Dorsal (Frau)",
@@ -1464,11 +1472,12 @@
           "h": 112
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Becken-Dorsal (Mann)-clean.jpg",
-    "og_filename": "Knochen-Becken-Dorsal (Mann).png",
+    "og_filename": "Anatomie 1-Knochen-Becken-Dorsal (Mann).png",
     "category": "Knochen",
     "subcategory": "Becken",
     "view": "Dorsal (Mann)",
@@ -1638,11 +1647,12 @@
           "h": 118
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Becken-Kranial (Frau)-clean.jpg",
-    "og_filename": "Knochen-Becken-Kranial (Frau).png",
+    "og_filename": "Anatomie 1-Knochen-Becken-Kranial (Frau).png",
     "category": "Knochen",
     "subcategory": "Becken",
     "view": "Kranial (Frau)",
@@ -1856,11 +1866,12 @@
           "h": 111
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Becken-Kranial (Mann)-clean.jpg",
-    "og_filename": "Knochen-Becken-Kranial (Mann).png",
+    "og_filename": "Anatomie 1-Knochen-Becken-Kranial (Mann).png",
     "category": "Knochen",
     "subcategory": "Becken",
     "view": "Kranial (Mann)",
@@ -2063,11 +2074,12 @@
           "h": 71
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Becken-Ventral (Frau)-clean.jpg",
-    "og_filename": "Knochen-Becken-Ventral (Frau).png",
+    "og_filename": "Anatomie 1-Knochen-Becken-Ventral (Frau).png",
     "category": "Knochen",
     "subcategory": "Becken",
     "view": "Ventral (Frau)",
@@ -2259,11 +2271,12 @@
           "h": 112
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Becken-Ventral (Mann)-clean.jpg",
-    "og_filename": "Knochen-Becken-Ventral (Mann).png",
+    "og_filename": "Anatomie 1-Knochen-Becken-Ventral (Mann).png",
     "category": "Knochen",
     "subcategory": "Becken",
     "view": "Ventral (Mann)",
@@ -2488,11 +2501,12 @@
           "h": 114
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Os Coxae (rechts)-Lateral-clean.jpg",
-    "og_filename": "Knochen-Os Coxae (rechts)-Lateral.png",
+    "og_filename": "Anatomie 1-Knochen-Os Coxae (rechts)-Lateral.png",
     "category": "Knochen",
     "subcategory": "Os Coxae (rechts)",
     "view": "Lateral",
@@ -2739,11 +2753,12 @@
           "h": 56
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Os Coxae (rechts)-Medial-clean.jpg",
-    "og_filename": "Knochen-Os Coxae (rechts)-Medial.png",
+    "og_filename": "Anatomie 1-Knochen-Os Coxae (rechts)-Medial.png",
     "category": "Knochen",
     "subcategory": "Os Coxae (rechts)",
     "view": "Medial",
@@ -2957,11 +2972,12 @@
           "h": 118
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Os femoris (rechts)-vorne & hinten-clean.jpg",
-    "og_filename": "Knochen-Os femoris (rechts)-vorne & hinten.png",
+    "og_filename": "Anatomie 1-Knochen-Os femoris (rechts)-vorne & hinten.png",
     "category": "Knochen",
     "subcategory": "Os femoris (rechts)",
     "view": "vorne & hinten",
@@ -3318,11 +3334,12 @@
           "h": 84
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Os sacrum & Os Coccygis-dorsal-clean.jpg",
-    "og_filename": "Knochen-Os sacrum & Os Coccygis-dorsal.png",
+    "og_filename": "Anatomie 1-Knochen-Os sacrum & Os Coccygis-dorsal.png",
     "category": "Knochen",
     "subcategory": "Os sacrum & Os Coccygis",
     "view": "dorsal",
@@ -3481,11 +3498,12 @@
           "h": 72
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Knochen-Os sacrum & Os Coccygis-ventral-clean.jpg",
-    "og_filename": "Knochen-Os sacrum & Os Coccygis-ventral.png",
+    "og_filename": "Anatomie 1-Knochen-Os sacrum & Os Coccygis-ventral.png",
     "category": "Knochen",
     "subcategory": "Os sacrum & Os Coccygis",
     "view": "ventral",
@@ -3611,11 +3629,12 @@
           "h": 70
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Lagebezeichnung-Körper-Frontal-clean.jpg",
-    "og_filename": "Lagebezeichnung-Körper-Frontal.png",
+    "og_filename": "Anatomie 1-Lagebezeichnung-Körper-Frontal.png",
     "category": "Lagebezeichnung",
     "subcategory": "Körper",
     "view": "Frontal",
@@ -3807,11 +3826,12 @@
           "h": 62
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Muskeln-Gesäss-Dorsal-clean.jpg",
-    "og_filename": "Muskeln-Gesäss-Dorsal.png",
+    "og_filename": "Anatomie 1-Muskeln-Gesäss-Dorsal.png",
     "category": "Muskeln",
     "subcategory": "Gesäss",
     "view": "Dorsal",
@@ -4245,11 +4265,12 @@
           "h": 122
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Muskeln-Innere Hüftmuskeln-Ventral-clean.jpg",
-    "og_filename": "Muskeln-Innere Hüftmuskeln-Ventral.png",
+    "og_filename": "Anatomie 1-Muskeln-Innere Hüftmuskeln-Ventral.png",
     "category": "Muskeln",
     "subcategory": "Innere Hüftmuskeln",
     "view": "Ventral",
@@ -4463,11 +4484,12 @@
           "h": 91
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   },
   {
     "filename": "Muskeln-M. quadriceps femoris & M. sartorius-Ventral-clean.jpg",
-    "og_filename": "Muskeln-M. quadriceps femoris & M. sartorius-Ventral.png",
+    "og_filename": "Anatomie 1-Muskeln-M. quadriceps femoris & M. sartorius-Ventral.png",
     "category": "Muskeln",
     "subcategory": "M. quadriceps femoris & M. sartorius",
     "view": "Ventral",
@@ -4791,6 +4813,7 @@
           "h": 56
         }
       }
-    ]
+    ],
+    "subject": "Anatomie 1"
   }
 ]

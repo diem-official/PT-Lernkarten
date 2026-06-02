@@ -1,0 +1,102 @@
+[
+  {
+    "type": "text",
+    "category": "Muskeln Detail",
+    "subcategory": "Gesäß",
+    "view": "Gluteus",
+    "columns": [
+      "Ursprung",
+      "Ansatz",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": [
+      {
+        "question": "M. gluteus maximus",
+        "answers": {
+          "Ursprung": [
+            "Facies dorsalis Os Sacrum",
+            "Facies glutea Os ilium",
+            "Fascia Thoracolumbalis",
+            "Lig. Sacrotuberale"
+          ],
+          "Ansatz": [
+            "kraniale Fasern: Tractus iliotibialis",
+            "kaudale Fasern: Tuberositas glutea"
+          ],
+          "Funktion": [
+            "Extension",
+            "Außenrotation",
+            "Stabil Saggitalebene",
+            "Stabil Frontalebene",
+            "kraniale Fasern: Abduktion",
+            "kaudale Fasern: Adduktion"
+          ],
+          "Innervation": [
+            "N. gluteus inferior L5-S2"
+          ]
+        }
+      },
+      {
+        "question": "M. gluteus medius",
+        "answers": {
+          "Ursprung": [
+            "Facies glutea Os Ilium"
+          ],
+          "Ansatz": [
+            "Trochanter major Os Femoris"
+          ],
+          "Funktion": [
+            "Abduktion",
+            "Stabil Frontalebene",
+            "vordere Teil: Flexion + Innenrotation",
+            "hintere Teil: Extension + Außenrotation"
+          ],
+          "Innervation": [
+            "N. gluteus superior L4–S1"
+          ]
+        }
+      },
+      {
+        "question": "M. gluteus minimus",
+        "answers": {
+          "Ursprung": [
+            "Facies glutea Os Ilium"
+          ],
+          "Ansatz": [
+            "Trochanter major Os Femoris"
+          ],
+          "Funktion": [
+            "Abduktion",
+            "Stabil Frontalebene",
+            "vordere Teil: Flexion + Innenrotation",
+            "hintere Teil: Extension + Außenrotation"
+          ],
+          "Innervation": [
+            "N. gluteus superior L4–S1"
+          ]
+        }
+      },
+      {
+        "question": "M. Tensor fasciae latae",
+        "answers": {
+          "Ursprung": [
+            "Spina iliaca anterior superior"
+          ],
+          "Ansatz": [
+            "Tractus iliotibialis"
+          ],
+          "Funktion": [
+            "spannt Fascia lata",
+            "Abduktion",
+            "Flexion + Innenrotation"
+          ],
+          "Innervation": [
+            "N. gluteus superior L4–S1"
+          ]
+        }
+      }
+    ],
+    "subject": "Anatomie 1"
+  }
+]
