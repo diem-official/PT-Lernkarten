@@ -7,6 +7,7 @@ def build_entry(
     og_filename: str,
     labels: list,
     *,
+    subject: str,
     category: str,
     subcategory: str,
     view: str,
@@ -14,6 +15,7 @@ def build_entry(
     return {
         "filename": clean_filename,
         "og_filename": og_filename,
+        "subject": subject,
         "category": category,
         "subcategory": subcategory,
         "view": view,

@@ -15,6 +15,7 @@ def test_build_entry_includes_metadata():
         "Knochen-Becken-dorsal-clean.jpg",
         "Knochen-Becken-dorsal.jpg",
         labels,
+        subject="Anatomie 1",
         category="Knochen",
         subcategory="Becken",
         view="dorsal",
@@ -24,6 +25,7 @@ def test_build_entry_includes_metadata():
     assert entry["category"] == "Knochen"
     assert entry["subcategory"] == "Becken"
     assert entry["view"] == "dorsal"
+    assert entry["subject"] == "Anatomie 1"
 
 
 def test_build_entry_labels_passthrough():
@@ -37,6 +39,7 @@ def test_build_entry_labels_passthrough():
         "test-clean.jpg",
         "test.jpg",
         labels,
+        subject="Anatomie 1",
         category="Knochen",
         subcategory="Becken",
         view="ventral",
@@ -53,6 +56,7 @@ def test_build_entry_empty_labels():
         "test-clean.jpg",
         "test.jpg",
         [],
+        subject="Anatomie 1",
         category="Muskeln",
         subcategory="Arm",
         view="frontal",
