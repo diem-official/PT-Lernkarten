@@ -1,50 +1,52 @@
 # PT Lernkarten – Anatomy Flashcard System
 
-An interactive anatomy study tool for physiotherapy. Place labelled anatomy images in the `Input/` folder; the pipeline strips the text and generates a self-hostable quiz where learners type in the terms.
+An interactive anatomy study tool for physiotherapy. Two types of content are supported:
+
+- **Image quizzes** — place labelled anatomy images in `Input/`; the pipeline strips the text and generates a quiz where learners type in the anatomical terms.
+- **Text quizzes** — create an Excel or CSV table with questions and answers; the converter generates a structured input quiz with multi-answer support.
 
 ---
 
 ## Architecture
 
-The system is split into two completely independent phases:
-
 ```
-Input/ (labelled source images)
-        │
-        ▼
-┌─────────────────────┐       runs locally on GPU hardware
-│   Python Pipeline   │  ──▶  web/data/images/*-clean.jpg
-│  (OCR + Whiteout)   │  ──▶  web/data/data.json
-└─────────────────────┘
-        │
-        ▼
-┌─────────────────────┐       static files, no server needed
-│  Static Web App     │  ──▶  served from any web host or local server
-│  (HTML / CSS / JS)  │
-└─────────────────────┘
+Input/ (labelled images)          Tabellen/ (Excel / CSV)
+        │                                  │
+        ▼                                  ▼
+┌───────────────────┐         ┌────────────────────────┐
+│  Python Pipeline  │         │  convert_text.py       │
+│  (OCR + Whiteout) │         │  (table → JSON)        │
+└───────────────────┘         └────────────────────────┘
+        │                                  │
+        ▼                                  ▼
+   web/data/data.json           web/data/text-data.json
+   web/data/images/
+        │                                  │
+        └──────────────┬───────────────────┘
+                       ▼
+            ┌─────────────────────┐
+            │   Static Web App    │   no backend, no build step
+            │   (HTML / CSS / JS) │
+            └─────────────────────┘
 ```
 
 ---
 
-## Phase 1 – Data Pipeline (`pipeline/`)
+## Phase 1a – Image Pipeline (`pipeline/process.py`)
 
 ### What it does
 
 1. **OCR** (`ocr.py`) — runs PaddleOCR on each image to find every text label and its bounding box `{x, y, w, h, text}`.
-2. **Whiteout** (`inpaint.py`) — paints white rectangles over the detected text bounding boxes.
-3. **Export** (`export.py`) — writes `web/data/data.json` linking each cleaned image to its label array, and saves the clean images to `web/data/images/`.
+2. **Whiteout** (`inpaint.py`) — paints white rectangles over the detected text.
+3. **Export** (`export.py`) — writes `web/data/data.json` and saves clean images to `web/data/images/`.
 
 ### File naming convention
 
-Source files **must** follow this exact pattern:
-
 ```
-Kategorie-Unterkategorie-Ansicht.{jpg,jpeg,png,tif,tiff}
+Fach-Kategorie-Unterkategorie-Ansicht.{jpg,jpeg,png,tif,tiff}
 ```
 
-Example: `Knochen-Arm-dorsal.jpg` → `Knochen-Arm-dorsal-clean.jpg`
-
-The three dash-separated segments map directly to the three-level navigation menu in the web app.
+Example: `Anatomie 1-Knochen-Arm-dorsal.jpg` → menu entry **Anatomie 1 › Knochen › Arm › dorsal**
 
 ### Setup
 
@@ -64,16 +66,45 @@ pip install -r pipeline/requirements.txt
 python pipeline/process.py [input_dir] [--output-web <path_to_web/>]
 ```
 
-- `input_dir` — folder containing your source images (defaults to `Input/`).
-- `--output-web` — path to the `web/` directory (defaults to `../web`).
+- `input_dir` — folder with source images (default: `Input/`).
+- `--output-web` — path to the `web/` directory (default: `../web`).
 
-The script skips files that do not match the naming convention and files where OCR detects no text.
+---
+
+## Phase 1b – Text Converter (`pipeline/convert_text.py`)
+
+Converts an Excel or CSV table into `web/data/text-data.json` so text quizzes appear in the same menu as image quizzes.
+
+### Table format
+
+| Name *(first column)* | Kategorie A | Kategorie B | … |
+|---|---|---|---|
+| Frage / Subjekt | Antwort | Antwort1; Antwort2 | … |
+
+- **Row 1** — column headers. The first column header is the subject label (always visible). All other headers become answer categories shown above the input fields.
+- **Row 2+** — one question per row. First cell = question/subject. Other cells = answers, multiple answers separated by `;`.
+
+### File naming convention (same as images)
+
+```
+Fach-Kategorie-Unterkategorie-Ansicht.{xlsx,csv}
+```
+
+Example: `Anatomie 1-Muskeln Detail-Gesäß-Gluteus.xlsx` → menu entry **Anatomie 1 › Muskeln Detail › Gesäß › Gluteus**
+
+### Run
+
+```bash
+python pipeline/convert_text.py "Tabellen/Anatomie 1-Muskeln Detail-Gesäß-Gluteus.xlsx"
+```
+
+Running the command again on the same file updates the existing entry (no duplicates).
 
 ---
 
 ## Phase 2 – Web App (`web/`)
 
-A fully static, client-side application. No backend, no build step.
+A fully static, client-side application.
 
 ### Running locally
 
@@ -83,36 +114,33 @@ python3 -m http.server 8080
 # open http://localhost:8080
 ```
 
-Or serve the `web/` folder from any static web host.
+### Image quiz
 
-### How it works
+**On topic selection** — `quiz.js` loads the cleaned image and renders an `<input>` overlay for every label, positioned and sized according to the pixel coordinates in `data.json`, scaled to the rendered image size.
 
-**On load** — `app.js` fetches `data/data.json` and passes it to `menu.js`, which builds a three-level accordion sidebar:
+**Validation** — prefix matching on every keystroke:
 
-```
-▶ Knochen          ← Kategorie      (Level 1)
-    ▶ Arm          ← Unterkategorie (Level 2)
-        dorsal     ← Ansicht        (Level 3, clickable)
-        ventral
-    ▶ Bein
-        lateral
-```
-
-**On topic selection** — `quiz.js` loads the cleaned image and renders an `<input>` overlay for every label entry, positioned and sized exactly according to the pixel coordinates in `data.json`, scaled to the rendered image dimensions.
-
-**On user input** — Levenshtein-based fuzzy matching (`levenshtein.js`) checks the answer on every keystroke:
-
-| Similarity | Visual state |
+| State | Visual |
 |---|---|
-| 100 % (case-insensitive) | Green background, field locked |
-| ≥ 80 % | Orange background (near miss / typo) |
-| < 80 % | No change (empty or wrong) |
+| Correct (exact, case-insensitive) | Green, field locked |
+| Typing in progress (prefix match) | Green gradient |
+| No match (wrong) | Orange |
 
-**Help button** (`?`) — opens a modal showing the correct term. Dismiss with "Got it" or `Escape`.
+**Help button** (`?`) — opens a modal showing the correct term.
 
-**Window resize** — overlays are recalculated and re-rendered automatically; input state (values, colours, locked fields) is preserved across resizes.
+**Window resize** — overlays recalculate automatically; input state (values, colours, locked fields) is preserved.
 
-**Reset** — selecting a different topic clears the quiz area and starts fresh. There is no server-side persistence; a page reload resets everything.
+### Text quiz
+
+**On topic selection** — `quiz.js` renders a scrollable list of question sections. Each section shows the subject name at the top, then one input group per answer category.
+
+**Multi-answer pool logic** — each answer category tracks a pool of remaining correct answers. When a field is answered correctly, that answer is claimed and removed from the pool. Other fields only accept answers still in the pool — in any order.
+
+Example with 3 answers `["A", "B", "C"]`:
+- User types "B" in field 1 → B is claimed, pool becomes `[A, C]`.
+- Field 2 and 3 now only accept "A" or "C".
+
+**Help button** (`?`, per category) — shows one random answer from the remaining pool. Once all answers are claimed, shows "Alle Antworten korrekt ✓".
 
 ---
 
@@ -121,42 +149,70 @@ Or serve the `web/` folder from any static web host.
 ```
 PT Lernkarten/
 ├── Input/                      # source images (labelled originals)
+├── Tabellen/                   # Excel / CSV quiz tables
 ├── pipeline/
-│   ├── process.py              # CLI entry point
-│   ├── ocr.py                  # PaddleOCR 3.x wrapper
-│   ├── inpaint.py              # white-rectangle text removal
-│   ├── export.py               # JSON builder / writer
+│   ├── process.py              # image pipeline CLI
+│   ├── convert_text.py         # Excel/CSV → text-data.json
+│   ├── ocr.py
+│   ├── inpaint.py
+│   ├── export.py
 │   ├── requirements.txt
 │   └── tests/
-│       ├── test_ocr.py
-│       ├── test_inpaint.py
-│       └── test_export.py
 └── web/
     ├── index.html
     ├── css/style.css
     ├── js/
     │   ├── app.js              # bootstrap, fetch, wiring
     │   ├── menu.js             # accordion menu builder
-    │   ├── quiz.js             # overlay rendering, validation, help modal
+    │   ├── quiz.js             # image + text quiz logic
     │   └── levenshtein.js      # fuzzy matching
     └── data/
-        ├── data.json           # generated by pipeline
-        └── images/             # generated by pipeline
+        ├── data.json           # generated by process.py
+        ├── text-data.json      # generated by convert_text.py
+        └── images/             # generated by process.py
 ```
 
 ---
 
-## data.json Format
+## data.json Format (image quizzes)
 
 ```json
 [
   {
     "filename": "Knochen-Arm-dorsal-clean.jpg",
+    "og_filename": "Knochen-Arm-dorsal.jpg",
+    "category": "Knochen",
+    "subcategory": "Arm",
+    "view": "dorsal",
     "labels": [
-      { "x": 80, "y": 40, "w": 130, "h": 28, "text": "Humerus" }
+      { "text": "Humerus", "anchor_x": 80, "anchor_y": 40,
+        "mask_box": { "x": 50, "y": 30, "w": 130, "h": 28 } }
     ]
   }
 ]
 ```
 
-All coordinates are in original image pixels; the frontend scales them to the rendered image size at runtime.
+## text-data.json Format (text quizzes)
+
+```json
+[
+  {
+    "type": "text",
+    "category": "Muskeln Detail",
+    "subcategory": "Gesäß",
+    "view": "Gluteus",
+    "columns": ["Ursprung", "Ansatz", "Funktion", "Innervation"],
+    "rows": [
+      {
+        "question": "M. gluteus maximus",
+        "answers": {
+          "Ursprung": ["Facies glutea: Os ilium", "Lig. Sacrotuberale"],
+          "Ansatz":   ["Tuberositas glutea"],
+          "Funktion": ["Extension", "Außenrotation"],
+          "Innervation": ["N. gluteus inferior (L5-S2)"]
+        }
+      }
+    ]
+  }
+]
+```
