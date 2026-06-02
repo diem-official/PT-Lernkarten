@@ -172,6 +172,8 @@ data.forEach(function (entry) {
 - CSS-Klassen: `menu-fach`, `menu-fach-btn`, `menu-fach-list`
 - Darunter unverändert: `menu-kat`, `menu-unter`, `menu-ansicht-li`
 
+**Styling (`web/css/style.css`):** `menu-fach-btn` wird analog zu `menu-kat-btn` gestylt (gleiche Basisstruktur), jedoch visuell hervorgehoben als übergeordnete Ebene — z.B. fettere Schrift, größerer Abstand oder andere Hintergrundfarbe. `menu-fach-list` analog zu `menu-unter-list` (versteckt/sichtbar via `.hidden`).
+
 ### web/js/app.js
 
 Beide Pfade (Text-Entry und Image-Entry) nutzen die stored Felder statt Filename-Parsing:
@@ -184,7 +186,7 @@ mobileTitle.textContent = entry.subject + ' – ' + entry.subcategory + ' – ' 
 mobileTitle.textContent = entry.subject + ' – ' + entry.subcategory + ' – ' + entry.view;
 ```
 
-Der bisherige Filename-Parsing-Block (`rawName`) in app.js wird entfernt; stattdessen einheitlich `entry.subject/subcategory/view`.
+Der bisherige Filename-Parsing-Block (`rawName`) in app.js wird entfernt; stattdessen einheitlich `entry.subject/subcategory/view`. `category` wird im mobileTitle bewusst weggelassen (zu lang für den mobilen Header).
 
 ### web/js/quiz.js
 
@@ -194,7 +196,9 @@ Keine Änderungen erforderlich — `quiz.js` rendert den Quiz-Inhalt und greift 
 
 ## 5. Migration (einmalig)
 
-Ein Python-Skript `pipeline/migrate_to_fach.py` führt drei Schritte aus. Default-Fach für alle bestehenden Einträge: **„Anatomie 1"**.
+Ein Python-Skript `pipeline/migrate_to_fach.py` führt vier Schritte aus. Default-Fach für alle bestehenden Einträge: **„Anatomie 1"**.
+
+**Reihenfolge:** Code-Änderungen (`menu.js`, `app.js`) müssen *vor* der Datenmigration eingespielt werden, da menu.js nach der Überarbeitung auf `entry.subject/category/subcategory/view` statt auf Filename-Parsing angewiesen ist.
 
 **Schritt 1 – Input/-Dateien umbenennen** (23 Dateien):
 ```
@@ -206,13 +210,28 @@ Bänder-Becken-Dorsal.png  →  Anatomie 1-Bänder-Becken-Dorsal.png
 Muskeln Detail-Gesäß-Gluteus.xlsx  →  Anatomie 1-Muskeln Detail-Gesäß-Gluteus.xlsx
 ```
 
-**Schritt 3 – JSON-Dateien aktualisieren:**
+**Schritt 3 – `web/data/og-images/`-Dateien umbenennen** (23 Dateien):
+```
+Bänder-Becken-Dorsal.png  →  Anatomie 1-Bänder-Becken-Dorsal.png
+```
+Notwendig, weil der Lernen-Modus in `app.js` Bilder über `OG_IMG_BASE + entry.og_filename` lädt.
+
+**Schritt 4 – JSON-Dateien aktualisieren:**
 - `subject: "Anatomie 1"` zu allen Einträgen in `data.json` und `text-data.json` hinzufügen
-- `filename` und `og_filename` in `data.json` mit dem neuen Präfix „Anatomie 1-" versehen (z.B. `og_filename: "Anatomie 1-Bänder-Becken-Dorsal.png"`)
+- `og_filename` in `data.json` mit dem neuen Präfix versehen: `Anatomie 1-Bänder-Becken-Dorsal.png`
+  (damit `processed_stems` in `process.py` korrekt erkennt, dass diese Bilder bereits verarbeitet sind)
+- `filename` in `data.json` **nicht** ändern — die physischen Clean-Images in `web/data/images/` behalten ihre 3-teiligen Namen und müssen nicht umbenannt werden, da `quiz.js` sie über den unveränderten `entry.filename`-Wert lädt.
 
-**Reihenfolge der Ausführung:** Migration läuft vor allen Code-Änderungen an den Pipeline-Scripts. Nach der Migration sind `data.json`-Einträge mit korrekten `og_filename`-Werten versehen, sodass `process.py` sie beim nächsten Lauf via `processed_stems` korrekt als bereits verarbeitet erkennt.
+**Dateiübersicht nach Migration:**
 
-**Die Bilder in `web/data/images/` und `web/data/og-images/`** behalten ihre bisherigen 3-teiligen Dateinamen (z.B. `Bänder-Becken-Dorsal-clean.jpg`). Das ist möglich, weil `menu.js` nach der Überarbeitung nur noch die stored Felder `entry.filename` aus `data.json` nutzt — und dieser Wert wird in Schritt 3 mit dem neuen Präfix versehen. Die physischen Bilddateien müssen nicht umbenannt werden.
+| Datei | Vor Migration | Nach Migration |
+|---|---|---|
+| `Input/Bänder-Becken-Dorsal.png` | vorhanden | → `Input/Anatomie 1-Bänder-Becken-Dorsal.png` |
+| `web/data/og-images/Bänder-Becken-Dorsal.png` | vorhanden | → `web/data/og-images/Anatomie 1-Bänder-Becken-Dorsal.png` |
+| `web/data/images/Bänder-Becken-Dorsal-clean.jpg` | vorhanden | unverändert |
+| `data.json` `filename` | `Bänder-Becken-Dorsal-clean.jpg` | unverändert |
+| `data.json` `og_filename` | `Bänder-Becken-Dorsal.png` | `Anatomie 1-Bänder-Becken-Dorsal.png` |
+| `data.json` `subject` | (nicht vorhanden) | `"Anatomie 1"` |
 
 ---
 
@@ -223,7 +242,7 @@ Muskeln Detail-Gesäß-Gluteus.xlsx  →  Anatomie 1-Muskeln Detail-Gesäß-Glut
 | `pipeline/export.py` | Parameter `subject` hinzufügen |
 | `pipeline/process.py` | `NAME_RE`, `_parse_stem`, `build_entry`-Aufruf |
 | `pipeline/convert_text.py` | `_parse_stem`, `_build_entry`, Deduplizierungs-Key |
-| `pipeline/migrate_to_fach.py` | Neues Migrations-Script |
+| `pipeline/migrate_to_fach.py` | Neues Migrations-Script (Input/, og-images/, Tabellen/ umbenennen; JSON aktualisieren) |
 | `web/js/menu.js` | 4. Menü-Ebene, Filename-Parsing entfernen |
 | `web/js/app.js` | `mobileTitle` (beide Pfade auf stored Felder umstellen, Filename-Parsing entfernen) |
 | `web/js/quiz.js` | Keine Änderung (greift nur auf `labels`/`rows`/`columns` zu) |
