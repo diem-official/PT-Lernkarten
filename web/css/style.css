@@ -433,6 +433,29 @@ body {
     min-width: 0;
 }
 
+.tq-field-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tq-field-row .tq-input {
+    flex: 1;
+}
+
+.tq-field-prefix {
+    font-size: 13px;
+    color: #555;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.tq-answer-text {
+    font-size: 13px;
+    color: #333;
+    padding: 2px 0;
+}
+
 /* ══════════════════════════════════════════════
    MOBILE  ≤ 600px
 ══════════════════════════════════════════════ */

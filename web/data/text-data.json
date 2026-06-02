@@ -1,6 +1,7 @@
 [
   {
     "type": "text",
+    "subject": "Anatomie 1",
     "category": "Muskeln Detail",
     "subcategory": "Gesäß",
     "view": "Gluteus",
@@ -25,10 +26,10 @@
             "kaudale Fasern: Tuberositas glutea"
           ],
           "Funktion": [
-            "Extension",
-            "Außenrotation",
-            "Stabil Saggitalebene",
-            "Stabil Frontalebene",
+            "Gesamt: Extension",
+            "Gesamt: Außenrotation",
+            "Gesamt: Stabil Saggitalebene",
+            "Gesamt: Stabil Frontalebene",
             "kraniale Fasern: Abduktion",
             "kaudale Fasern: Adduktion"
           ],
@@ -47,10 +48,12 @@
             "Trochanter major Os Femoris"
           ],
           "Funktion": [
-            "Abduktion",
-            "Stabil Frontalebene",
-            "vordere Teil: Flexion + Innenrotation",
-            "hintere Teil: Extension + Außenrotation"
+            "Gesamt: Abduktion",
+            "Gesamt: Stabil Frontalebene",
+            "vordere Teil: Flexion",
+            "vordere Teil: Innenrotation",
+            "hintere Teil: Extension",
+            "hintere Teil: Außenrotation"
           ],
           "Innervation": [
             "N. gluteus superior L4–S1"
@@ -67,10 +70,12 @@
             "Trochanter major Os Femoris"
           ],
           "Funktion": [
-            "Abduktion",
-            "Stabil Frontalebene",
-            "vordere Teil: Flexion + Innenrotation",
-            "hintere Teil: Extension + Außenrotation"
+            "Gesamt: Abduktion",
+            "Gesamt: Stabil Frontalebene",
+            "vordere Teil: Flexion",
+            "vordere Teil: Innenrotation",
+            "hintere Teil: Extension",
+            "hintere Teil: Außenrotation"
           ],
           "Innervation": [
             "N. gluteus superior L4–S1"
@@ -87,16 +92,16 @@
             "Tractus iliotibialis"
           ],
           "Funktion": [
-            "spannt Fascia lata",
-            "Abduktion",
-            "Flexion + Innenrotation"
+            "Gesamt: spannt Fascia lata",
+            "Gesamt: Abduktion",
+            "Gesamt: Flexion",
+            "Gesamt: Innenrotation"
           ],
           "Innervation": [
             "N. gluteus superior L4–S1"
           ]
         }
       }
-    ],
-    "subject": "Anatomie 1"
+    ]
   }
 ]

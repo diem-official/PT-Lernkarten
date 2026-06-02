@@ -134,17 +134,91 @@ function onInputChange(input) {
 
 // ── Text quiz ────────────────────────────────────────────────────────────────
 
-function loadTextQuiz(entry) {
-    _currentEntry = null; // prevents image resize handler from triggering
-
+function _textWrapperSetup() {
     var placeholder = document.getElementById('placeholder');
     var quizWrapper = document.getElementById('quiz-wrapper');
     var textWrapper = document.getElementById('text-quiz-wrapper');
-
     placeholder.classList.add('hidden');
     quizWrapper.classList.add('hidden');
     textWrapper.classList.remove('hidden');
     textWrapper.innerHTML = '';
+    return textWrapper;
+}
+
+function _parseAnswer(answerFull) {
+    var colonIdx = answerFull.indexOf(':');
+    if (colonIdx === -1) return { prefix: null, solution: answerFull };
+    return {
+        prefix:   answerFull.slice(0, colonIdx).trim(),
+        solution: answerFull.slice(colonIdx + 1).trim()
+    };
+}
+
+// Lernen mode: shows all questions and answers as static text
+function loadTextLernen(entry) {
+    _currentEntry = null;
+    var textWrapper = _textWrapperSetup();
+
+    entry.rows.forEach(function (row) {
+        var section = document.createElement('div');
+        section.className = 'tq-section';
+
+        var questionEl = document.createElement('div');
+        questionEl.className   = 'tq-question';
+        questionEl.textContent = row.question;
+        section.appendChild(questionEl);
+
+        var categoriesEl = document.createElement('div');
+        categoriesEl.className = 'tq-categories';
+
+        entry.columns.forEach(function (colName) {
+            var answers = (row.answers[colName] || []).filter(function (a) { return a; });
+            if (!answers.length) return;
+
+            var catEl = document.createElement('div');
+            catEl.className = 'tq-category';
+
+            var headerEl = document.createElement('div');
+            headerEl.className = 'tq-category-header';
+            var labelEl = document.createElement('span');
+            labelEl.className   = 'tq-category-label';
+            labelEl.textContent = colName;
+            headerEl.appendChild(labelEl);
+
+            var fieldsEl = document.createElement('div');
+            fieldsEl.className = 'tq-fields';
+
+            answers.forEach(function (answerFull) {
+                var parsed = _parseAnswer(answerFull);
+                var answerEl = document.createElement('div');
+                answerEl.className = 'tq-answer-text';
+                if (parsed.prefix) {
+                    var prefixSpan = document.createElement('span');
+                    prefixSpan.className   = 'tq-field-prefix';
+                    prefixSpan.textContent = parsed.prefix + ':';
+                    var valueSpan = document.createElement('span');
+                    valueSpan.textContent = ' ' + parsed.solution;
+                    answerEl.appendChild(prefixSpan);
+                    answerEl.appendChild(valueSpan);
+                } else {
+                    answerEl.textContent = parsed.solution;
+                }
+                fieldsEl.appendChild(answerEl);
+            });
+
+            catEl.appendChild(headerEl);
+            catEl.appendChild(fieldsEl);
+            categoriesEl.appendChild(catEl);
+        });
+
+        section.appendChild(categoriesEl);
+        textWrapper.appendChild(section);
+    });
+}
+
+function loadTextQuiz(entry) {
+    _currentEntry = null;
+    var textWrapper = _textWrapperSetup();
 
     entry.rows.forEach(function (row) {
         var section = document.createElement('div');
@@ -192,7 +266,9 @@ function loadTextQuiz(entry) {
             var fieldsEl = document.createElement('div');
             fieldsEl.className = 'tq-fields';
 
-            answers.forEach(function (_, fieldIdx) {
+            answers.forEach(function (answerFull, fieldIdx) {
+                var parsed = _parseAnswer(answerFull);
+
                 var input = document.createElement('input');
                 input.type = 'text';
                 input.className = 'label-input tq-input';
@@ -201,13 +277,29 @@ function loadTextQuiz(entry) {
                 input.setAttribute('autocapitalize', 'off');
                 input.setAttribute('spellcheck', 'false');
 
+                if (parsed.prefix) {
+                    input.dataset.fixedAnswer = parsed.solution;
+                    input.dataset.fullAnswer  = answerFull;
+                }
+
                 (function (inp, idx, state) {
                     inp.addEventListener('input', function () {
                         onTextInputChange(inp, idx, state);
                     });
                 }(input, fieldIdx, categoryState));
 
-                fieldsEl.appendChild(input);
+                if (parsed.prefix) {
+                    var fieldRow = document.createElement('div');
+                    fieldRow.className = 'tq-field-row';
+                    var prefixSpan = document.createElement('span');
+                    prefixSpan.className   = 'tq-field-prefix';
+                    prefixSpan.textContent = parsed.prefix + ':';
+                    fieldRow.appendChild(prefixSpan);
+                    fieldRow.appendChild(input);
+                    fieldsEl.appendChild(fieldRow);
+                } else {
+                    fieldsEl.appendChild(input);
+                }
             });
 
             catEl.appendChild(headerEl);
@@ -239,6 +331,26 @@ function onTextInputChange(input, fieldIdx, categoryState) {
     if (value.length === 0) {
         input.className        = 'label-input tq-input';
         input.style.background = '';
+        return;
+    }
+
+    // Fixed-answer field (colon-prefixed): validate only against its specific solution
+    if (input.dataset.fixedAnswer) {
+        var solution   = input.dataset.fixedAnswer;
+        var isPrefix   = solution.toLowerCase().startsWith(value.toLowerCase());
+        if (!isPrefix) {
+            input.className        = 'label-input tq-input typo';
+            input.style.background = '';
+        } else if (value.length === solution.length) {
+            input.style.background = '';
+            input.className        = 'label-input tq-input correct';
+            input.readOnly         = true;
+            categoryState.claimed.set(fieldIdx, input.dataset.fullAnswer);
+        } else {
+            var alpha = (value.length / solution.length).toFixed(2);
+            input.style.background = 'rgba(80, 200, 100, ' + alpha + ')';
+            input.className        = 'label-input tq-input';
+        }
         return;
     }
 

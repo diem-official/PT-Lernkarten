@@ -104,14 +104,12 @@ function buildMenu(data, onSelect) {
 
                     ansichtLi.appendChild(testenBtn);
 
-                    if (item.entry.type !== 'text') {
-                        var lernenBtn = makeBtn('menu-lernen-btn', 'Lernen');
-                        lernenBtn.addEventListener('click', function () {
-                            setActive();
-                            onSelect(item.entry, 'lernen');
-                        });
-                        ansichtLi.appendChild(lernenBtn);
-                    }
+                    var lernenBtn = makeBtn('menu-lernen-btn', 'Lernen');
+                    lernenBtn.addEventListener('click', function () {
+                        setActive();
+                        onSelect(item.entry, 'lernen');
+                    });
+                    ansichtLi.appendChild(lernenBtn);
 
                     ansichtList.appendChild(ansichtLi);
                 });

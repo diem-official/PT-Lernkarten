@@ -67,7 +67,11 @@
                 mobileTitle.textContent = entry.subject + ' – ' + entry.subcategory + ' – ' + entry.view;
 
                 if (entry.type === 'text') {
-                    loadTextQuiz(entry);
+                    if (mode === 'lernen') {
+                        loadTextLernen(entry);
+                    } else {
+                        loadTextQuiz(entry);
+                    }
                 } else {
                     if (mode === 'lernen') {
                         loadLernen(entry, OG_IMG_BASE);
