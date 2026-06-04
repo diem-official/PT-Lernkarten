@@ -34,14 +34,17 @@ Beispiele:
 
 ### Migrations-Script `pipeline/migrate_images.py`
 
-1. Liest `web/data/data.json`
-2. Für jeden Eintrag berechnet es den neuen Clean-Namen: `og_stem + "-clean.jpg"`
-3. Wenn `old_filename != new_filename`:
-   - Benennt `web/data/images/<old>.jpg` → `web/data/images/<new>.jpg` um
-   - Aktualisiert `filename` im Eintrag
-4. Schreibt die aktualisierte `data.json` zurück
+1. Unterstützt `--dry-run`-Flag (Standard: Dry-Run aktiv; ohne `--apply` werden keine Änderungen vorgenommen)
+2. Liest `web/data/data.json`
+3. Legt Backup an: `web/data/data.json.bak` (überschreibt existierendes Backup)
+4. Für jeden Eintrag berechnet es den neuen Clean-Namen: `og_stem + "-clean.jpg"`
+5. Wenn `old_filename == new_filename`: überspringen (bereits korrekt)
+6. Wenn Zieldatei bereits existiert: als "bereits korrekt" behandeln, nur `data.json` aktualisieren, keine Datei-Rename
+7. Wenn `old_filename != new_filename` und Quelldatei existiert: umbenennen + Eintrag aktualisieren
+8. Wenn `old_filename != new_filename` und Quelldatei **nicht** existiert: Warnung ausgeben, Eintrag trotzdem aktualisieren (Datei wurde möglicherweise bereits extern umbenannt)
+9. Schreibt aktualisierte `data.json` zurück (nur bei `--apply`)
 
-**Fehlerbehandlung:** Wenn eine Datei nicht gefunden wird, Warnung ausgeben und fortfahren (nicht abbrechen).
+**Ausgabe:** Dry-Run listet alle geplanten Änderungen auf. Mit `--apply` werden sie ausgeführt.
 
 ---
 
@@ -77,7 +80,12 @@ Einträge mit Bild bekommen ein optionales `image`-Feld:
     "clean": "Anatomie 1-Bänder-Becken-Dorsal-clean.jpg"
   },
   "columns": ["Ursprung", "Ansatz", "Funktion", "Innervation"],
-  "rows": [...]
+  "rows": [
+    {
+      "question": "M. gluteus maximus",
+      "answers": { "Ursprung": [...], "Ansatz": [...], ... }
+    }
+  ]
 }
 ```
 
@@ -85,33 +93,62 @@ Einträge ohne Meta-Zeile haben kein `image`-Feld (wie bisher).
 
 ### Pipeline-Änderungen (`convert_text.py`)
 
-- `_read_excel()` und `_read_csv()`: Rückgabe bleibt `(headers, data_rows)` – **keine Änderung**
-- Neue Funktion `_extract_image_meta(all_rows)`:
-  - Prüft ob erste Zeile A1 == `"BILD"` (case-insensitive)
-  - Falls ja: extrahiert OG-Filename aus B1, leitet Clean-Name ab, gibt `{ "og": ..., "clean": ... }` zurück – und entfernt diese Zeile aus `all_rows`
-  - Falls nein: gibt `None` zurück
-- `_build_entry()`: erhält optionalen `image`-Parameter; setzt `image`-Feld wenn vorhanden
-- Clean-Ableitung: `og_stem + "-clean.jpg"` (identisch mit process.py und Migration)
+**Architektur-Anpassung der Read-Funktionen:**
+- `_read_excel()` und `_read_csv()` geben neu ein rohes `all_rows`-Tupel zurück (Typ: `list[tuple]`) statt des aufgeteilten `(headers, data_rows)`
+- `main()` ruft danach `_extract_image_meta(all_rows)` auf → gibt `(image_meta, remaining_rows)` zurück
+- Dann wird aus `remaining_rows` wie bisher `headers = remaining_rows[0]`, `data_rows = remaining_rows[1:]` abgeleitet
+
+**Neue Funktion `_extract_image_meta(all_rows) -> (image_meta, remaining_rows)`:**
+- Prüft ob erste Zeile `all_rows[0][0]` case-insensitiv `"BILD"` ist
+- Falls ja:
+  - B1 = `all_rows[0][1]` – muss ein nicht-leerer String mit `.`-Dateiendung sein
+  - Wenn B1 ungültig (leer, kein `.`): Fehlermeldung + `sys.exit()` 
+  - OG-Filename aus B1 extrahieren, Clean-Name ableiten: `og_stem + "-clean.jpg"`
+  - Rückgabe: `({ "og": ..., "clean": ... }, all_rows[1:])`
+- Falls nein: Rückgabe `(None, all_rows)`
+
+**`_build_entry()`:** erhält optionalen `image`-Parameter (default `None`); setzt `image`-Feld wenn vorhanden.
+
+**Clean-Ableitung:** `og_stem + "-clean.jpg"` (identisch mit process.py und Migration).
+
+**Hinweis zur Validierung:** `convert_text.py` prüft **nicht**, ob die referenzierten Bilddateien tatsächlich existieren. Das ist Benutzerverantwortung. Das Quiz rendert das Bild nur, wenn es geladen werden kann (onerror-Handler blendet es aus).
 
 ### Frontend-Änderungen (`web/js/quiz.js`)
 
-In `loadTextLernen(entry)`:
+**Signaturen ändern** (konsistent mit `loadLernen`/`loadQuiz`, die ebenfalls Base-Paths übergeben bekommen):
+
+```
+loadTextLernen(entry, ogImgBase)   // war: loadTextLernen(entry)
+loadTextQuiz(entry, imgBase)       // war: loadTextQuiz(entry)
+```
+
+**`app.js` Aufruf-Update** (die Aufrufstellen übergeben die bereits definierten Konstanten):
+```js
+loadTextLernen(entry, OG_IMG_BASE);   // war: loadTextLernen(entry)
+loadTextQuiz(entry, IMG_BASE);         // war: loadTextQuiz(entry)
+```
+
+**Bild-Rendering in `loadTextLernen(entry, ogImgBase)`:**
 ```
 _textWrapperSetup()
-→ wenn entry.image: <img class="tq-quiz-image" src="OG_IMG_BASE + entry.image.og"> einfügen
+→ wenn entry.image:
+    <img class="tq-quiz-image" src="{ogImgBase + entry.image.og}">
+    img.onerror → img.style.display = 'none'
+    textWrapper.appendChild(img)
 → dann: forEach rows → sections
 ```
 
-In `loadTextQuiz(entry)`:
+**Bild-Rendering in `loadTextQuiz(entry, imgBase)`:**
 ```
 _textWrapperSetup()
-→ wenn entry.image: <img class="tq-quiz-image" src="IMG_BASE + entry.image.clean"> einfügen
+→ wenn entry.image:
+    <img class="tq-quiz-image" src="{imgBase + entry.image.clean}">
+    img.onerror → img.style.display = 'none'
+    textWrapper.appendChild(img)
 → dann: forEach rows → sections
 ```
 
 Das Bild-Element kommt **vor** den Frage-Sektionen, also ganz oben im `text-quiz-wrapper`.
-
-**Fehlerbehandlung:** `img.onerror` → Bild-Element ausblenden (kein fehlendes-Bild-Icon).
 
 ### CSS-Änderungen (`web/css/style.css`)
 
