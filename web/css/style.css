@@ -459,10 +459,61 @@ body {
 .tq-quiz-image {
     display: block;
     max-width: 100%;
-    max-height: 40vh;
+    max-height: 80vh;
     margin: 0 auto 20px;
     border-radius: 4px;
     object-fit: contain;
+    cursor: zoom-in;
+}
+
+.tq-image-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    z-index: 1000;
+}
+
+.tq-image-overlay--visible {
+    display: block;
+}
+
+.tq-overlay-zoom-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tq-image-overlay-img {
+    display: block;
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 4px;
+    user-select: none;
+    pointer-events: none;
+}
+
+.tq-overlay-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    font-size: 22px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 /* ══════════════════════════════════════════════
@@ -602,6 +653,6 @@ body {
     }
 
     .tq-quiz-image {
-        max-height: 35vh;
+        max-height: 70vh;
     }
 }

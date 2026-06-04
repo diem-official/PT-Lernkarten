@@ -5,6 +5,10 @@
     "category": "Muskeln Detail",
     "subcategory": "Gesäß",
     "view": "Gluteus",
+    "image": {
+      "og": "Anatomie 1-Muskeln-Gesäss-Dorsal.png",
+      "clean": "Anatomie 1-Muskeln-Gesäss-Dorsal-clean.jpg"
+    },
     "columns": [
       "Ursprung",
       "Ansatz",
@@ -156,6 +160,10 @@
     "category": "Muskeln Detail",
     "subcategory": "Oberschenkel",
     "view": "Adduktoren",
+    "image": {
+      "og": "Anatomie 1-Muskeln-Adduktoren-Frontal.png",
+      "clean": "Anatomie 1-Muskeln-Adduktoren-Frontal-clean.jpg"
+    },
     "columns": [
       "Ursprung",
       "Ansatz",

@@ -2,6 +2,7 @@ var _currentEntry = null;
 var _imgBasePath = '';
 var _resizeTimer = null;
 var _lastLayoutWidth = window.innerWidth;
+var _overlayZoom = null;
 
 // ── Image quiz: "Lernen" mode ────────────────────────────────────────────────
 
@@ -154,6 +155,49 @@ function _parseAnswer(answerFull) {
     };
 }
 
+function _openImageOverlay(src) {
+    var overlay = document.getElementById('tq-image-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'tq-image-overlay';
+        overlay.className = 'tq-image-overlay';
+
+        var zoomCont = document.createElement('div');
+        zoomCont.className = 'tq-overlay-zoom-container';
+
+        var img = document.createElement('img');
+        img.id = 'tq-image-overlay-img';
+        img.className = 'tq-image-overlay-img';
+        img.alt = '';
+        zoomCont.appendChild(img);
+        overlay.appendChild(zoomCont);
+
+        var closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'tq-overlay-close';
+        closeBtn.textContent = '×';
+        closeBtn.setAttribute('aria-label', 'Schließen');
+        closeBtn.addEventListener('click', function () {
+            overlay.classList.remove('tq-image-overlay--visible');
+            _overlayZoom.reset();
+        });
+        overlay.appendChild(closeBtn);
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                overlay.classList.remove('tq-image-overlay--visible');
+                _overlayZoom.reset();
+            }
+        });
+
+        document.body.appendChild(overlay);
+        _overlayZoom = window.createZoom(zoomCont);
+    }
+    document.getElementById('tq-image-overlay-img').src = src;
+    _overlayZoom.reset();
+    overlay.classList.add('tq-image-overlay--visible');
+}
+
 // Lernen mode: shows all questions and answers as static text
 function loadTextLernen(entry, ogImgBase) {
     _currentEntry = null;
@@ -165,6 +209,7 @@ function loadTextLernen(entry, ogImgBase) {
         img.alt = '';
         img.src = ogImgBase + entry.image.og;
         img.onerror = function () { img.style.display = 'none'; };
+        img.addEventListener('click', function () { _openImageOverlay(img.src); });
         textWrapper.appendChild(img);
     }
 
@@ -235,6 +280,7 @@ function loadTextQuiz(entry, imgBase) {
         img.alt = '';
         img.src = imgBase + entry.image.clean;
         img.onerror = function () { img.style.display = 'none'; };
+        img.addEventListener('click', function () { _openImageOverlay(img.src); });
         textWrapper.appendChild(img);
     }
 
