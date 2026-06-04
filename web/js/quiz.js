@@ -155,9 +155,18 @@ function _parseAnswer(answerFull) {
 }
 
 // Lernen mode: shows all questions and answers as static text
-function loadTextLernen(entry) {
+function loadTextLernen(entry, ogImgBase) {
     _currentEntry = null;
     var textWrapper = _textWrapperSetup();
+
+    if (entry.image) {
+        var img = document.createElement('img');
+        img.className = 'tq-quiz-image';
+        img.alt = '';
+        img.src = ogImgBase + entry.image.og;
+        img.onerror = function () { img.style.display = 'none'; };
+        textWrapper.appendChild(img);
+    }
 
     entry.rows.forEach(function (row) {
         var section = document.createElement('div');
@@ -216,9 +225,18 @@ function loadTextLernen(entry) {
     });
 }
 
-function loadTextQuiz(entry) {
+function loadTextQuiz(entry, imgBase) {
     _currentEntry = null;
     var textWrapper = _textWrapperSetup();
+
+    if (entry.image) {
+        var img = document.createElement('img');
+        img.className = 'tq-quiz-image';
+        img.alt = '';
+        img.src = imgBase + entry.image.clean;
+        img.onerror = function () { img.style.display = 'none'; };
+        textWrapper.appendChild(img);
+    }
 
     entry.rows.forEach(function (row) {
         var section = document.createElement('div');

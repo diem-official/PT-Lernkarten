@@ -68,9 +68,9 @@
 
                 if (entry.type === 'text') {
                     if (mode === 'lernen') {
-                        loadTextLernen(entry);
+                        loadTextLernen(entry, OG_IMG_BASE);
                     } else {
-                        loadTextQuiz(entry);
+                        loadTextQuiz(entry, IMG_BASE);
                     }
                 } else {
                     if (mode === 'lernen') {

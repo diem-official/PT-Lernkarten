@@ -456,6 +456,15 @@ body {
     padding: 2px 0;
 }
 
+.tq-quiz-image {
+    display: block;
+    max-width: 100%;
+    max-height: 40vh;
+    margin: 0 auto 20px;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
 /* ══════════════════════════════════════════════
    MOBILE  ≤ 600px
 ══════════════════════════════════════════════ */
@@ -590,5 +599,9 @@ body {
     #quiz-img {
         max-height: calc(100vh - 48px);
         max-height: calc(100lvh - 48px); /* lvh bleibt beim Öffnen der Tastatur stabil */
+    }
+
+    .tq-quiz-image {
+        max-height: 35vh;
     }
 }
