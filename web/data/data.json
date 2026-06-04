@@ -4815,5 +4815,290 @@
       }
     ],
     "subject": "Anatomie 1"
+  },
+  {
+    "filename": "Anatomie 1-Muskeln-Adduktoren-Frontal-clean.jpg",
+    "og_filename": "Anatomie 1-Muskeln-Adduktoren-Frontal.png",
+    "subject": "Anatomie 1",
+    "category": "Muskeln",
+    "subcategory": "Adduktoren",
+    "view": "Frontal",
+    "labels": [
+      {
+        "text": "Promontorium",
+        "anchor_x": 1311,
+        "anchor_y": 124.0,
+        "mask_box": {
+          "x": 1303,
+          "y": 101,
+          "w": 186,
+          "h": 46
+        }
+      },
+      {
+        "text": "Crista iliaca",
+        "anchor_x": 1663,
+        "anchor_y": 205.5,
+        "mask_box": {
+          "x": 1655,
+          "y": 181,
+          "w": 152,
+          "h": 49
+        }
+      },
+      {
+        "text": "Spina iliaca anterior superior",
+        "anchor_x": 1718,
+        "anchor_y": 474.0,
+        "mask_box": {
+          "x": 1710,
+          "y": 448,
+          "w": 212,
+          "h": 80
+        }
+      },
+      {
+        "text": "Spina iliaca anterior inferior",
+        "anchor_x": 1718,
+        "anchor_y": 615.0,
+        "mask_box": {
+          "x": 1710,
+          "y": 590,
+          "w": 200,
+          "h": 78
+        }
+      },
+      {
+        "text": "R. superior ossis pubis",
+        "anchor_x": 1718,
+        "anchor_y": 757.5,
+        "mask_box": {
+          "x": 1710,
+          "y": 734,
+          "w": 145,
+          "h": 78
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 352,
+        "anchor_y": 806.0,
+        "mask_box": {
+          "x": 344,
+          "y": 781,
+          "w": 151,
+          "h": 85
+        }
+      },
+      {
+        "text": "M. obturatorius externus",
+        "anchor_x": 1720,
+        "anchor_y": 848.0,
+        "mask_box": {
+          "x": 1711,
+          "y": 826,
+          "w": 194,
+          "h": 77
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 353,
+        "anchor_y": 935.5,
+        "mask_box": {
+          "x": 345,
+          "y": 912,
+          "w": 147,
+          "h": 78
+        }
+      },
+      {
+        "text": "M. adductor minimus",
+        "anchor_x": 1718,
+        "anchor_y": 940.0,
+        "mask_box": {
+          "x": 1710,
+          "y": 915,
+          "w": 161,
+          "h": 81
+        }
+      },
+      {
+        "text": "M. pectineus",
+        "anchor_x": 397,
+        "anchor_y": 1041.0,
+        "mask_box": {
+          "x": 389,
+          "y": 1016,
+          "w": 166,
+          "h": 50
+        }
+      },
+      {
+        "text": "M. pectineus",
+        "anchor_x": 1717,
+        "anchor_y": 1040.0,
+        "mask_box": {
+          "x": 1709,
+          "y": 1014,
+          "w": 168,
+          "h": 52
+        }
+      },
+      {
+        "text": "M. adductor brevis",
+        "anchor_x": 405,
+        "anchor_y": 1127.0,
+        "mask_box": {
+          "x": 397,
+          "y": 1104,
+          "w": 159,
+          "h": 78
+        }
+      },
+      {
+        "text": "M. adductor longus",
+        "anchor_x": 405,
+        "anchor_y": 1250.0,
+        "mask_box": {
+          "x": 397,
+          "y": 1227,
+          "w": 160,
+          "h": 83
+        }
+      },
+      {
+        "text": "Femur",
+        "anchor_x": 1659,
+        "anchor_y": 1334.5,
+        "mask_box": {
+          "x": 1651,
+          "y": 1310,
+          "w": 99,
+          "h": 49
+        }
+      },
+      {
+        "text": "M. gracilis",
+        "anchor_x": 428,
+        "anchor_y": 1386.5,
+        "mask_box": {
+          "x": 420,
+          "y": 1361,
+          "w": 136,
+          "h": 51
+        }
+      },
+      {
+        "text": "M. adductor magnus",
+        "anchor_x": 406,
+        "anchor_y": 1490.5,
+        "mask_box": {
+          "x": 398,
+          "y": 1467,
+          "w": 158,
+          "h": 80
+        }
+      },
+      {
+        "text": "Hiatus adductorius",
+        "anchor_x": 468,
+        "anchor_y": 1733.0,
+        "mask_box": {
+          "x": 399,
+          "y": 1709,
+          "w": 156,
+          "h": 79
+        }
+      },
+      {
+        "text": "M. adductor magnus, sehniger Teil",
+        "anchor_x": 1662,
+        "anchor_y": 1763.5,
+        "mask_box": {
+          "x": 1654,
+          "y": 1740,
+          "w": 163,
+          "h": 110
+        }
+      },
+      {
+        "text": "Epicondylus medialis",
+        "anchor_x": 1002,
+        "anchor_y": 1985.0,
+        "mask_box": {
+          "x": 994,
+          "y": 1958,
+          "w": 157,
+          "h": 82
+        }
+      },
+      {
+        "text": "Patella",
+        "anchor_x": 1661,
+        "anchor_y": 2015.5,
+        "mask_box": {
+          "x": 1653,
+          "y": 1993,
+          "w": 99,
+          "h": 45
+        }
+      },
+      {
+        "text": "Ansatzsehne des M. gracilis",
+        "anchor_x": 970,
+        "anchor_y": 2228.0,
+        "mask_box": {
+          "x": 962,
+          "y": 2206,
+          "w": 175,
+          "h": 78
+        }
+      },
+      {
+        "text": "Tuberositas tibiae",
+        "anchor_x": 1662,
+        "anchor_y": 2228.0,
+        "mask_box": {
+          "x": 1654,
+          "y": 2204,
+          "w": 150,
+          "h": 80
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 1661,
+        "anchor_y": 2339.5,
+        "mask_box": {
+          "x": 1653,
+          "y": 2314,
+          "w": 93,
+          "h": 51
+        }
+      },
+      {
+        "text": "Tibia",
+        "anchor_x": 1218,
+        "anchor_y": 2372.0,
+        "mask_box": {
+          "x": 1210,
+          "y": 2347,
+          "w": 80,
+          "h": 50
+        }
+      },
+      {
+        "text": "K. Wea",
+        "anchor_x": 722,
+        "anchor_y": 2402.0,
+        "mask_box": {
+          "x": 714,
+          "y": 2372,
+          "w": 98,
+          "h": 60
+        }
+      }
+    ]
   }
 ]
