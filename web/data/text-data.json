@@ -149,5 +149,149 @@
         }
       }
     ]
+  },
+  {
+    "type": "text",
+    "subject": "Anatomie 1",
+    "category": "Muskeln Detail",
+    "subcategory": "Oberschenkel",
+    "view": "Adduktoren",
+    "columns": [
+      "Ursprung",
+      "Ansatz",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": [
+      {
+        "question": "M. obturatorius externus",
+        "answers": {
+          "Ursprung": [
+            "Außenseite Membrana obturatoria und Knochen"
+          ],
+          "Ansatz": [
+            "Außenseite Membrana obturatoria und Knochen"
+          ],
+          "Funktion": [
+            "Adduktion",
+            "Außenrotation",
+            "Stabil Sagittalebene"
+          ],
+          "Innervation": [
+            "N. obturatorius L2-4"
+          ]
+        }
+      },
+      {
+        "question": "M. pectineus",
+        "answers": {
+          "Ursprung": [
+            "Pecten ossis pubis"
+          ],
+          "Ansatz": [
+            "Linea pectinea",
+            "Linea aspera femur"
+          ],
+          "Funktion": [
+            "Adduktion",
+            "Außenrotation",
+            "leichte Flexion",
+            "Stabil Frontalebene",
+            "Stabil Sagittalebene"
+          ],
+          "Innervation": [
+            "N. femoralis L1-4",
+            "N. obturatorius L2-4"
+          ]
+        }
+      },
+      {
+        "question": "M. adductor longus",
+        "answers": {
+          "Ursprung": [
+            "R. superior Os pubis",
+            "Symphyse"
+          ],
+          "Ansatz": [
+            "Linea aspera Labium mediale"
+          ],
+          "Funktion": [
+            "<70°: Adduktion",
+            "<70°: Flexion",
+            ">80° Extension",
+            "Stabil Frontalebene",
+            "Stabil Sagittalebene"
+          ],
+          "Innervation": [
+            "N. obturatorius L2-4"
+          ]
+        }
+      },
+      {
+        "question": "M. adductor brevis",
+        "answers": {
+          "Ursprung": [
+            "R. inferior Os pubis"
+          ],
+          "Ansatz": [
+            "Linea aspera Labium mediale"
+          ],
+          "Funktion": [
+            "<70°: Adduktion",
+            "<70°: Flexion",
+            ">80° Extension",
+            "Stabil Frontalebene",
+            "Stabil Sagittalebene"
+          ],
+          "Innervation": [
+            "N. obturatorius L2-4"
+          ]
+        }
+      },
+      {
+        "question": "M. adductor magnus",
+        "answers": {
+          "Ursprung": [
+            "R. inferior Os pubis",
+            "R. ossis ischii",
+            "Tuber ischiadicum"
+          ],
+          "Ansatz": [
+            "tiefer Teil: Labium mediale Linea aspera",
+            "oberflächlicher Teil: Epicondylus medialis Femur"
+          ],
+          "Funktion": [
+            "Adduktion",
+            "Außenrotation",
+            "Extension",
+            "Stabil Frontalebene",
+            "Stabil Sagittalebene"
+          ],
+          "Innervation": [
+            "tiefer Teil: N. obturatorius L2-4",
+            "oberflächlicher Teil: N. tibialis L4-5"
+          ]
+        }
+      },
+      {
+        "question": "M. adductor minimus",
+        "answers": {
+          "Ursprung": [
+            "R. inferior Os pubis"
+          ],
+          "Ansatz": [
+            "Linea aspera Labium mediale"
+          ],
+          "Funktion": [
+            "Adduktion",
+            "Außenrotation",
+            "leichte Flexion"
+          ],
+          "Innervation": [
+            "N. obturatorius L2-4"
+          ]
+        }
+      }
+    ]
   }
 ]
