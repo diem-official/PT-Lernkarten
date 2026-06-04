@@ -15,6 +15,7 @@ import csv
 import json
 import os
 import sys
+from pathlib import Path
 
 
 def _parse_stem(stem):
@@ -37,6 +38,36 @@ def _split_answers(cell_value):
     return [a.strip() for a in str(cell_value).split(';') if a.strip()]
 
 
+def _extract_image_meta(all_rows):
+    """Detect and extract optional BILD meta-row from the top of all_rows.
+
+    Returns (image_meta, remaining_rows).
+    image_meta is None if no BILD row, else {"og": ..., "clean": ...}.
+    """
+    if not all_rows:
+        return None, all_rows
+
+    first_cell = all_rows[0][0]
+    if first_cell is None or str(first_cell).strip().lower() != 'bild':
+        return None, all_rows
+
+    remaining = all_rows[1:]
+    if not remaining:
+        sys.exit('Fehler: BILD-Zeile vorhanden, aber keine Header-Zeile gefunden.')
+
+    b1 = all_rows[0][1] if len(all_rows[0]) > 1 else None
+    b1_str = str(b1).strip() if b1 is not None else ''
+    if not b1_str or '.' not in b1_str:
+        sys.exit(
+            'Fehler: BILD-Zeile muss in Zelle B1 einen gültigen Dateinamen '
+            '(mit Dateiendung, z. B. Anatomie 1-Bänder-Becken-Dorsal.png) enthalten.'
+        )
+
+    og_filename = b1_str
+    clean_filename = Path(og_filename).stem + '-clean.jpg'
+    return {'og': og_filename, 'clean': clean_filename}, remaining
+
+
 def _read_excel(filepath):
     try:
         import openpyxl
@@ -47,34 +78,25 @@ def _read_excel(filepath):
         )
     wb = openpyxl.load_workbook(filepath, data_only=True)
     ws = wb.active
-    all_rows = list(ws.iter_rows(values_only=True))
-    if not all_rows:
-        return [], []
-    headers = [str(h).strip() if h is not None else '' for h in all_rows[0]]
-    return headers, all_rows[1:]
+    return list(ws.iter_rows(values_only=True))
 
 
 def _read_csv(filepath):
-    # Auto-detect delimiter: try semicolon first, then comma
     for delimiter in (';', ',', '\t'):
         with open(filepath, newline='', encoding='utf-8-sig') as f:
             sample = f.read(4096)
             if delimiter in sample:
                 break
     with open(filepath, newline='', encoding='utf-8-sig') as f:
-        rows = list(csv.reader(f, delimiter=delimiter))
-    if not rows:
-        return [], []
-    headers = [h.strip() for h in rows[0]]
-    return headers, rows[1:]
+        return list(csv.reader(f, delimiter=delimiter))
 
 
-def _build_entry(meta, headers, data_rows):
+def _build_entry(meta, headers, data_rows, image=None):
     columns = headers[1:]  # first column is the question/subject label
     rows = []
     for row in data_rows:
         if all(cell is None or str(cell).strip() == '' for cell in row):
-            continue  # skip blank rows
+            continue
         question = str(row[0]).strip() if row[0] is not None else ''
         if not question:
             continue
@@ -84,15 +106,19 @@ def _build_entry(meta, headers, data_rows):
             cell_val = row[col_idx] if col_idx < len(row) else None
             answers[col_name] = _split_answers(cell_val)
         rows.append({'question': question, 'answers': answers})
-    return {
+
+    entry = {
         'type':        'text',
         'subject':     meta['subject'],
         'category':    meta['category'],
         'subcategory': meta['subcategory'],
         'view':        meta['view'],
-        'columns':     columns,
-        'rows':        rows,
     }
+    if image is not None:
+        entry['image'] = image
+    entry['columns'] = columns
+    entry['rows'] = rows
+    return entry
 
 
 def main():
@@ -124,15 +150,25 @@ def main():
 
     print(f'Verarbeite: {filepath}')
     if ext == '.xlsx':
-        headers, data_rows = _read_excel(filepath)
+        all_rows = _read_excel(filepath)
     else:
-        headers, data_rows = _read_csv(filepath)
+        all_rows = _read_csv(filepath)
+
+    image_meta, remaining_rows = _extract_image_meta(all_rows)
+
+    if not remaining_rows:
+        sys.exit('Tabelle ist leer oder enthält nur die BILD-Zeile (keine Header-Zeile gefunden).')
+
+    headers = [str(h).strip() if h is not None else '' for h in remaining_rows[0]]
+    data_rows = remaining_rows[1:]
 
     if len(headers) < 2:
         sys.exit('Tabelle muss mindestens 2 Spalten haben (Frage + mindestens 1 Antwortkategorie)')
 
-    entry = _build_entry(meta, headers, data_rows)
+    entry = _build_entry(meta, headers, data_rows, image=image_meta)
     print(f'  {len(entry["rows"])} Fragen, {len(entry["columns"])} Antwortkategorien')
+    if image_meta:
+        print(f'  Bild: {image_meta["og"]} / {image_meta["clean"]}')
 
     if args.output:
         output_path = os.path.normpath(args.output)
