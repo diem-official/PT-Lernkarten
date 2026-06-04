@@ -266,7 +266,7 @@
           ],
           "Ansatz": [
             "tiefer Teil: Labium mediale Linea aspera",
-            "oberflächlicher Teil: Epicondylus medialis Femur"
+            "oberfl. Teil: Epicondylus medialis Femur"
           ],
           "Funktion": [
             "Adduktion",
@@ -277,7 +277,7 @@
           ],
           "Innervation": [
             "tiefer Teil: N. obturatorius L2-4",
-            "oberflächlicher Teil: N. tibialis L4-5"
+            "oberfl. Teil: N. tibialis L4-5"
           ]
         }
       },
@@ -297,6 +297,51 @@
           ],
           "Innervation": [
             "N. obturatorius L2-4"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "subject": "Anatomie 1",
+    "category": "Muskeln Detail",
+    "subcategory": "Gesäß",
+    "view": "Iliopsoas",
+    "image": {
+      "og": "Anatomie 1-Muskeln-Innere Hüftmuskeln-Ventral.png",
+      "clean": "Anatomie 1-Muskeln-Innere Hüftmuskeln-Ventral-clean.jpg"
+    },
+    "columns": [
+      "Ursprung",
+      "Ansatz",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": [
+      {
+        "question": "M. iliopsoas zusammen aus M. psoas major (MPM) und M. Iliacus (MI)",
+        "answers": {
+          "Ursprung": [
+            "MPM Oberfl: BWK 12",
+            "MPM Oberfl: LWK 1-4",
+            "MPM Oberfl: Disci intervertebrales",
+            "MPM Tief: Procc. costales LWK 1-5",
+            "MI: Fossa iliaca"
+          ],
+          "Ansatz": [
+            "Gemeinsam: Trochanter minor Femur"
+          ],
+          "Funktion": [
+            "Hüftgelenk: Flexion",
+            "Hüftgelenk: Außenrotation",
+            "LWS 1-seitig Kontr.: Punctum fixum am Femur",
+            "LWS 1 seitig Kontr.: Lateralflexion zur ipsilateralen Seite",
+            "LWS 2-seitig Kontr.: Aufrichten Rumpf aus Rückenlage"
+          ],
+          "Innervation": [
+            "N. femoralis L1-4",
+            "direkte Äste Plexus lumbalis"
           ]
         }
       }
