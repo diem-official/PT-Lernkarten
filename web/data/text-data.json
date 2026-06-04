@@ -3,7 +3,7 @@
     "type": "text",
     "subject": "Anatomie 1",
     "category": "Muskeln Detail",
-    "subcategory": "Gesäß",
+    "subcategory": "Hüfte",
     "view": "Gluteus",
     "image": {
       "og": "Anatomie 1-Muskeln-Gesäss-Dorsal.png",
@@ -306,7 +306,7 @@
     "type": "text",
     "subject": "Anatomie 1",
     "category": "Muskeln Detail",
-    "subcategory": "Gesäß",
+    "subcategory": "Hüfte",
     "view": "Iliopsoas",
     "image": {
       "og": "Anatomie 1-Muskeln-Innere Hüftmuskeln-Ventral.png",
