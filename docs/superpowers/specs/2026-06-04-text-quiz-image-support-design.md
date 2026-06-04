@@ -94,20 +94,51 @@ Einträge ohne Meta-Zeile haben kein `image`-Feld (wie bisher).
 ### Pipeline-Änderungen (`convert_text.py`)
 
 **Architektur-Anpassung der Read-Funktionen:**
-- `_read_excel()` und `_read_csv()` geben neu ein rohes `all_rows`-Tupel zurück (Typ: `list[tuple]`) statt des aufgeteilten `(headers, data_rows)`
+- `_read_excel()` und `_read_csv()` geben neu ein rohes `all_rows` zurück (Typ: `list[tuple]`) statt des aufgeteilten `(headers, data_rows)`
 - `main()` ruft danach `_extract_image_meta(all_rows)` auf → gibt `(image_meta, remaining_rows)` zurück
-- Dann wird aus `remaining_rows` wie bisher `headers = remaining_rows[0]`, `data_rows = remaining_rows[1:]` abgeleitet
+- Dann gilt: `headers = remaining_rows[0]`, `data_rows = remaining_rows[1:]`
+- Die bisherige Prüfung `if len(headers) < 2: sys.exit(...)` bleibt, aber sie muss **nach** dieser Zuweisung stehen (nicht gegen `all_rows` prüfen)
 
 **Neue Funktion `_extract_image_meta(all_rows) -> (image_meta, remaining_rows)`:**
-- Prüft ob erste Zeile `all_rows[0][0]` case-insensitiv `"BILD"` ist
+- Falls `all_rows` leer: direkt `(None, all_rows)` zurückgeben
+- Prüft ob `all_rows[0][0]` case-insensitiv `"BILD"` ist
 - Falls ja:
+  - `remaining_rows = all_rows[1:]`
+  - Wenn `remaining_rows` leer: `sys.exit('BILD-Zeile vorhanden, aber keine Header-Zeile gefunden')`
   - B1 = `all_rows[0][1]` – muss ein nicht-leerer String mit `.`-Dateiendung sein
-  - Wenn B1 ungültig (leer, kein `.`): Fehlermeldung + `sys.exit()` 
-  - OG-Filename aus B1 extrahieren, Clean-Name ableiten: `og_stem + "-clean.jpg"`
-  - Rückgabe: `({ "og": ..., "clean": ... }, all_rows[1:])`
+  - Wenn B1 ungültig (leer, kein `.`): Fehlermeldung + `sys.exit()`
+  - Clean-Name ableiten: `Path(og_filename).stem + "-clean.jpg"`
+  - Rückgabe: `({ "og": og_filename, "clean": clean_filename }, remaining_rows)`
 - Falls nein: Rückgabe `(None, all_rows)`
 
-**`_build_entry()`:** erhält optionalen `image`-Parameter (default `None`); setzt `image`-Feld wenn vorhanden.
+**`_build_entry(meta, headers, data_rows, image=None)`:**
+- Erhält optionalen `image`-Parameter (default `None`)
+- Gibt zurück:
+  ```python
+  {
+      "type": "text",
+      "subject": meta["subject"],
+      "category": meta["category"],
+      "subcategory": meta["subcategory"],
+      "view": meta["view"],
+      # nur wenn image nicht None:
+      "image": { "og": image["og"], "clean": image["clean"] },
+      "columns": columns,
+      "rows": rows,
+  }
+  ```
+- Wenn `image is None`: kein `"image"`-Schlüssel im Dict (nicht `null` setzen, sondern weglassen)
+
+**Aufruf in `main()`:**
+```python
+all_rows = _read_excel(filepath)   # oder _read_csv
+image_meta, remaining_rows = _extract_image_meta(all_rows)
+headers = remaining_rows[0]
+data_rows = remaining_rows[1:]
+if len(headers) < 2:
+    sys.exit('...')
+entry = _build_entry(meta, headers, data_rows, image=image_meta)
+```
 
 **Clean-Ableitung:** `og_stem + "-clean.jpg"` (identisch mit process.py und Migration).
 
