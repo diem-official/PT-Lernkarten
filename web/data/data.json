@@ -3936,7 +3936,7 @@
         }
       },
       {
-        "text": "M.gemellus superior",
+        "text": "M. gemellus superior",
         "anchor_x": 2112,
         "anchor_y": 641.0,
         "mask_box": {
@@ -3980,7 +3980,7 @@
         }
       },
       {
-        "text": "M.gemellus inferior",
+        "text": "M. gemellus inferior",
         "anchor_x": 1273,
         "anchor_y": 789.5,
         "mask_box": {
@@ -4090,7 +4090,7 @@
         }
       },
       {
-        "text": "Os ilium, Facies glutea",
+        "text": "Os ilium Facies glutea",
         "anchor_x": 2113,
         "anchor_y": 1546.5,
         "mask_box": {
@@ -4189,7 +4189,7 @@
         }
       },
       {
-        "text": "M.gemellus inferior",
+        "text": "M. gemellus inferior",
         "anchor_x": 1273,
         "anchor_y": 2056.5,
         "mask_box": {
@@ -5086,17 +5086,6 @@
           "y": 2347,
           "w": 80,
           "h": 50
-        }
-      },
-      {
-        "text": "K. Wea",
-        "anchor_x": 722,
-        "anchor_y": 2402.0,
-        "mask_box": {
-          "x": 714,
-          "y": 2372,
-          "w": 98,
-          "h": 60
         }
       }
     ]
