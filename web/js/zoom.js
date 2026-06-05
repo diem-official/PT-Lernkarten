@@ -202,6 +202,16 @@
         document.addEventListener('mousemove',   onMouseMove);
         document.addEventListener('mouseup',     onMouseUp);
 
+        var resizeTimer = null;
+        function onResize() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                clampState();
+                applyTransform();
+            }, 50);
+        }
+        window.addEventListener('resize', onResize);
+
         return { reset: resetZoom };
     };
 
