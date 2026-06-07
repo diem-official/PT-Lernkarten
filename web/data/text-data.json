@@ -1,115 +1,6 @@
 [
   {
     "type": "text",
-    "subject": "Anatomie 1",
-    "category": "Muskeln Detail",
-    "subcategory": "Hüfte",
-    "view": "Gluteus",
-    "image": {
-      "og": "Anatomie 1-Muskeln-Gesäss-Dorsal.png",
-      "clean": "Anatomie 1-Muskeln-Gesäss-Dorsal-clean.jpg"
-    },
-    "columns": [
-      "Ursprung",
-      "Ansatz",
-      "Funktion",
-      "Innervation"
-    ],
-    "rows": [
-      {
-        "question": "M. gluteus maximus",
-        "answers": {
-          "Ursprung": [
-            "Facies dorsalis Os Sacrum",
-            "Facies glutea Os ilium",
-            "Fascia Thoracolumbalis",
-            "Lig. Sacrotuberale"
-          ],
-          "Ansatz": [
-            "kraniale Fasern: Tractus iliotibialis",
-            "kaudale Fasern: Tuberositas glutea"
-          ],
-          "Funktion": [
-            "Gesamt: Extension",
-            "Gesamt: Außenrotation",
-            "Gesamt: Stabil Saggitalebene",
-            "Gesamt: Stabil Frontalebene",
-            "kraniale Fasern: Abduktion",
-            "kaudale Fasern: Adduktion"
-          ],
-          "Innervation": [
-            "N. gluteus inferior L5-S2"
-          ]
-        }
-      },
-      {
-        "question": "M. gluteus medius",
-        "answers": {
-          "Ursprung": [
-            "Facies glutea Os Ilium"
-          ],
-          "Ansatz": [
-            "Trochanter major Os Femoris"
-          ],
-          "Funktion": [
-            "Gesamt: Abduktion",
-            "Gesamt: Stabil Frontalebene",
-            "vordere Teil: Flexion",
-            "vordere Teil: Innenrotation",
-            "hintere Teil: Extension",
-            "hintere Teil: Außenrotation"
-          ],
-          "Innervation": [
-            "N. gluteus superior L4-S1"
-          ]
-        }
-      },
-      {
-        "question": "M. gluteus minimus",
-        "answers": {
-          "Ursprung": [
-            "Facies glutea Os Ilium"
-          ],
-          "Ansatz": [
-            "Trochanter major Os Femoris"
-          ],
-          "Funktion": [
-            "Gesamt: Abduktion",
-            "Gesamt: Stabil Frontalebene",
-            "vordere Teil: Flexion",
-            "vordere Teil: Innenrotation",
-            "hintere Teil: Extension",
-            "hintere Teil: Außenrotation"
-          ],
-          "Innervation": [
-            "N. gluteus superior L4-S1"
-          ]
-        }
-      },
-      {
-        "question": "M. Tensor fasciae latae",
-        "answers": {
-          "Ursprung": [
-            "Spina iliaca anterior superior"
-          ],
-          "Ansatz": [
-            "Tractus iliotibialis"
-          ],
-          "Funktion": [
-            "Gesamt: spannt Fascia lata",
-            "Gesamt: Abduktion",
-            "Gesamt: Flexion",
-            "Gesamt: Innenrotation"
-          ],
-          "Innervation": [
-            "N. gluteus superior L4-S1"
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "type": "text",
     "subject": "Hydrotherapie",
     "category": "Kneipp",
     "subcategory": "Guss",
@@ -351,8 +242,12 @@
     "type": "text",
     "subject": "Anatomie 1",
     "category": "Muskeln Detail",
-    "subcategory": "Gesäß",
+    "subcategory": "Hüfte",
     "view": "Gluteus",
+    "image": {
+      "og": "Anatomie 1-Muskeln-Gesäss-Dorsal.png",
+      "clean": "Anatomie 1-Muskeln-Gesäss-Dorsal-clean.jpg"
+    },
     "columns": [
       "Ursprung",
       "Ansatz",
