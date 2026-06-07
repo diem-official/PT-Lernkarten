@@ -15,7 +15,7 @@
       "Funktion",
       "Innervation"
     ],
-    "rows": [
+      "rows": [
       {
         "question": "M. gluteus maximus",
         "answers": {
@@ -60,7 +60,7 @@
             "hintere Teil: Außenrotation"
           ],
           "Innervation": [
-            "N. gluteus superior L4-S1"
+            "N. gluteus superior L4–S1"
           ]
         }
       },
@@ -82,7 +82,7 @@
             "hintere Teil: Außenrotation"
           ],
           "Innervation": [
-            "N. gluteus superior L4-S1"
+            "N. gluteus superior L4–S1"
           ]
         }
       },
@@ -102,12 +102,92 @@
             "Gesamt: Innenrotation"
           ],
           "Innervation": [
-            "N. gluteus superior L4-S1"
+            "N. gluteus superior L4–S1"
+          ]
+        }
+      },
+      {
+        "question": "M. piriformis",
+        "answers": {
+          "Ursprung": [
+            "Facies pelvica Os sacrum"
+          ],
+          "Ansatz": [
+            "Trochanter major Femur"
+          ],
+          "Funktion": [
+            "Außenrotation",
+            "Abduktion",
+            "Extension",
+            "Stabilisierung im Hüftgelenk"
+          ],
+          "Innervation": [
+            "direkte Äste Plexus sacralis L5-S2"
+          ]
+        }
+      },
+      {
+        "question": "M. obturatorius internus",
+        "answers": {
+          "Ursprung": [
+            "Innenfläche Membrana obturatoria und Rahmen"
+          ],
+          "Ansatz": [
+            "Fossa trochanterica Femur"
+          ],
+          "Funktion": [
+            "Außenrotation",
+            "Adduktion",
+            "Extension",
+            "bei Hüftstellung auch Abduktion"
+          ],
+          "Innervation": [
+            "direkte Äste Plexus sacralis L5-S2"
+          ]
+        }
+      },
+      {
+        "question": "Mm. gemelli",
+        "answers": {
+          "Ursprung": [
+            "M. gemellus superior: Spina ischiadica Os ischii",
+            "M. gemellus inferior: Tuber ischiadicum Os ischii"
+          ],
+          "Ansatz": [
+            "Fossa trochanterica"
+          ],
+          "Funktion": [
+            "Außenrotation",
+            "Adduktion",
+            "Extension",
+            "bei Hüftstellung auch Abduktion"
+          ],
+          "Innervation": [
+            "direkte Äste Plexus sacralis L5-S2"
+          ]
+        }
+      },
+      {
+        "question": "M. quadratus femoris",
+        "answers": {
+          "Ursprung": [
+            "Tuber ischiadicum Os ischii"
+          ],
+          "Ansatz": [
+            "Crista intertrochanterica Femur"
+          ],
+          "Funktion": [
+            "Außenrotation",
+            "Adduktion"
+          ],
+          "Innervation": [
+            "direkte Äste Plexus sacralis L5-S2",
+            "N. gluteus inferior"
           ]
         }
       }
     ]
-  },
+  }
   {
     "type": "text",
     "subject": "Hydrotherapie",
@@ -342,191 +422,6 @@
           "Innervation": [
             "N. femoralis L1-4",
             "direkte Äste Plexus lumbalis"
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "type": "text",
-    "subject": "Anatomie 1",
-    "category": "Muskeln Detail",
-    "subcategory": "Gesäß",
-    "view": "Gluteus",
-    "columns": [
-      "Ursprung",
-      "Ansatz",
-      "Funktion",
-      "Innervation"
-    ],
-    "rows": [
-      {
-        "question": "M. gluteus maximus",
-        "answers": {
-          "Ursprung": [
-            "Facies dorsalis Os Sacrum",
-            "Facies glutea Os ilium",
-            "Fascia Thoracolumbalis",
-            "Lig. Sacrotuberale"
-          ],
-          "Ansatz": [
-            "kraniale Fasern: Tractus iliotibialis",
-            "kaudale Fasern: Tuberositas glutea"
-          ],
-          "Funktion": [
-            "Gesamt: Extension",
-            "Gesamt: Außenrotation",
-            "Gesamt: Stabil Saggitalebene",
-            "Gesamt: Stabil Frontalebene",
-            "kraniale Fasern: Abduktion",
-            "kaudale Fasern: Adduktion"
-          ],
-          "Innervation": [
-            "N. gluteus inferior L5-S2"
-          ]
-        }
-      },
-      {
-        "question": "M. gluteus medius",
-        "answers": {
-          "Ursprung": [
-            "Facies glutea Os Ilium"
-          ],
-          "Ansatz": [
-            "Trochanter major Os Femoris"
-          ],
-          "Funktion": [
-            "Gesamt: Abduktion",
-            "Gesamt: Stabil Frontalebene",
-            "vordere Teil: Flexion",
-            "vordere Teil: Innenrotation",
-            "hintere Teil: Extension",
-            "hintere Teil: Außenrotation"
-          ],
-          "Innervation": [
-            "N. gluteus superior L4–S1"
-          ]
-        }
-      },
-      {
-        "question": "M. gluteus minimus",
-        "answers": {
-          "Ursprung": [
-            "Facies glutea Os Ilium"
-          ],
-          "Ansatz": [
-            "Trochanter major Os Femoris"
-          ],
-          "Funktion": [
-            "Gesamt: Abduktion",
-            "Gesamt: Stabil Frontalebene",
-            "vordere Teil: Flexion",
-            "vordere Teil: Innenrotation",
-            "hintere Teil: Extension",
-            "hintere Teil: Außenrotation"
-          ],
-          "Innervation": [
-            "N. gluteus superior L4–S1"
-          ]
-        }
-      },
-      {
-        "question": "M. Tensor fasciae latae",
-        "answers": {
-          "Ursprung": [
-            "Spina iliaca anterior superior"
-          ],
-          "Ansatz": [
-            "Tractus iliotibialis"
-          ],
-          "Funktion": [
-            "Gesamt: spannt Fascia lata",
-            "Gesamt: Abduktion",
-            "Gesamt: Flexion",
-            "Gesamt: Innenrotation"
-          ],
-          "Innervation": [
-            "N. gluteus superior L4–S1"
-          ]
-        }
-      },
-      {
-        "question": "M. piriformis",
-        "answers": {
-          "Ursprung": [
-            "Facies pelvica Os sacrum"
-          ],
-          "Ansatz": [
-            "Trochanter major Femur"
-          ],
-          "Funktion": [
-            "Außenrotation",
-            "Abduktion",
-            "Extension",
-            "Stabilisierung im Hüftgelenk"
-          ],
-          "Innervation": [
-            "direkte Äste Plexus sacralis L5-S2"
-          ]
-        }
-      },
-      {
-        "question": "M. obturatorius internus",
-        "answers": {
-          "Ursprung": [
-            "Innenfläche Membrana obturatoria und Rahmen"
-          ],
-          "Ansatz": [
-            "Fossa trochanterica Femur"
-          ],
-          "Funktion": [
-            "Außenrotation",
-            "Adduktion",
-            "Extension",
-            "bei Hüftstellung auch Abduktion"
-          ],
-          "Innervation": [
-            "direkte Äste Plexus sacralis L5-S2"
-          ]
-        }
-      },
-      {
-        "question": "Mm. gemelli",
-        "answers": {
-          "Ursprung": [
-            "M. gemellus superior: Spina ischiadica Os ischii",
-            "M. gemellus inferior: Tuber ischiadicum Os ischii"
-          ],
-          "Ansatz": [
-            "Fossa trochanterica"
-          ],
-          "Funktion": [
-            "Außenrotation",
-            "Adduktion",
-            "Extension",
-            "bei Hüftstellung auch Abduktion"
-          ],
-          "Innervation": [
-            "direkte Äste Plexus sacralis L5-S2"
-          ]
-        }
-      },
-      {
-        "question": "M. quadratus femoris",
-        "answers": {
-          "Ursprung": [
-            "Tuber ischiadicum Os ischii"
-          ],
-          "Ansatz": [
-            "Crista intertrochanterica Femur"
-          ],
-          "Funktion": [
-            "Außenrotation",
-            "Adduktion"
-          ],
-          "Innervation": [
-            "direkte Äste Plexus sacralis L5-S2",
-            "N. gluteus inferior"
           ]
         }
       }
