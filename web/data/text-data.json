@@ -15,7 +15,7 @@
       "Funktion",
       "Innervation"
     ],
-      "rows": [
+    "rows": [
       {
         "question": "M. gluteus maximus",
         "answers": {
@@ -60,7 +60,7 @@
             "hintere Teil: Außenrotation"
           ],
           "Innervation": [
-            "N. gluteus superior L4–S1"
+            "N. gluteus superior L4-S1"
           ]
         }
       },
@@ -82,7 +82,7 @@
             "hintere Teil: Außenrotation"
           ],
           "Innervation": [
-            "N. gluteus superior L4–S1"
+            "N. gluteus superior L4-S1"
           ]
         }
       },
@@ -102,11 +102,10 @@
             "Gesamt: Innenrotation"
           ],
           "Innervation": [
-            "N. gluteus superior L4–S1"
+            "N. gluteus superior L4-S1"
           ]
         }
       },
-      {
         "question": "M. piriformis",
         "answers": {
           "Ursprung": [
@@ -183,9 +182,6 @@
           "Innervation": [
             "direkte Äste Plexus sacralis L5-S2",
             "N. gluteus inferior"
-          ]
-        }
-      }
     ]
   },
   {
