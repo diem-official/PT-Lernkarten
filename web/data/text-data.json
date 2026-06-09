@@ -433,6 +433,10 @@
     "category": "Muskeln Detail",
     "subcategory": "Hüfte",
     "view": "Oberschenkel",
+    "image": {
+      "og": "Anatomie 1-Muskeln-Oberschenkel-Frontal.png",
+      "clean": "Anatomie 1-Muskeln-Oberschenkel-Frontal-clean.jpg"
+    },
     "columns": [
       "Ursprung",
       "Ansatz",

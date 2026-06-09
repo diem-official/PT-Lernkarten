@@ -5264,5 +5264,389 @@
         }
       }
     ]
+  },
+  {
+    "filename": "Anatomie 1-Muskeln-Oberschenkel-Frontal-clean.jpg",
+    "og_filename": "Anatomie 1-Muskeln-Oberschenkel-Frontal.png",
+    "subject": "Anatomie 1",
+    "category": "Muskeln",
+    "subcategory": "Oberschenkel",
+    "view": "Frontal",
+    "labels": [
+      {
+        "text": "Spina iliaca anterior superior",
+        "anchor_x": 2066,
+        "anchor_y": 287.5,
+        "mask_box": {
+          "x": 2058,
+          "y": 260,
+          "w": 234,
+          "h": 90
+        }
+      },
+      {
+        "text": "Spina iliaca posterior superior",
+        "anchor_x": 2065,
+        "anchor_y": 378.0,
+        "mask_box": {
+          "x": 2057,
+          "y": 350,
+          "w": 250,
+          "h": 91
+        }
+      },
+      {
+        "text": "Os sacrum",
+        "anchor_x": 2064,
+        "anchor_y": 484.0,
+        "mask_box": {
+          "x": 2056,
+          "y": 457,
+          "w": 161,
+          "h": 54
+        }
+      },
+      {
+        "text": "Spina iliaca posterior inferior",
+        "anchor_x": 2064,
+        "anchor_y": 555.5,
+        "mask_box": {
+          "x": 2056,
+          "y": 527,
+          "w": 238,
+          "h": 90
+        }
+      },
+      {
+        "text": "Spina ischiadica",
+        "anchor_x": 894,
+        "anchor_y": 629.5,
+        "mask_box": {
+          "x": 886,
+          "y": 601,
+          "w": 223,
+          "h": 57
+        }
+      },
+      {
+        "text": "Trochanter major",
+        "anchor_x": 970,
+        "anchor_y": 717.0,
+        "mask_box": {
+          "x": 962,
+          "y": 691,
+          "w": 164,
+          "h": 92
+        }
+      },
+      {
+        "text": "Crista intertrochanterica",
+        "anchor_x": 974,
+        "anchor_y": 811.5,
+        "mask_box": {
+          "x": 966,
+          "y": 787,
+          "w": 189,
+          "h": 83
+        }
+      },
+      {
+        "text": "Lig. sacrotuberale",
+        "anchor_x": 180,
+        "anchor_y": 887.0,
+        "mask_box": {
+          "x": 172,
+          "y": 861,
+          "w": 147,
+          "h": 84
+        }
+      },
+      {
+        "text": "Trochanter minor",
+        "anchor_x": 971,
+        "anchor_y": 911.5,
+        "mask_box": {
+          "x": 963,
+          "y": 886,
+          "w": 162,
+          "h": 87
+        }
+      },
+      {
+        "text": "Os ischii",
+        "anchor_x": 1303,
+        "anchor_y": 946.5,
+        "mask_box": {
+          "x": 1295,
+          "y": 921,
+          "w": 127,
+          "h": 51
+        }
+      },
+      {
+        "text": "Tuber ischiadicum",
+        "anchor_x": 280,
+        "anchor_y": 996.0,
+        "mask_box": {
+          "x": 197,
+          "y": 970,
+          "w": 176,
+          "h": 88
+        }
+      },
+      {
+        "text": "Tuberositas glutea",
+        "anchor_x": 971,
+        "anchor_y": 1018.5,
+        "mask_box": {
+          "x": 963,
+          "y": 993,
+          "w": 169,
+          "h": 89
+        }
+      },
+      {
+        "text": "Caput commune",
+        "anchor_x": 1328,
+        "anchor_y": 1020.5,
+        "mask_box": {
+          "x": 1271,
+          "y": 994,
+          "w": 152,
+          "h": 82
+        }
+      },
+      {
+        "text": "gemeinsame Ursprungssehne",
+        "anchor_x": 2012,
+        "anchor_y": 1019.5,
+        "mask_box": {
+          "x": 2003,
+          "y": 995,
+          "w": 224,
+          "h": 85
+        }
+      },
+      {
+        "text": "Linea aspera",
+        "anchor_x": 2009,
+        "anchor_y": 1325.0,
+        "mask_box": {
+          "x": 2001,
+          "y": 1299,
+          "w": 178,
+          "h": 52
+        }
+      },
+      {
+        "text": "M. biceps femoris, Caput breve",
+        "anchor_x": 926,
+        "anchor_y": 1351.5,
+        "mask_box": {
+          "x": 918,
+          "y": 1325,
+          "w": 248,
+          "h": 88
+        }
+      },
+      {
+        "text": "M. biceps femoris, Caput breve",
+        "anchor_x": 2008,
+        "anchor_y": 1407.0,
+        "mask_box": {
+          "x": 2000,
+          "y": 1380,
+          "w": 249,
+          "h": 88
+        }
+      },
+      {
+        "text": "M. semitendinosus",
+        "anchor_x": 317,
+        "anchor_y": 1417.0,
+        "mask_box": {
+          "x": 273,
+          "y": 1393,
+          "w": 163,
+          "h": 84
+        }
+      },
+      {
+        "text": "M.semitendinosus",
+        "anchor_x": 1412,
+        "anchor_y": 1417.0,
+        "mask_box": {
+          "x": 1370,
+          "y": 1393,
+          "w": 160,
+          "h": 83
+        }
+      },
+      {
+        "text": "M. biceps femoris, Caput longum",
+        "anchor_x": 926,
+        "anchor_y": 1484.5,
+        "mask_box": {
+          "x": 918,
+          "y": 1458,
+          "w": 248,
+          "h": 88
+        }
+      },
+      {
+        "text": "M. biceps femoris, Caput longum",
+        "anchor_x": 2010,
+        "anchor_y": 1609.0,
+        "mask_box": {
+          "x": 2002,
+          "y": 1584,
+          "w": 246,
+          "h": 86
+        }
+      },
+      {
+        "text": "M. semimembranosus",
+        "anchor_x": 315,
+        "anchor_y": 1726.0,
+        "mask_box": {
+          "x": 234,
+          "y": 1699,
+          "w": 203,
+          "h": 85
+        }
+      },
+      {
+        "text": "M. semimembranosus",
+        "anchor_x": 1413,
+        "anchor_y": 1726.0,
+        "mask_box": {
+          "x": 1329,
+          "y": 1702,
+          "w": 202,
+          "h": 83
+        }
+      },
+      {
+        "text": "Condylus medialis tibiae",
+        "anchor_x": 1480,
+        "anchor_y": 2081.5,
+        "mask_box": {
+          "x": 1411,
+          "y": 2053,
+          "w": 204,
+          "h": 89
+        }
+      },
+      {
+        "text": "Pes anserinus profundus",
+        "anchor_x": 359,
+        "anchor_y": 2120.0,
+        "mask_box": {
+          "x": 351,
+          "y": 2095,
+          "w": 193,
+          "h": 88
+        }
+      },
+      {
+        "text": "Caput fibulae",
+        "anchor_x": 974,
+        "anchor_y": 2140.5,
+        "mask_box": {
+          "x": 966,
+          "y": 2115,
+          "w": 190,
+          "h": 51
+        }
+      },
+      {
+        "text": "M.popliteus",
+        "anchor_x": 1445,
+        "anchor_y": 2179.5,
+        "mask_box": {
+          "x": 1437,
+          "y": 2154,
+          "w": 178,
+          "h": 51
+        }
+      },
+      {
+        "text": "M. popliteus",
+        "anchor_x": 374,
+        "anchor_y": 2216.5,
+        "mask_box": {
+          "x": 366,
+          "y": 2191,
+          "w": 177,
+          "h": 51
+        }
+      },
+      {
+        "text": "Pes anserinus superficialis",
+        "anchor_x": 358,
+        "anchor_y": 2275.0,
+        "mask_box": {
+          "x": 350,
+          "y": 2250,
+          "w": 192,
+          "h": 86
+        }
+      },
+      {
+        "text": "Membrana interossea cruris",
+        "anchor_x": 2065,
+        "anchor_y": 2273.5,
+        "mask_box": {
+          "x": 2057,
+          "y": 2250,
+          "w": 227,
+          "h": 85
+        }
+      },
+      {
+        "text": "Tibia",
+        "anchor_x": 513,
+        "anchor_y": 2368.5,
+        "mask_box": {
+          "x": 505,
+          "y": 2340,
+          "w": 91,
+          "h": 57
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 925,
+        "anchor_y": 2368.5,
+        "mask_box": {
+          "x": 917,
+          "y": 2341,
+          "w": 103,
+          "h": 55
+        }
+      },
+      {
+        "text": "Tibia",
+        "anchor_x": 1610,
+        "anchor_y": 2368.5,
+        "mask_box": {
+          "x": 1602,
+          "y": 2342,
+          "w": 89,
+          "h": 53
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 2064,
+        "anchor_y": 2368.5,
+        "mask_box": {
+          "x": 2056,
+          "y": 2342,
+          "w": 102,
+          "h": 53
+        }
+      }
+    ]
   }
 ]
