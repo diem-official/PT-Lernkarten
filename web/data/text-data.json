@@ -426,5 +426,137 @@
         }
       }
     ]
+  },
+  {
+    "type": "text",
+    "subject": "Anatomie 1",
+    "category": "Muskeln Detail",
+    "subcategory": "Hüfte",
+    "view": "Oberschenkel",
+    "columns": [
+      "Ursprung",
+      "Ansatz",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": [
+      {
+        "question": "M. sartorius",
+        "answers": {
+          "Ursprung": [
+            "Spina iliaca anterior superior"
+          ],
+          "Ansatz": [
+            "Tuberositas tibiae medial",
+            "Pes anserinus superficialis"
+          ],
+          "Funktion": [
+            "Hüfte: Flexion",
+            "Hüfte: Abduktion",
+            "Hüfte: Außenrotation",
+            "Knie: Flexion",
+            "Knie: Innenrotation"
+          ],
+          "Innervation": [
+            "N. femoralis L1-4"
+          ]
+        }
+      },
+      {
+        "question": "M. quadriceps femoris",
+        "answers": {
+          "Ursprung": [
+            "M. rectus femoris: Spina iliaca anterior inferior Caput rectum",
+            "M. rectus femoris: Pfannendach des Hüftgelenks Caput reflexum",
+            "M. vastus medialis: Labium mediale Linea aspera",
+            "M. vastus medialis: distaler Teil Linea intertrochanterica",
+            "M. vastus lateralis: Labium laterale Linea aspera, M. vastus lateralis: Trochanter major lateral",
+            "M. vastus intermedius: Vorderseite des Femurschaftes",
+            "M. articularis genus: Vorderseite des Femurschaftes"
+          ],
+          "Ansatz": [
+            "Gesamt: Lig. patellae an Tuberositas tibiae",
+            "M. vastus medialis & lateralis: Retinaculum patellae mediale und laterale",
+            "M. articularis genus: Recessus suprapatellaris Kniegelenkkapsel"
+          ],
+          "Funktion": [
+            "Hüfte: Flexion M. rectus femoris",
+            "Knie: Extension",
+            "verhindert Einklemmung der Kapsel M. articularis genus"
+          ],
+          "Innervation": [
+            "N. femoralis L1-4"
+          ]
+        }
+      },
+      {
+        "question": "M. biceps femoris",
+        "answers": {
+          "Ursprung": [
+            "Caput longum: Tuber ischiadicum",
+            "Caput commune Lig. sacrotuberale",
+            "Caput breve: Labium laterale Linea aspera"
+          ],
+          "Ansatz": [
+            "Caput fibulae"
+          ],
+          "Funktion": [
+            "Caput longum Hüfte: Adduktion",
+            "Caput longum Hüfte: Extension",
+            "Caput longum Hüfte: Stabil Sagittalebene",
+            "Gesamt Knie: Flexion",
+            "Gesamt Knie: Außenrotation"
+          ],
+          "Innervation": []
+        }
+      },
+      {
+        "question": "M. semimembranosus",
+        "answers": {
+          "Ursprung": [
+            "Tuber ischiadicum"
+          ],
+          "Ansatz": [
+            "Pes anserinus profundus",
+            "Condylus medialis tibiae",
+            "Lig. popliteum obliquum",
+            "Faszie des M. popliteus"
+          ],
+          "Funktion": [
+            "Hüfte: Adduktion",
+            "Hüfte: Extension",
+            "Hüfte: Stabil Sagittalebene",
+            "Knie: Flexion",
+            "Knie: Innenrotation"
+          ],
+          "Innervation": [
+            "N. tibialis L5-S2"
+          ]
+        }
+      },
+      {
+        "question": "M. semitendinosus",
+        "answers": {
+          "Ursprung": [
+            "Tuber ischiadicum",
+            "Lig. sacrotuberale"
+          ],
+          "Ansatz": [
+            "medial Tuberositas tibiae",
+            "Pes anserinus superficialis"
+          ],
+          "Funktion": [
+            "Hüfte: Adduktion",
+            "Hüfte: Extension",
+            "Hüfte: Stabil Sagittalebene",
+            "Knie: Flexion",
+            "Knie: Innenrotation"
+          ],
+          "Innervation": [
+            "N. tibialis L5-S2"
+          ]
+        }
+      }
+    ]
   }
 ]
