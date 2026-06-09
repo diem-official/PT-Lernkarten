@@ -511,7 +511,10 @@
             "Gesamt Knie: Flexion",
             "Gesamt Knie: Außenrotation"
           ],
-          "Innervation": []
+          "Innervation": [
+              "Caput longum: N. tibialis L5-S2", 
+              "Caput breve: N. fibularis L5-S2" 
+          ]
         }
       },
       {
