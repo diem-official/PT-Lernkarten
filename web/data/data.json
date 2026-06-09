@@ -5089,5 +5089,180 @@
         }
       }
     ]
+  },
+  {
+    "filename": "Anatomie 2-Organe-Lunge-Aufbau Lunge-clean.jpg",
+    "og_filename": "Anatomie 2-Organe-Lunge-Aufbau Lunge.png",
+    "subject": "Anatomie 2",
+    "category": "Organe",
+    "subcategory": "Lunge",
+    "view": "Aufbau Lunge",
+    "labels": [
+      {
+        "text": "Lobus superior",
+        "anchor_x": 258,
+        "anchor_y": 36.0,
+        "mask_box": {
+          "x": 250,
+          "y": 14,
+          "w": 235,
+          "h": 44
+        }
+      },
+      {
+        "text": "Apex",
+        "anchor_x": 869,
+        "anchor_y": 36.5,
+        "mask_box": {
+          "x": 861,
+          "y": 12,
+          "w": 97,
+          "h": 49
+        }
+      },
+      {
+        "text": "Bronchus lobaris superior dexter",
+        "anchor_x": 109,
+        "anchor_y": 152.5,
+        "mask_box": {
+          "x": 101,
+          "y": 130,
+          "w": 262,
+          "h": 81
+        }
+      },
+      {
+        "text": "Fissura obliqua",
+        "anchor_x": 941,
+        "anchor_y": 190.0,
+        "mask_box": {
+          "x": 933,
+          "y": 165,
+          "w": 237,
+          "h": 50
+        }
+      },
+      {
+        "text": "Arteria pulmonalis dextra",
+        "anchor_x": 29,
+        "anchor_y": 289.5,
+        "mask_box": {
+          "x": 21,
+          "y": 265,
+          "w": 288,
+          "h": 79
+        }
+      },
+      {
+        "text": "Arteria bronchialis",
+        "anchor_x": 991,
+        "anchor_y": 327.5,
+        "mask_box": {
+          "x": 983,
+          "y": 304,
+          "w": 180,
+          "h": 80
+        }
+      },
+      {
+        "text": "Vena pulmonalis superior dextra",
+        "anchor_x": 45,
+        "anchor_y": 424.0,
+        "mask_box": {
+          "x": 37,
+          "y": 400,
+          "w": 258,
+          "h": 80
+        }
+      },
+      {
+        "text": "Bronchus intermedius",
+        "anchor_x": 1026,
+        "anchor_y": 483.0,
+        "mask_box": {
+          "x": 1018,
+          "y": 461,
+          "w": 195,
+          "h": 77
+        }
+      },
+      {
+        "text": "Fissura horizontalis",
+        "anchor_x": 5,
+        "anchor_y": 575.5,
+        "mask_box": {
+          "x": 0,
+          "y": 554,
+          "w": 294,
+          "h": 43
+        }
+      },
+      {
+        "text": "Hilum pulmonis",
+        "anchor_x": 1033,
+        "anchor_y": 655.0,
+        "mask_box": {
+          "x": 1025,
+          "y": 630,
+          "w": 250,
+          "h": 50
+        }
+      },
+      {
+        "text": "Impressio cardiaca",
+        "anchor_x": 15,
+        "anchor_y": 712.0,
+        "mask_box": {
+          "x": 7,
+          "y": 688,
+          "w": 289,
+          "h": 48
+        }
+      },
+      {
+        "text": "Vena pulmonalis inferior dextra",
+        "anchor_x": 1033,
+        "anchor_y": 794.0,
+        "mask_box": {
+          "x": 1025,
+          "y": 771,
+          "w": 258,
+          "h": 78
+        }
+      },
+      {
+        "text": "Lobus medius",
+        "anchor_x": 84,
+        "anchor_y": 846.0,
+        "mask_box": {
+          "x": 76,
+          "y": 824,
+          "w": 218,
+          "h": 44
+        }
+      },
+      {
+        "text": "Facies diaphragmatica",
+        "anchor_x": 192,
+        "anchor_y": 965.0,
+        "mask_box": {
+          "x": 51,
+          "y": 941,
+          "w": 246,
+          "h": 84
+        }
+      },
+      {
+        "text": "Lobus inferior",
+        "anchor_x": 1031,
+        "anchor_y": 965.0,
+        "mask_box": {
+          "x": 1023,
+          "y": 943,
+          "w": 222,
+          "h": 44
+        }
+      }
+    ]
   }
 ]
