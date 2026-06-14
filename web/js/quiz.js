@@ -135,6 +135,22 @@ function onInputChange(input) {
 
 // ── Text quiz ────────────────────────────────────────────────────────────────
 
+function _normalizeImages(entry) {
+    if (entry.images && entry.images.length) return entry.images;
+    if (entry.image) return [entry.image];
+    return [];
+}
+
+function _buildImageEl(src) {
+    var img = document.createElement('img');
+    img.className = 'tq-quiz-image';
+    img.alt = '';
+    img.src = src;
+    img.onerror = function () { img.style.display = 'none'; };
+    img.addEventListener('click', function () { _openImageOverlay(img.src); });
+    return img;
+}
+
 function _textWrapperSetup() {
     var placeholder = document.getElementById('placeholder');
     var quizWrapper = document.getElementById('quiz-wrapper');
@@ -203,14 +219,15 @@ function loadTextLernen(entry, ogImgBase) {
     _currentEntry = null;
     var textWrapper = _textWrapperSetup();
 
-    if (entry.image) {
-        var img = document.createElement('img');
-        img.className = 'tq-quiz-image';
-        img.alt = '';
-        img.src = ogImgBase + entry.image.og;
-        img.onerror = function () { img.style.display = 'none'; };
-        img.addEventListener('click', function () { _openImageOverlay(img.src); });
-        textWrapper.appendChild(img);
+    var lernenImgs = _normalizeImages(entry);
+    if (lernenImgs.length === 2) {
+        var dualCont = document.createElement('div');
+        dualCont.className = 'tq-dual-image-container';
+        dualCont.appendChild(_buildImageEl(ogImgBase + lernenImgs[0].og));
+        dualCont.appendChild(_buildImageEl(ogImgBase + lernenImgs[1].og));
+        textWrapper.appendChild(dualCont);
+    } else if (lernenImgs.length === 1) {
+        textWrapper.appendChild(_buildImageEl(ogImgBase + lernenImgs[0].og));
     }
 
     entry.rows.forEach(function (row) {
@@ -274,14 +291,15 @@ function loadTextQuiz(entry, imgBase) {
     _currentEntry = null;
     var textWrapper = _textWrapperSetup();
 
-    if (entry.image) {
-        var img = document.createElement('img');
-        img.className = 'tq-quiz-image';
-        img.alt = '';
-        img.src = imgBase + entry.image.clean;
-        img.onerror = function () { img.style.display = 'none'; };
-        img.addEventListener('click', function () { _openImageOverlay(img.src); });
-        textWrapper.appendChild(img);
+    var quizImgs = _normalizeImages(entry);
+    if (quizImgs.length === 2) {
+        var dualCont = document.createElement('div');
+        dualCont.className = 'tq-dual-image-container';
+        dualCont.appendChild(_buildImageEl(imgBase + quizImgs[0].clean));
+        dualCont.appendChild(_buildImageEl(imgBase + quizImgs[1].clean));
+        textWrapper.appendChild(dualCont);
+    } else if (quizImgs.length === 1) {
+        textWrapper.appendChild(_buildImageEl(imgBase + quizImgs[0].clean));
     }
 
     entry.rows.forEach(function (row) {

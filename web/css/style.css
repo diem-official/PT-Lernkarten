@@ -466,6 +466,20 @@ body {
     cursor: zoom-in;
 }
 
+.tq-dual-image-container {
+    display: flex;
+    gap: 12px;
+    margin: 0 auto 20px;
+    align-items: flex-start;
+}
+
+.tq-dual-image-container .tq-quiz-image {
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 0;
+    max-height: 60vh;
+}
+
 .tq-image-overlay {
     display: none;
     position: fixed;
@@ -654,5 +668,14 @@ body {
 
     .tq-quiz-image {
         max-height: 70vh;
+    }
+
+    .tq-dual-image-container {
+        flex-direction: column;
+    }
+
+    .tq-dual-image-container .tq-quiz-image {
+        max-height: 50vh;
+        width: 100%;
     }
 }

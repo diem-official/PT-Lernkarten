@@ -433,10 +433,14 @@
     "category": "Muskeln Detail",
     "subcategory": "Hüfte",
     "view": "Oberschenkel",
-    "image": {
+    "images": [{
       "og": "Anatomie 1-Muskeln-Oberschenkel-Frontal.png",
       "clean": "Anatomie 1-Muskeln-Oberschenkel-Frontal-clean.jpg"
     },
+    {
+      "og": "Anatomie 1-Muskeln-M. quadriceps femoris & M. sartorius-Ventral.png",
+      "clean": "Anatomie 1-Muskeln-M. quadriceps femoris & M. sartorius-Ventral-clean.jpg"
+    }],
     "columns": [
       "Ursprung",
       "Ansatz",
