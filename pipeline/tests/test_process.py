@@ -11,6 +11,7 @@ from process import (
     _parse_stem,
     _write_report,
     _filter_noise_blocks,
+    _filter_size_outliers,
     _build_labels_from_terms,
 )
 
@@ -68,6 +69,29 @@ def test_filter_noise_keeps_valid_blocks():
 def test_filter_noise_empty_list():
     assert _filter_noise_blocks([]) == []
 
+
+# ── _filter_size_outliers ──────────────────────────────────────────────────────
+
+def test_filter_size_outliers_removes_huge_block():
+    # Median height ≈ 21 → threshold ≈ 73.5. The 400px block is a hatching
+    # false-positive (e.g. PaddleOCR misreading illustration texture as text).
+    blocks = [_blk(0, "a", h=20), _blk(1, "b", h=22), _blk(2, "c", h=18), _blk(3, "d", h=400)]
+    assert _filter_size_outliers(blocks) == blocks[:3]
+
+
+def test_filter_size_outliers_keeps_uniform_blocks():
+    blocks = [_blk(0, "a", h=60), _blk(1, "b", h=65), _blk(2, "c", h=70), _blk(3, "d", h=68)]
+    assert _filter_size_outliers(blocks) == blocks
+
+
+def test_filter_size_outliers_skips_when_too_few_blocks():
+    # With only 2 samples the median isn't reliable enough to call an outlier.
+    blocks = [_blk(0, "a", h=20), _blk(1, "b", h=400)]
+    assert _filter_size_outliers(blocks) == blocks
+
+
+def test_filter_size_outliers_empty_list():
+    assert _filter_size_outliers([]) == []
 
 
 # ── _build_labels_from_terms ─────────────────────────────────────────────────

@@ -124,6 +124,15 @@ def test_geo_score_is_positive_float():
     edges = _geometric_edges([a, b], 20.0)
     assert 0.0 < edges[0].geo_score <= 1.5
 
+def test_geo_narrow_short_word_tolerates_ocr_jitter():
+    # Regression: "Lig." (80px wide) followed by "collaterale", left edges
+    # 5px apart — real OCR bbox jitter between narrow and wide glyphs that
+    # must still count as left-aligned (values taken from a real misfire).
+    a = _gnode(0, 1457, 1666, 80, 59, text="Lig.")
+    b = _gnode(1, 1462, 1719, 194, 46, text="collaterale")
+    edges = _geometric_edges([a, b], avg_height=58.8)
+    assert len(edges) == 1
+
 
 from semantic_classify import _nlp_score
 

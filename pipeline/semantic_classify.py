@@ -72,7 +72,7 @@ def _ingest(ocr_blocks: list[dict]) -> tuple[list[OcrNode], float]:
 
 _GEO_GAP_RATIO   = 0.60   # max vertical gap as fraction of avg_height
 _GEO_ALIGN_RATIO = 0.05   # horizontal tolerance as fraction of block width
-_GEO_ALIGN_MIN_PX = 3     # absolute minimum tolerance in px
+_GEO_ALIGN_MIN_PX = 8     # absolute minimum tolerance in px
 
 
 def _geometric_edges(nodes: list[OcrNode], avg_height: float) -> list[AssociationEdge]:

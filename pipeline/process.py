@@ -12,6 +12,7 @@ import json
 import logging
 import re
 import shutil
+import statistics
 import sys
 from pathlib import Path
 from PIL import Image, ImageOps
@@ -32,6 +33,8 @@ RAW_IMAGES_DIR = Path('/home/diem/PT Lernkarten/Bilder')
 MAX_OCR_DIM = 2500
 
 BOX_PADDING = 8
+SIZE_OUTLIER_FACTOR = 3.5
+SIZE_OUTLIER_MIN_BLOCKS = 3
 
 
 def _parse_stem(stem: str) -> tuple[str, str, str, str]:
@@ -74,6 +77,16 @@ def _filter_noise_blocks(blocks: list[dict]) -> list[dict]:
     def is_noise(text: str) -> bool:
         return len(text) <= 1 or not any(c.isalpha() for c in text)
     return [b for b in blocks if not is_noise(b["text"])]
+
+
+def _filter_size_outliers(blocks: list[dict]) -> list[dict]:
+    """Drop blocks far taller than the image's median line — usually illustration hatching misread as text."""
+    if len(blocks) < SIZE_OUTLIER_MIN_BLOCKS:
+        return blocks
+    median_h = statistics.median(b["h"] for b in blocks)
+    if median_h <= 0:
+        return blocks
+    return [b for b in blocks if b["h"] <= median_h * SIZE_OUTLIER_FACTOR]
 
 
 def _write_report(entries: list, path: Path) -> None:
@@ -209,6 +222,18 @@ def main():
                 [b["text"] for b in raw_blocks if b not in ocr_blocks],
             )
 
+        before_size_filter = ocr_blocks
+        ocr_blocks = _filter_size_outliers(ocr_blocks)
+        size_filtered = len(before_size_filter) - len(ocr_blocks)
+        if size_filtered:
+            log.warning(
+                "Size-filtered %d outlier OCR block(s) in %s (likely hatching "
+                "misread as text): %s",
+                size_filtered,
+                path.name,
+                [b["text"] for b in before_size_filter if b not in ocr_blocks],
+            )
+
         fach, category, subcategory, view = _parse_stem(path.stem)
 
         img_bgr = cv2.imread(str(path))
@@ -236,6 +261,7 @@ def main():
             "image": path.stem,
             "ocr_block_count": len(raw_blocks),
             "noise_filtered_count": noise_filtered,
+            "size_filtered_count": size_filtered,
             "term_count": len(terms),
             "matched_labels_count": len(labels),
             "orphaned_terms": orphaned_terms,
