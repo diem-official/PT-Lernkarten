@@ -5648,5 +5648,1178 @@
         }
       }
     ]
+  },
+  {
+    "filename": "Anatomie 1-Knochen-Kniegelenk-ventral & dorsal-clean.jpg",
+    "og_filename": "Anatomie 1-Knochen-Kniegelenk-ventral & dorsal.png",
+    "subject": "Anatomie 1",
+    "category": "Knochen",
+    "subcategory": "Kniegelenk",
+    "view": "ventral & dorsal",
+    "labels": [
+      {
+        "text": "Os femoris",
+        "anchor_x": 1402,
+        "anchor_y": 613.0,
+        "mask_box": {
+          "x": 1394,
+          "y": 579,
+          "w": 220,
+          "h": 68
+        }
+      },
+      {
+        "text": "Facies poplitea",
+        "anchor_x": 3065,
+        "anchor_y": 859.5,
+        "mask_box": {
+          "x": 3057,
+          "y": 829,
+          "w": 286,
+          "h": 61
+        }
+      },
+      {
+        "text": "Linea intercondylaris",
+        "anchor_x": 3063,
+        "anchor_y": 977.5,
+        "mask_box": {
+          "x": 3055,
+          "y": 947,
+          "w": 223,
+          "h": 113
+        }
+      },
+      {
+        "text": "Tuberculum adductorium",
+        "anchor_x": 1697,
+        "anchor_y": 1047.5,
+        "mask_box": {
+          "x": 1682,
+          "y": 1016,
+          "w": 257,
+          "h": 112
+        }
+      },
+      {
+        "text": "Fossa intercondylaris",
+        "anchor_x": 3066,
+        "anchor_y": 1143.5,
+        "mask_box": {
+          "x": 3058,
+          "y": 1115,
+          "w": 223,
+          "h": 110
+        }
+      },
+      {
+        "text": "Patella",
+        "anchor_x": 468,
+        "anchor_y": 1254.5,
+        "mask_box": {
+          "x": 460,
+          "y": 1223,
+          "w": 145,
+          "h": 63
+        }
+      },
+      {
+        "text": "Epicondylus medialis",
+        "anchor_x": 1698,
+        "anchor_y": 1289.5,
+        "mask_box": {
+          "x": 1690,
+          "y": 1255,
+          "w": 242,
+          "h": 115
+        }
+      },
+      {
+        "text": "Epicondylus lateralis",
+        "anchor_x": 3065,
+        "anchor_y": 1289.0,
+        "mask_box": {
+          "x": 3057,
+          "y": 1257,
+          "w": 237,
+          "h": 110
+        }
+      },
+      {
+        "text": "Epicondylus lateralis",
+        "anchor_x": 374,
+        "anchor_y": 1352.0,
+        "mask_box": {
+          "x": 366,
+          "y": 1318,
+          "w": 240,
+          "h": 113
+        }
+      },
+      {
+        "text": "Condylus lateralis femoris",
+        "anchor_x": 3062,
+        "anchor_y": 1433.0,
+        "mask_box": {
+          "x": 3054,
+          "y": 1399,
+          "w": 308,
+          "h": 111
+        }
+      },
+      {
+        "text": "Condylus lateralis femoris",
+        "anchor_x": 420,
+        "anchor_y": 1495.5,
+        "mask_box": {
+          "x": 297,
+          "y": 1462,
+          "w": 308,
+          "h": 111
+        }
+      },
+      {
+        "text": "Condylus medialis femoris",
+        "anchor_x": 1725,
+        "anchor_y": 1497.5,
+        "mask_box": {
+          "x": 1717,
+          "y": 1465,
+          "w": 191,
+          "h": 162
+        }
+      },
+      {
+        "text": "Eminentia intercondylaris",
+        "anchor_x": 3066,
+        "anchor_y": 1576.0,
+        "mask_box": {
+          "x": 3054,
+          "y": 1547,
+          "w": 291,
+          "h": 114
+        }
+      },
+      {
+        "text": "Condylus lateralis tibiae",
+        "anchor_x": 420,
+        "anchor_y": 1640.5,
+        "mask_box": {
+          "x": 332,
+          "y": 1606,
+          "w": 273,
+          "h": 115
+        }
+      },
+      {
+        "text": "Condylus medialis tibiae",
+        "anchor_x": 1724,
+        "anchor_y": 1698.5,
+        "mask_box": {
+          "x": 1716,
+          "y": 1664,
+          "w": 192,
+          "h": 167
+        }
+      },
+      {
+        "text": "Art. tibiofibularis",
+        "anchor_x": 3064,
+        "anchor_y": 1768.5,
+        "mask_box": {
+          "x": 3054,
+          "y": 1738,
+          "w": 194,
+          "h": 111
+        }
+      },
+      {
+        "text": "Tibiaplateau",
+        "anchor_x": 365,
+        "anchor_y": 1785.5,
+        "mask_box": {
+          "x": 357,
+          "y": 1749,
+          "w": 249,
+          "h": 73
+        }
+      },
+      {
+        "text": "Caput fibulae",
+        "anchor_x": 3065,
+        "anchor_y": 1914.5,
+        "mask_box": {
+          "x": 3057,
+          "y": 1882,
+          "w": 264,
+          "h": 65
+        }
+      },
+      {
+        "text": "Collum fibulae",
+        "anchor_x": 3065,
+        "anchor_y": 2061.0,
+        "mask_box": {
+          "x": 3057,
+          "y": 2030,
+          "w": 282,
+          "h": 62
+        }
+      },
+      {
+        "text": "Tuberositas tibiae",
+        "anchor_x": 1673,
+        "anchor_y": 2119.5,
+        "mask_box": {
+          "x": 1665,
+          "y": 2087,
+          "w": 235,
+          "h": 117
+        }
+      },
+      {
+        "text": "Linea musculi solei",
+        "anchor_x": 2067,
+        "anchor_y": 2284.0,
+        "mask_box": {
+          "x": 1924,
+          "y": 2252,
+          "w": 255,
+          "h": 111
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 533,
+        "anchor_y": 2634.5,
+        "mask_box": {
+          "x": 525,
+          "y": 2600,
+          "w": 138,
+          "h": 69
+        }
+      },
+      {
+        "text": "Corpus fibulae",
+        "anchor_x": 2968,
+        "anchor_y": 2636.0,
+        "mask_box": {
+          "x": 2960,
+          "y": 2602,
+          "w": 285,
+          "h": 68
+        }
+      },
+      {
+        "text": "Tibia",
+        "anchor_x": 1475,
+        "anchor_y": 2696.0,
+        "mask_box": {
+          "x": 1467,
+          "y": 2660,
+          "w": 123,
+          "h": 72
+        }
+      },
+      {
+        "text": "Tibia",
+        "anchor_x": 2062,
+        "anchor_y": 2696.0,
+        "mask_box": {
+          "x": 2054,
+          "y": 2659,
+          "w": 124,
+          "h": 74
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Anatomie 1-Bänder-Knie Kreuzbänder-ventral-clean.jpg",
+    "og_filename": "Anatomie 1-Bänder-Knie Kreuzbänder-ventral.png",
+    "subject": "Anatomie 1",
+    "category": "Bänder",
+    "subcategory": "Knie Kreuzbänder",
+    "view": "ventral",
+    "labels": [
+      {
+        "text": "Fossa intercondylaris",
+        "anchor_x": 2933,
+        "anchor_y": 1099.0,
+        "mask_box": {
+          "x": 2925,
+          "y": 1069,
+          "w": 225,
+          "h": 113
+        }
+      },
+      {
+        "text": "Facies patellaris femoris",
+        "anchor_x": 347,
+        "anchor_y": 1220.0,
+        "mask_box": {
+          "x": 284,
+          "y": 1189,
+          "w": 190,
+          "h": 162
+        }
+      },
+      {
+        "text": "Condylus lateralis femoris",
+        "anchor_x": 2931,
+        "anchor_y": 1239.0,
+        "mask_box": {
+          "x": 2923,
+          "y": 1205,
+          "w": 309,
+          "h": 112
+        }
+      },
+      {
+        "text": "Condylus medialis femoris",
+        "anchor_x": 1658,
+        "anchor_y": 1358.0,
+        "mask_box": {
+          "x": 1650,
+          "y": 1325,
+          "w": 192,
+          "h": 163
+        }
+      },
+      {
+        "text": "Lig. cruciatum anterius",
+        "anchor_x": 2990,
+        "anchor_y": 1380.5,
+        "mask_box": {
+          "x": 2982,
+          "y": 1350,
+          "w": 271,
+          "h": 106
+        }
+      },
+      {
+        "text": "Lig. cruciatum anterius",
+        "anchor_x": 207,
+        "anchor_y": 1409.5,
+        "mask_box": {
+          "x": 199,
+          "y": 1379,
+          "w": 273,
+          "h": 107
+        }
+      },
+      {
+        "text": "Lig. meniscofemorale posterius",
+        "anchor_x": 2989,
+        "anchor_y": 1518.5,
+        "mask_box": {
+          "x": 2978,
+          "y": 1488,
+          "w": 258,
+          "h": 163
+        }
+      },
+      {
+        "text": "Lig. transversum genus",
+        "anchor_x": 283,
+        "anchor_y": 1553.5,
+        "mask_box": {
+          "x": 196,
+          "y": 1520,
+          "w": 280,
+          "h": 116
+        }
+      },
+      {
+        "text": "Lig. cruciatum posterius",
+        "anchor_x": 1573,
+        "anchor_y": 1554.5,
+        "mask_box": {
+          "x": 1565,
+          "y": 1524,
+          "w": 271,
+          "h": 114
+        }
+      },
+      {
+        "text": "Meniscus lateralis",
+        "anchor_x": 289,
+        "anchor_y": 1696.0,
+        "mask_box": {
+          "x": 281,
+          "y": 1666,
+          "w": 191,
+          "h": 109
+        }
+      },
+      {
+        "text": "Meniscus medialis",
+        "anchor_x": 1612,
+        "anchor_y": 1695.5,
+        "mask_box": {
+          "x": 1604,
+          "y": 1664,
+          "w": 192,
+          "h": 113
+        }
+      },
+      {
+        "text": "Meniscus lateralis",
+        "anchor_x": 2986,
+        "anchor_y": 1704.5,
+        "mask_box": {
+          "x": 2978,
+          "y": 1673,
+          "w": 193,
+          "h": 111
+        }
+      },
+      {
+        "text": "Lig. collaterale fibulare",
+        "anchor_x": 205,
+        "anchor_y": 1841.5,
+        "mask_box": {
+          "x": 197,
+          "y": 1811,
+          "w": 277,
+          "h": 110
+        }
+      },
+      {
+        "text": "Lig. collaterale tibiale",
+        "anchor_x": 1569,
+        "anchor_y": 1841.0,
+        "mask_box": {
+          "x": 1561,
+          "y": 1807,
+          "w": 278,
+          "h": 113
+        }
+      },
+      {
+        "text": "Lig. collaterale fibulare",
+        "anchor_x": 2988,
+        "anchor_y": 1844.5,
+        "mask_box": {
+          "x": 2978,
+          "y": 1811,
+          "w": 281,
+          "h": 115
+        }
+      },
+      {
+        "text": "Lig. capitis fibulae anterius",
+        "anchor_x": 270,
+        "anchor_y": 1988.0,
+        "mask_box": {
+          "x": 262,
+          "y": 1954,
+          "w": 214,
+          "h": 161
+        }
+      },
+      {
+        "text": "Lig. capitis fibulae posterius",
+        "anchor_x": 2987,
+        "anchor_y": 1984.5,
+        "mask_box": {
+          "x": 2977,
+          "y": 1952,
+          "w": 213,
+          "h": 167
+        }
+      },
+      {
+        "text": "Lig. patellae",
+        "anchor_x": 1502,
+        "anchor_y": 2037.0,
+        "mask_box": {
+          "x": 1494,
+          "y": 2001,
+          "w": 238,
+          "h": 72
+        }
+      },
+      {
+        "text": "Caput fibulae",
+        "anchor_x": 2985,
+        "anchor_y": 2171.5,
+        "mask_box": {
+          "x": 2977,
+          "y": 2136,
+          "w": 269,
+          "h": 71
+        }
+      },
+      {
+        "text": "Patella",
+        "anchor_x": 1413,
+        "anchor_y": 2379.0,
+        "mask_box": {
+          "x": 1405,
+          "y": 2347,
+          "w": 147,
+          "h": 64
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 346,
+        "anchor_y": 2562.5,
+        "mask_box": {
+          "x": 338,
+          "y": 2528,
+          "w": 137,
+          "h": 69
+        }
+      },
+      {
+        "text": "Membrana interossea cruris",
+        "anchor_x": 2932,
+        "anchor_y": 2562.5,
+        "mask_box": {
+          "x": 2924,
+          "y": 2531,
+          "w": 221,
+          "h": 164
+        }
+      },
+      {
+        "text": "Tibia",
+        "anchor_x": 1999,
+        "anchor_y": 2662.0,
+        "mask_box": {
+          "x": 1991,
+          "y": 2627,
+          "w": 121,
+          "h": 70
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Anatomie 1-Bänder-Knie Kolleteralbänder-medial & lateral-clean.jpg",
+    "og_filename": "Anatomie 1-Bänder-Knie Kolleteralbänder-medial & lateral.png",
+    "subject": "Anatomie 1",
+    "category": "Bänder",
+    "subcategory": "Knie Kolleteralbänder",
+    "view": "medial & lateral",
+    "labels": [
+      {
+        "text": "Os femoris",
+        "anchor_x": 1132,
+        "anchor_y": 387.0,
+        "mask_box": {
+          "x": 1124,
+          "y": 354,
+          "w": 222,
+          "h": 66
+        }
+      },
+      {
+        "text": "M. quadriceps femoris",
+        "anchor_x": 793,
+        "anchor_y": 522.0,
+        "mask_box": {
+          "x": 785,
+          "y": 486,
+          "w": 277,
+          "h": 114
+        }
+      },
+      {
+        "text": "Quadrizepssehne",
+        "anchor_x": 3155,
+        "anchor_y": 700.5,
+        "mask_box": {
+          "x": 3147,
+          "y": 668,
+          "w": 240,
+          "h": 113
+        }
+      },
+      {
+        "text": "Art. femoropatellaris",
+        "anchor_x": 374,
+        "anchor_y": 1146.5,
+        "mask_box": {
+          "x": 275,
+          "y": 1114,
+          "w": 190,
+          "h": 169
+        }
+      },
+      {
+        "text": "Epicondylus medialis",
+        "anchor_x": 1429,
+        "anchor_y": 1147.5,
+        "mask_box": {
+          "x": 1420,
+          "y": 1113,
+          "w": 239,
+          "h": 117
+        }
+      },
+      {
+        "text": "Patella",
+        "anchor_x": 3494,
+        "anchor_y": 1150.5,
+        "mask_box": {
+          "x": 3486,
+          "y": 1117,
+          "w": 148,
+          "h": 67
+        }
+      },
+      {
+        "text": "Epicondylus lateralis",
+        "anchor_x": 2345,
+        "anchor_y": 1213.5,
+        "mask_box": {
+          "x": 2337,
+          "y": 1179,
+          "w": 239,
+          "h": 114
+        }
+      },
+      {
+        "text": "Facies patellaris femoris",
+        "anchor_x": 3494,
+        "anchor_y": 1254.0,
+        "mask_box": {
+          "x": 3486,
+          "y": 1222,
+          "w": 190,
+          "h": 164
+        }
+      },
+      {
+        "text": "Condylus medialis femoris",
+        "anchor_x": 1427,
+        "anchor_y": 1301.0,
+        "mask_box": {
+          "x": 1417,
+          "y": 1266,
+          "w": 197,
+          "h": 166
+        }
+      },
+      {
+        "text": "Condylus lateralis femoris",
+        "anchor_x": 2390,
+        "anchor_y": 1373.5,
+        "mask_box": {
+          "x": 2268,
+          "y": 1339,
+          "w": 309,
+          "h": 113
+        }
+      },
+      {
+        "text": "Meniscus lateralis",
+        "anchor_x": 3495,
+        "anchor_y": 1457.5,
+        "mask_box": {
+          "x": 3487,
+          "y": 1426,
+          "w": 192,
+          "h": 111
+        }
+      },
+      {
+        "text": "Lig. patellae",
+        "anchor_x": 284,
+        "anchor_y": 1504.5,
+        "mask_box": {
+          "x": 276,
+          "y": 1470,
+          "w": 236,
+          "h": 69
+        }
+      },
+      {
+        "text": "Meniscus medialis",
+        "anchor_x": 1428,
+        "anchor_y": 1503.0,
+        "mask_box": {
+          "x": 1420,
+          "y": 1472,
+          "w": 192,
+          "h": 112
+        }
+      },
+      {
+        "text": "Lig. collaterale fibulare",
+        "anchor_x": 2303,
+        "anchor_y": 1532.5,
+        "mask_box": {
+          "x": 2295,
+          "y": 1498,
+          "w": 283,
+          "h": 118
+        }
+      },
+      {
+        "text": "Lig. patellae",
+        "anchor_x": 3494,
+        "anchor_y": 1611.5,
+        "mask_box": {
+          "x": 3486,
+          "y": 1576,
+          "w": 240,
+          "h": 71
+        }
+      },
+      {
+        "text": "Lig. collaterale tibiale",
+        "anchor_x": 1430,
+        "anchor_y": 1655.0,
+        "mask_box": {
+          "x": 1420,
+          "y": 1623,
+          "w": 280,
+          "h": 113
+        }
+      },
+      {
+        "text": "Lig. capitis fibulae posterius",
+        "anchor_x": 2372,
+        "anchor_y": 1687.5,
+        "mask_box": {
+          "x": 2254,
+          "y": 1653,
+          "w": 323,
+          "h": 115
+        }
+      },
+      {
+        "text": "Lig. capitis fibulae anterius",
+        "anchor_x": 3496,
+        "anchor_y": 1771.0,
+        "mask_box": {
+          "x": 3487,
+          "y": 1738,
+          "w": 213,
+          "h": 161
+        }
+      },
+      {
+        "text": "Caput fibulae",
+        "anchor_x": 2316,
+        "anchor_y": 1838.5,
+        "mask_box": {
+          "x": 2308,
+          "y": 1804,
+          "w": 269,
+          "h": 69
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 1429,
+        "anchor_y": 2106.0,
+        "mask_box": {
+          "x": 1421,
+          "y": 2074,
+          "w": 132,
+          "h": 64
+        }
+      },
+      {
+        "text": "Tuberositas tibiae",
+        "anchor_x": 3439,
+        "anchor_y": 2125.0,
+        "mask_box": {
+          "x": 3430,
+          "y": 2094,
+          "w": 234,
+          "h": 115
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 2451,
+        "anchor_y": 2174.5,
+        "mask_box": {
+          "x": 2443,
+          "y": 2142,
+          "w": 133,
+          "h": 65
+        }
+      },
+      {
+        "text": "Facies medialis tibiae",
+        "anchor_x": 496,
+        "anchor_y": 2275.5,
+        "mask_box": {
+          "x": 340,
+          "y": 2242,
+          "w": 287,
+          "h": 115
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Anatomie 1-Bänder-Kniegelenk-ventral-clean.jpg",
+    "og_filename": "Anatomie 1-Bänder-Kniegelenk-ventral.png",
+    "subject": "Anatomie 1",
+    "category": "Bänder",
+    "subcategory": "Kniegelenk",
+    "view": "ventral",
+    "labels": [
+      {
+        "text": "Os femoris",
+        "anchor_x": 2969,
+        "anchor_y": 196.5,
+        "mask_box": {
+          "x": 2961,
+          "y": 165,
+          "w": 217,
+          "h": 63
+        }
+      },
+      {
+        "text": "Ansatzsehne des M. vastus intermedius",
+        "anchor_x": 3406,
+        "anchor_y": 576.5,
+        "mask_box": {
+          "x": 3398,
+          "y": 547,
+          "w": 259,
+          "h": 159
+        }
+      },
+      {
+        "text": "Os femoris",
+        "anchor_x": 422,
+        "anchor_y": 592.5,
+        "mask_box": {
+          "x": 414,
+          "y": 561,
+          "w": 218,
+          "h": 63
+        }
+      },
+      {
+        "text": "M. vastus lateralis",
+        "anchor_x": 2031,
+        "anchor_y": 761.5,
+        "mask_box": {
+          "x": 2023,
+          "y": 731,
+          "w": 191,
+          "h": 112
+        }
+      },
+      {
+        "text": "M. vastus medialis",
+        "anchor_x": 3404,
+        "anchor_y": 811.5,
+        "mask_box": {
+          "x": 3396,
+          "y": 781,
+          "w": 190,
+          "h": 110
+        }
+      },
+      {
+        "text": "Bursa subtendinea m. gastrocnemii medialis",
+        "anchor_x": 280,
+        "anchor_y": 960.5,
+        "mask_box": {
+          "x": 179,
+          "y": 930,
+          "w": 314,
+          "h": 211
+        }
+      },
+      {
+        "text": "Bursa subtendinea m.gastrocnemii lateralis",
+        "anchor_x": 1396,
+        "anchor_y": 1015.5,
+        "mask_box": {
+          "x": 1296,
+          "y": 983,
+          "w": 312,
+          "h": 212
+        }
+      },
+      {
+        "text": "Ansatzsehne des M. rectus femoris",
+        "anchor_x": 3406,
+        "anchor_y": 1149.5,
+        "mask_box": {
+          "x": 3397,
+          "y": 1121,
+          "w": 332,
+          "h": 108
+        }
+      },
+      {
+        "text": "Lage der Patella",
+        "anchor_x": 3402,
+        "anchor_y": 1334.5,
+        "mask_box": {
+          "x": 3394,
+          "y": 1300,
+          "w": 309,
+          "h": 69
+        }
+      },
+      {
+        "text": "Lig. popliteum obliquum",
+        "anchor_x": 1459,
+        "anchor_y": 1391.5,
+        "mask_box": {
+          "x": 1451,
+          "y": 1355,
+          "w": 215,
+          "h": 168
+        }
+      },
+      {
+        "text": "Retinaculum patellae transversale laterale",
+        "anchor_x": 1916,
+        "anchor_y": 1452.5,
+        "mask_box": {
+          "x": 1865,
+          "y": 1424,
+          "w": 294,
+          "h": 158
+        }
+      },
+      {
+        "text": "Lig. collaterale tibiale",
+        "anchor_x": 3406,
+        "anchor_y": 1468.0,
+        "mask_box": {
+          "x": 3396,
+          "y": 1436,
+          "w": 280,
+          "h": 113
+        }
+      },
+      {
+        "text": "s. b",
+        "anchor_x": 1456,
+        "anchor_y": 1573.5,
+        "mask_box": {
+          "x": 1448,
+          "y": 1537,
+          "w": 96,
+          "h": 73
+        }
+      },
+      {
+        "text": "Retinaculum patellae longitudinale laterale",
+        "anchor_x": 1916,
+        "anchor_y": 1645.5,
+        "mask_box": {
+          "x": 1845,
+          "y": 1617,
+          "w": 315,
+          "h": 157
+        }
+      },
+      {
+        "text": "Retinaculum patellae transversale mediale",
+        "anchor_x": 3406,
+        "anchor_y": 1651.0,
+        "mask_box": {
+          "x": 3396,
+          "y": 1622,
+          "w": 303,
+          "h": 161
+        }
+      },
+      {
+        "text": "Lig. collaterale fibulare",
+        "anchor_x": 1457,
+        "anchor_y": 1695.5,
+        "mask_box": {
+          "x": 1449,
+          "y": 1658,
+          "w": 215,
+          "h": 166
+        }
+      },
+      {
+        "text": "Lig. collaterale tibiale",
+        "anchor_x": 308,
+        "anchor_y": 1783.0,
+        "mask_box": {
+          "x": 186,
+          "y": 1745,
+          "w": 212,
+          "h": 166
+        }
+      },
+      {
+        "text": "Lig. collaterale fibulare",
+        "anchor_x": 1889,
+        "anchor_y": 1842.5,
+        "mask_box": {
+          "x": 1881,
+          "y": 1810,
+          "w": 279,
+          "h": 113
+        }
+      },
+      {
+        "text": "Lig. popliteo fibulare",
+        "anchor_x": 1457,
+        "anchor_y": 1890.0,
+        "mask_box": {
+          "x": 1449,
+          "y": 1852,
+          "w": 181,
+          "h": 167
+        }
+      },
+      {
+        "text": "Retinaculum patellae longitudinale mediale",
+        "anchor_x": 3406,
+        "anchor_y": 1884.5,
+        "mask_box": {
+          "x": 3395,
+          "y": 1856,
+          "w": 325,
+          "h": 158
+        }
+      },
+      {
+        "text": "Caput fibulae",
+        "anchor_x": 1902,
+        "anchor_y": 1985.5,
+        "mask_box": {
+          "x": 1894,
+          "y": 1953,
+          "w": 265,
+          "h": 65
+        }
+      },
+      {
+        "text": "Bursa m.semimembranosi",
+        "anchor_x": 304,
+        "anchor_y": 2063.5,
+        "mask_box": {
+          "x": 237,
+          "y": 2032,
+          "w": 249,
+          "h": 161
+        }
+      },
+      {
+        "text": "Lig. popliteum arcuatum",
+        "anchor_x": 1457,
+        "anchor_y": 2082.5,
+        "mask_box": {
+          "x": 1449,
+          "y": 2045,
+          "w": 217,
+          "h": 167
+        }
+      },
+      {
+        "text": "Lig. patellae",
+        "anchor_x": 3137,
+        "anchor_y": 2163.0,
+        "mask_box": {
+          "x": 3129,
+          "y": 2127,
+          "w": 238,
+          "h": 72
+        }
+      },
+      {
+        "text": "Recessus subpopliteus",
+        "anchor_x": 343,
+        "anchor_y": 2273.0,
+        "mask_box": {
+          "x": 267,
+          "y": 2243,
+          "w": 255,
+          "h": 111
+        }
+      },
+      {
+        "text": "M. popliteus",
+        "anchor_x": 1429,
+        "anchor_y": 2276.5,
+        "mask_box": {
+          "x": 1421,
+          "y": 2244,
+          "w": 246,
+          "h": 65
+        }
+      },
+      {
+        "text": "Tuberositas tibiae",
+        "anchor_x": 3021,
+        "anchor_y": 2481.0,
+        "mask_box": {
+          "x": 3012,
+          "y": 2448,
+          "w": 233,
+          "h": 116
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 2085,
+        "anchor_y": 2652.5,
+        "mask_box": {
+          "x": 2077,
+          "y": 2617,
+          "w": 137,
+          "h": 71
+        }
+      },
+      {
+        "text": "Fibula",
+        "anchor_x": 1428,
+        "anchor_y": 2707.5,
+        "mask_box": {
+          "x": 1420,
+          "y": 2675,
+          "w": 133,
+          "h": 65
+        }
+      },
+      {
+        "text": "Tibia",
+        "anchor_x": 3018,
+        "anchor_y": 2714.0,
+        "mask_box": {
+          "x": 3010,
+          "y": 2679,
+          "w": 119,
+          "h": 70
+        }
+      },
+      {
+        "text": "Tibia",
+        "anchor_x": 523,
+        "anchor_y": 2802.5,
+        "mask_box": {
+          "x": 515,
+          "y": 2767,
+          "w": 120,
+          "h": 71
+        }
+      },
+      {
+        "text": "Membrana interossea cruris",
+        "anchor_x": 3023,
+        "anchor_y": 2900.0,
+        "mask_box": {
+          "x": 3015,
+          "y": 2869,
+          "w": 313,
+          "h": 110
+        }
+      }
+    ]
   }
 ]
