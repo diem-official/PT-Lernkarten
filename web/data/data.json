@@ -1,59 +1,5 @@
 [
   {
-    "filename": "Anatomie 1-Achsen & Ebenen-Körper-Frontal-clean.jpg",
-    "og_filename": "Anatomie 1-Achsen & Ebenen-Körper-Frontal.png",
-    "category": "Achsen & Ebenen",
-    "subcategory": "Körper",
-    "view": "Frontal",
-    "labels": [
-      {
-        "text": "Transversalebene",
-        "anchor_x": 209,
-        "anchor_y": 1205.0,
-        "mask_box": {
-          "x": 201,
-          "y": 1173,
-          "w": 240,
-          "h": 114
-        }
-      },
-      {
-        "text": "Longitudinalachse",
-        "anchor_x": 1271,
-        "anchor_y": 1304.0,
-        "mask_box": {
-          "x": 1263,
-          "y": 1270,
-          "w": 261,
-          "h": 114
-        }
-      },
-      {
-        "text": "Transversalachse",
-        "anchor_x": 161,
-        "anchor_y": 2067.0,
-        "mask_box": {
-          "x": 153,
-          "y": 2036,
-          "w": 238,
-          "h": 116
-        }
-      },
-      {
-        "text": "Sagittalachse",
-        "anchor_x": 1196,
-        "anchor_y": 2120.0,
-        "mask_box": {
-          "x": 1188,
-          "y": 2084,
-          "w": 272,
-          "h": 72
-        }
-      }
-    ],
-    "subject": "Anatomie 1"
-  },
-  {
     "filename": "Anatomie 1-Bänder-Becken-Dorsal-clean.jpg",
     "og_filename": "Anatomie 1-Bänder-Becken-Dorsal.png",
     "category": "Bänder",
@@ -6818,6 +6764,82 @@
           "y": 2869,
           "w": 313,
           "h": 110
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Anatomie 1-Achsen & Ebenen-Körper-Frontal-clean.jpg",
+    "og_filename": "Anatomie 1-Achsen & Ebenen-Körper-Frontal.png",
+    "subject": "Anatomie 1",
+    "category": "Achsen & Ebenen",
+    "subcategory": "Körper",
+    "view": "Frontal",
+    "labels": [
+      {
+        "text": "Sagittalebene",
+        "anchor_x": 638,
+        "anchor_y": 74.5,
+        "mask_box": {
+          "x": 630,
+          "y": 57,
+          "w": 131,
+          "h": 35
+        }
+      },
+      {
+        "text": "Frontalebene",
+        "anchor_x": 638,
+        "anchor_y": 171.5,
+        "mask_box": {
+          "x": 630,
+          "y": 156,
+          "w": 126,
+          "h": 31
+        }
+      },
+      {
+        "text": "Transversalebene",
+        "anchor_x": 103,
+        "anchor_y": 504.5,
+        "mask_box": {
+          "x": 95,
+          "y": 487,
+          "w": 119,
+          "h": 60
+        }
+      },
+      {
+        "text": "Longitudinalachse",
+        "anchor_x": 607,
+        "anchor_y": 552.0,
+        "mask_box": {
+          "x": 599,
+          "y": 531,
+          "w": 136,
+          "h": 65
+        }
+      },
+      {
+        "text": "Transversalachse",
+        "anchor_x": 78,
+        "anchor_y": 917.5,
+        "mask_box": {
+          "x": 70,
+          "y": 898,
+          "w": 121,
+          "h": 64
+        }
+      },
+      {
+        "text": "Sagittalachse",
+        "anchor_x": 572,
+        "anchor_y": 943.5,
+        "mask_box": {
+          "x": 564,
+          "y": 922,
+          "w": 140,
+          "h": 43
         }
       }
     ]
