@@ -279,18 +279,18 @@ body {
         flex-direction: row;
     }
     #answer-panel {
-        width: 25%;
+        width: 30%;
         min-width: 220px;
-        max-width: 25%;
+        max-width: 35%;
         border-left: 1px solid #d0d0d0;
     }
     .tq-quiz-layout {
         flex-direction: row;
     }
     .tq-quiz-panel-host {
-        width: 25%;
+        width: 30%;
         min-width: 220px;
-        max-width: 25%;
+        max-width: 35%;
         border-left: 1px solid #d0d0d0;
     }
 }
