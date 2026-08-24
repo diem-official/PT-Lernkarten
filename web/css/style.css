@@ -316,8 +316,13 @@ body {
 }
 
 /* ── Quiz-Abfrage-Modus (Startbildschirm / Frage-Karte / Abschluss) ────────── */
-#answer-panel:has(.qz-panel) {
-    justify-content: center;
+/* margin:auto statt justify-content:center auf #answer-panel — sonst ist bei
+   Inhalt, der höher als der Host ist, der obere Überstand nicht erreichbar
+   (Flexbox: overflow:auto + center erlaubt nur positives Scrollen; die
+   Auto-Margins fallen bei Platzmangel auf 0 zurück und lassen den Inhalt oben
+   bündig beginnen — dadurch bleibt alles über den normalen Scroll erreichbar). */
+#answer-panel > .qz-panel {
+    margin: auto 0;
 }
 
 .qz-panel {
@@ -431,6 +436,8 @@ body {
     padding: 28px 32px;
     max-width: 400px;
     width: 90vw;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -821,7 +828,6 @@ body {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 /* Ohne Bild: Panel füllt die ganze Fläche und zentriert die Karte
@@ -831,8 +837,19 @@ body {
     position: absolute;
     inset: 0;
     display: flex;
-    align-items: center;
     justify-content: center;
+}
+
+/* margin:auto statt justify-content:center (.tq-quiz-panel-host) bzw.
+   align-items:center (.tq-quiz-standalone) — sonst ist bei Inhalt, der höher
+   als der sichtbare Bereich ist, der obere Überstand nicht erreichbar
+   (Flexbox-Center + overflow:auto erlaubt nur positives Scrollen; der
+   scrollende Vorfahre ist bei .tq-quiz-standalone #text-quiz-wrapper). Die
+   Auto-Margins fallen bei Platzmangel auf 0 zurück und lassen den Inhalt oben
+   bündig beginnen, dadurch bleibt alles über den normalen Scroll erreichbar. */
+.tq-quiz-panel-host > .qz-panel,
+.tq-quiz-standalone > .qz-panel {
+    margin: auto 0;
 }
 
 /* Kein Bild, oder Panel unterhalb des Bildes (Portrait): Karte nicht über die
