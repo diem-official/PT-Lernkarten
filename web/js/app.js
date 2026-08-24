@@ -1,6 +1,7 @@
 (function () {
-    var DATA_URL      = 'data/data.json';
-    var TEXT_DATA_URL = 'data/text-data.json';
+    var DATA_URL           = 'data/data.json';
+    var TEXT_DATA_URL      = 'data/text-data.json';
+    var TEXT_QUIZ_DATA_URL = 'data/text-quiz-data.json';
     var IMG_BASE      = 'data/images/';
     var OG_IMG_BASE   = 'data/og-images/';
 
@@ -25,9 +26,34 @@
         app.classList.remove('drawer-open');
     }
 
-    hamburgerBtn.addEventListener('click', openDrawer);
     drawerCloseBtn.addEventListener('click', closeDrawer);
     drawerOverlay.addEventListener('click', closeDrawer);
+
+    // ── Desktop/Tablet: Sidebar ein-/ausklappbar ─
+    var SIDEBAR_COLLAPSED_KEY = 'ptl-sidebar-collapsed';
+
+    function setSidebarCollapsed(collapsed) {
+        app.classList.toggle('sidebar-collapsed', collapsed);
+        try {
+            localStorage.setItem(SIDEBAR_COLLAPSED_KEY, collapsed ? '1' : '0');
+        } catch (e) { /* localStorage nicht verfügbar (z. B. privater Modus) */ }
+    }
+
+    var storedCollapsed = '0';
+    try {
+        storedCollapsed = localStorage.getItem(SIDEBAR_COLLAPSED_KEY) || '0';
+    } catch (e) { /* localStorage nicht verfügbar */ }
+    setSidebarCollapsed(storedCollapsed === '1');
+
+    // Hamburger-Button im Header: ≤600px öffnet das Drawer-Menü, > 600px
+    // klappt die feste Sidebar-Spalte ein/aus.
+    hamburgerBtn.addEventListener('click', function () {
+        if (window.innerWidth <= 600) {
+            openDrawer();
+        } else {
+            setSidebarCollapsed(!app.classList.contains('sidebar-collapsed'));
+        }
+    });
 
     // ── Visual-viewport: Bild beim Öffnen der Tastatur nach oben schieben ──
     var imgEl = document.getElementById('quiz-img');
@@ -62,12 +88,16 @@
             }),
             fetch(TEXT_DATA_URL).then(function (resp) {
                 return resp.ok ? resp.json() : [];
+            }).catch(function () { return []; }),
+            fetch(TEXT_QUIZ_DATA_URL).then(function (resp) {
+                return resp.ok ? resp.json() : [];
             }).catch(function () { return []; })
         ])
         .then(function (results) {
-            var imageData = results[0];
-            var textData  = results[1];
-            var allData   = imageData.concat(textData);
+            var imageData    = results[0];
+            var textData     = results[1];
+            var textQuizData = results[2];
+            var allData      = imageData.concat(textData);
 
             if (!allData.length) {
                 showError('Keine Daten gefunden (data.json und text-data.json sind leer oder fehlen).');
@@ -81,12 +111,16 @@
                 if (entry.type === 'text') {
                     if (mode === 'lernen') {
                         loadTextLernen(entry, OG_IMG_BASE);
+                    } else if (mode === 'quiz') {
+                        loadTextQuizAbfrage(entry, IMG_BASE, textQuizData);
                     } else {
                         loadTextQuiz(entry, IMG_BASE);
                     }
                 } else {
                     if (mode === 'lernen') {
                         loadLernen(entry, OG_IMG_BASE);
+                    } else if (mode === 'quiz') {
+                        loadQuizAbfrage(entry, IMG_BASE);
                     } else {
                         loadQuiz(entry, IMG_BASE);
                     }

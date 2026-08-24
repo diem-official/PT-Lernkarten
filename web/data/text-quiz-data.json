@@ -1,0 +1,549 @@
+[
+  {
+    "subject": "Hydrotherapie",
+    "category": "Kneipp",
+    "subcategory": "Guss",
+    "view": "Indikation & Kontraindikation",
+    "columns": [
+      "Indikation",
+      "Kontraindikation",
+      "",
+      ""
+    ],
+    "rows": [
+      {
+        "question": "Nenne jeweils 5 Indikationen und Kontraindikationen für eine Hydrotherapie Behandlung",
+        "answers": {
+          "Indikation": [
+            "Erkrankungen des Bewegungsapparates, z. B. degenerative Gelenkbeschwerden oder muskuläre Verspannungen, die von Wärme- oder Kältereizen profitieren",
+            "Neurologische Erkrankungen wie Multiple Sklerose oder periphere Lähmungen, bei denen Reizanwendungen Durchblutung und Wahrnehmung fördern",
+            "Internistische Erkrankungen im Früh- bzw. Anfangsstadium, etwa beginnende Infekte, bei denen milde Reize das Immunsystem unterstützen",
+            "Nicht ansteckende Hauterkrankungen, bei denen die Anwendung die Durchblutung der Haut anregt, ohne Übertragungsrisiko",
+            "Atemwegsprobleme wie chronische Bronchitis, da Wärmereize die Schleimhautdurchblutung verbessern und das Abhusten erleichtern",
+            "Leichte Kreislaufbeschwerden, da milde Reize den Kreislauf trainieren und stabilisieren, ohne ihn zu überlasten",
+            "Erschöpfungssyndrom (Burnout), da wechselnde Reize das vegetative Nervensystem anregen und die Regeneration fördern",
+            "Abwehrschwäche, da regelmäßige Kaltreize nachweislich die Zahl und Aktivität von Immunzellen steigern können",
+            "Arthritis in reizarmen Phasen, da milde Wärme- oder Kälteanwendungen schmerzlindernd wirken können",
+            "Schmerzen im Bewegungsapparat, da Thermoreize die Schmerzweiterleitung hemmen und die Muskulatur entspannen",
+            "Kopfschmerzen, da z. B. ansteigende Armbäder reflektorisch gefäßregulierend auf den Kopfbereich wirken"
+          ],
+          "Kontraindikation": [
+            "Herz-Lungenerkrankungen im Spätstadium, da die zusätzliche Kreislaufbelastung durch den Thermoreiz das geschwächte System überfordern kann",
+            "Akute Blasen- oder Nierenentzündungen, da Kältereize die Entzündung im betroffenen Organ verstärken können",
+            "Frische Bein- und Beckenvenenthrombosen (< 4 Wochen), da der Reiz einen Thrombus lösen und eine Embolie auslösen kann",
+            "Aneurysmen, da der Druck- und Temperaturreiz die Gefäßwand zusätzlich belastet und das Rupturrisiko erhöht",
+            "Frische Operationswunden, da Nässe und Temperaturreize die Wundheilung stören und Infektionen begünstigen können",
+            "Leberzirrhose, da der veränderte Wasser- und Elektrolythaushalt durch zusätzliche Kreislaufreize aus dem Gleichgewicht geraten kann",
+            "Haut- oder Nagelpilzerkrankungen, da das feuchtwarme Milieu der Anwendung die Pilzausbreitung begünstigt",
+            "Hämorrhoiden, da starke Temperaturreize die betroffenen Gefäße reizen und Beschwerden verstärken können",
+            "Akute fieberhafte Infektionskrankheiten, da die zusätzliche Kreislaufbelastung den Körper in der Abwehrphase schwächen kann",
+            "Offene Wunden, da Wasser und Reibung die Wundheilung verzögern und ein Infektionsrisiko darstellen"
+          ],
+          "": []
+        }
+      }
+    ]
+  },
+  {
+    "subject": "Anatomie 1",
+    "category": "Muskeln Detail",
+    "subcategory": "Hüfte",
+    "view": "Adduktoren",
+    "columns": [
+      "Ursprung",
+      "Ansatz",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": [
+      {
+        "question": "M. obturatorius externus",
+        "answers": {
+          "Ursprung": [
+            "Außenfläche der Membrana obturatoria sowie der angrenzende knöcherne Rand des Foramen obturatum"
+          ],
+          "Ansatz": [
+            "Fossa trochanterica am Femur (Ansatzgrube an der Innenseite des Trochanter major)"
+          ],
+          "Funktion": [
+            "Adduktion im Hüftgelenk, zieht den Oberschenkel zur Körpermitte",
+            "Außenrotation im Hüftgelenk",
+            "Stabilisiert das Hüftgelenk in der Sagittalebene beim Gehen"
+          ],
+          "Innervation": [
+            "N. obturatorius, Segmente L2 bis L4"
+          ]
+        }
+      },
+      {
+        "question": "M. pectineus",
+        "answers": {
+          "Ursprung": [
+            "Pecten ossis pubis (Kamm des Schambeins)"
+          ],
+          "Ansatz": [
+            "Linea pectinea am Femur",
+            "Linea aspera des Femurs, oberer Abschnitt"
+          ],
+          "Funktion": [
+            "Adduktion im Hüftgelenk",
+            "Außenrotation im Hüftgelenk",
+            "Leichte Flexion (Beugung) im Hüftgelenk",
+            "Stabilisiert das Becken in der Frontalebene beim einbeinigen Stand",
+            "Stabilisiert das Hüftgelenk in der Sagittalebene"
+          ],
+          "Innervation": [
+            "N. femoralis, Segmente L1 bis L4 (Hauptinnervation)",
+            "N. obturatorius, Segmente L2 bis L4 (variable Doppelinnervation)"
+          ]
+        }
+      },
+      {
+        "question": "M. adductor longus",
+        "answers": {
+          "Ursprung": [
+            "Ramus superior ossis pubis (oberer Schambeinast)",
+            "Bereich der Symphyse (Schambeinfuge)"
+          ],
+          "Ansatz": [
+            "Mediale Lippe der Linea aspera am Femur, mittleres Drittel"
+          ],
+          "Funktion": [
+            "<70°: Hüftflexion, wirkt adduzierend im Hüftgelenk",
+            "<70°: unterstützt zusätzlich die Flexion (Beugung) im Hüftgelenk",
+            ">80°: Hüftflexion, Zugrichtung kehrt sich um und unterstützt die Extension (Streckung)",
+            "Stabilisiert das Becken in der Frontalebene",
+            "Stabilisiert das Hüftgelenk in der Sagittalebene"
+          ],
+          "Innervation": [
+            "N. obturatorius, Segmente L2 bis L4"
+          ]
+        }
+      },
+      {
+        "question": "M. adductor brevis",
+        "answers": {
+          "Ursprung": [
+            "Ramus inferior ossis pubis (unterer Schambeinast)"
+          ],
+          "Ansatz": [
+            "Mediale Lippe der Linea aspera am Femur, proximales Drittel"
+          ],
+          "Funktion": [
+            "<70°: Hüftflexion, wirkt adduzierend im Hüftgelenk",
+            "<70°: unterstützt zusätzlich die Flexion (Beugung) im Hüftgelenk",
+            ">80°: Hüftflexion, Zugrichtung kehrt sich um und unterstützt die Extension (Streckung)",
+            "Stabilisiert das Becken in der Frontalebene",
+            "Stabilisiert das Hüftgelenk in der Sagittalebene"
+          ],
+          "Innervation": [
+            "N. obturatorius, Segmente L2 bis L4"
+          ]
+        }
+      },
+      {
+        "question": "M. adductor magnus",
+        "answers": {
+          "Ursprung": [
+            "Ramus inferior ossis pubis (unterer Schambeinast)",
+            "Ramus ossis ischii (Sitzbeinast)",
+            "Tuber ischiadicum (Sitzbeinhöcker) – Ursprung des bindegewebig-sehnigen Anteils"
+          ],
+          "Ansatz": [
+            "tiefer Teil: mediale Lippe der Linea aspera über die gesamte Femurlänge",
+            "oberfl. Teil: Epicondylus medialis am distalen Femur (sehniger Endpunkt am Hiatus adductorius)"
+          ],
+          "Funktion": [
+            "Adduktion im Hüftgelenk – kräftigster Adduktor der Hüfte",
+            "Außenrotation im Hüftgelenk",
+            "Extension (Streckung) im Hüftgelenk, v. a. durch den sehnigen ischiokruralen Anteil",
+            "Stabilisiert das Becken in der Frontalebene",
+            "Stabilisiert das Hüftgelenk in der Sagittalebene"
+          ],
+          "Innervation": [
+            "tiefer Teil: N. obturatorius, Segmente L2 bis L4",
+            "oberfl. Teil: N. tibialis (Teil des N. ischiadicus), Segmente L4 bis L5"
+          ]
+        }
+      },
+      {
+        "question": "M. adductor minimus",
+        "answers": {
+          "Ursprung": [
+            "Ramus inferior ossis pubis (unterer Schambeinast), oberster Anteil des M. adductor magnus"
+          ],
+          "Ansatz": [
+            "Mediale Lippe der Linea aspera, proximaler Abschnitt nahe dem Trochanter minor"
+          ],
+          "Funktion": [
+            "Adduktion im Hüftgelenk",
+            "Außenrotation im Hüftgelenk",
+            "Leichte Flexion (Beugung) im Hüftgelenk"
+          ],
+          "Innervation": [
+            "N. obturatorius, Segmente L2 bis L4"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "subject": "Anatomie 1",
+    "category": "Muskeln Detail",
+    "subcategory": "Hüfte",
+    "view": "Iliopsoas",
+    "columns": [
+      "Ursprung",
+      "Ansatz",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": [
+      {
+        "question": "M. iliopsoas zusammen aus M. psoas major und M. Iliacus (MI)",
+        "answers": {
+          "Ursprung": [
+            "M. psoas major oberflächlicher Kopf: 12. Brustwirbelkörper (Th12)",
+            "M. psoas major tiefer Kopf: Lendenwirbelkörper 1 bis 4",
+            "M. psoas major tiefer Kopf: angrenzende Zwischenwirbelscheiben (Disci intervertebrales) im Übergangsbereich Th12–L4",
+            "M. psoas major tiefer Kopf: Processus costales (Rippenfortsätze) der Lendenwirbel 1 bis 5",
+            "M. Iliacus: Fossa iliaca, die Innenfläche des Darmbeins"
+          ],
+          "Ansatz": [
+            "Gemeinsame Endsehne beider Anteile: Trochanter minor am Femur"
+          ],
+          "Funktion": [
+            "Hüftgelenk: kräftigste Flexion (Beugung) im Hüftgelenk, Hauptbeuger beim Gehen und Treppensteigen",
+            "Hüftgelenk: unterstützt die Außenrotation",
+            "LWS bei einseitiger Kontraktion mit Punctum fixum (Fixpunkt) am Femur: beugt die Lendenwirbelsäule seitlich mit",
+            "LWS bei einseitiger Kontraktion: Lateralflexion (Seitneigung) der Lendenwirbelsäule zur gleichen (ipsilateralen) Seite",
+            "LWS bei beidseitiger Kontraktion mit Punctum fixum am Femur: richtet den Rumpf aus der Rückenlage auf (z. B. Sit-up)"
+          ],
+          "Innervation": [
+            "N. femoralis, Segmente L1 bis L4 (v. a. M. iliacus)",
+            "direkte Äste des Plexus lumbalis, Segmente L1 bis L3 (v. a. M. psoas major)"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "subject": "Anatomie 1",
+    "category": "Muskeln Detail",
+    "subcategory": "Hüfte",
+    "view": "Hüfte Gesamt",
+    "columns": [
+      "Ursprung",
+      "Ansatz",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": [
+      {
+        "question": "M. gluteus maximus",
+        "answers": {
+          "Ursprung": [
+            "Facies dorsalis des Os sacrum (Rückfläche des Kreuzbeins)",
+            "Facies glutea des Os ilium (Außenfläche des Darmbeins, hinterer Anteil)",
+            "Fascia thoracolumbalis (Rückenfaszie im Lenden-Brust-Übergang)",
+            "Ligamentum sacrotuberale (Band zwischen Kreuzbein und Sitzbeinhöcker)"
+          ],
+          "Ansatz": [
+            "kraniale (obere) Fasern: strahlen in den Tractus iliotibialis ein",
+            "kaudale (untere) Fasern: Tuberositas glutea am Femur"
+          ],
+          "Funktion": [
+            "Gesamter Muskel: kräftige Extension (Streckung) im Hüftgelenk, z. B. beim Aufrichten aus der Hocke",
+            "Gesamter Muskel: Außenrotation im Hüftgelenk",
+            "Gesamter Muskel: stabilisiert das Hüftgelenk in der Sagittalebene",
+            "Gesamter Muskel: stabilisiert das Becken in der Frontalebene",
+            "kraniale Fasern: unterstützen die Abduktion im Hüftgelenk",
+            "kaudale Fasern: unterstützen die Adduktion im Hüftgelenk"
+          ],
+          "Innervation": [
+            "N. gluteus inferior, Segmente L5 bis S2"
+          ]
+        }
+      },
+      {
+        "question": "M. gluteus medius",
+        "answers": {
+          "Ursprung": [
+            "Facies glutea des Os ilium, zwischen Linea glutea anterior und posterior"
+          ],
+          "Ansatz": [
+            "Trochanter major am Femur, laterale Fläche"
+          ],
+          "Funktion": [
+            "Gesamter Muskel: Abduktion im Hüftgelenk, Hauptabduktor der Hüfte",
+            "Gesamter Muskel: stabilisiert das Becken in der Frontalebene beim einbeinigen Stand (verhindert Duchenne-Hinken)",
+            "vorderer Teil: unterstützt die Flexion (Beugung) im Hüftgelenk",
+            "vorderer Teil: unterstützt die Innenrotation im Hüftgelenk",
+            "hinterer Teil: unterstützt die Extension (Streckung) im Hüftgelenk",
+            "hinterer Teil: unterstützt die Außenrotation im Hüftgelenk"
+          ],
+          "Innervation": [
+            "N. gluteus superior, Segmente L4 bis S1"
+          ]
+        }
+      },
+      {
+        "question": "M. gluteus minimus",
+        "answers": {
+          "Ursprung": [
+            "Facies glutea des Os ilium, unterhalb des Ursprungs des M. gluteus medius"
+          ],
+          "Ansatz": [
+            "Trochanter major am Femur, ventrale Fläche"
+          ],
+          "Funktion": [
+            "Gesamter Muskel: Abduktion im Hüftgelenk, unterstützt den M. gluteus medius",
+            "Gesamter Muskel: stabilisiert das Becken in der Frontalebene beim Gehen",
+            "vorderer Teil: unterstützt die Flexion im Hüftgelenk",
+            "vorderer Teil: unterstützt die Innenrotation im Hüftgelenk",
+            "hinterer Teil: unterstützt die Extension im Hüftgelenk",
+            "hinterer Teil: unterstützt die Außenrotation im Hüftgelenk"
+          ],
+          "Innervation": [
+            "N. gluteus superior, Segmente L4 bis S1"
+          ]
+        }
+      },
+      {
+        "question": "M. Tensor fasciae latae",
+        "answers": {
+          "Ursprung": [
+            "Spina iliaca anterior superior (vorderer oberer Darmbeinstachel)"
+          ],
+          "Ansatz": [
+            "strahlt in den Tractus iliotibialis ein und zieht bis zur Tuberositas tibiae"
+          ],
+          "Funktion": [
+            "spannt die Fascia lata über den Tractus iliotibialis und stabilisiert das Knie in gestreckter Stellung",
+            "Abduktion im Hüftgelenk",
+            "Flexion (Beugung) im Hüftgelenk",
+            "Innenrotation im Hüftgelenk"
+          ],
+          "Innervation": [
+            "N. gluteus superior, Segmente L4 bis S1"
+          ]
+        }
+      },
+      {
+        "question": "M. piriformis",
+        "answers": {
+          "Ursprung": [
+            "Facies pelvica des Os sacrum (Beckenfläche des Kreuzbeins), Höhe S2 bis S4"
+          ],
+          "Ansatz": [
+            "Spitze des Trochanter major am Femur"
+          ],
+          "Funktion": [
+            "Außenrotation im Hüftgelenk (bei gestrecktem Bein)",
+            "Abduktion im Hüftgelenk (bei 90° gebeugter Hüfte kehrt sich die Wirkung teilweise zur Innenrotation um)",
+            "leichte Extension (Streckung) im Hüftgelenk",
+            "stabilisiert den Hüftkopf in der Gelenkpfanne (Zentrierung des Femurkopfes)"
+          ],
+          "Innervation": [
+            "direkte Äste des Plexus sacralis, Segmente L5 bis S2"
+          ]
+        }
+      },
+      {
+        "question": "M. obturatorius internus",
+        "answers": {
+          "Ursprung": [
+            "Innenfläche der Membrana obturatoria sowie der umgebende knöcherne Rand des Foramen obturatum"
+          ],
+          "Ansatz": [
+            "Fossa trochanterica am Femur, gemeinsam mit den Mm. gemelli"
+          ],
+          "Funktion": [
+            "Außenrotation im Hüftgelenk",
+            "Adduktion im Hüftgelenk (bei gestrecktem Bein)",
+            "leichte Extension (Streckung) im Hüftgelenk",
+            "bei 90° gebeugter Hüfte wirkt der Muskel stattdessen abduzierend"
+          ],
+          "Innervation": [
+            "direkte Äste des Plexus sacralis, Segmente L5 bis S2"
+          ]
+        }
+      },
+      {
+        "question": "Mm. gemelli",
+        "answers": {
+          "Ursprung": [
+            "M. gemellus superior: Spina ischiadica am Os ischii (Sitzbeinstachel)",
+            "M. gemellus inferior: Tuber ischiadicum am Os ischii (Sitzbeinhöcker)"
+          ],
+          "Ansatz": [
+            "Fossa trochanterica am Femur, gemeinsam mit dem M. obturatorius internus"
+          ],
+          "Funktion": [
+            "Außenrotation im Hüftgelenk",
+            "Adduktion im Hüftgelenk (bei gestrecktem Bein)",
+            "leichte Extension im Hüftgelenk",
+            "bei gebeugter Hüfte wirkt der Muskel stattdessen abduzierend"
+          ],
+          "Innervation": [
+            "direkte Äste des Plexus sacralis, Segmente L5 bis S2"
+          ]
+        }
+      },
+      {
+        "question": "M. quadratus femoris",
+        "answers": {
+          "Ursprung": [
+            "Tuber ischiadicum am Os ischii (Sitzbeinhöcker), lateral der Ursprünge der ischiokruralen Muskulatur"
+          ],
+          "Ansatz": [
+            "Crista intertrochanterica am Femur"
+          ],
+          "Funktion": [
+            "kräftige Außenrotation im Hüftgelenk",
+            "Adduktion im Hüftgelenk"
+          ],
+          "Innervation": [
+            "direkte Äste des Plexus sacralis, Segmente L5 bis S2",
+            "zusätzlich Fasern aus dem N. gluteus inferior"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "subject": "Anatomie 1",
+    "category": "Muskeln Detail",
+    "subcategory": "Hüfte",
+    "view": "Oberschenkel",
+    "columns": [
+      "Ursprung",
+      "Ansatz",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": [
+      {
+        "question": "M. sartorius",
+        "answers": {
+          "Ursprung": [
+            "Spina iliaca anterior superior (vorderer oberer Darmbeinstachel)"
+          ],
+          "Ansatz": [
+            "medial der Tuberositas tibiae",
+            "oberflächlicher Anteil des Pes anserinus (gemeinsam mit M. gracilis und M. semitendinosus)"
+          ],
+          "Funktion": [
+            "Hüftgelenk: Flexion (Beugung)",
+            "Hüftgelenk: Abduktion",
+            "Hüftgelenk: Außenrotation",
+            "Kniegelenk: Flexion (Beugung)",
+            "Kniegelenk: Innenrotation des gebeugten Unterschenkels"
+          ],
+          "Innervation": [
+            "N. femoralis, Segmente L1 bis L4"
+          ]
+        }
+      },
+      {
+        "question": "M. quadriceps femoris",
+        "answers": {
+          "Ursprung": [
+            "M. rectus femoris, Caput rectum: Spina iliaca anterior inferior",
+            "M. rectus femoris, Caput reflexum: Pfannendach des Hüftgelenks (oberer Rand des Acetabulums)",
+            "M. vastus medialis: mediale Lippe der Linea aspera",
+            "M. vastus medialis: distaler Abschnitt der Linea intertrochanterica",
+            "M. vastus lateralis: laterale Lippe der Linea aspera",
+            "M. vastus lateralis: laterale Fläche des Trochanter major",
+            "M. vastus intermedius: Vorderfläche des Femurschafts, unter dem M. rectus femoris",
+            "M. articularis genus: distale Vorderfläche des Femurschafts, unmittelbar über dem Kniegelenk"
+          ],
+          "Ansatz": [
+            "gemeinsame Endsehne aller vier Köpfe über die Patella und das Lig. patellae an der Tuberositas tibiae",
+            "M. vastus medialis und M. vastus lateralis strahlen zusätzlich seitlich in das Retinaculum patellae mediale bzw. laterale ein",
+            "M. articularis genus setzt an der Kniegelenkkapsel im Recessus suprapatellaris an"
+          ],
+          "Funktion": [
+            "Hüftgelenk: Flexion (Beugung) – nur durch den zweigelenkigen M. rectus femoris",
+            "Kniegelenk: kräftige Extension (Streckung), Hauptstrecker des Knies",
+            "M. articularis genus zieht bei Kniestreckung die Gelenkkapsel nach proximal und verhindert so deren Einklemmung"
+          ],
+          "Innervation": [
+            "N. femoralis, Segmente L1 bis L4"
+          ]
+        }
+      },
+      {
+        "question": "M. biceps femoris",
+        "answers": {
+          "Ursprung": [
+            "Caput longum: Tuber ischiadicum (Sitzbeinhöcker)",
+            "gemeinsame Ursprungssehne (Caput commune) mit Verbindung zum Lig. sacrotuberale",
+            "Caput breve: laterale Lippe der Linea aspera, mittleres bis unteres Drittel"
+          ],
+          "Ansatz": [
+            "Caput fibulae (Fibulaköpfchen)"
+          ],
+          "Funktion": [
+            "Caput longum Hüfte: unterstützt die Adduktion",
+            "Caput longum Hüfte: Extension (Streckung), Teil der ischiokruralen Muskulatur",
+            "Caput longum Hüfte: stabilisiert das Becken in der Sagittalebene",
+            "Gesamt Knie: Flexion (Beugung)",
+            "Gesamt Knie: Außenrotation des gebeugten Unterschenkels"
+          ],
+          "Innervation": [
+            "Caput longum: N. tibialis (Teil des N. ischiadicus), Segmente L5 bis S2",
+            "Caput breve: N. fibularis communis (Teil des N. ischiadicus), Segmente L5 bis S2"
+          ]
+        }
+      },
+      {
+        "question": "M. semimembranosus",
+        "answers": {
+          "Ursprung": [
+            "Tuber ischiadicum (Sitzbeinhöcker)"
+          ],
+          "Ansatz": [
+            "tiefer Anteil des Pes anserinus (Pes anserinus profundus)",
+            "Condylus medialis der Tibia",
+            "strahlt in das Lig. popliteum obliquum ein und verstärkt die dorsale Kniegelenkkapsel",
+            "Faszie des M. popliteus"
+          ],
+          "Funktion": [
+            "Hüfte: unterstützt die Adduktion",
+            "Hüfte: Extension (Streckung), Teil der ischiokruralen Muskulatur",
+            "Hüfte: stabilisiert das Becken in der Sagittalebene",
+            "Knie: Flexion (Beugung)",
+            "Knie: Innenrotation des gebeugten Unterschenkels"
+          ],
+          "Innervation": [
+            "N. tibialis (Teil des N. ischiadicus), Segmente L5 bis S2"
+          ]
+        }
+      },
+      {
+        "question": "M. semitendinosus",
+        "answers": {
+          "Ursprung": [
+            "Tuber ischiadicum (Sitzbeinhöcker), gemeinsame Sehne mit dem Caput longum des M. biceps femoris",
+            "zusätzliche Verbindung zum Lig. sacrotuberale"
+          ],
+          "Ansatz": [
+            "medial der Tuberositas tibiae",
+            "oberflächlicher Anteil des Pes anserinus (gemeinsam mit M. sartorius und M. gracilis)"
+          ],
+          "Funktion": [
+            "Hüfte: unterstützt die Adduktion",
+            "Hüfte: Extension (Streckung), Teil der ischiokruralen Muskulatur",
+            "Hüfte: stabilisiert das Becken in der Sagittalebene",
+            "Knie: Flexion (Beugung)",
+            "Knie: Innenrotation des gebeugten Unterschenkels"
+          ],
+          "Innervation": [
+            "N. tibialis (Teil des N. ischiadicus), Segmente L5 bis S2"
+          ]
+        }
+      }
+    ]
+  }
+]

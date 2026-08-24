@@ -85,11 +85,6 @@ function buildMenu(data, onSelect) {
                     var ansichtLi = document.createElement('li');
                     ansichtLi.className = 'menu-ansicht-li';
 
-                    var label     = item.entry.type === 'text'
-                        ? item.ansicht + ' ✒'
-                        : item.ansicht;
-                    var testenBtn = makeBtn('menu-ansicht-btn', label);
-
                     function setActive() {
                         document.querySelectorAll('.menu-ansicht-li.active').forEach(function (li) {
                             li.classList.remove('active');
@@ -97,19 +92,30 @@ function buildMenu(data, onSelect) {
                         ansichtLi.classList.add('active');
                     }
 
-                    testenBtn.addEventListener('click', function () {
-                        setActive();
-                        onSelect(item.entry, 'testen');
+                    ansichtLi.classList.add('menu-ansicht-li--split');
+
+                    var labelEl = document.createElement('div');
+                    labelEl.className   = 'menu-ansicht-label';
+                    labelEl.textContent = item.ansicht;
+                    ansichtLi.appendChild(labelEl);
+
+                    var actionsEl = document.createElement('div');
+                    actionsEl.className = 'menu-ansicht-actions';
+
+                    [
+                        { text: 'Lernen',    mode: 'lernen' },
+                        { text: 'Schreiben', mode: 'schreiben' },
+                        { text: 'Quiz',      mode: 'quiz' }
+                    ].forEach(function (action) {
+                        var modeBtn = makeBtn('menu-mode-btn', action.text);
+                        modeBtn.addEventListener('click', function () {
+                            setActive();
+                            onSelect(item.entry, action.mode);
+                        });
+                        actionsEl.appendChild(modeBtn);
                     });
 
-                    ansichtLi.appendChild(testenBtn);
-
-                    var lernenBtn = makeBtn('menu-lernen-btn', 'Lernen');
-                    lernenBtn.addEventListener('click', function () {
-                        setActive();
-                        onSelect(item.entry, 'lernen');
-                    });
-                    ansichtLi.appendChild(lernenBtn);
+                    ansichtLi.appendChild(actionsEl);
 
                     ansichtList.appendChild(ansichtLi);
                 });

@@ -3581,8 +3581,8 @@
   {
     "filename": "Anatomie 1-Lagebezeichnung-Körper-Frontal-clean.jpg",
     "og_filename": "Anatomie 1-Lagebezeichnung-Körper-Frontal.png",
-    "category": "Lagebezeichnung",
-    "subcategory": "Körper",
+    "category": "Achsen, Ebenen & Lage",
+    "subcategory": "Lagebezeichnung",
     "view": "Frontal",
     "labels": [
       {
@@ -6783,8 +6783,8 @@
     "filename": "Anatomie 1-Achsen & Ebenen-Körper-Frontal-clean.jpg",
     "og_filename": "Anatomie 1-Achsen & Ebenen-Körper-Frontal.png",
     "subject": "Anatomie 1",
-    "category": "Achsen & Ebenen",
-    "subcategory": "Körper",
+    "category": "Achsen, Ebenen & Lage",
+    "subcategory": "Achsen & Ebenen",
     "view": "Frontal",
     "labels": [
       {

@@ -1,13 +1,13 @@
-var _currentEntry = null;
 var _imgBasePath = '';
 var _resizeTimer = null;
 var _lastLayoutWidth = window.innerWidth;
 var _overlayZoom = null;
+var _activeMarkerRefresh = null; // Funktion ohne Argumente, oder null (für den Resize-Listener)
 
 // ── Image quiz: "Lernen" mode ────────────────────────────────────────────────
 
 function loadLernen(entry, ogImgBasePath) {
-    _currentEntry = null;
+    _activeMarkerRefresh = null;
 
     var img          = document.getElementById('quiz-img');
     var wrapper      = document.getElementById('quiz-wrapper');
@@ -28,10 +28,9 @@ function loadLernen(entry, ogImgBasePath) {
     img.src = ogImgBasePath + entry.og_filename;
 }
 
-// ── Image quiz: "Testen" mode ────────────────────────────────────────────────
+// ── Image quiz: "Schreiben" mode ─────────────────────────────────────────────
 
 function loadQuiz(entry, imgBasePath) {
-    _currentEntry = entry;
     _imgBasePath  = imgBasePath;
 
     var img           = document.getElementById('quiz-img');
@@ -50,18 +49,22 @@ function loadQuiz(entry, imgBasePath) {
 
     renderAnswerPanel(entry.labels, answerPanel);
 
-    img.onload = function () {
+    _activeMarkerRefresh = function () {
         renderMarkers(entry.labels, img, zoomContainer);
     };
+
+    img.onload = _activeMarkerRefresh;
     img.src = imgBasePath + entry.filename;
     // If the browser already has this image cached (same URL), onload won't fire.
     if (img.complete && img.naturalWidth > 0) {
-        renderMarkers(entry.labels, img, zoomContainer);
+        _activeMarkerRefresh();
     }
 }
 
 // Numbered dots on the image, positioned where the label used to be.
-function renderMarkers(labels, img, zoomContainer) {
+// highlightIndex (optional): 0-basierter Index des Labels, dessen Marker
+// hervorgehoben werden soll (Abfrage-Quiz-Modus).
+function renderMarkers(labels, img, zoomContainer, highlightIndex) {
     var scaleX = img.clientWidth  / img.naturalWidth;
     var scaleY = img.clientHeight / img.naturalHeight;
 
@@ -70,6 +73,7 @@ function renderMarkers(labels, img, zoomContainer) {
     labels.forEach(function (label, i) {
         var badge = document.createElement('div');
         badge.className   = 'marker-badge number-badge';
+        if (i === highlightIndex) badge.classList.add('marker-badge--active');
         badge.textContent = i + 1;
         badge.style.left  = ((label.mask_box.x + label.mask_box.w / 2) * scaleX) + 'px';
         badge.style.top   = ((label.mask_box.y + label.mask_box.h / 2) * scaleY) + 'px';
@@ -223,7 +227,7 @@ function _openImageOverlay(src) {
 
 // Lernen mode: shows all questions and answers as static text
 function loadTextLernen(entry, ogImgBase) {
-    _currentEntry = null;
+    _activeMarkerRefresh = null;
     var textWrapper = _textWrapperSetup();
 
     var lernenImgs = _normalizeImages(entry);
@@ -250,43 +254,8 @@ function loadTextLernen(entry, ogImgBase) {
         categoriesEl.className = 'tq-categories';
 
         entry.columns.forEach(function (colName) {
-            var answers = (row.answers[colName] || []).filter(function (a) { return a; });
-            if (!answers.length) return;
-
-            var catEl = document.createElement('div');
-            catEl.className = 'tq-category';
-
-            var headerEl = document.createElement('div');
-            headerEl.className = 'tq-category-header';
-            var labelEl = document.createElement('span');
-            labelEl.className   = 'tq-category-label';
-            labelEl.textContent = colName;
-            headerEl.appendChild(labelEl);
-
-            var fieldsEl = document.createElement('div');
-            fieldsEl.className = 'tq-fields';
-
-            answers.forEach(function (answerFull) {
-                var parsed = _parseAnswer(answerFull);
-                var answerEl = document.createElement('div');
-                answerEl.className = 'tq-answer-text';
-                if (parsed.prefix) {
-                    var prefixSpan = document.createElement('span');
-                    prefixSpan.className   = 'tq-field-prefix';
-                    prefixSpan.textContent = parsed.prefix + ':';
-                    var valueSpan = document.createElement('span');
-                    valueSpan.textContent = ' ' + parsed.solution;
-                    answerEl.appendChild(prefixSpan);
-                    answerEl.appendChild(valueSpan);
-                } else {
-                    answerEl.textContent = parsed.solution;
-                }
-                fieldsEl.appendChild(answerEl);
-            });
-
-            catEl.appendChild(headerEl);
-            catEl.appendChild(fieldsEl);
-            categoriesEl.appendChild(catEl);
+            var catEl = _buildCategoryBlock(colName, row.answers[colName]);
+            if (catEl) categoriesEl.appendChild(catEl);
         });
 
         section.appendChild(categoriesEl);
@@ -294,8 +263,52 @@ function loadTextLernen(entry, ogImgBase) {
     });
 }
 
+// Category block: Label-Header + Liste der geparsten Antwort-Fragmente
+// (Präfix-Handling über _parseAnswer). Genutzt vom Lernen-Modus (alle Spalten
+// einer Zeile) und vom Antwort-Reveal im Text-Quiz-Abfrage-Modus (eine Spalte).
+// Gibt null zurück, wenn die Spalte keine Antworten hat.
+function _buildCategoryBlock(colName, rawAnswers) {
+    var answers = (rawAnswers || []).filter(function (a) { return a; });
+    if (!answers.length) return null;
+
+    var catEl = document.createElement('div');
+    catEl.className = 'tq-category';
+
+    var headerEl = document.createElement('div');
+    headerEl.className = 'tq-category-header';
+    var labelEl = document.createElement('span');
+    labelEl.className   = 'tq-category-label';
+    labelEl.textContent = colName;
+    headerEl.appendChild(labelEl);
+
+    var fieldsEl = document.createElement('div');
+    fieldsEl.className = 'tq-fields';
+
+    answers.forEach(function (answerFull) {
+        var parsed = _parseAnswer(answerFull);
+        var answerEl = document.createElement('div');
+        answerEl.className = 'tq-answer-text';
+        if (parsed.prefix) {
+            var prefixSpan = document.createElement('span');
+            prefixSpan.className   = 'tq-field-prefix';
+            prefixSpan.textContent = parsed.prefix + ':';
+            var valueSpan = document.createElement('span');
+            valueSpan.textContent = ' ' + parsed.solution;
+            answerEl.appendChild(prefixSpan);
+            answerEl.appendChild(valueSpan);
+        } else {
+            answerEl.textContent = parsed.solution;
+        }
+        fieldsEl.appendChild(answerEl);
+    });
+
+    catEl.appendChild(headerEl);
+    catEl.appendChild(fieldsEl);
+    return catEl;
+}
+
 function loadTextQuiz(entry, imgBase) {
-    _currentEntry = null;
+    _activeMarkerRefresh = null;
     var textWrapper = _textWrapperSetup();
 
     var quizImgs = _normalizeImages(entry);
@@ -590,12 +603,9 @@ window.addEventListener('resize', function () {
 
     clearTimeout(_resizeTimer);
     _resizeTimer = setTimeout(function () {
-        if (!_currentEntry) return; // null for text quiz and lernen mode
+        if (!_activeMarkerRefresh) return; // null for text quiz and lernen mode
 
-        var img           = document.getElementById('quiz-img');
-        var zoomContainer = document.getElementById('zoom-container');
-
-        renderMarkers(_currentEntry.labels, img, zoomContainer);
+        _activeMarkerRefresh();
     }, 120);
 });
 

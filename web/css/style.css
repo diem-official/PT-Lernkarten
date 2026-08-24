@@ -14,7 +14,9 @@ body {
 /* ── App shell ─────────────────────────────── */
 #app {
     display: flex;
-    height: 100dvh;
+    margin-top: 48px;
+    height: calc(100dvh - 48px);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* ── Sidebar ────────────────────────────────── */
@@ -27,6 +29,7 @@ body {
     overflow-y: auto;
     padding: 12px 0;
     flex-shrink: 0;
+    transition: width 0.25s ease, min-width 0.25s ease, border-color 0.25s ease;
 }
 
 #menu-loading {
@@ -150,40 +153,51 @@ body {
     align-items: stretch;
 }
 
-.menu-ansicht-btn {
-    flex: 1;
-    text-align: left;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px 8px 6px 42px;
+/* Ansicht-Name als Label, darunter Lernen/Schreiben/Quiz (Bild- und Text-Einträge) */
+.menu-ansicht-li--split {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.menu-ansicht-label {
+    padding: 6px 8px 2px 42px;
     font-size: 13px;
     color: #555;
 }
 
-.menu-ansicht-btn:hover {
-    background: #dde8f5;
+.menu-ansicht-actions {
+    display: flex;
+    gap: 6px;
+    padding: 0 8px 6px 42px;
 }
 
-.menu-lernen-btn {
-    flex-shrink: 0;
+.menu-mode-btn {
+    flex: 1;
+    min-width: 0;
     background: none;
-    border: none;
-    border-left: 1px solid #d0d0d0;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
     cursor: pointer;
-    padding: 6px 10px;
-    font-size: 12px;
+    padding: 4px 4px;
+    font-size: 11px;
     color: #555;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.menu-lernen-btn:hover {
+.menu-mode-btn:hover {
     background: #dde8f5;
 }
 
-.menu-ansicht-li.active .menu-ansicht-btn,
-.menu-ansicht-li.active .menu-lernen-btn {
+.menu-ansicht-li.active .menu-ansicht-label {
+    font-weight: 600;
+    color: #1a3a6e;
+}
+
+.menu-ansicht-li.active .menu-mode-btn {
     background: #c4d9f5;
+    border-color: #a8c4ee;
     font-weight: 600;
     color: #1a3a6e;
 }
@@ -197,6 +211,17 @@ body {
     justify-content: center;
     overflow: hidden;
     background: #fff;
+}
+
+@media (min-width: 601px) {
+    #app.sidebar-collapsed #sidebar {
+        width: 0;
+        min-width: 0;
+        border-right-color: transparent;
+        padding-left: 0;
+        padding-right: 0;
+        overflow: hidden;
+    }
 }
 
 #placeholder {
@@ -239,6 +264,10 @@ body {
     gap: 8px;
 }
 
+.answer-row:first-child {
+    margin-top: 4em; /* ca. 4 Leerzeilen Abstand oberhalb der ersten Eingabezeile */
+}
+
 .answer-row .label-input {
     flex: 1;
     min-width: 0;
@@ -250,9 +279,18 @@ body {
         flex-direction: row;
     }
     #answer-panel {
-        width: 280px;
+        width: 25%;
         min-width: 220px;
-        max-width: 30%;
+        max-width: 25%;
+        border-left: 1px solid #d0d0d0;
+    }
+    .tq-quiz-layout {
+        flex-direction: row;
+    }
+    .tq-quiz-panel-host {
+        width: 25%;
+        min-width: 220px;
+        max-width: 25%;
         border-left: 1px solid #d0d0d0;
     }
 }
@@ -267,6 +305,109 @@ body {
         max-height: 35vh;
         border-top: 1px solid #d0d0d0;
     }
+    .tq-quiz-layout {
+        flex-direction: column;
+    }
+    .tq-quiz-panel-host {
+        width: 100%;
+        max-height: 35vh;
+        border-top: 1px solid #d0d0d0;
+    }
+}
+
+/* ── Quiz-Abfrage-Modus (Startbildschirm / Frage-Karte / Abschluss) ────────── */
+#answer-panel:has(.qz-panel) {
+    justify-content: center;
+}
+
+.qz-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.qz-heading {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+}
+
+.qz-question {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Kategorie-Tag im Text-Quiz-Modus (z. B. "Ursprung", "Indikation") — bewusst
+   größer als .qz-question, da die Kategorie die wichtigere Einordnung ist. */
+.qz-category {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a3a6e;
+}
+
+.qz-solution {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a6ee0;
+}
+
+.qz-hint {
+    font-size: 13px;
+    color: #777;
+}
+
+.qz-btn {
+    background: #fff;
+    border: 1.5px solid #777;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+}
+
+.qz-btn:hover {
+    background: #eee;
+}
+
+.qz-btn-primary {
+    background: #3a82d4;
+    border-color: #3a82d4;
+    color: #fff;
+}
+
+.qz-btn-primary:hover {
+    background: #2f6bb0;
+}
+
+.qz-judge-row {
+    display: flex;
+    gap: 10px;
+}
+
+.qz-judge-row .qz-btn {
+    flex: 1;
+}
+
+.qz-btn-correct {
+    background: #2a9d00;
+    border-color: #2a9d00;
+    color: #fff;
+}
+
+.qz-btn-correct:hover {
+    background: #1e7a00;
+}
+
+.qz-btn-wrong {
+    background: #c0392b;
+    border-color: #c0392b;
+    color: #fff;
+}
+
+.qz-btn-wrong:hover {
+    background: #9c2d21;
 }
 
 /* ── Zoom container ─────────────────────────── */
@@ -287,7 +428,7 @@ body {
 #quiz-img {
     display: block;
     max-width: 100%;
-    max-height: 100dvh;
+    max-height: calc(100dvh - 48px);
 }
 
 /* ── Marker badges (numbered dots on the image) ────────────────── */
@@ -310,6 +451,15 @@ body {
 .marker-badge {
     position: absolute;
     transform: translate(-50%, -50%);
+}
+
+.marker-badge--active {
+    width: 28px;
+    height: 28px;
+    border-color: #1a6ee0;
+    background: #1a6ee0;
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(26, 110, 224, 0.35);
 }
 
 .label-input {
@@ -412,16 +562,61 @@ body {
 /* ── Focus styles (keyboard accessibility) ──────────────────── */
 .menu-kat > button:focus-visible,
 .menu-unter > button:focus-visible,
-.menu-ansicht-btn:focus-visible,
+.menu-mode-btn:focus-visible,
 .help-btn:focus-visible,
+.qz-btn:focus-visible,
 #modal-close:focus-visible {
     outline: 2px solid #3a82d4;
     outline-offset: 2px;
 }
 
-/* ── Mobile header (standardmäßig versteckt) ── */
+/* ── Header (Übungsname + Menü-Button, bei jeder Breite sichtbar) ─── */
 #mobile-header {
-    display: none;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    background: #1a3a6e;
+    color: #fff;
+    padding: 0 12px;
+    gap: 10px;
+    flex-shrink: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+}
+
+#hamburger-btn,
+#mobile-help-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+#hamburger-btn:hover,
+#mobile-help-btn:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+#mobile-title {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #drawer-overlay {
@@ -549,6 +744,60 @@ body {
     max-height: 60vh;
 }
 
+/* ── Text-Quiz-Abfrage: Bild links, Panel rechts (analog zum Bild-Quiz-Modus,
+   siehe #quiz-wrapper/#image-pane/#answer-panel); Ausrichtung siehe
+   @media (orientation: …) oben ────────────────────────────────────────── */
+.tq-quiz-layout {
+    position: absolute;
+    inset: 0;
+    display: flex;
+}
+
+.tq-quiz-image-pane {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.tq-quiz-image-pane .tq-quiz-image,
+.tq-quiz-image-pane .tq-dual-image-container,
+.tq-quiz-image-pane .tq-dual-image-container .tq-quiz-image {
+    margin: 0;
+    max-height: 100%;
+}
+
+.tq-quiz-panel-host {
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Ohne Bild: Panel füllt die ganze Fläche und zentriert die Karte
+   horizontal + vertikal (eigene Klasse, unabhängig von den
+   Landscape/Portrait-Breitenregeln von .tq-quiz-panel-host oben) */
+.tq-quiz-standalone {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Kein Bild, oder Panel unterhalb des Bildes (Portrait): Karte nicht über die
+   volle Breite strecken, sondern sinnvoll begrenzen. In der schmalen
+   280px-Spalte (Landscape mit Bild) hat max-width hier keine Wirkung. */
+#text-quiz-wrapper .qz-panel {
+    max-width: 340px;
+}
+
 .tq-image-overlay {
     display: none;
     position: fixed;
@@ -603,60 +852,6 @@ body {
    MOBILE  ≤ 600px
 ══════════════════════════════════════════════ */
 @media (max-width: 600px) {
-
-    #mobile-header {
-        display: flex;
-        align-items: center;
-        height: 48px;
-        background: #1a3a6e;
-        color: #fff;
-        padding: 0 12px;
-        gap: 10px;
-        flex-shrink: 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 200;
-    }
-
-    #hamburger-btn,
-    #mobile-help-btn {
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 22px;
-        cursor: pointer;
-        min-width: 44px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        border-radius: 4px;
-        flex-shrink: 0;
-    }
-
-    #hamburger-btn:hover,
-    #mobile-help-btn:hover {
-        background: rgba(255,255,255,0.15);
-    }
-
-    #mobile-title {
-        flex: 1;
-        font-size: 14px;
-        font-weight: 600;
-        text-align: center;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    #app {
-        margin-top: 48px;
-        height: calc(100dvh - 48px);
-        padding-bottom: env(safe-area-inset-bottom);
-    }
 
     /* ── Drawer-Close-Button ── */
     #drawer-close {
@@ -720,8 +915,7 @@ body {
         min-height: 44px;
     }
 
-    .menu-ansicht-btn,
-    .menu-lernen-btn {
+    .menu-mode-btn {
         min-height: 44px;
     }
 
@@ -729,10 +923,6 @@ body {
     #learn-area {
         width: 100%;
         padding: 8px;
-    }
-
-    #quiz-img {
-        max-height: calc(100dvh - 48px);
     }
 
     .tq-quiz-image {
