@@ -85,11 +85,15 @@ function buildMenu(data, onSelect) {
                     var ansichtLi = document.createElement('li');
                     ansichtLi.className = 'menu-ansicht-li';
 
-                    function setActive() {
+                    function setActive(modeBtn) {
                         document.querySelectorAll('.menu-ansicht-li.active').forEach(function (li) {
                             li.classList.remove('active');
                         });
+                        document.querySelectorAll('.menu-mode-btn.active').forEach(function (btn) {
+                            btn.classList.remove('active');
+                        });
                         ansichtLi.classList.add('active');
+                        modeBtn.classList.add('active');
                     }
 
                     ansichtLi.classList.add('menu-ansicht-li--split');
@@ -109,7 +113,7 @@ function buildMenu(data, onSelect) {
                     ].forEach(function (action) {
                         var modeBtn = makeBtn('menu-mode-btn', action.text);
                         modeBtn.addEventListener('click', function () {
-                            setActive();
+                            setActive(modeBtn);
                             onSelect(item.entry, action.mode);
                         });
                         actionsEl.appendChild(modeBtn);

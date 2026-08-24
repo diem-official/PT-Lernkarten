@@ -195,7 +195,7 @@ body {
     color: #1a3a6e;
 }
 
-.menu-ansicht-li.active .menu-mode-btn {
+.menu-mode-btn.active {
     background: #c4d9f5;
     border-color: #a8c4ee;
     font-weight: 600;
