@@ -3586,14 +3586,25 @@
     "view": "Frontal",
     "labels": [
       {
-        "text": "lateralis medialis",
-        "anchor_x": 862,
-        "anchor_y": 105.0,
+        "text": "lateralis",
+        "anchor_x": 870,
+        "anchor_y": 105.5,
         "mask_box": {
-          "x": 853,
-          "y": 78,
-          "w": 154,
-          "h": 110
+          "x": 862,
+          "y": 84,
+          "w": 129,
+          "h": 43
+        }
+      },
+      {
+        "text": "medialis",
+        "anchor_x": 870,
+        "anchor_y": 158.5,
+        "mask_box": {
+          "x": 862,
+          "y": 137,
+          "w": 139,
+          "h": 43
         }
       },
       {
