@@ -95,7 +95,24 @@ Entries mit nur einem Label funktionieren unverändert nach demselben Automaten 
 
 ### 3.5 Resize-Handling
 
-Der bestehende globale `resize`-Listener in `quiz.js` rendert Marker aktuell nur neu, wenn `_currentEntry` gesetzt ist (Flag für aktiven Schreiben-Modus). Diese Logik wird so erweitert, dass bei aktivem Quiz-Modus ebenfalls die Marker (inkl. aktueller Hervorhebung) bei Fenster-/Orientierungswechsel neu positioniert werden.
+Der bestehende globale `resize`-Listener in `quiz.js` ist aktuell direkt an `_currentEntry` gekoppelt (Flag für aktiven Schreiben-Modus) und ruft hart codiert `renderMarkers(_currentEntry.labels, img, zoomContainer)` auf (3 Argumente, keine Hervorhebung). Da `quiz.js` keine Modul-Kapselung nutzt (alle Top-Level-`var`s sind echte globale Variablen, genauso wie es `quiz-abfrage.js` als nachfolgendes `<script>`-Tag sein wird), wird `_currentEntry` durch einen generischen Callback-Hook ersetzt:
+
+```js
+var _activeMarkerRefresh = null; // Funktion ohne Argumente, oder null
+```
+
+- **Schreiben-Modus** (`loadQuiz`): setzt `_activeMarkerRefresh` auf eine Closure, die `renderMarkers(entry.labels, img, zoomContainer)` aufruft (kein Hervorhebungs-Index).
+- **Quiz-Modus** (`loadQuizAbfrage`): setzt `_activeMarkerRefresh` auf eine Closure, die `renderMarkers(entry.labels, img, zoomContainer, currentIndex)` aufruft. `currentIndex` ist eine Variable im umschließenden Scope von `quiz-abfrage.js`, die bei jedem Frage-Wechsel neu zugewiesen wird — die Closure liest bei jedem Aufruf den aktuellen Wert (JS-Closures binden die Variable, nicht ihren Wert zum Zeitpunkt der Zuweisung).
+- **Lernen-Modus** (`loadLernen`, `loadTextLernen`, `loadTextQuiz`): setzen `_activeMarkerRefresh = null` (wie bisher `_currentEntry = null`).
+
+Der Resize-Listener vereinfacht sich zu:
+
+```js
+if (!_activeMarkerRefresh) return;
+_activeMarkerRefresh();
+```
+
+Die Variable `_currentEntry` entfällt vollständig (ihre einzige bisherige Verwendung im Code ist dieser Resize-Gate; keine anderen Lese-/Schreibzugriffe im Projekt).
 
 ---
 
@@ -115,7 +132,7 @@ Der bestehende globale `resize`-Listener in `quiz.js` rendert Marker aktuell nur
 | Datei | Änderung |
 |---|---|
 | `web/js/quiz-abfrage.js` | **Neu** — komplette Quiz-Abfrage-Logik |
-| `web/js/quiz.js` | `renderMarkers` um optionalen `highlightIndex`-Parameter erweitert; Resize-Listener erweitert |
+| `web/js/quiz.js` | `renderMarkers` um optionalen `highlightIndex`-Parameter erweitert; `_currentEntry` durch generischen `_activeMarkerRefresh`-Callback-Hook ersetzt (Resize-Listener) |
 | `web/js/menu.js` | Zweizeiliger Block (Label + Lernen/Schreiben/Quiz-Buttons) für Bild-Einträge |
 | `web/js/app.js` | Routing um Modus `quiz` ergänzt |
 | `web/index.html` | neuer `<script src="js/quiz-abfrage.js">` |
