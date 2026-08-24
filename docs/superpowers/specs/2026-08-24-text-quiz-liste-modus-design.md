@@ -35,10 +35,10 @@ Wiederverwendung der bestehenden Paar-Liste — keine neue Matching- oder Filter
 pairs = _tqBuildQuizPairs(quizEntry);   // wie bisher, unverändert
 ```
 
-Neu: ein Status-Array parallel zu `pairs`, nur im Listen-Modus verwendet:
+Neu: ein Status-Array parallel zu `pairs`, nur im Listen-Modus verwendet. Wird als weitere `var` in den bestehenden Deklarationsblock am Anfang von `loadTextQuizAbfrage` aufgenommen (`var pairs = []; var queue = []; var currentIdx = null; var listStatus = [];`):
 
 ```js
-var listStatus = pairs.map(function () { return null; }); // null | 'correct' | 'wrong'
+listStatus = pairs.map(function () { return null; }); // null | 'correct' | 'wrong'
 ```
 
 `pairs` ist bereits in Zeile×Spalte-Reihenfolge aufgebaut (siehe `_tqBuildQuizPairs`), daher lässt sich die Gruppierung nach Zeile durch einen einzigen sequenziellen Scan ableiten (keine Sortierung nötig):
@@ -228,34 +228,19 @@ Damit existiert die Frage-/Antwort-/Bewertungs-Darstellung nur noch an einer Ste
 
 ## 5. Pop-up (Modal)
 
-Neues, einmalig lazy angelegtes Overlay-Element (analog zum bestehenden Muster `_openImageOverlay`/`#tq-image-overlay` in `quiz.js`): eigene ID `#tqz-question-modal`, wiederverwendet statt bei jedem Öffnen neu erzeugt.
+Neues, einmalig lazy angelegtes Overlay-Element, **exakt** nach dem bestehenden Muster von `_openImageOverlay`/`#tq-image-overlay` in `quiz.js`: Idempotenz über `document.getElementById(...)` bei jedem Aufruf, **keine** JS-Variable als Cache.
+
+**Wichtig — warum keine Cache-Variable:** `loadTextQuizAbfrage` läuft bei jedem Ansichtswechsel neu (erkennbar am bestehenden `_activeMarkerRefresh = null;` am Funktionsanfang). Eine `var _tqzModalOverlay = null;` *innerhalb* dieser Funktion würde daher bei jedem Wechsel zurückgesetzt, sodass `_tqzEnsureModal()` beim zweiten Öffnen von "Aus Liste" in derselben Session ein zweites, orphantes Overlay-Element erzeugen würde. Da `_tqzEnsureModal` deshalb **außerhalb** von `loadTextQuizAbfrage` auf Modul-Ebene stehen muss (analog zu `_openImageOverlay`, `_qzButton`, `_qzShuffle`), kann es ohnehin nicht auf `pairs`/`listStatus` zugreifen — das ist auch nicht nötig, denn diese Funktion baut nur das leere Overlay-Grundgerüst. Die Anbindung an die aktuellen Quiz-Daten passiert erst in `openQuestionModal` (siehe unten), die als Closure *innerhalb* von `loadTextQuizAbfrage` bleibt.
 
 ```js
-var _tqzModalOverlay = null;
-
-function openQuestionModal(pairIndex) {
-    var overlay = _tqzEnsureModal();
-    var box = document.getElementById('tqz-modal-box');
-
-    _tqzRenderQuestionStep(box, pairs[pairIndex], function (verdict) {
-        listStatus[pairIndex] = verdict;
-        closeQuestionModal();
-        renderList();
-        _tqzCheckFinished();
-    });
-
-    overlay.classList.add('qz-modal-overlay--visible');
-    document.getElementById('tqz-modal-close').focus();
-}
-
-function closeQuestionModal() {
-    _tqzModalOverlay.classList.remove('qz-modal-overlay--visible');
-}
-
+// Modul-Ebene, außerhalb von loadTextQuizAbfrage (wie _qzButton, _qzShuffle).
+// Idempotent über getElementById — keine Cache-Variable, da loadTextQuizAbfrage
+// bei jedem Ansichtswechsel neu ausgeführt wird (siehe Begründung oben).
 function _tqzEnsureModal() {
-    if (_tqzModalOverlay) return _tqzModalOverlay;
+    var overlay = document.getElementById('tqz-question-modal');
+    if (overlay) return overlay;
 
-    var overlay = document.createElement('div');
+    overlay = document.createElement('div');
     overlay.id = 'tqz-question-modal';
     overlay.className = 'qz-modal-overlay';
 
@@ -270,16 +255,42 @@ function _tqzEnsureModal() {
     closeBtn.className = 'tq-overlay-close';
     closeBtn.textContent = '×';
     closeBtn.setAttribute('aria-label', 'Schließen');
-    closeBtn.addEventListener('click', closeQuestionModal);
+    closeBtn.addEventListener('click', function () {
+        overlay.classList.remove('qz-modal-overlay--visible');
+    });
     overlay.appendChild(closeBtn);
 
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeQuestionModal();
+        if (e.key === 'Escape') overlay.classList.remove('qz-modal-overlay--visible');
     });
 
     document.body.appendChild(overlay);
-    _tqzModalOverlay = overlay;
     return overlay;
+}
+```
+
+`openQuestionModal`/`closeQuestionModal` bleiben Closures *innerhalb* von `loadTextQuizAbfrage`, da sie `pairs`, `listStatus`, `renderList()` und `_tqzCheckFinished()` referenzieren:
+
+```js
+function openQuestionModal(pairIndex) {
+    var overlay = _tqzEnsureModal();
+    var box = document.getElementById('tqz-modal-box');
+
+    _tqzRenderQuestionStep(box, pairs[pairIndex], function (verdict) {
+        listStatus[pairIndex] = verdict;
+        closeQuestionModal();
+        renderList();
+        _tqzCheckFinished(); // überschreibt die gerade gerenderte Liste sofort
+                              // mit dem Abschlussbildschirm, falls alles korrekt
+                              // ist — synchron, kein sichtbares Flackern
+    });
+
+    overlay.classList.add('qz-modal-overlay--visible');
+    document.getElementById('tqz-modal-close').focus();
+}
+
+function closeQuestionModal() {
+    document.getElementById('tqz-question-modal').classList.remove('qz-modal-overlay--visible');
 }
 ```
 
@@ -357,7 +368,7 @@ Wiederverwendet ohne Änderung: `.tq-overlay-close` (Schließen-Button-Stil, ber
 
 | Datei | Änderung |
 |---|---|
-| `web/js/text-quiz-abfrage.js` | Dritter Startbildschirm-Button "Aus Liste"; neue Funktionen `showListScreen`, `renderList`, `_tqzGroupPairsByRow`, `_tqzApplyStatus`, `openQuestionModal`, `closeQuestionModal`, `_tqzEnsureModal`, `_tqzCheckFinished`; Refactor von `showQuestion`/`showAnswer` zu gemeinsamem `_tqzRenderQuestionStep` (genutzt von `askCurrent` und `openQuestionModal`) |
+| `web/js/text-quiz-abfrage.js` | Dritter Startbildschirm-Button "Aus Liste"; `listStatus` ergänzt den bestehenden Deklarationsblock (`pairs`/`queue`/`currentIdx`) in `loadTextQuizAbfrage`; neue Closures `showListScreen`, `renderList`, `_tqzApplyStatus`, `openQuestionModal`, `closeQuestionModal`, `_tqzCheckFinished` innerhalb von `loadTextQuizAbfrage`; neue Modul-Ebene-Funktionen `_tqzGroupPairsByRow`, `_tqzEnsureModal` (analog zu `_qzButton`/`_qzShuffle`, außerhalb von `loadTextQuizAbfrage`); Refactor von `showQuestion`/`showAnswer` zu gemeinsamem `_tqzRenderQuestionStep` (genutzt von `askCurrent` und `openQuestionModal`) |
 | `web/css/style.css` | Neu: `.qz-modal-overlay`, `.qz-modal-overlay--visible`, `.qz-modal-box`, `.qz-list-group`, `.qz-list-row`, `.qz-panel--scrollable` |
 
 ---
