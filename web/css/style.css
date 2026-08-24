@@ -410,6 +410,50 @@ body {
     background: #9c2d21;
 }
 
+/* ── "Aus Liste"-Modus: Pop-up-Modal ────────────────────────── */
+.qz-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.qz-modal-overlay--visible {
+    display: flex;
+}
+
+.qz-modal-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 28px 32px;
+    max-width: 400px;
+    width: 90vw;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ── "Aus Liste"-Modus: Gruppierung nach Zeile ──────────────── */
+.qz-list-group {
+    margin-bottom: 18px;
+}
+
+.qz-list-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+/* Ohne Bild (.tq-quiz-standalone) hat .qz-panel keine Höhenbegrenzung; bei
+   vielen Zeilen (z. B. 8 Muskeln × 4 Spalten) muss die Liste scrollen statt
+   über den Viewport hinauszuragen. Nur für den Listen-Modus gesetzt. */
+.qz-panel--scrollable {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
 /* ── Zoom container ─────────────────────────── */
 #zoom-container {
     position: relative;
