@@ -14,9 +14,11 @@ function loadLernen(entry, ogImgBasePath) {
     var zoomContainer = document.getElementById('zoom-container');
     var placeholder  = document.getElementById('placeholder');
     var textWrapper  = document.getElementById('text-quiz-wrapper');
+    var answerPanel  = document.getElementById('answer-panel');
 
     img.onload = null;
-    zoomContainer.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
+    zoomContainer.querySelectorAll('.marker-badge').forEach(function (el) { el.remove(); });
+    answerPanel.innerHTML = '';
 
     placeholder.classList.add('hidden');
     textWrapper.classList.add('hidden');
@@ -37,56 +39,60 @@ function loadQuiz(entry, imgBasePath) {
     var zoomContainer = document.getElementById('zoom-container');
     var placeholder   = document.getElementById('placeholder');
     var textWrapper   = document.getElementById('text-quiz-wrapper');
+    var answerPanel   = document.getElementById('answer-panel');
 
-    zoomContainer.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
+    zoomContainer.querySelectorAll('.marker-badge').forEach(function (el) { el.remove(); });
 
     placeholder.classList.add('hidden');
     textWrapper.classList.add('hidden');
     wrapper.classList.remove('hidden');
     resetZoom();
 
+    renderAnswerPanel(entry.labels, answerPanel);
+
     img.onload = function () {
-        renderOverlays(entry.labels, img, zoomContainer);
+        renderMarkers(entry.labels, img, zoomContainer);
     };
     img.src = imgBasePath + entry.filename;
     // If the browser already has this image cached (same URL), onload won't fire.
     if (img.complete && img.naturalWidth > 0) {
-        renderOverlays(entry.labels, img, zoomContainer);
+        renderMarkers(entry.labels, img, zoomContainer);
     }
 }
 
-function renderOverlays(labels, img, wrapper) {
+// Numbered dots on the image, positioned where the label used to be.
+function renderMarkers(labels, img, zoomContainer) {
     var scaleX = img.clientWidth  / img.naturalWidth;
     var scaleY = img.clientHeight / img.naturalHeight;
 
-    var existing = wrapper.querySelectorAll('.overlay-group');
-    if (existing.length === labels.length) {
-        // Resize-Fall: nur Positionen anpassen
-        existing.forEach(function (group, i) {
-            var lb = labels[i];
-            group.style.left = (lb.mask_box.x * scaleX) + 'px';
-            group.style.top  = (lb.mask_box.y * scaleY) + 'px';
-            var inp = group.querySelector('.label-input');
-            if (inp) inp.style.width = (lb.mask_box.w * scaleX) + 'px';
-        });
-        return;
-    }
+    zoomContainer.querySelectorAll('.marker-badge').forEach(function (el) { el.remove(); });
 
-    wrapper.querySelectorAll('.overlay-group').forEach(function (el) { el.remove(); });
+    labels.forEach(function (label, i) {
+        var badge = document.createElement('div');
+        badge.className   = 'marker-badge number-badge';
+        badge.textContent = i + 1;
+        badge.style.left  = ((label.mask_box.x + label.mask_box.w / 2) * scaleX) + 'px';
+        badge.style.top   = ((label.mask_box.y + label.mask_box.h / 2) * scaleY) + 'px';
+        zoomContainer.appendChild(badge);
+    });
+}
 
-    labels.forEach(function (label) {
-        var group = document.createElement('div');
-        group.className = 'overlay-group';
-        group.style.left = (label.mask_box.x * scaleX) + 'px';
-        group.style.top  = (label.mask_box.y * scaleY) + 'px';
+// Numbered input rows in the side/bottom panel.
+function renderAnswerPanel(labels, panel) {
+    panel.innerHTML = '';
+
+    labels.forEach(function (label, i) {
+        var row = document.createElement('div');
+        row.className = 'answer-row';
+
+        var number = document.createElement('div');
+        number.className   = 'answer-number number-badge';
+        number.textContent = i + 1;
 
         var input = document.createElement('input');
         input.type      = 'text';
         input.className = 'label-input';
-        input.style.width    = (label.mask_box.w * scaleX) + 'px';
         input.dataset.solution = label.text;
-        input.dataset.ox       = label.anchor_x;
-        input.dataset.oy       = label.anchor_y;
 
         var helpBtn = document.createElement('button');
         helpBtn.type      = 'button';
@@ -99,9 +105,10 @@ function renderOverlays(labels, img, wrapper) {
             helpBtn.addEventListener('click', function () { showHelp(solution); });
         }(input, label.text));
 
-        group.appendChild(input);
-        group.appendChild(helpBtn);
-        wrapper.appendChild(group);
+        row.appendChild(number);
+        row.appendChild(input);
+        row.appendChild(helpBtn);
+        panel.appendChild(row);
     });
 }
 
@@ -588,27 +595,7 @@ window.addEventListener('resize', function () {
         var img           = document.getElementById('quiz-img');
         var zoomContainer = document.getElementById('zoom-container');
 
-        var savedState = {};
-        zoomContainer.querySelectorAll('.label-input').forEach(function (inp) {
-            savedState[inp.dataset.ox + ',' + inp.dataset.oy] = {
-                value:     inp.value,
-                className: inp.className,
-                bgStyle:   inp.style.background,
-                readOnly:  inp.readOnly
-            };
-        });
-
-        renderOverlays(_currentEntry.labels, img, zoomContainer);
-
-        zoomContainer.querySelectorAll('.label-input').forEach(function (inp) {
-            var key = inp.dataset.ox + ',' + inp.dataset.oy;
-            if (savedState[key]) {
-                inp.value          = savedState[key].value;
-                inp.className      = savedState[key].className;
-                inp.style.background = savedState[key].bgStyle;
-                inp.readOnly       = savedState[key].readOnly;
-            }
-        });
+        renderMarkers(_currentEntry.labels, img, zoomContainer);
     }, 120);
 });
 

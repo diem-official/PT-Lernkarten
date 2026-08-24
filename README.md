@@ -116,7 +116,9 @@ python3 -m http.server 8080
 
 ### Image quiz
 
-**On topic selection** — `quiz.js` loads the cleaned image and renders an `<input>` overlay for every label, positioned and sized according to the pixel coordinates in `data.json`, scaled to the rendered image size.
+**On topic selection** — `quiz.js` loads the cleaned image and draws a small numbered marker at each label's position (from the `mask_box` coordinates in `data.json`, scaled to the rendered image size). The actual answer fields don't sit on the image — they live in a separate panel, one numbered row per marker, matched by number.
+
+**Layout** — the answer panel sits to the right of the image on wide (landscape) viewports and below the image on tall (portrait) viewports, switching automatically via CSS as the window is resized or the device is rotated. The panel scrolls independently if the rows don't all fit; the image itself always stays fully visible and zoomable.
 
 **Validation** — prefix matching on every keystroke:
 
@@ -126,9 +128,9 @@ python3 -m http.server 8080
 | Typing in progress (prefix match) | Green gradient |
 | No match (wrong) | Orange |
 
-**Help button** (`?`) — opens a modal showing the correct term.
+**Help button** (`?`) — one per row in the answer panel, opens a modal showing the correct term.
 
-**Window resize** — overlays recalculate automatically; input state (values, colours, locked fields) is preserved.
+**Window resize** — marker positions on the image recalculate automatically. The answer panel's layout doesn't depend on image size, so field state (values, colours, locked fields) is untouched.
 
 ### Text quiz
 

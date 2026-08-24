@@ -209,8 +209,64 @@ body {
     position: absolute;
     inset: 0;
     display: flex;
+}
+
+/* ── Image pane (zoom-container centers inside this) ──────────── */
+#image-pane {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+/* ── Answer panel ───────────────────────────── */
+#answer-panel {
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.answer-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.answer-row .label-input {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Landscape viewport ("16:9"): panel to the right */
+@media (orientation: landscape) {
+    #quiz-wrapper {
+        flex-direction: row;
+    }
+    #answer-panel {
+        width: 280px;
+        min-width: 220px;
+        max-width: 30%;
+        border-left: 1px solid #d0d0d0;
+    }
+}
+
+/* Portrait viewport ("9:16"): panel below */
+@media (orientation: portrait) {
+    #quiz-wrapper {
+        flex-direction: column;
+    }
+    #answer-panel {
+        width: 100%;
+        max-height: 35vh;
+        border-top: 1px solid #d0d0d0;
+    }
 }
 
 /* ── Zoom container ─────────────────────────── */
@@ -234,13 +290,26 @@ body {
     max-height: 100dvh;
 }
 
-/* ── Overlays ───────────────────────────────── */
-.overlay-group {
-    position: absolute;
+/* ── Marker badges (numbered dots on the image) ────────────────── */
+.number-badge {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid #555;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 12px;
+    font-weight: 700;
     display: flex;
     align-items: center;
-    gap: 4px;
-    pointer-events: auto;
+    justify-content: center;
+    line-height: 1;
+}
+
+.marker-badge {
+    position: absolute;
+    transform: translate(-50%, -50%);
 }
 
 .label-input {
