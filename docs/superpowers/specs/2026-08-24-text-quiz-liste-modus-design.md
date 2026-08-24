@@ -48,16 +48,13 @@ listStatus = pairs.map(function () { return null; }); // null | 'correct' | 'wro
 // bleibt erhalten (pairs ist bereits Zeile×Spalte-sortiert).
 function _tqzGroupPairsByRow(pairs) {
     var groups = [];
-    var byRow = {};
     pairs.forEach(function (pair, index) {
-        var key = groups.length && groups[groups.length - 1].row === pair.row
-            ? groups.length - 1
-            : -1;
-        if (key === -1 || groups[key].row !== pair.row) {
-            groups.push({ row: pair.row, items: [] });
-            key = groups.length - 1;
+        var last = groups[groups.length - 1];
+        if (!last || last.row !== pair.row) {
+            last = { row: pair.row, items: [] };
+            groups.push(last);
         }
-        groups[key].items.push({ pair: pair, index: index });
+        last.items.push({ pair: pair, index: index });
     });
     return groups;
 }
@@ -78,7 +75,7 @@ function showListScreen() {
 
 function renderList() {
     var panel = _tqzPanel();
-    panel.classList.add('qz-panel--scrollable'); // siehe Abschnitt 6
+    panel.classList.add('qz-panel--scrollable'); // siehe Abschnitt 7
 
     var heading = document.createElement('p');
     heading.className   = 'qz-heading';
@@ -368,7 +365,7 @@ Wiederverwendet ohne Änderung: `.tq-overlay-close` (Schließen-Button-Stil, ber
 
 | Datei | Änderung |
 |---|---|
-| `web/js/text-quiz-abfrage.js` | Dritter Startbildschirm-Button "Aus Liste"; `listStatus` ergänzt den bestehenden Deklarationsblock (`pairs`/`queue`/`currentIdx`) in `loadTextQuizAbfrage`; neue Closures `showListScreen`, `renderList`, `_tqzApplyStatus`, `openQuestionModal`, `closeQuestionModal`, `_tqzCheckFinished` innerhalb von `loadTextQuizAbfrage`; neue Modul-Ebene-Funktionen `_tqzGroupPairsByRow`, `_tqzEnsureModal` (analog zu `_qzButton`/`_qzShuffle`, außerhalb von `loadTextQuizAbfrage`); Refactor von `showQuestion`/`showAnswer` zu gemeinsamem `_tqzRenderQuestionStep` (genutzt von `askCurrent` und `openQuestionModal`) |
+| `web/js/text-quiz-abfrage.js` | Dritter Startbildschirm-Button "Aus Liste"; `listStatus` ergänzt den bestehenden Deklarationsblock (`pairs`/`queue`/`currentIdx`) in `loadTextQuizAbfrage`; neue Closures `showListScreen`, `renderList`, `_tqzApplyStatus`, `openQuestionModal`, `closeQuestionModal`, `_tqzCheckFinished`, `askCurrent` (ersetzt `showQuestion` als Aufrufer von `nextQuestion()`) innerhalb von `loadTextQuizAbfrage`; neue Modul-Ebene-Funktionen `_tqzGroupPairsByRow`, `_tqzEnsureModal` (analog zu `_qzButton`/`_qzShuffle`, außerhalb von `loadTextQuizAbfrage`); Refactor von `showQuestion`/`showAnswer` zu gemeinsamem `_tqzRenderQuestionStep` — ebenfalls Modul-Ebene, da sie nur ihre Parameter (`container`/`pair`/`onJudged`) und bestehende Globals (`_buildCategoryBlock`, `_qzButton`) nutzt, keine Closure-Variablen aus `loadTextQuizAbfrage` — genutzt von `askCurrent` und `openQuestionModal` |
 | `web/css/style.css` | Neu: `.qz-modal-overlay`, `.qz-modal-overlay--visible`, `.qz-modal-box`, `.qz-list-group`, `.qz-list-row`, `.qz-panel--scrollable` |
 
 ---
