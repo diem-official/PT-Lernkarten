@@ -49,4 +49,4 @@ jobs:
           rsync -avz --delete \
             -e "ssh -o StrictHostKeyChecking=yes" \
             web/ \
-            "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/pt-lernkarten/"
+            "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:"

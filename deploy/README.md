@@ -73,9 +73,13 @@ Inhalt von `deploy_key` (privater Teil, **ohne** Passphrase) als
 `VPS_SSH_KEY`-Secret in GitHub hinterlegen (siehe Abschnitt 1), danach lokale
 Kopien beider Schlüsseldateien löschen.
 
-> Hinweis: `rrsync` erzwingt das erlaubte Zielverzeichnis serverseitig —
-> unabhängig davon, welchen Pfad der rsync-Client aus der GitHub Action
-> übergibt, landen Dateien ausschließlich in `/var/www/pt-lernkarten/`.
+> Hinweis: `rrsync` chdir't serverseitig bereits in das erlaubte
+> Zielverzeichnis. Der rsync-Client (z. B. die GitHub Action) darf diesen
+> Pfad im Ziel **nicht wiederholen** — `deploy@host:/var/www/pt-lernkarten/`
+> führt zu einem verdoppelten Pfad
+> (`/var/www/pt-lernkarten/var/www/pt-lernkarten`) und schlägt fehl. Richtig
+> ist ein Ziel ohne Pfad, z. B. `deploy@host:` (siehe
+> `.github/workflows/deploy.yml`).
 
 ## 3. nginx einrichten
 
