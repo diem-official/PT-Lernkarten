@@ -103,10 +103,11 @@ function loadTextQuizAbfrage(entry, imgBase, textQuizData) {
     }
 
     function askCurrent() {
+        var counterText = _qzCounterText(queue.length + 1, pairs.length);
         _tqzRenderQuestionStep(panelHost, pairs[currentIdx], function (verdict) {
             if (verdict === 'wrong') queue.push(currentIdx);
             nextQuestion();
-        });
+        }, counterText);
     }
 
     // ── "Aus Liste": alle Fragen gruppiert nach Zeile, frei wählbare
@@ -269,13 +270,15 @@ function _tqzGroupPairsByRow(pairs) {
 // Modal schließen, ...). Gemeinsam genutzt von askCurrent (Sequenziell/
 // Zufällig, rendert in panelHost) und openQuestionModal (Aus Liste, rendert
 // in die Modal-Box).
-function _tqzRenderQuestionStep(container, pair, onJudged) {
+function _tqzRenderQuestionStep(container, pair, onJudged, counterText) {
     renderQuestion();
 
     function renderQuestion() {
         container.innerHTML = '';
         var panel = document.createElement('div');
         panel.className = 'qz-panel';
+
+        if (counterText) panel.appendChild(_qzCounterEl(counterText));
 
         var label = document.createElement('p');
         label.className   = 'qz-category';
@@ -298,6 +301,8 @@ function _tqzRenderQuestionStep(container, pair, onJudged) {
         container.innerHTML = '';
         var panel = document.createElement('div');
         panel.className = 'qz-panel';
+
+        if (counterText) panel.appendChild(_qzCounterEl(counterText));
 
         var label = document.createElement('p');
         label.className   = 'qz-category';

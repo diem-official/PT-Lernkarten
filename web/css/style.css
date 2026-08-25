@@ -362,6 +362,11 @@ body {
     color: #777;
 }
 
+.qz-counter {
+    font-size: 13px;
+    color: #777;
+}
+
 .qz-btn {
     background: #fff;
     border: 1.5px solid #777;

@@ -76,6 +76,8 @@ function loadQuizAbfrage(entry, imgBasePath) {
 
         var panel = _qzPanel();
 
+        panel.appendChild(_qzCounterEl(_qzCounterText(queue.length + 1, entry.labels.length)));
+
         var question = document.createElement('p');
         question.className   = 'qz-question';
         question.textContent = 'Wie heißt die Struktur mit der Nummer ' + (currentIndex + 1) + '?';
@@ -90,6 +92,8 @@ function loadQuizAbfrage(entry, imgBasePath) {
 
     function showAnswer() {
         var panel = _qzPanel();
+
+        panel.appendChild(_qzCounterEl(_qzCounterText(queue.length + 1, entry.labels.length)));
 
         var question = document.createElement('p');
         question.className   = 'qz-question';
@@ -156,6 +160,19 @@ function _qzButton(className, text) {
     btn.className = className;
     btn.textContent = text;
     return btn;
+}
+
+function _qzCounterEl(text) {
+    var counter = document.createElement('p');
+    counter.className   = 'qz-counter';
+    counter.textContent = text;
+    return counter;
+}
+
+// "X von N offen" — open zählt die aktuell gestellte Frage mit (sie wurde
+// bereits aus der Warteschlange geshiftet, ist aber noch nicht bewertet).
+function _qzCounterText(open, total) {
+    return open + ' von ' + total + ' offen';
 }
 
 // Fisher-Yates
