@@ -23,18 +23,29 @@ Zwei unabhängige Schutzmechanismen für zwei unterschiedliche Probleme:
 2. **Cloudflare Access vor der ausgelieferten Seite** (Teil dieser Umsetzung) schützt den laufenden Betrieb: Nur wer auf der E-Mail-Allowlist steht, erreicht die Seite überhaupt.
 
 ```
-GitHub (öffentlich, Phase 1)      Cloudflare Access            Eigener VPS
-┌─────────────────┐   push      ┌──────────────────┐  Tunnel  ┌────────────────┐
-│ Source + Pipeline │ ─────────▶│ E-Mail-Allowlist   │◀────────▶│ nginx           │
-│                    │  Action    │ One-Time-PIN-Login │          │ + cloudflared   │
-└─────────────────┘  (rsync/SSH) │ Session-Cookie      │          │ serviert web/   │
-        │                        └──────────────────┘          └────────────────┘
-        │ (unverändert,                     ▲
-        │  bestehender Job)            Klassenkamerad
-        ▼                          (E-Mail auf Liste)
-   GitHub Pages
-  (läuft parallel weiter,
-   bis manuell abgeschaltet)
+        ┌────────────────────┐
+        │  Source + Pipeline  │   GitHub-Repo (öffentlich, Phase 1)
+        └────────────────────┘
+           │              │
+     push  │              │  push, Action (rsync/SSH)
+           ▼              ▼
+┌─────────────────────┐  ┌────────────────────┐
+│  GitHub Pages         │  │  VPS: nginx          │
+│  (läuft parallel        │  │  + cloudflared        │
+│   weiter, bis manuell    │  │  serviert web/          │
+│   abgeschaltet)            │  └────────────────────┘
+└─────────────────────┘             │
+                                     │ Tunnel
+                                     ▼
+                        ┌──────────────────────┐
+                        │  Cloudflare Access      │
+                        │  E-Mail-Allowlist         │
+                        │  One-Time-PIN-Login          │
+                        │  Session-Cookie                │
+                        └──────────────────────┘
+                                     ▲
+                               Klassenkamerad
+                            (E-Mail auf Liste)
 ```
 
 Die Web-App selbst (HTML/CSS/JS, `web/`-Ordner) bleibt unverändert eine rein clientseitige, statische Anwendung. Es wird kein eigener Auth-Code geschrieben — die Zugriffskontrolle liegt vollständig bei Cloudflare Access, vorgelagert vor dem statischen Content.
@@ -45,7 +56,7 @@ Die Web-App selbst (HTML/CSS/JS, `web/`-Ordner) bleibt unverändert eine rein cl
 
 **Einmalige Einrichtung:**
 
-1. Domain bei Cloudflare hinzufügen (kostenloser Account); Nameserver auf Cloudflare umstellen.
+1. Domain bei Cloudflare hinzufügen (kostenloser Account); Nameserver auf Cloudflare umstellen. Der Betreiber verfügt bereits über eine eigene Domain (siehe Ziel-Abschnitt); die konkrete Domain/Subdomain (Platzhalter `lernen.<domain>` in diesem Dokument) wird bei der Umsetzung eingesetzt, Registrierung einer neuen Domain ist nicht Teil dieses Vorhabens.
 2. `cloudflared` (Tunnel-Client) auf dem VPS installieren und als systemd-Service einrichten. Der Tunnel verbindet `lernen.<domain>` mit `localhost:80` (nginx) auf dem Server. Es muss kein Port nach außen geöffnet werden; TLS wird von Cloudflare terminiert, eine eigene Zertifikatsverwaltung (z. B. certbot) entfällt.
 3. In Cloudflare Zero Trust eine **Access Application** für `lernen.<domain>` anlegen mit einer Policy: *Allow*, wenn die eingegebene E-Mail-Adresse in einer festen Liste einzelner, vom Betreiber gepflegter Adressen enthalten ist.
 4. Login-Methode: **One-Time PIN per E-Mail** (Cloudflares eingebaute passwortlose Methode). Kein SMTP-Setup, kein Token-Handling, kein Session-Code im eigenen Zuständigkeitsbereich.
@@ -68,7 +79,7 @@ Auf dem (aktuell leeren) Linux-VPS mit Root/SSH-Zugriff:
 - **nginx**, konfiguriert als einfacher statischer Dateiserver für den Inhalt von `web/`. Kein Docker, keine Anwendungslogik — die Seite bleibt rein statisch wie bisher.
 - **cloudflared** als systemd-Service (siehe Abschnitt 2).
 - Deploy-Zielverzeichnis, z. B. `/var/www/pt-lernkarten/`, auf das die nginx-Konfiguration zeigt.
-- Ein dedizierter **Deploy-User** mit SSH-Key-Login (kein Passwort-Login), beschränkt auf Schreibrechte für dieses eine Verzeichnis — getrennt vom root-Login des Betreibers.
+- Ein dedizierter **Deploy-User** mit SSH-Key-Login (kein Passwort-Login), beschränkt auf Schreibrechte für dieses eine Verzeichnis — getrennt vom root-Login des Betreibers. Der konkrete Mechanismus zur Rechte-Beschränkung (z. B. SFTP-Jail, `ForceCommand`, ACLs) ist ein offener Entscheidungspunkt für den Implementierungsplan, kein festgelegtes Verfahren dieser Spec.
 
 ---
 
