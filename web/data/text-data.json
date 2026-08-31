@@ -211,28 +211,66 @@
     ],
     "rows": [
       {
-        "question": "M. iliopsoas zusammen aus M. psoas major (MPM) und M. Iliacus (MI)",
+        "question": "M. iliopsoas",
         "answers": {
           "Ursprung": [
-            "MPM Oberfl: BWK 12",
-            "MPM Oberfl: LWK 1-4",
-            "MPM Oberfl: Disci intervertebrales",
-            "MPM Tief: Procc. costales LWK 1-5",
-            "MI: Fossa iliaca"
+            "M. psoas major: seitlich an BWK 12 – LWK 4 (Wirbelkörper + Disci) und Procc. costales LWK 1-5",
+            "M. iliacus: Fossa iliaca"
           ],
           "Ansatz": [
-            "Gemeinsam: Trochanter minor Femur"
+            "gemeinsame Endsehne beider Muskeln am Trochanter minor Femur"
           ],
           "Funktion": [
-            "Hüftgelenk: Flexion",
-            "Hüftgelenk: Außenrotation",
-            "LWS 1-seitig Kontr.: Punctum fixum am Femur",
-            "LWS 1 seitig Kontr.: Lateralflexion zur ipsilateralen Seite",
-            "LWS 2-seitig Kontr.: Aufrichten Rumpf aus Rückenlage"
+            "Hüfte: Flexion (stärkster Hüftbeuger)",
+            "Hüfte: Außenrotation",
+            "LWS 1-seitig (Punctum fixum Femur): Lateralflexion zur ipsilateralen Seite",
+            "LWS 2-seitig (Punctum fixum Femur): Aufrichten Rumpf aus Rückenlage"
           ],
           "Innervation": [
-            "N. femoralis L1-4",
-            "direkte Äste Plexus lumbalis"
+            "M. psoas major: direkte Äste Plexus lumbalis L1-3",
+            "M. iliacus: N. femoralis L1-4"
+          ]
+        }
+      },
+      {
+        "question": "M. psoas major",
+        "answers": {
+          "Ursprung": [
+            "Oberfl. Schicht: BWK 12",
+            "Oberfl. Schicht: LWK 1-4",
+            "Oberfl. Schicht: Disci intervertebrales",
+            "Tiefe Schicht: Procc. costales LWK 1-5"
+          ],
+          "Ansatz": [
+            "Trochanter minor Femur (gemeinsame Sehne mit M. iliacus)"
+          ],
+          "Funktion": [
+            "Hüfte: Flexion",
+            "Hüfte: Außenrotation",
+            "LWS 1-seitig (Punctum fixum Femur): Lateralflexion zur ipsilateralen Seite",
+            "LWS 2-seitig (Punctum fixum Femur): Aufrichten Rumpf aus Rückenlage"
+          ],
+          "Innervation": [
+            "direkte Äste Plexus lumbalis L1-3"
+          ]
+        }
+      },
+      {
+        "question": "M. iliacus",
+        "answers": {
+          "Ursprung": [
+            "Fossa iliaca"
+          ],
+          "Ansatz": [
+            "Trochanter minor Femur (gemeinsame Sehne mit M. psoas major)"
+          ],
+          "Funktion": [
+            "Hüfte: Flexion",
+            "Hüfte: Außenrotation",
+            "Becken: Ventralkippung (Punctum fixum Femur)"
+          ],
+          "Innervation": [
+            "N. femoralis L1-4"
           ]
         }
       }
@@ -589,14 +627,31 @@
     ],
     "rows": [
       {
-        "question": "M. triceps surae zusammen aus M. soleus und M. gastrocnemius",
+        "question": "M. triceps surae",
         "answers": {
           "Ursprung": [
-            "M. soleus: Dorsalfläche Caput und Collum fibulae",
-            "M. soleus: Linea musculi solei Tibia",
-            "M. soleus: über Arcus tendineus musculi solei (Sehnenbogen zwischen Tibia und Fibula)",
-            "M. gastrocnemius: Epicondylus medialis femoris Caput mediale",
-            "M. gastrocnemius: Epicondylus lateralis femoris Caput laterale"
+            "M. gastrocnemius: Caput mediale (Epicondylus medialis femoris) + Caput laterale (Epicondylus lateralis femoris)",
+            "M. soleus: Caput und Collum fibulae + Linea musculi solei der Tibia (über Arcus tendineus musculi solei)"
+          ],
+          "Ansatz": [
+            "gemeinsame Achillessehne (Tendo calcaneus) am Tuber calcanei"
+          ],
+          "Funktion": [
+            "OSG: Plantarflexion (stärkster Plantarflexor des Fußes)",
+            "USG: Inversion (Supination)",
+            "Knie: Flexion (nur M. gastrocnemius)"
+          ],
+          "Innervation": [
+            "N. tibialis S1-2"
+          ]
+        }
+      },
+      {
+        "question": "M. gastrocnemius",
+        "answers": {
+          "Ursprung": [
+            "Caput mediale: Epicondylus medialis femoris",
+            "Caput laterale: Epicondylus lateralis femoris"
           ],
           "Ansatz": [
             "über die Achillessehne (Tendo calcaneus) am Tuber calcanei"
@@ -604,7 +659,27 @@
           "Funktion": [
             "OSG: Plantarflexion",
             "USG: Inversion (Supination)",
-            "Knie: Flexion (nur M. gastrocnemius)"
+            "Knie: Flexion"
+          ],
+          "Innervation": [
+            "N. tibialis S1-2"
+          ]
+        }
+      },
+      {
+        "question": "M. soleus",
+        "answers": {
+          "Ursprung": [
+            "Dorsalfläche Caput und Collum fibulae",
+            "Linea musculi solei Tibia",
+            "über Arcus tendineus musculi solei (Sehnenbogen zwischen Tibia und Fibula)"
+          ],
+          "Ansatz": [
+            "über die Achillessehne (Tendo calcaneus) am Tuber calcanei"
+          ],
+          "Funktion": [
+            "OSG: Plantarflexion",
+            "USG: Inversion (Supination)"
           ],
           "Innervation": [
             "N. tibialis S1-2"

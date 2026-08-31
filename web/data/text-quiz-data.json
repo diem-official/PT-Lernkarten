@@ -200,28 +200,66 @@
     ],
     "rows": [
       {
-        "question": "M. iliopsoas zusammen aus M. psoas major und M. Iliacus",
+        "question": "M. iliopsoas",
         "answers": {
           "Ursprung": [
-            "M. psoas major oberflächlicher Kopf: 12. Brustwirbelkörper (Th12)",
-            "M. psoas major tiefer Kopf: Lendenwirbelkörper 1 bis 4",
-            "M. psoas major tiefer Kopf: angrenzende Zwischenwirbelscheiben (Disci intervertebrales) im Übergangsbereich Th12–L4",
-            "M. psoas major tiefer Kopf: Processus costales (Rippenfortsätze) der Lendenwirbel 1 bis 5",
-            "M. Iliacus: Fossa iliaca, die Innenfläche des Darmbeins"
+            "M. psoas major: Seitenflächen der Wirbelkörper Th12 bis L4 samt der dazwischenliegenden Disci intervertebrales (oberflächliche Schicht) sowie Processus costales der Lendenwirbel 1 bis 5 (tiefe Schicht)",
+            "M. iliacus: Fossa iliaca (Innenfläche der Darmbeinschaufel)"
           ],
           "Ansatz": [
-            "Gemeinsame Endsehne beider Anteile: Trochanter minor am Femur"
+            "beide Muskeln vereinigen sich zu einer gemeinsamen Endsehne und setzen am Trochanter minor des Femurs an"
           ],
           "Funktion": [
-            "Hüftgelenk: kräftigste Flexion (Beugung) im Hüftgelenk, Hauptbeuger beim Gehen und Treppensteigen",
+            "Hüftgelenk: kräftigste Flexion (Beugung), Hauptbeuger beim Gehen und Treppensteigen",
             "Hüftgelenk: unterstützt die Außenrotation",
-            "LWS bei einseitiger Kontraktion mit Punctum fixum (Fixpunkt) am Femur: beugt die Lendenwirbelsäule seitlich mit",
-            "LWS bei einseitiger Kontraktion: Lateralflexion (Seitneigung) der Lendenwirbelsäule zur gleichen (ipsilateralen) Seite",
+            "LWS bei einseitiger Kontraktion mit Punctum fixum am Femur: Lateralflexion (Seitneigung) der Lendenwirbelsäule zur gleichen (ipsilateralen) Seite",
             "LWS bei beidseitiger Kontraktion mit Punctum fixum am Femur: richtet den Rumpf aus der Rückenlage auf (z. B. Sit-up)"
           ],
           "Innervation": [
-            "N. femoralis, Segmente L1 bis L4 (v. a. M. iliacus)",
-            "direkte Äste des Plexus lumbalis, Segmente L1 bis L3 (v. a. M. psoas major)"
+            "M. psoas major: direkte Äste des Plexus lumbalis, Segmente L1 bis L3",
+            "M. iliacus: N. femoralis, Segmente L1 bis L4"
+          ]
+        }
+      },
+      {
+        "question": "M. psoas major",
+        "answers": {
+          "Ursprung": [
+            "oberflächliche Schicht: Seitenfläche des 12. Brustwirbelkörpers (Th12)",
+            "oberflächliche Schicht: Seitenflächen der Lendenwirbelkörper 1 bis 4 (L1–L4)",
+            "oberflächliche Schicht: die dazwischenliegenden Disci intervertebrales (Bandscheiben) von Th12 bis L4",
+            "tiefe Schicht: Processus costales (Rippenfortsätze) der Lendenwirbel 1 bis 5"
+          ],
+          "Ansatz": [
+            "gemeinsame Endsehne mit dem M. iliacus am Trochanter minor des Femurs"
+          ],
+          "Funktion": [
+            "Hüftgelenk: kräftigste Flexion (Beugung), Hauptbeuger beim Gehen und Treppensteigen",
+            "Hüftgelenk: unterstützt die Außenrotation",
+            "LWS bei einseitiger Kontraktion mit Punctum fixum am Femur: Lateralflexion (Seitneigung) der Lendenwirbelsäule zur gleichen (ipsilateralen) Seite",
+            "LWS bei beidseitiger Kontraktion mit Punctum fixum am Femur: richtet den Rumpf aus der Rückenlage auf (z. B. Sit-up)"
+          ],
+          "Innervation": [
+            "direkte Äste des Plexus lumbalis, Segmente L1 bis L3"
+          ]
+        }
+      },
+      {
+        "question": "M. iliacus",
+        "answers": {
+          "Ursprung": [
+            "Fossa iliaca (Innenfläche der Darmbeinschaufel)"
+          ],
+          "Ansatz": [
+            "gemeinsame Endsehne mit dem M. psoas major am Trochanter minor des Femurs"
+          ],
+          "Funktion": [
+            "Hüftgelenk: Flexion (Beugung) – gemeinsam mit dem M. psoas major kräftigster Hüftbeuger",
+            "Hüftgelenk: unterstützt die Außenrotation",
+            "bei fixiertem Bein (Punctum fixum am Femur): kippt das Becken nach ventral (Anteversion)"
+          ],
+          "Innervation": [
+            "N. femoralis, Segmente L1 bis L4"
           ]
         }
       }
@@ -559,22 +597,59 @@
     ],
     "rows": [
       {
-        "question": "M. triceps surae zusammen aus M. soleus und M. gastrocnemius",
+        "question": "M. triceps surae",
         "answers": {
           "Ursprung": [
-            "M. soleus: Dorsalfläche von Caput und Collum fibulae (Fibulaköpfchen und Fibulahals)",
-            "M. soleus: Linea musculi solei an der Rückfläche der Tibia",
-            "M. soleus: über den Arcus tendineus musculi solei, einen Sehnenbogen, der die tibiale und die fibulare Ursprungszacke verbindet (darunter ziehen die A. und V. poplitea sowie der N. tibialis in die tiefe Flexorenloge)",
-            "M. gastrocnemius, Caput mediale: Epicondylus medialis femoris, oberhalb des Condylus medialis",
-            "M. gastrocnemius, Caput laterale: Epicondylus lateralis femoris, oberhalb des Condylus lateralis"
+            "M. gastrocnemius: Caput mediale am Epicondylus medialis femoris und Caput laterale am Epicondylus lateralis femoris (zweigelenkig, überspringt das Kniegelenk)",
+            "M. soleus: Dorsalfläche von Caput und Collum fibulae sowie Linea musculi solei der Tibia, verbunden über den Arcus tendineus musculi solei (eingelenkig)"
           ],
           "Ansatz": [
-            "gemeinsame Endsehne aller drei Köpfe, die als kräftige Achillessehne (Tendo calcaneus) am Tuber calcanei ansetzt"
+            "alle drei Köpfe vereinigen sich zur gemeinsamen Achillessehne (Tendo calcaneus) und setzen am Tuber calcanei an"
           ],
           "Funktion": [
-            "oberes Sprunggelenk (OSG): kräftige Plantarflexion, stärkster Plantarflexor des Fußes (Abrollen des Fußes, Zehenstand, Anheben des Körpergewichts)",
+            "oberes Sprunggelenk (OSG): kräftige Plantarflexion, stärkster Plantarflexor des Fußes (Zehenstand, Abrollen, Anheben des Körpergewichts)",
             "unteres Sprunggelenk (USG): Inversion (Supination) des Fußes",
-            "Kniegelenk: Flexion (Beugung) – nur durch den zweigelenkigen M. gastrocnemius; der eingelenkige M. soleus überspringt das Kniegelenk nicht"
+            "Kniegelenk: Flexion (Beugung) – nur durch den zweigelenkigen M. gastrocnemius, der M. soleus überspringt das Kniegelenk nicht"
+          ],
+          "Innervation": [
+            "N. tibialis (Teil des N. ischiadicus), Segmente S1 bis S2"
+          ]
+        }
+      },
+      {
+        "question": "M. gastrocnemius",
+        "answers": {
+          "Ursprung": [
+            "Caput mediale: Epicondylus medialis femoris, oberhalb des Condylus medialis",
+            "Caput laterale: Epicondylus lateralis femoris, oberhalb des Condylus lateralis"
+          ],
+          "Ansatz": [
+            "gemeinsam mit dem M. soleus über die kräftige Achillessehne (Tendo calcaneus) am Tuber calcanei"
+          ],
+          "Funktion": [
+            "oberes Sprunggelenk (OSG): kräftige Plantarflexion, gemeinsam mit dem M. soleus stärkster Plantarflexor des Fußes",
+            "unteres Sprunggelenk (USG): Inversion (Supination) des Fußes",
+            "Kniegelenk: Flexion (Beugung) – der zweigelenkige M. gastrocnemius überspringt das Kniegelenk; bei stark gebeugtem Knie nimmt seine Plantarflexionskraft ab (aktive Insuffizienz)"
+          ],
+          "Innervation": [
+            "N. tibialis (Teil des N. ischiadicus), Segmente S1 bis S2"
+          ]
+        }
+      },
+      {
+        "question": "M. soleus",
+        "answers": {
+          "Ursprung": [
+            "Dorsalfläche von Caput und Collum fibulae (Fibulaköpfchen und Fibulahals)",
+            "Linea musculi solei an der Rückfläche der Tibia",
+            "über den Arcus tendineus musculi solei, einen Sehnenbogen zwischen tibialem und fibularem Ursprung (darunter ziehen die A. und V. poplitea sowie der N. tibialis in die tiefe Flexorenloge)"
+          ],
+          "Ansatz": [
+            "gemeinsam mit dem M. gastrocnemius über die kräftige Achillessehne (Tendo calcaneus) am Tuber calcanei"
+          ],
+          "Funktion": [
+            "oberes Sprunggelenk (OSG): kräftige Plantarflexion; als eingelenkiger Muskel unabhängig von der Kniestellung wirksam und wichtig für die Stabilisierung im aufrechten Stand",
+            "unteres Sprunggelenk (USG): Inversion (Supination) des Fußes"
           ],
           "Innervation": [
             "N. tibialis (Teil des N. ischiadicus), Segmente S1 bis S2"
