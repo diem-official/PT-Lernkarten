@@ -6854,5 +6854,367 @@
         }
       }
     ]
+  },
+  {
+    "filename": "Anatomie 1-Muskeln-Unterschenkel-Dorsal-clean.jpg",
+    "og_filename": "Anatomie 1-Muskeln-Unterschenkel-Dorsal.png",
+    "subject": "Anatomie 1",
+    "category": "Muskeln",
+    "subcategory": "Unterschenkel",
+    "view": "Dorsal",
+    "labels": [
+      {
+        "text": "Femur",
+        "anchor_x": 1209,
+        "anchor_y": 334.5,
+        "mask_box": {
+          "x": 1201,
+          "y": 302,
+          "w": 144,
+          "h": 65
+        }
+      },
+      {
+        "text": "M. gastrocnemius, Caput mediale",
+        "anchor_x": 1648,
+        "anchor_y": 385.5,
+        "mask_box": {
+          "x": 1640,
+          "y": 355,
+          "w": 349,
+          "h": 112
+        }
+      },
+      {
+        "text": "Epicondylus lateralis femoris",
+        "anchor_x": 1211,
+        "anchor_y": 565.0,
+        "mask_box": {
+          "x": 1203,
+          "y": 533,
+          "w": 307,
+          "h": 109
+        }
+      },
+      {
+        "text": "M. plantaris",
+        "anchor_x": 2570,
+        "anchor_y": 565.5,
+        "mask_box": {
+          "x": 2562,
+          "y": 533,
+          "w": 232,
+          "h": 65
+        }
+      },
+      {
+        "text": "Epicondylus medialis femoris",
+        "anchor_x": 287,
+        "anchor_y": 609.5,
+        "mask_box": {
+          "x": 200,
+          "y": 576,
+          "w": 318,
+          "h": 112
+        }
+      },
+      {
+        "text": "M. gastrocnemius, Caput laterale",
+        "anchor_x": 2571,
+        "anchor_y": 676.5,
+        "mask_box": {
+          "x": 2561,
+          "y": 646,
+          "w": 351,
+          "h": 113
+        }
+      },
+      {
+        "text": "M. plantaris",
+        "anchor_x": 1210,
+        "anchor_y": 707.5,
+        "mask_box": {
+          "x": 1202,
+          "y": 675,
+          "w": 234,
+          "h": 65
+        }
+      },
+      {
+        "text": "Condylus medialis tibiae",
+        "anchor_x": 1708,
+        "anchor_y": 940.0,
+        "mask_box": {
+          "x": 1609,
+          "y": 906,
+          "w": 284,
+          "h": 114
+        }
+      },
+      {
+        "text": "Caput fibulae",
+        "anchor_x": 2569,
+        "anchor_y": 972.5,
+        "mask_box": {
+          "x": 2561,
+          "y": 939,
+          "w": 266,
+          "h": 67
+        }
+      },
+      {
+        "text": "Arcus tendineus musculi solei",
+        "anchor_x": 1774,
+        "anchor_y": 1108.5,
+        "mask_box": {
+          "x": 1637,
+          "y": 1077,
+          "w": 257,
+          "h": 162
+        }
+      },
+      {
+        "text": "Sehne des M. plantaris",
+        "anchor_x": 1690,
+        "anchor_y": 1644.0,
+        "mask_box": {
+          "x": 1660,
+          "y": 1612,
+          "w": 234,
+          "h": 117
+        }
+      },
+      {
+        "text": "M. gastrocnemius, Caput laterale",
+        "anchor_x": 365,
+        "anchor_y": 1695.0,
+        "mask_box": {
+          "x": 283,
+          "y": 1664,
+          "w": 276,
+          "h": 164
+        }
+      },
+      {
+        "text": "M. soleus",
+        "anchor_x": 2569,
+        "anchor_y": 1695.0,
+        "mask_box": {
+          "x": 2561,
+          "y": 1664,
+          "w": 190,
+          "h": 62
+        }
+      },
+      {
+        "text": "M.gastrocnemius, Caput mediale",
+        "anchor_x": 2569,
+        "anchor_y": 1861.5,
+        "mask_box": {
+          "x": 2561,
+          "y": 1829,
+          "w": 287,
+          "h": 165
+        }
+      },
+      {
+        "text": "M.gastrocnemius, Caput mediale",
+        "anchor_x": 362,
+        "anchor_y": 1889.5,
+        "mask_box": {
+          "x": 272,
+          "y": 1856,
+          "w": 289,
+          "h": 165
+        }
+      },
+      {
+        "text": "M. triceps surae",
+        "anchor_x": 34,
+        "anchor_y": 1901.0,
+        "mask_box": {
+          "x": 26,
+          "y": 1866,
+          "w": 202,
+          "h": 112
+        }
+      },
+      {
+        "text": "M. triceps surae",
+        "anchor_x": 2900,
+        "anchor_y": 1901.0,
+        "mask_box": {
+          "x": 2892,
+          "y": 1867,
+          "w": 202,
+          "h": 114
+        }
+      },
+      {
+        "text": "M. gastrocnemius, Caput laterale",
+        "anchor_x": 2570,
+        "anchor_y": 2057.0,
+        "mask_box": {
+          "x": 2561,
+          "y": 2026,
+          "w": 277,
+          "h": 164
+        }
+      },
+      {
+        "text": "M. soleus",
+        "anchor_x": 376,
+        "anchor_y": 2153.5,
+        "mask_box": {
+          "x": 368,
+          "y": 2123,
+          "w": 190,
+          "h": 61
+        }
+      },
+      {
+        "text": "Sehne des M. plantaris",
+        "anchor_x": 314,
+        "anchor_y": 2306.0,
+        "mask_box": {
+          "x": 285,
+          "y": 2276,
+          "w": 232,
+          "h": 115
+        }
+      },
+      {
+        "text": "Tendo calcaneus",
+        "anchor_x": 1206,
+        "anchor_y": 2782.0,
+        "mask_box": {
+          "x": 1198,
+          "y": 2749,
+          "w": 205,
+          "h": 115
+        }
+      },
+      {
+        "text": "oberes Sprunggelenk",
+        "anchor_x": 1755,
+        "anchor_y": 2783.0,
+        "mask_box": {
+          "x": 1622,
+          "y": 2750,
+          "w": 274,
+          "h": 118
+        }
+      },
+      {
+        "text": "Tendo calcaneus",
+        "anchor_x": 2509,
+        "anchor_y": 2782.0,
+        "mask_box": {
+          "x": 2501,
+          "y": 2749,
+          "w": 207,
+          "h": 117
+        }
+      },
+      {
+        "text": "Malleolus medialis",
+        "anchor_x": 330,
+        "anchor_y": 2808.5,
+        "mask_box": {
+          "x": 322,
+          "y": 2778,
+          "w": 194,
+          "h": 113
+        }
+      },
+      {
+        "text": "Malleolus lateralis",
+        "anchor_x": 1210,
+        "anchor_y": 2927.0,
+        "mask_box": {
+          "x": 1201,
+          "y": 2896,
+          "w": 197,
+          "h": 113
+        }
+      },
+      {
+        "text": "Talus",
+        "anchor_x": 1779,
+        "anchor_y": 2941.0,
+        "mask_box": {
+          "x": 1771,
+          "y": 2906,
+          "w": 124,
+          "h": 70
+        }
+      },
+      {
+        "text": "Talus",
+        "anchor_x": 406,
+        "anchor_y": 2953.5,
+        "mask_box": {
+          "x": 398,
+          "y": 2920,
+          "w": 120,
+          "h": 67
+        }
+      },
+      {
+        "text": "Os naviculare",
+        "anchor_x": 262,
+        "anchor_y": 3051.0,
+        "mask_box": {
+          "x": 254,
+          "y": 3022,
+          "w": 261,
+          "h": 58
+        }
+      },
+      {
+        "text": "unteres Sprunggelenk",
+        "anchor_x": 1745,
+        "anchor_y": 3052.5,
+        "mask_box": {
+          "x": 1623,
+          "y": 3025,
+          "w": 272,
+          "h": 110
+        }
+      },
+      {
+        "text": "Calcaneus",
+        "anchor_x": 2513,
+        "anchor_y": 3051.0,
+        "mask_box": {
+          "x": 2505,
+          "y": 3017,
+          "w": 209,
+          "h": 68
+        }
+      },
+      {
+        "text": "Os metatarsi I",
+        "anchor_x": 251,
+        "anchor_y": 3144.5,
+        "mask_box": {
+          "x": 243,
+          "y": 3116,
+          "w": 279,
+          "h": 57
+        }
+      },
+      {
+        "text": "Tuber calcanei",
+        "anchor_x": 1211,
+        "anchor_y": 3216.5,
+        "mask_box": {
+          "x": 1203,
+          "y": 3186,
+          "w": 283,
+          "h": 61
+        }
+      }
+    ]
   }
 ]
