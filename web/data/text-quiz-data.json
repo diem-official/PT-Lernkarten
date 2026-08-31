@@ -545,5 +545,62 @@
         }
       }
     ]
+  },
+  {
+    "subject": "Anatomie 1",
+    "category": "Muskeln Detail",
+    "subcategory": "Unterschenkel",
+    "view": "Oberflächliche Flexoren",
+    "columns": [
+      "Ursprung",
+      "Ansatz",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": [
+      {
+        "question": "M. triceps surae zusammen aus M. soleus und M. gastrocnemius",
+        "answers": {
+          "Ursprung": [
+            "M. soleus: Dorsalfläche von Caput und Collum fibulae (Fibulaköpfchen und Fibulahals)",
+            "M. soleus: Linea musculi solei an der Rückfläche der Tibia",
+            "M. soleus: über den Arcus tendineus musculi solei, einen Sehnenbogen, der die tibiale und die fibulare Ursprungszacke verbindet (darunter ziehen die A. und V. poplitea sowie der N. tibialis in die tiefe Flexorenloge)",
+            "M. gastrocnemius, Caput mediale: Epicondylus medialis femoris, oberhalb des Condylus medialis",
+            "M. gastrocnemius, Caput laterale: Epicondylus lateralis femoris, oberhalb des Condylus lateralis"
+          ],
+          "Ansatz": [
+            "gemeinsame Endsehne aller drei Köpfe, die als kräftige Achillessehne (Tendo calcaneus) am Tuber calcanei ansetzt"
+          ],
+          "Funktion": [
+            "oberes Sprunggelenk (OSG): kräftige Plantarflexion, stärkster Plantarflexor des Fußes (Abrollen des Fußes, Zehenstand, Anheben des Körpergewichts)",
+            "unteres Sprunggelenk (USG): Inversion (Supination) des Fußes",
+            "Kniegelenk: Flexion (Beugung) – nur durch den zweigelenkigen M. gastrocnemius; der eingelenkige M. soleus überspringt das Kniegelenk nicht"
+          ],
+          "Innervation": [
+            "N. tibialis (Teil des N. ischiadicus), Segmente S1 bis S2"
+          ]
+        }
+      },
+      {
+        "question": "M. plantaris",
+        "answers": {
+          "Ursprung": [
+            "Facies poplitea des Femurs unmittelbar proximal (oberhalb) des Caput laterale des M. gastrocnemius, im Bereich des Epicondylus lateralis femoris"
+          ],
+          "Ansatz": [
+            "mit einer sehr langen, dünnen Sehne medial an bzw. neben der Achillessehne (Tendo calcaneus) zum Tuber calcanei"
+          ],
+          "Funktion": [
+            "oberes Sprunggelenk (OSG): geringe Plantarflexion, funktionell wie ein sehr schwacher M. gastrocnemius",
+            "Kniegelenk: geringe Flexion (Beugung), da der Muskel wie der M. gastrocnemius zweigelenkig verläuft",
+            "aufgrund seines sehr kleinen physiologischen Querschnitts für die Kraftentwicklung zu vernachlässigen",
+            "verhindert bei Beugung des Kniegelenks eine Einklemmung bzw. Kompression der Vasa tibialia posteriora (A. und V. tibialis posterior) in der Kniekehle"
+          ],
+          "Innervation": [
+            "N. tibialis (Teil des N. ischiadicus), Segmente S1 bis S2"
+          ]
+        }
+      }
+    ]
   }
 ]

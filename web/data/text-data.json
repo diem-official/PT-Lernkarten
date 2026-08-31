@@ -570,5 +570,67 @@
         }
       }
     ]
+  },
+  {
+    "type": "text",
+    "subject": "Anatomie 1",
+    "category": "Muskeln Detail",
+    "subcategory": "Unterschenkel",
+    "view": "Oberflächliche Flexoren",
+    "image": {
+      "og": "Anatomie 1-Muskeln-Unterschenkel-Dorsal.png",
+      "clean": "Anatomie 1-Muskeln-Unterschenkel-Dorsal-clean.jpg"
+    },
+    "columns": [
+      "Ursprung",
+      "Ansatz",
+      "Funktion",
+      "Innervation"
+    ],
+    "rows": [
+      {
+        "question": "M. triceps surae zusammen aus M. soleus und M. gastrocnemius",
+        "answers": {
+          "Ursprung": [
+            "M. soleus: Dorsalfläche Caput und Collum fibulae",
+            "M. soleus: Linea musculi solei Tibia",
+            "M. soleus: über Arcus tendineus musculi solei (Sehnenbogen zwischen Tibia und Fibula)",
+            "M. gastrocnemius: Epicondylus medialis femoris Caput mediale",
+            "M. gastrocnemius: Epicondylus lateralis femoris Caput laterale"
+          ],
+          "Ansatz": [
+            "über die Achillessehne (Tendo calcaneus) am Tuber calcanei"
+          ],
+          "Funktion": [
+            "OSG: Plantarflexion",
+            "USG: Inversion (Supination)",
+            "Knie: Flexion (nur M. gastrocnemius)"
+          ],
+          "Innervation": [
+            "N. tibialis S1-2"
+          ]
+        }
+      },
+      {
+        "question": "M. plantaris",
+        "answers": {
+          "Ursprung": [
+            "proximal des Caput laterale des M. gastrocnemius (Epicondylus lateralis femoris)"
+          ],
+          "Ansatz": [
+            "über die Achillessehne (Tendo calcaneus) am Tuber calcanei"
+          ],
+          "Funktion": [
+            "OSG: Plantarflexion (schwach, analog M. gastrocnemius)",
+            "Knie: Flexion (schwach)",
+            "wegen kleinem physiologischem Querschnitt für die Kraft zu vernachlässigen",
+            "verhindert bei Knieflexion eine Kompression der Vasa tibialia posteriora"
+          ],
+          "Innervation": [
+            "N. tibialis S1-2"
+          ]
+        }
+      }
+    ]
   }
 ]
