@@ -51,8 +51,8 @@ def extract_labels(image_path: str) -> list:
     boxes = res.get('rec_boxes', [])  # shape (N, 4): x_min, y_min, x_max, y_max
 
     for text, score, box in zip(texts, scores, boxes):
-        if score < 0.3 or not text.strip():
-            log.info("score-filtered (below 0.3): %r (score=%.3f)", text.strip(), score)
+        if score <= 0.3 or not text.strip():
+            log.info("score-filtered (0.3 or below): %r (score=%.3f)", text.strip(), score)
             continue
 
         if len(box) > 0 and hasattr(box[0], "__iter__"):

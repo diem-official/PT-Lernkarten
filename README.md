@@ -60,7 +60,7 @@ The run is incremental: images whose filename stem is already present in
    `process.py` as `RAW_IMAGES_DIR`), every image there is EXIF-rotation-corrected
    and downscaled to a max dimension of 2500 px into the input directory.
 2. **Pass 1 – OCR** (`ocr.py`) — PaddleOCR (`lang='german'`) returns every text
-   block as `{id, x, y, w, h, text}`. Low-confidence (< 0.3) results are dropped.
+   block as `{id, x, y, w, h, text}`. Low-confidence (≤ 0.3) results are dropped.
    A debug image with every box outlined is written to `Output/<stem>-marked.jpg`.
 3. **Pass 2 – Term extraction** (`semantic_classify.py`)
    - Noise filter: single-character and non-alphabetic blocks are dropped.
