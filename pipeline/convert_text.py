@@ -2,12 +2,15 @@
 """Convert an Excel or CSV quiz table into web/data/text-data.json.
 
 File naming convention (same as images):
-    Kategorie-Unterkategorie-Ansicht.xlsx
-    Kategorie-Unterkategorie-Ansicht.csv
+    Fach-Kategorie-Unterkategorie-Ansicht.xlsx
+    Fach-Kategorie-Unterkategorie-Ansicht.csv
 
 Table format:
     Row 1 : column headers  (first column = subject label, rest = answer categories)
     Row 2+: data rows       (first cell = question, other cells = answers separated by ";")
+
+Optional: if cell A1 is "BILD", cell B1 holds an image filename and the header
+row starts at row 2; the entry then carries an {"og", "clean"} image reference.
 """
 
 import argparse

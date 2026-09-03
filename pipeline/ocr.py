@@ -24,7 +24,7 @@ def _get_engine():
 
 
 def unload_engine() -> None:
-    """Release the PaddleOCR engine and free GPU memory before loading the LLM."""
+    """Release the PaddleOCR engine and free GPU memory after OCR is done."""
     global _ocr_engine
     _ocr_engine = None
     gc.collect()
