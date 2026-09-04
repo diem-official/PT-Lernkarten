@@ -481,6 +481,13 @@ body {
     cursor: grabbing;
 }
 
+/* max-height hier ist nur der Fallback vor dem ersten JS-Sync bzw. ohne
+   ResizeObserver-Support. syncPaneHeight() (zoom.js) setzt danach live
+   style.maxHeight direkt (Pixelwert) auf #quiz-img. Ein reines CSS-%-
+   max-height würde hier nie greifen, da #zoom-container (display:inline-
+   block, shrink-wrap um das Bild — nötig für Zoom/Pan- und Marker-Badge-
+   Positionierung) selbst keine definite Höhe hat, an der sich ein
+   Prozentwert des Kindes verankern könnte. */
 #quiz-img {
     display: block;
     max-width: 100%;
@@ -820,6 +827,14 @@ body {
     overflow: hidden;
 }
 
+/* max-height:100% ist für .tq-quiz-image direkt in .tq-quiz-image-pane
+   bereits korrekt (definite Höhe des Flex-Elternteils). Für Bilder in
+   .tq-dual-image-container (display:flex, align-items:flex-start bei
+   .tq-quiz-image-pane → nicht gestretcht, wie #zoom-container also ohne
+   definite Höhe) ist es nur der Fallback vor dem ersten JS-Sync —
+   syncPaneHeight() (zoom.js) setzt danach live style.maxHeight direkt auf
+   jedes Bild (Reihen-Layout) bzw. style.height auf den Container
+   (gestapeltes Spalten-Layout, siehe Media-Query unten). */
 .tq-quiz-image-pane .tq-quiz-image,
 .tq-quiz-image-pane .tq-dual-image-container,
 .tq-quiz-image-pane .tq-dual-image-container .tq-quiz-image {
@@ -999,8 +1014,23 @@ body {
         flex-direction: column;
     }
 
-    .tq-dual-image-container .tq-quiz-image {
-        max-height: 50vh;
+    /* Gestapelte Doppelbilder (Spalte statt Reihe): kein fixes Pro-Bild-
+       max-height mehr (50vh war so wenig verankert wie zuvor #quiz-imgs
+       calc(100dvh - 48px), siehe Kommentar oben bei #quiz-img — und wurde
+       zudem von der spezifischeren .tq-quiz-image-pane…-Regel oben ohnehin
+       nie angewendet). Stattdessen bekommt der Container von syncPaneHeight()
+       (zoom.js) live eine definite style.height gesetzt (nicht nur
+       max-height — sonst hat flex-grow keinen freien Raum zum Verteilen und
+       die Bilder kollabieren auf 0, da ihr flex-basis:0 ist); flex:1 1 0
+       (Basisregel .tq-dual-image-container .tq-quiz-image) teilt diese Höhe
+       dann automatisch auf beide Bilder auf. min-height:0 hebt die
+       automatische Flex-Mindesthöhe auf, die bei Bildern sonst an
+       width:100% + Seitenverhältnis hängt und das Schrumpfen verhindern
+       würde (analog zum bereits vorhandenen min-width:0 für den
+       Reihen-Fall). */
+    .tq-quiz-image-pane .tq-dual-image-container .tq-quiz-image {
+        max-height: none;
+        min-height: 0;
         width: 100%;
     }
 }

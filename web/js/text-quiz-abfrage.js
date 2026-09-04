@@ -51,6 +51,7 @@ function loadTextQuizAbfrage(entry, imgBase, textQuizData) {
         layout.appendChild(panelHost);
 
         textWrapper.appendChild(layout);
+        syncPaneHeight(imagePane);
     } else {
         panelHost.className = 'tq-quiz-standalone';
         textWrapper.appendChild(panelHost);

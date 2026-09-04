@@ -11,6 +11,8 @@ function loadQuizAbfrage(entry, imgBasePath) {
     var textWrapper   = document.getElementById('text-quiz-wrapper');
     var answerPanel   = document.getElementById('answer-panel');
 
+    syncPaneHeight(document.getElementById('image-pane'));
+
     var queue = [];
     var currentIndex = null; // von der Resize-Closure gelesen (siehe _activeMarkerRefresh)
 

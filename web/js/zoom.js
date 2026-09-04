@@ -220,4 +220,55 @@
         var instance = window.createZoom(el);
         window.resetZoom = instance.reset;
     };
+
+    // Hält die Bild(er) in `pane` (#image-pane oder .tq-quiz-image-pane) auf
+    // dessen tatsächliche Höhe begrenzt (Orientation-Wechsel, Resize,
+    // Größenänderung des Nachbar-Panels — alles über ResizeObserver auf
+    // `pane` selbst statt einzelner Event-Quellen).
+    //
+    // Setzt dazu style.maxHeight direkt als Pixelwert statt eines CSS-%-
+    // max-height, weil der direkte Elternteil des <img> (#zoom-container
+    // bzw. .tq-dual-image-container) keine definite Höhe hat, an der ein
+    // Prozentwert sich verankern könnte — und weil eine CSS-Variable
+    // (var(--pane-max-h, …)) als Zwischenlösung im vollen App-Kontext bei
+    // wiederholten Orientation-Wechseln beobachtbar hängen blieb (nach
+    // Portrait→Landscape→Portrait behielt max-height den dvh-Fallback statt
+    // der aktuellen Variable — reproduzierbar nur im vollen Bundle, nicht in
+    // einer Minimal-Reduktion; vermutlich eine Style-Invalidierungs-
+    // Eigenheit des Browsers rund um var() zusammen mit dvh-Fallbacks).
+    // Eine direkte Inline-Zuweisung ist robust dagegen, da sie bei jedem
+    // ResizeObserver-Tick frisch gesetzt wird, ohne über var()-Auflösung zu
+    // laufen.
+    //
+    // Bei zwei Bildern (.tq-dual-image-container) unterscheidet sich die
+    // Aufteilung je nach Layout: in der Reihe (>= 600px, siehe style.css)
+    // bekommt jedes Bild einzeln die volle Pane-Höhe als max-height; gestapelt
+    // (< 600px, flex-direction:column) bekommt stattdessen der Container
+    // selbst eine definite Höhe, und flex:1 1 0 (siehe style.css) teilt sie
+    // automatisch auf beide Bilder auf — ein max-height pro Bild würde dort
+    // nicht wissen, dass es sich die Höhe mit einem zweiten Bild teilen muss.
+    window.syncPaneHeight = function (pane) {
+        if (!pane || pane._paneHeightBound) return;
+        pane._paneHeightBound = true;
+
+        function sync() {
+            var h = pane.clientHeight;
+            var dualCont = pane.querySelector('.tq-dual-image-container');
+            var stacked = dualCont && getComputedStyle(dualCont).flexDirection === 'column';
+
+            if (dualCont) {
+                dualCont.style.height = stacked ? h + 'px' : '';
+            }
+            pane.querySelectorAll('img').forEach(function (img) {
+                img.style.maxHeight = stacked ? '' : h + 'px';
+            });
+        }
+        sync();
+
+        if (window.ResizeObserver) {
+            new ResizeObserver(sync).observe(pane);
+        } else {
+            window.addEventListener('resize', sync);
+        }
+    };
 }());
