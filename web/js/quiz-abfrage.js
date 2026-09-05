@@ -22,6 +22,7 @@ function loadQuizAbfrage(entry, imgBasePath) {
     textWrapper.classList.add('hidden');
     wrapper.classList.remove('hidden');
     resetZoom();
+    _markerCounterScaleEnabled = true;
 
     _activeMarkerRefresh = function () {
         renderMarkers(entry.labels, img, zoomContainer, currentIndex);
@@ -70,6 +71,17 @@ function loadQuizAbfrage(entry, imgBasePath) {
             return;
         }
         currentIndex = queue.shift();
+
+        if (window.focusZoomPoint) {
+            var label  = entry.labels[currentIndex];
+            var scaleX = img.clientWidth  / img.naturalWidth;
+            var scaleY = img.clientHeight / img.naturalHeight;
+            window.focusZoomPoint(
+                (label.mask_box.x + label.mask_box.w / 2) * scaleX,
+                (label.mask_box.y + label.mask_box.h / 2) * scaleY
+            );
+        }
+
         showQuestion();
     }
 
