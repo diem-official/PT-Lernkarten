@@ -49,6 +49,8 @@ Zusätzliche, triviale neue Methode auf dem zurückgegebenen Objekt: `getScale: 
 
 Der von `createZoom()` zurückgegebene Objekt-Umfang wird damit zu: `{ reset: resetZoom, focusPoint: focusPoint, getScale: getScale }`.
 
+Keine Race Condition beim ersten `renderMarkers()`-Aufruf: `initZoom()` läuft synchron in `quiz.js`s eigenem `DOMContentLoaded`-Handler (`quiz.js:613-614`). `loadQuiz`/`loadLernen`/`loadQuizAbfrage` werden dagegen ausschließlich aus dem Menü-Klick-Callback in `app.js` aufgerufen, der selbst erst nach einem asynchronen `fetch()` innerhalb von `app.js`s eigenem `DOMContentLoaded`-Handler feuert — also immer erst, nachdem alle synchronen `DOMContentLoaded`-Listener (inkl. `initZoom`) bereits gelaufen sind. `window.getZoomScale`/`window.focusZoomPoint` sind damit zum Zeitpunkt jedes ersten `renderMarkers()`-Aufrufs garantiert gesetzt.
+
 ---
 
 ## 2. `web/js/quiz.js`: Marker-Gegenskalierung
@@ -145,7 +147,7 @@ function nextQuestion() {
 ## 4. Edge Cases
 
 - **Resize:** Der bestehende debounced Resize-Handler in `quiz.js` (`quiz.js:597-610`) ruft `_activeMarkerRefresh()` auf, was `renderMarkers()` erneut aufruft und dabei alle Badges neu erzeugt. Dank `getScale()` (1.3) liest `renderMarkers()` dabei den tatsächlich aktuellen Zoom-Faktor statt eines Default-Werts — die Gegenskalierung bleibt so auch nach einem Resize-während-gezoomt korrekt erhalten. (Separat davon läuft `zoom.js`s eigener, kürzer debouncter Resize-Handler, `zoom.js:205-213`, der nur `clampState()`/`applyTransform()` aufruft und damit ohnehin schon den `onTransform`-Hook feuert.)
-- **Quiz-Start:** `resetZoom()` läuft bereits beim Start eines Quiz-Durchlaufs (`s` = 1) → `focusPoint()` bei der ersten Frage ist automatisch ein No-op (siehe 1.2, Schritt 1).
+- **Quiz-Start:** `resetZoom()` läuft beim Öffnen eines Eintrags im Abfrage-Modus (`loadQuizAbfrage`, vor dem Startbildschirm, `quiz-abfrage.js:24`), `s` = 1 → `focusPoint()` bei der ersten Frage ist ein No-op, sofern der Nutzer im Startbildschirm (Auswahl "Der Reihe nach"/"Zufällig") noch nicht selbst gezoomt hat. Zoomt er dort bereits hinein, greift `focusPoint()` schon bei Frage 1 — das ist konsistent mit dem beabsichtigten Verhalten, kein Sonderfall nötig.
 - **Sehr hoher Zoom / kleiner sichtbarer Bereich:** Das bestehende `clampState()` verhindert leere Ränder; `focusPoint()` kann den Marker im Extremfall nur so nah wie möglich an den sichtbaren Rand bringen, statt ihn vollständig freizustellen — akzeptiertes Verhalten, kein Sonderfall nötig.
 - **Text-Quiz-Bild-Overlay** (`_openImageOverlay`): hat keine Marker → unberührt von beiden Änderungen.
 - **Schreiben-Modus** (`loadQuiz`): bewusst unverändert — Marker wachsen dort weiterhin mit dem Zoom mit, kein Fokus-Verhalten, da es keinen eindeutigen "aktuellen" Marker gibt.
@@ -168,8 +170,8 @@ Manuelle Verifikation via Playwright (siehe [[testing_this_app_with_playwright]]
 | Datei | Änderung |
 |---|---|
 | `web/js/zoom.js` | `createZoom(el, opts)` und `initZoom(el, opts)` bekommen optionalen zweiten Parameter; neuer `opts.onTransform`-Callback in `applyTransform()`; neue Methoden `focusPoint(x, y)` und `getScale()`; `initZoom` exponiert zusätzlich `window.focusZoomPoint` und `window.getZoomScale` (analog zu `window.resetZoom`) |
-| `web/js/quiz.js` | Neue modul-globale Variable `_markerCounterScaleEnabled`, gesetzt in `loadQuizAbfrage` (true) sowie `loadQuiz`/`loadLernen` (false); `renderMarkers()` wendet bei aktivem Flag Gegenskalierung an (`applyMarkerCounterScale()`, neuer Helfer); `onTransform`-Callback an der `initZoom`-Callsite (`quiz.js:613-614`) wendet Gegenskalierung bei jeder Zoom-/Pan-Änderung erneut an |
-| `web/js/quiz-abfrage.js` | `nextQuestion()` ruft nach dem Setzen von `currentIndex` `window.focusZoomPoint(cx, cy)` auf, vor `showQuestion()` |
+| `web/js/quiz.js` | Neue modul-globale Variable `_markerCounterScaleEnabled` (Deklaration, Default `false`); gesetzt auf `false` in `loadQuiz`/`loadLernen`; `renderMarkers()` wendet bei aktivem Flag Gegenskalierung an (`applyMarkerCounterScale()`, neuer Helfer, nutzt `window.getZoomScale()`); `onTransform`-Callback an der `initZoom`-Callsite (`quiz.js:613-614`) wendet Gegenskalierung bei jeder Zoom-/Pan-Änderung erneut an |
+| `web/js/quiz-abfrage.js` | `loadQuizAbfrage()` setzt `_markerCounterScaleEnabled = true` beim Öffnen (Variable ist modul-global in `quiz.js` deklariert, analog zu `_activeMarkerRefresh` aus quiz-abfrage.js heraus beschreibbar); `nextQuestion()` ruft nach dem Setzen von `currentIndex` `window.focusZoomPoint(cx, cy)` auf, vor `showQuestion()` |
 
 ---
 
