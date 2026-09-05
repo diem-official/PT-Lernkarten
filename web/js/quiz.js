@@ -3,11 +3,13 @@ var _resizeTimer = null;
 var _lastLayoutWidth = window.innerWidth;
 var _overlayZoom = null;
 var _activeMarkerRefresh = null; // Funktion ohne Argumente, oder null (für den Resize-Listener)
+var _markerCounterScaleEnabled = false; // true nur im Abfrage-Quiz-Modus (quiz-abfrage.js)
 
 // ── Image quiz: "Lernen" mode ────────────────────────────────────────────────
 
 function loadLernen(entry, ogImgBasePath) {
     _activeMarkerRefresh = null;
+    _markerCounterScaleEnabled = false;
 
     var img          = document.getElementById('quiz-img');
     var wrapper      = document.getElementById('quiz-wrapper');
@@ -32,6 +34,7 @@ function loadLernen(entry, ogImgBasePath) {
 
 function loadQuiz(entry, imgBasePath) {
     _imgBasePath  = imgBasePath;
+    _markerCounterScaleEnabled = false;
 
     var img           = document.getElementById('quiz-img');
     var wrapper       = document.getElementById('quiz-wrapper');
@@ -78,6 +81,19 @@ function renderMarkers(labels, img, zoomContainer, highlightIndex) {
         badge.style.left  = ((label.mask_box.x + label.mask_box.w / 2) * scaleX) + 'px';
         badge.style.top   = ((label.mask_box.y + label.mask_box.h / 2) * scaleY) + 'px';
         zoomContainer.appendChild(badge);
+    });
+
+    if (_markerCounterScaleEnabled) {
+        applyMarkerCounterScale(zoomContainer, window.getZoomScale());
+    }
+}
+
+// Hält die Bildschirmgröße der Marker beim Zoomen konstant (statt mit dem
+// Bild mitzuwachsen), damit sich eng beieinanderliegende Marker beim
+// Hineinzoomen entzerren statt überlappt zu bleiben.
+function applyMarkerCounterScale(zoomContainer, s) {
+    zoomContainer.querySelectorAll('.marker-badge').forEach(function (badge) {
+        badge.style.transform = 'translate(-50%, -50%) scale(' + (1 / s) + ')';
     });
 }
 
@@ -611,5 +627,11 @@ window.addEventListener('resize', function () {
 
 // ── Zoom initialisieren ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
-    initZoom(document.getElementById('zoom-container'));
+    initZoom(document.getElementById('zoom-container'), {
+        onTransform: function (state) {
+            if (_markerCounterScaleEnabled) {
+                applyMarkerCounterScale(document.getElementById('zoom-container'), state.s);
+            }
+        }
+    });
 });
