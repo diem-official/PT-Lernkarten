@@ -26,6 +26,7 @@ Thumbs.db
 # Editor / tooling scratch
 .superpowers/
 *.bak
+.worktrees/
 
 # Source images and generated outputs – not tracked in git
 Input/*
