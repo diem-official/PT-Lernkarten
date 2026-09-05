@@ -5,7 +5,8 @@
     var TAP_MAX_MOVE = 10;
     var DOUBLE_TAP_MS = 300;
 
-    window.createZoom = function (el) {
+    window.createZoom = function (el, opts) {
+        opts = opts || {};
         var container = el;
         var state = { s: 1, tx: 0, ty: 0 };
         var lastTapTime = 0;
@@ -19,6 +20,7 @@
         function applyTransform() {
             container.style.transform =
                 'translate(' + state.tx + 'px, ' + state.ty + 'px) scale(' + state.s + ')';
+            if (opts.onTransform) opts.onTransform(state);
         }
 
         function clamp(val, min, max) {
@@ -67,6 +69,34 @@
             state.s  = newS;
             clampState();
             applyTransform();
+        }
+
+        function focusPoint(x, y) {
+            if (state.s <= 1) return;
+
+            var off = getNaturalOffset();
+            var screenX = off.x + state.tx + x * state.s;
+            var screenY = off.y + state.ty + y * state.s;
+
+            var rect = container.parentElement.getBoundingClientRect();
+            var margin = 30;
+
+            var dx = 0, dy = 0;
+            if (screenX < margin) dx = margin - screenX;
+            else if (screenX > rect.width - margin) dx = (rect.width - margin) - screenX;
+            if (screenY < margin) dy = margin - screenY;
+            else if (screenY > rect.height - margin) dy = (rect.height - margin) - screenY;
+
+            if (dx === 0 && dy === 0) return;
+
+            state.tx += dx;
+            state.ty += dy;
+            clampState();
+            applyTransform();
+        }
+
+        function getScale() {
+            return state.s;
         }
 
         function resetZoom() {
@@ -212,13 +242,15 @@
         }
         window.addEventListener('resize', onResize);
 
-        return { reset: resetZoom };
+        return { reset: resetZoom, focusPoint: focusPoint, getScale: getScale };
     };
 
     // Backwards-compatible wrapper for the image quiz.
-    window.initZoom = function (el) {
-        var instance = window.createZoom(el);
-        window.resetZoom = instance.reset;
+    window.initZoom = function (el, opts) {
+        var instance = window.createZoom(el, opts);
+        window.resetZoom      = instance.reset;
+        window.focusZoomPoint = instance.focusPoint;
+        window.getZoomScale   = instance.getScale;
     };
 
     // Hält die Bild(er) in `pane` (#image-pane oder .tq-quiz-image-pane) auf
