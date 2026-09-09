@@ -7216,5 +7216,872 @@
         }
       }
     ]
+  },
+  {
+    "filename": "Anatomie  1-Knochen-Fuß-Kaudal & Cranial-clean.jpg",
+    "og_filename": "Anatomie  1-Knochen-Fuß-Kaudal & Cranial.png",
+    "subject": "Anatomie  1",
+    "category": "Knochen",
+    "subcategory": "Fuß",
+    "view": "Kaudal & Cranial",
+    "labels": [
+      {
+        "text": "Phalanx distalis I",
+        "anchor_x": 501,
+        "anchor_y": 256.5,
+        "mask_box": {
+          "x": 489,
+          "y": 223,
+          "w": 173,
+          "h": 115
+        }
+      },
+      {
+        "text": "Phalanx distalis I",
+        "anchor_x": 3867,
+        "anchor_y": 348.5,
+        "mask_box": {
+          "x": 3859,
+          "y": 315,
+          "w": 175,
+          "h": 115
+        }
+      },
+      {
+        "text": "Caput",
+        "anchor_x": 528,
+        "anchor_y": 412.0,
+        "mask_box": {
+          "x": 520,
+          "y": 376,
+          "w": 144,
+          "h": 72
+        }
+      },
+      {
+        "text": "Phalanx distalis V",
+        "anchor_x": 1810,
+        "anchor_y": 476.0,
+        "mask_box": {
+          "x": 1802,
+          "y": 443,
+          "w": 187,
+          "h": 112
+        }
+      },
+      {
+        "text": "Phalanx proximalis I",
+        "anchor_x": 297,
+        "anchor_y": 518.5,
+        "mask_box": {
+          "x": 224,
+          "y": 485,
+          "w": 235,
+          "h": 121
+        }
+      },
+      {
+        "text": "Corpus",
+        "anchor_x": 510,
+        "anchor_y": 541.5,
+        "mask_box": {
+          "x": 502,
+          "y": 506,
+          "w": 160,
+          "h": 71
+        }
+      },
+      {
+        "text": "Phalanx distalis V",
+        "anchor_x": 2560,
+        "anchor_y": 548.5,
+        "mask_box": {
+          "x": 2533,
+          "y": 515,
+          "w": 187,
+          "h": 114
+        }
+      },
+      {
+        "text": "Phalanx media V",
+        "anchor_x": 1810,
+        "anchor_y": 621.0,
+        "mask_box": {
+          "x": 1802,
+          "y": 588,
+          "w": 177,
+          "h": 116
+        }
+      },
+      {
+        "text": "Phalanx proximalis I",
+        "anchor_x": 3868,
+        "anchor_y": 619.5,
+        "mask_box": {
+          "x": 3860,
+          "y": 589,
+          "w": 234,
+          "h": 117
+        }
+      },
+      {
+        "text": "Basis",
+        "anchor_x": 550,
+        "anchor_y": 667.0,
+        "mask_box": {
+          "x": 542,
+          "y": 635,
+          "w": 117,
+          "h": 64
+        }
+      },
+      {
+        "text": "Phalanx media V",
+        "anchor_x": 2556,
+        "anchor_y": 692.0,
+        "mask_box": {
+          "x": 2539,
+          "y": 659,
+          "w": 176,
+          "h": 115
+        }
+      },
+      {
+        "text": "Phalanx proximalis V",
+        "anchor_x": 1811,
+        "anchor_y": 763.5,
+        "mask_box": {
+          "x": 1802,
+          "y": 733,
+          "w": 248,
+          "h": 120
+        }
+      },
+      {
+        "text": "Caput",
+        "anchor_x": 529,
+        "anchor_y": 777.5,
+        "mask_box": {
+          "x": 521,
+          "y": 743,
+          "w": 141,
+          "h": 69
+        }
+      },
+      {
+        "text": "Phalanx proximalis V",
+        "anchor_x": 2561,
+        "anchor_y": 837.5,
+        "mask_box": {
+          "x": 2471,
+          "y": 806,
+          "w": 249,
+          "h": 118
+        }
+      },
+      {
+        "text": "Ossa sesamoidea",
+        "anchor_x": 3867,
+        "anchor_y": 829.5,
+        "mask_box": {
+          "x": 3859,
+          "y": 798,
+          "w": 238,
+          "h": 114
+        }
+      },
+      {
+        "text": "Os metatarsi I",
+        "anchor_x": 273,
+        "anchor_y": 1030.5,
+        "mask_box": {
+          "x": 265,
+          "y": 998,
+          "w": 196,
+          "h": 115
+        }
+      },
+      {
+        "text": "Corpus",
+        "anchor_x": 509,
+        "anchor_y": 1052.0,
+        "mask_box": {
+          "x": 501,
+          "y": 1015,
+          "w": 162,
+          "h": 74
+        }
+      },
+      {
+        "text": "Os metatarsi I",
+        "anchor_x": 3870,
+        "anchor_y": 1156.0,
+        "mask_box": {
+          "x": 3862,
+          "y": 1128,
+          "w": 274,
+          "h": 56
+        }
+      },
+      {
+        "text": "Basis",
+        "anchor_x": 552,
+        "anchor_y": 1323.5,
+        "mask_box": {
+          "x": 544,
+          "y": 1293,
+          "w": 115,
+          "h": 61
+        }
+      },
+      {
+        "text": "Os metatarsi V",
+        "anchor_x": 2437,
+        "anchor_y": 1371.0,
+        "mask_box": {
+          "x": 2429,
+          "y": 1342,
+          "w": 291,
+          "h": 58
+        }
+      },
+      {
+        "text": "Os cuneiforme mediale",
+        "anchor_x": 452,
+        "anchor_y": 1464.5,
+        "mask_box": {
+          "x": 444,
+          "y": 1436,
+          "w": 286,
+          "h": 109
+        }
+      },
+      {
+        "text": "Os cuneiforme mediale",
+        "anchor_x": 3870,
+        "anchor_y": 1459.5,
+        "mask_box": {
+          "x": 3861,
+          "y": 1431,
+          "w": 286,
+          "h": 110
+        }
+      },
+      {
+        "text": "Os cuneiforme intermedium",
+        "anchor_x": 452,
+        "anchor_y": 1609.0,
+        "mask_box": {
+          "x": 444,
+          "y": 1580,
+          "w": 284,
+          "h": 108
+        }
+      },
+      {
+        "text": "Os cuneiforme laterale",
+        "anchor_x": 1812,
+        "anchor_y": 1608.0,
+        "mask_box": {
+          "x": 1804,
+          "y": 1579,
+          "w": 284,
+          "h": 109
+        }
+      },
+      {
+        "text": "Os cuneiforme intermedium",
+        "anchor_x": 3868,
+        "anchor_y": 1603.0,
+        "mask_box": {
+          "x": 3860,
+          "y": 1573,
+          "w": 288,
+          "h": 108
+        }
+      },
+      {
+        "text": "Tuberositas ossis metatarsi V",
+        "anchor_x": 2401,
+        "anchor_y": 1655.5,
+        "mask_box": {
+          "x": 2393,
+          "y": 1625,
+          "w": 325,
+          "h": 111
+        }
+      },
+      {
+        "text": "Os cuneiforme laterale",
+        "anchor_x": 3869,
+        "anchor_y": 1747.5,
+        "mask_box": {
+          "x": 3861,
+          "y": 1719,
+          "w": 286,
+          "h": 108
+        }
+      },
+      {
+        "text": "Os naviculare",
+        "anchor_x": 475,
+        "anchor_y": 1777.0,
+        "mask_box": {
+          "x": 467,
+          "y": 1748,
+          "w": 261,
+          "h": 58
+        }
+      },
+      {
+        "text": "Tuberositas ossis metatarsi V",
+        "anchor_x": 1809,
+        "anchor_y": 1776.5,
+        "mask_box": {
+          "x": 1801,
+          "y": 1745,
+          "w": 325,
+          "h": 112
+        }
+      },
+      {
+        "text": "Sulcus tendinis musculi peronei (fibularis) longi",
+        "anchor_x": 2435,
+        "anchor_y": 1800.0,
+        "mask_box": {
+          "x": 2410,
+          "y": 1771,
+          "w": 310,
+          "h": 167
+        }
+      },
+      {
+        "text": "Caput tali",
+        "anchor_x": 536,
+        "anchor_y": 1913.0,
+        "mask_box": {
+          "x": 528,
+          "y": 1878,
+          "w": 204,
+          "h": 70
+        }
+      },
+      {
+        "text": "Os cuboideum",
+        "anchor_x": 1809,
+        "anchor_y": 1920.5,
+        "mask_box": {
+          "x": 1801,
+          "y": 1890,
+          "w": 285,
+          "h": 61
+        }
+      },
+      {
+        "text": "Os naviculare",
+        "anchor_x": 3869,
+        "anchor_y": 1917.0,
+        "mask_box": {
+          "x": 3861,
+          "y": 1888,
+          "w": 262,
+          "h": 58
+        }
+      },
+      {
+        "text": "Tuberositas ossis cuboidei",
+        "anchor_x": 2548,
+        "anchor_y": 1994.0,
+        "mask_box": {
+          "x": 2540,
+          "y": 1962,
+          "w": 327,
+          "h": 115
+        }
+      },
+      {
+        "text": "Caput tali",
+        "anchor_x": 3811,
+        "anchor_y": 2035.0,
+        "mask_box": {
+          "x": 3803,
+          "y": 2000,
+          "w": 204,
+          "h": 70
+        }
+      },
+      {
+        "text": "Collum tali",
+        "anchor_x": 516,
+        "anchor_y": 2051.5,
+        "mask_box": {
+          "x": 508,
+          "y": 2019,
+          "w": 223,
+          "h": 65
+        }
+      },
+      {
+        "text": "Talus",
+        "anchor_x": 340,
+        "anchor_y": 2083.0,
+        "mask_box": {
+          "x": 332,
+          "y": 2046,
+          "w": 127,
+          "h": 74
+        }
+      },
+      {
+        "text": "Collum tali",
+        "anchor_x": 3813,
+        "anchor_y": 2128.0,
+        "mask_box": {
+          "x": 3805,
+          "y": 2097,
+          "w": 221,
+          "h": 62
+        }
+      },
+      {
+        "text": "Os cuboideum",
+        "anchor_x": 2587,
+        "anchor_y": 2140.5,
+        "mask_box": {
+          "x": 2579,
+          "y": 2110,
+          "w": 285,
+          "h": 61
+        }
+      },
+      {
+        "text": "Corpus tali",
+        "anchor_x": 3809,
+        "anchor_y": 2225.0,
+        "mask_box": {
+          "x": 3801,
+          "y": 2191,
+          "w": 225,
+          "h": 68
+        }
+      },
+      {
+        "text": "Corpus tali",
+        "anchor_x": 622,
+        "anchor_y": 2260.0,
+        "mask_box": {
+          "x": 614,
+          "y": 2225,
+          "w": 221,
+          "h": 70
+        }
+      },
+      {
+        "text": "Calcaneus",
+        "anchor_x": 1755,
+        "anchor_y": 2302.5,
+        "mask_box": {
+          "x": 1747,
+          "y": 2269,
+          "w": 210,
+          "h": 67
+        }
+      },
+      {
+        "text": "Calcaneus",
+        "anchor_x": 2665,
+        "anchor_y": 2307.0,
+        "mask_box": {
+          "x": 2657,
+          "y": 2275,
+          "w": 209,
+          "h": 64
+        }
+      },
+      {
+        "text": "Sustentaculum tali",
+        "anchor_x": 3813,
+        "anchor_y": 2318.0,
+        "mask_box": {
+          "x": 3801,
+          "y": 2289,
+          "w": 296,
+          "h": 111
+        }
+      },
+      {
+        "text": "Proc. posterior tali (Tuberculum mediale)",
+        "anchor_x": 3758,
+        "anchor_y": 2463.5,
+        "mask_box": {
+          "x": 3750,
+          "y": 2432,
+          "w": 351,
+          "h": 165
+        }
+      },
+      {
+        "text": "WeMa",
+        "anchor_x": 3116,
+        "anchor_y": 2749.5,
+        "mask_box": {
+          "x": 3108,
+          "y": 2711,
+          "w": 111,
+          "h": 77
+        }
+      },
+      {
+        "text": "Tuber calcanei",
+        "anchor_x": 693,
+        "anchor_y": 2807.0,
+        "mask_box": {
+          "x": 685,
+          "y": 2778,
+          "w": 281,
+          "h": 58
+        }
+      }
+    ]
+  },
+  {
+    "filename": "Anatomie 1-Knochen-Talus & Calcaneus-dorsal & plantar-clean.jpg",
+    "og_filename": "Anatomie 1-Knochen-Talus & Calcaneus-dorsal & plantar.png",
+    "subject": "Anatomie 1",
+    "category": "Knochen",
+    "subcategory": "Talus & Calcaneus",
+    "view": "dorsal & plantar",
+    "labels": [
+      {
+        "text": "Facies articularis calcanea anterior",
+        "anchor_x": 2955,
+        "anchor_y": 102.5,
+        "mask_box": {
+          "x": 2932,
+          "y": 75,
+          "w": 332,
+          "h": 107
+        }
+      },
+      {
+        "text": "Facies articularis navicularis",
+        "anchor_x": 3336,
+        "anchor_y": 103.0,
+        "mask_box": {
+          "x": 3327,
+          "y": 74,
+          "w": 315,
+          "h": 110
+        }
+      },
+      {
+        "text": "Facies articularis navicularis",
+        "anchor_x": 594,
+        "anchor_y": 174.0,
+        "mask_box": {
+          "x": 586,
+          "y": 145,
+          "w": 314,
+          "h": 112
+        }
+      },
+      {
+        "text": "Facies malleolaris lateralis",
+        "anchor_x": 1026,
+        "anchor_y": 174.0,
+        "mask_box": {
+          "x": 1018,
+          "y": 145,
+          "w": 331,
+          "h": 111
+        }
+      },
+      {
+        "text": "Sinus tarsi",
+        "anchor_x": 2817,
+        "anchor_y": 269.5,
+        "mask_box": {
+          "x": 2809,
+          "y": 240,
+          "w": 208,
+          "h": 59
+        }
+      },
+      {
+        "text": "Facies articularis talaris anterior",
+        "anchor_x": 1301,
+        "anchor_y": 317.0,
+        "mask_box": {
+          "x": 1293,
+          "y": 290,
+          "w": 311,
+          "h": 107
+        }
+      },
+      {
+        "text": "Facies articularis cuboidea",
+        "anchor_x": 2639,
+        "anchor_y": 387.0,
+        "mask_box": {
+          "x": 2631,
+          "y": 358,
+          "w": 314,
+          "h": 110
+        }
+      },
+      {
+        "text": "Facies articularis calcanea media",
+        "anchor_x": 3572,
+        "anchor_y": 381.5,
+        "mask_box": {
+          "x": 3564,
+          "y": 353,
+          "w": 314,
+          "h": 106
+        }
+      },
+      {
+        "text": "Facies articularis cuboidea",
+        "anchor_x": 1573,
+        "anchor_y": 460.0,
+        "mask_box": {
+          "x": 1564,
+          "y": 431,
+          "w": 316,
+          "h": 111
+        }
+      },
+      {
+        "text": "Trochlea tali mit Facies superior",
+        "anchor_x": 334,
+        "anchor_y": 497.5,
+        "mask_box": {
+          "x": 326,
+          "y": 468,
+          "w": 317,
+          "h": 112
+        }
+      },
+      {
+        "text": "Sulcus tali",
+        "anchor_x": 3569,
+        "anchor_y": 533.0,
+        "mask_box": {
+          "x": 3561,
+          "y": 502,
+          "w": 207,
+          "h": 62
+        }
+      },
+      {
+        "text": "Facies malleolaris medialis",
+        "anchor_x": 376,
+        "anchor_y": 638.5,
+        "mask_box": {
+          "x": 368,
+          "y": 608,
+          "w": 275,
+          "h": 111
+        }
+      },
+      {
+        "text": "Facies articularis calcanea posterior",
+        "anchor_x": 3573,
+        "anchor_y": 635.5,
+        "mask_box": {
+          "x": 3563,
+          "y": 609,
+          "w": 353,
+          "h": 109
+        }
+      },
+      {
+        "text": "Sinus tarsi",
+        "anchor_x": 1744,
+        "anchor_y": 689.0,
+        "mask_box": {
+          "x": 1736,
+          "y": 660,
+          "w": 206,
+          "h": 58
+        }
+      },
+      {
+        "text": "Sulcus tendinis musculi flexoris hallucis longi",
+        "anchor_x": 2196,
+        "anchor_y": 701.5,
+        "mask_box": {
+          "x": 2179,
+          "y": 671,
+          "w": 301,
+          "h": 166
+        }
+      },
+      {
+        "text": "Tuberculum mediale",
+        "anchor_x": 3571,
+        "anchor_y": 787.0,
+        "mask_box": {
+          "x": 3563,
+          "y": 758,
+          "w": 391,
+          "h": 58
+        }
+      },
+      {
+        "text": "Tuberculum mediale",
+        "anchor_x": 409,
+        "anchor_y": 807.5,
+        "mask_box": {
+          "x": 401,
+          "y": 777,
+          "w": 241,
+          "h": 111
+        }
+      },
+      {
+        "text": "Sulcus calcanei",
+        "anchor_x": 1742,
+        "anchor_y": 809.0,
+        "mask_box": {
+          "x": 1734,
+          "y": 779,
+          "w": 296,
+          "h": 60
+        }
+      },
+      {
+        "text": "Sulcus tendinis musculi flexoris hallucis longi",
+        "anchor_x": 3570,
+        "anchor_y": 890.5,
+        "mask_box": {
+          "x": 3560,
+          "y": 860,
+          "w": 304,
+          "h": 166
+        }
+      },
+      {
+        "text": "Proc. medialis tuberis calcanei",
+        "anchor_x": 2217,
+        "anchor_y": 905.5,
+        "mask_box": {
+          "x": 2178,
+          "y": 875,
+          "w": 300,
+          "h": 108
+        }
+      },
+      {
+        "text": "Sulcus tendinis musculi flexoris hallucis longi",
+        "anchor_x": 357,
+        "anchor_y": 944.5,
+        "mask_box": {
+          "x": 341,
+          "y": 914,
+          "w": 301,
+          "h": 166
+        }
+      },
+      {
+        "text": "Facies articularis talaris posterior",
+        "anchor_x": 1746,
+        "anchor_y": 945.0,
+        "mask_box": {
+          "x": 1735,
+          "y": 918,
+          "w": 315,
+          "h": 112
+        }
+      },
+      {
+        "text": "Proc. posterior tali",
+        "anchor_x": 174,
+        "anchor_y": 974.5,
+        "mask_box": {
+          "x": 30,
+          "y": 942,
+          "w": 257,
+          "h": 117
+        }
+      },
+      {
+        "text": "Tuberculum laterale",
+        "anchor_x": 3205,
+        "anchor_y": 990.5,
+        "mask_box": {
+          "x": 3197,
+          "y": 962,
+          "w": 236,
+          "h": 109
+        }
+      },
+      {
+        "text": "Proc. lateralis tuberis calcanei",
+        "anchor_x": 2229,
+        "anchor_y": 1058.0,
+        "mask_box": {
+          "x": 2177,
+          "y": 1029,
+          "w": 303,
+          "h": 108
+        }
+      },
+      {
+        "text": "Tuberculum laterale",
+        "anchor_x": 411,
+        "anchor_y": 1130.0,
+        "mask_box": {
+          "x": 403,
+          "y": 1101,
+          "w": 239,
+          "h": 108
+        }
+      },
+      {
+        "text": "Sustentaculum tali",
+        "anchor_x": 821,
+        "anchor_y": 1132.0,
+        "mask_box": {
+          "x": 803,
+          "y": 1103,
+          "w": 205,
+          "h": 107
+        }
+      },
+      {
+        "text": "Tuber calcanei",
+        "anchor_x": 2205,
+        "anchor_y": 1209.5,
+        "mask_box": {
+          "x": 2197,
+          "y": 1179,
+          "w": 284,
+          "h": 61
+        }
+      },
+      {
+        "text": "Facies articularis talaris media",
+        "anchor_x": 857,
+        "anchor_y": 1292.0,
+        "mask_box": {
+          "x": 849,
+          "y": 1263,
+          "w": 316,
+          "h": 109
+        }
+      },
+      {
+        "text": "Calcaneus",
+        "anchor_x": 1743,
+        "anchor_y": 1292.5,
+        "mask_box": {
+          "x": 1735,
+          "y": 1261,
+          "w": 205,
+          "h": 63
+        }
+      }
+    ]
   }
 ]
