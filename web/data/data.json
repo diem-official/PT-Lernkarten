@@ -7721,17 +7721,6 @@
         }
       },
       {
-        "text": "WeMa",
-        "anchor_x": 3116,
-        "anchor_y": 2749.5,
-        "mask_box": {
-          "x": 3108,
-          "y": 2711,
-          "w": 111,
-          "h": 77
-        }
-      },
-      {
         "text": "Tuber calcanei",
         "anchor_x": 693,
         "anchor_y": 2807.0,
