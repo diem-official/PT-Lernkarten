@@ -36,7 +36,7 @@ Das bestehende Setup ([Design: Cloudflare Access](2026-08-25-private-hosting-clo
                                     │  ┌──────────────────────┐
                                     │  │  Authentik (Docker)      │
                                     │  │  server + worker           │
-                                    │  │  + PostgreSQL + Redis          │
+                                    │  │  + PostgreSQL                  │
                                     │  │  Magic-Link-Login             │
                                     │  │  Self-Service-Enrollment          │
                                     │  │  (Domain-Policy @schul-domain)      │
@@ -56,15 +56,14 @@ Cloudflare Access (Application + Policy) entfällt vollständig. Cloudflare Tunn
 Zusätzlich zum bestehenden nginx-Static-Hosting:
 
 - **Docker + Docker Compose** auf dem VPS installieren (bisher nicht benötigt).
-- Neuer Compose-Stack `deploy/authentik/docker-compose.yml` mit den Services:
-  - `authentik-server` (Web-UI, Login-/Enrollment-Flows, Proxy-Outpost)
-  - `authentik-worker` (Hintergrundjobs, u. a. E-Mail-Versand)
+- Neuer Compose-Stack `deploy/authentik/docker-compose.yml` mit den Services (laut offiziellem Authentik-Compose-Template, Stand 2026.8.2 — kein separater Redis-Service mehr nötig):
+  - `server` (Web-UI, Login-/Enrollment-Flows, Proxy-Outpost)
+  - `worker` (Hintergrundjobs, u. a. E-Mail-Versand)
   - `postgresql` (Authentik-Datenbank)
-  - `redis` (Cache/Sessions)
 - `.env`-Datei mit Platzhaltern für `PG_PASS`, `AUTHENTIK_SECRET_KEY`, SMTP-Zugangsdaten (Host/Port/User/Passwort, vom Betreiber selbst gestellt) und erlaubter Schul-Domain — **nur auf dem VPS**, nicht im Repo oder als GitHub Actions Secret, da der `deploy-vps`-Workflow ausschließlich `web/` synct und den Authentik-Stack nicht anfasst.
 - VPS-Ressourcencheck bereits durchgeführt: 4 Kerne / 8 GB RAM / 240 GB — ausreichend für den zusätzlichen Stack, keine weiteren Anpassungen nötig.
 
-Ressourcen-Richtwert: Authentik empfiehlt offiziell mind. ~2 CPU-Kerne / 4 GB RAM für den Stack (Server+Worker+Postgres+Redis) allein — bei 4 Kernen / 8 GB VPS-RAM bleibt trotz des bestehenden nginx-Static-Hostings ausreichend Headroom.
+Ressourcen-Richtwert: Authentik empfiehlt offiziell mind. 2 CPU-Kerne / 2 GB RAM für den Stack (Server+Worker+Postgres) allein — bei 4 Kernen / 8 GB VPS-RAM bleibt trotz des bestehenden nginx-Static-Hostings deutlich Headroom.
 
 ---
 
