@@ -27,12 +27,13 @@ Das bestehende Setup ([Design: Cloudflare Access](2026-08-25-private-hosting-clo
 ┌──────────────────┐  ┌───────────────────────────────┐
 │  GitHub Pages       │  │  VPS: nginx + cloudflared         │
 │  (unverändert)        │  │  nginx serviert web/, prüft          │
-└──────────────────┘  │  Session per auth_request           │
+└──────────────────┘  │  Session per auth_request,          │
+                       │  proxied /outpost.goauthentik.io/    │
+                       │  bleibt auf derselben Domain            │
                        └───────────────────────────────┘
                                     │            │
-                              Tunnel│            │Tunnel
-                       lernen.<domain>  auth.<domain>
-                                    │            ▼
+                              Tunnel│            │localhost:9000
+                       lernen.<domain>           ▼
                                     │  ┌──────────────────────┐
                                     │  │  Authentik (Docker)      │
                                     │  │  server + worker           │
@@ -41,13 +42,13 @@ Das bestehende Setup ([Design: Cloudflare Access](2026-08-25-private-hosting-clo
                                     │  │  Self-Service-Enrollment          │
                                     │  │  (Domain-Policy @schul-domain)      │
                                     │  └──────────────────────┘
-                                    ▼                    ▲
-                          nginx lässt Zugriff          Schüler
-                          nur mit gültiger Session       (E-Mail @schul-domain)
-                          durch
+                                    ▼                    ▲            ▲
+                          nginx lässt Zugriff          Schüler    Tunnel (auth.<domain>,
+                          nur mit gültiger Session       (E-Mail @schul-domain,   nur für Admin-Zugriff
+                          durch                          bleibt auf lernen.<domain>)  auf Authentik selbst)
 ```
 
-Cloudflare Access (Application + Policy) entfällt vollständig. Cloudflare Tunnel bekommt einen zweiten Public Hostname für Authentik selbst. Der GitHub-Pages-Pfad im Diagramm entspricht unverändert dem Stand aus dem Vorgänger-Design; ob dessen Phase 2 (Pages-Abschaltung, Repo auf privat) inzwischen manuell durchgeführt wurde, ist für diese Migration nicht relevant und wird hier nicht neu bewertet.
+Cloudflare Access (Application + Policy) entfällt vollständig. Cloudflare Tunnel bekommt einen zweiten Public Hostname `auth.<domain>`, der **ausschließlich für den direkten Admin-Zugriff auf Authentik** (Konfiguration, Flow-Editor) genutzt wird — der Login-/Enrollment-Ablauf der Schüler bleibt, wie in Abschnitt 3 beschrieben, vollständig auf `lernen.<domain>` und verlässt diese Domain nie (Authentiks "Forward Auth (Single Application)"-Modus verlangt laut offizieller Doku, dass External Host = die geschützte App-URL selbst ist, nicht eine separate Authentik-Domain). Der GitHub-Pages-Pfad im Diagramm entspricht unverändert dem Stand aus dem Vorgänger-Design; ob dessen Phase 2 (Pages-Abschaltung, Repo auf privat) inzwischen manuell durchgeführt wurde, ist für diese Migration nicht relevant und wird hier nicht neu bewertet.
 
 ---
 
@@ -73,18 +74,18 @@ Ressourcen-Richtwert: Authentik empfiehlt offiziell mind. 2 CPU-Kerne / 2 GB RAM
 
 1. Docker-Compose-Stack auf dem VPS starten, Admin-Account anlegen.
 2. SMTP-Zugangsdaten (vom Betreiber bereitgestellt) in Authentik als E-Mail-Notifier hinterlegen.
-3. Zweiten Cloudflare-Tunnel-Hostname `auth.<domain>` → `localhost:9000` (Authentik-Server-Port) anlegen.
+3. Zweiten Cloudflare-Tunnel-Hostname `auth.<domain>` → `localhost:9000` (Authentik-Server-Port) anlegen — dient ausschließlich dem direkten Admin-Zugriff auf Authentik (Flow-/Policy-Konfiguration), nicht dem Schüler-Login-Ablauf.
 4. In Authentik zwei Flows konfigurieren (Authentik bietet den passwortlosen Magic-Link-Login **nicht** als fertigen Ein-Klick-Baustein an — beide Flows werden aus Standard-Stages zusammengesetzt):
    - **Enrollment-Flow** (Self-Service-Registrierung): Identification-Stage (E-Mail-Eingabe) → Email-Stage (Bestätigungslink, hier zweckentfremdet als Verifizierung statt reiner Passwort-Recovery) → Account-Erstellung + Login. Gebunden an eine **Expression-Policy**, die die eingegebene E-Mail-Adresse gegen `*@<schul-domain>` prüft.
    - **Authentication-Flow** (wiederkehrender Login): Identification-Stage → Email-Stage (Magic-Link statt Code) → Session-Erstellung. Gleiches Baukasten-Prinzip, ohne Account-Erstellung.
-5. **Proxy-Outpost** für `lernen.<domain>` anlegen, der die Session gegen nginx per `auth_request` bereitstellt.
-6. In nginx ([deploy/nginx/pt-lernkarten.conf](../../../deploy/nginx/pt-lernkarten.conf)) einen `auth_request`-Block sowie die `/outpost.goauthentik.io/`-Location ergänzen, die bei fehlender Session zu `auth.<domain>` umleitet.
+5. **Proxy-Provider** (Modus „Forward auth (single application)") für `lernen.<domain>` anlegen. **External Host = `https://lernen.<domain>`** (die geschützte App-URL selbst — so verlangt es der offizielle Single-Application-Modus, nicht `auth.<domain>`), damit Login-/Enrollment-Seiten auf derselben Domain wie die App bleiben. Am eingebetteten Outpost hängt die Session-Prüfung, die nginx per `auth_request` abfragt.
+6. In nginx ([deploy/nginx/pt-lernkarten.conf](../../../deploy/nginx/pt-lernkarten.conf)) einen `auth_request`-Block sowie eine `/outpost.goauthentik.io/`-Location ergänzen, die sowohl den Session-Check als auch die Login-/Enrollment-Seiten selbst (proxied zu Authentik auf `localhost:9000`) auf `lernen.<domain>` bereitstellt — bei fehlender Session leitet nginx relativ auf `/outpost.goauthentik.io/start` **auf derselben Domain** um, nie zu `auth.<domain>`.
 
 **Ablauf für einen Schüler:**
 
 1. Aufruf von `lernen.<domain>`.
-2. nginx erkennt fehlende Session (`auth_request` schlägt fehl) → Redirect zu `auth.<domain>`.
-3. Authentik zeigt E-Mail-Eingabe:
+2. nginx erkennt fehlende Session (`auth_request` schlägt fehl) → Redirect zu `/outpost.goauthentik.io/start` — bleibt auf `lernen.<domain>`.
+3. Authentik zeigt (über die von nginx proxied Seite, weiterhin auf `lernen.<domain>`) E-Mail-Eingabe:
    - **Neue Adresse** (Domain-Policy prüft `@<schul-domain>`): Enrollment-Flow verschickt Bestätigungslink → Klick erstellt Account und loggt gleichzeitig ein. Adresse außerhalb der erlaubten Domain wird mit klarer Fehlermeldung abgelehnt, kein Mail-Versand.
    - **Bekannte Adresse**: Authentication-Flow verschickt Magic-Link per Email-Stage → Klick loggt ein. Aus Sicherheitsgründen ist die Rückmeldung ("Link verschickt") in beiden Fällen (Adresse existiert / existiert nicht) identisch, um kein Adress-Enumeration zu ermöglichen.
 4. Nach erfolgreichem Login Redirect zurück zu `lernen.<domain>`, nginx lässt durch.
@@ -106,8 +107,8 @@ Ressourcen-Richtwert: Authentik empfiehlt offiziell mind. 2 CPU-Kerne / 2 GB RAM
 
 Parallelbetrieb statt Big-Bang, um das bestehende System für aktuelle Nutzer nicht zu unterbrechen:
 
-1. Authentik-Stack aufsetzen. `auth.<domain>` wird von Cloudflare Access **nicht** geschützt (nur `lernen.<domain>` hat eine Access-Policy) — Enrollment- und Authentication-Flow lassen sich hier bereits vollständig und mit beliebigen neuen Schul-Domain-Testadressen durchtesten, **während Cloudflare Access vor `lernen.<domain>` weiterhin aktiv bleibt** und den produktiven Zugriff unverändert absichert.
-2. nginx-`auth_request`-Änderung auf `lernen.<domain>` einspielen. Ab hier ist `lernen.<domain>` doppelt geschützt: zuerst Cloudflare Access (alte Allowlist), danach Authentik. Ein Test in diesem Schritt ist deshalb auf Adressen beschränkt, die bereits auf der alten Cloudflare-Access-Allowlist stehen — er prüft nur die nginx↔Authentik-Integration (Redirect, Session, Rückkehr nach Login), nicht die Self-Service-Kapazität für neue Nutzer (die wurde bereits in Schritt 1 gegen `auth.<domain>` verifiziert).
+1. Authentik-Stack aufsetzen. `auth.<domain>` wird von Cloudflare Access **nicht** geschützt (nur `lernen.<domain>` hat eine Access-Policy) — Enrollment- und Authentication-Flow lassen sich dort direkt über ihre Flow-URL (`https://auth.<domain>/if/flow/<flow-slug>/`) mit beliebigen neuen Schul-Domain-Testadressen isoliert durchtesten (Policy- und Stage-Logik, unabhängig vom Proxy-Provider), **während Cloudflare Access vor `lernen.<domain>` weiterhin aktiv bleibt** und den produktiven Zugriff unverändert absichert. Der eigentliche Forward-Auth-Redirect (auf `lernen.<domain>` selbst) lässt sich erst nach der nginx-Änderung in Schritt 2 end-to-end testen.
+2. nginx-`auth_request`-Änderung auf `lernen.<domain>` einspielen. Ab hier ist `lernen.<domain>` doppelt geschützt: zuerst Cloudflare Access (alte Allowlist), danach Authentik. Ein Test in diesem Schritt ist deshalb auf Adressen beschränkt, die bereits auf der alten Cloudflare-Access-Allowlist stehen — er prüft nur die nginx↔Authentik-Integration (Redirect, Session, Rückkehr nach Login), nicht erneut die Enrollment-Logik selbst (die wurde bereits in Schritt 1 isoliert verifiziert).
 3. Mit ein bis zwei bereits gelisteten Test-Nutzern den vollen Weg über `lernen.<domain>` prüfen (Redirect zu Authentik, Login, Rückkehr, Session-Verhalten).
 4. Nach erfolgreicher Validierung: Cloudflare-Access-Application und -Policy im Zero-Trust-Dashboard löschen — Cloudflare Tunnel bleibt unverändert bestehen. **Erst ab hier** ist `lernen.<domain>` für beliebige neue Schul-Domain-Adressen per Self-Service erreichbar — das ist der eigentliche Schritt, der das 50-Nutzer-Limit aufhebt.
 5. [deploy/README.md](../../../deploy/README.md) aktualisieren: bisherigen Abschnitt 5 ("Cloudflare Access einrichten") durch "Authentik einrichten" ersetzen (Docker Compose, SMTP, Enrollment-Flow, Authentication-Flow, Domain-Policy, zweiter Tunnel-Hostname); Abschnitt 6 ("Neue Adressen hinzufügen") entfällt, da Self-Service.
@@ -122,7 +123,7 @@ Parallelbetrieb statt Big-Bang, um das bestehende System für aktuelle Nutzer ni
 - Enrollment mit ungültiger Domain → wird abgelehnt, generische Fehlermeldung, kein Mail-Versand.
 - Bereits registrierter Nutzer → Magic-Link-Login (kein erneutes Enrollment nötig).
 - Session-Ablauf nach 24 h → erneuter Login wird verlangt.
-- nginx liefert bei fehlender/abgelaufener Session korrekt zu Authentik um; kein direkter Zugriff auf `lernen.<domain>` ohne gültige Session möglich.
+- nginx liefert bei fehlender/abgelaufener Session korrekt zu `/outpost.goauthentik.io/start` um (bleibt auf `lernen.<domain>`); kein direkter Zugriff auf `lernen.<domain>` ohne gültige Session möglich.
 - SMTP-Ausfall-Szenario: Authentik zeigt weiterhin generische "Link verschickt"-Meldung (kein Nutzer-seitiger Fehler sichtbar), tatsächlicher Fehler landet im Worker-Log.
 
 **Bewusst nicht behandelt (YAGNI):**
